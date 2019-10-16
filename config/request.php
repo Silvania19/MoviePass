@@ -15,6 +15,7 @@ class Request
         $urlArray=explode ("/", $url);
         //eliminar todos los espacios en blanco, es necesario ya que un espacio en blanco puede causar problemas
         $urlArraySinBlancos= array_filter($urlArray);
+        
 
         if(empty($urlArraySinBlancos))
         {
