@@ -1,6 +1,6 @@
 <?php
-namespace model;
-use model\Person as Person; 
+namespace models;
+use models\Person as Person; 
 class User extends Person{
     private $email;
     private $password;
