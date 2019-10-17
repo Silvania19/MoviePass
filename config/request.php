@@ -60,5 +60,25 @@ public static function getMethodRequest()
 {
     return $_SERVER['REQUEST_METHOD'];//la variable server es un arreglo donde una de sus valores tiene almacenado el tipo de methodo(get o post)
 }
+
+public function getController() {
+    return $this->controller;
+}
+/**
+* Devuelve el método
+*
+* @return String
+*/
+public function getMethod() {
+    return $this->method;
+}
+/**
+* Devuelve los atributos
+*
+* @return Array
+*/
+public function getParameters() {
+    return $this->parameters;
+}
 }
 ?>
