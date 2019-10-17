@@ -1,5 +1,5 @@
 <?php
-namespace model;
+namespace models;
 abstract class Person{
     private $name;
     private $lastName;
