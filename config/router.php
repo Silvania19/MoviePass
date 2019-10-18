@@ -8,10 +8,10 @@ class Router
     }
     public static function address(Request $request)
     {
-        $controller= $request->getController()."controller";
+        $controller= $request->getController()."controllers";
         $method= $request->getMethod();
-        $parameters= $request->getParameters();
-        
+        $parameters= $request->getParameters();//viewscontrollers
+        //controllers/viewscontrollers
         $class="controllers\\".$controller;//crea la direccion para incluir la clase. el namespace+el nombre de la clase
 
         $instance= new $class();// crea instancia de la clase
@@ -19,9 +19,11 @@ class Router
         if(!isset($parameters))
         {
             call_user_func(array($instance,$method));
-      }else{
+        }
+      else
+       {
           call_user_func_array(array($instance,$method),$parameters);
-      }
+       }
 
 
 
