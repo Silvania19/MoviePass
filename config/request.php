@@ -1,4 +1,5 @@
 <?php
+namespace config;
 class Request 
 {
     private $controller; 
@@ -20,6 +21,7 @@ class Request
         if(empty($urlArraySinBlancos))
         {
             $this->controller="views";
+            $this->method="index";
 
         }
         else
