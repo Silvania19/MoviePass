@@ -4,12 +4,17 @@ abstract class Person{
     private $name;
     private $lastName;
     private $dni;
-
-    public function __construct($name,$lastName,$dni) 
+    private $email;
+    private $password;
+    private $userName;
+    public function __construct($name, $lastName, $dni, $email, $password, $userName) 
     {
         $this->name=$name;
         $this->lastName=$lastName;
         $this->dni=$dni;
+        $this->email=$email;
+        $this->password=$password;
+        $this->userName=$userName;
     }
 
     public function setName($name)
@@ -37,4 +42,28 @@ abstract class Person{
     {
         return  $this->dni;
     }
+    public function setPassword($password)
+{
+    $this->password=$password;
+}
+public function setEmail($email)
+{
+    $this->email=$email;
+}
+public function getPassword()
+{
+    return $this->password;
+}
+public function getEmail()
+{
+ return $this->email;
+}
+public function getUserName()
+{
+    return  $this->userName;
+}
+public function setUserName($userName)
+{
+$this->userName=$userName;
+}
 }
