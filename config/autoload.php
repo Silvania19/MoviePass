@@ -1,6 +1,6 @@
 <?php
 namespace config;
-include ("config/constantes.php");
+
 
 class Autoload{
     public static function Start()
@@ -14,5 +14,6 @@ class Autoload{
             include_once ($class2);
 
         });
+        
     }
 }
