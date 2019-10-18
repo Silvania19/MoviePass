@@ -1,0 +1,21 @@
+[{
+    
+    "name": "sil",
+    "lastName": "ortega",
+    "dni":"12345678" ,
+    "email":"silvaniaortega17@gmail.com",
+    "password": "respirando",
+    "userName": "silvi",
+    "idUser":"1"
+
+},
+{ 
+    "name": "flor",
+    "lastName": "juarez",
+    "dni":"12323678" ,
+    "email":"florTuCULO@gmail.com",
+    "password": "unicornios",
+    "userName": "fiori",
+    "idUser":"2"
+
+}]
