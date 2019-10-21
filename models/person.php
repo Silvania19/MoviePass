@@ -7,7 +7,7 @@ abstract class Person{
     private $email;
     private $password;
     private $userName;
-    public function __construct($name, $lastName, $dni, $email, $password, $userName) 
+    public function __construct($name="", $lastName="", $dni="", $email="", $password="", $userName="") 
     {
         $this->name=$name;
         $this->lastName=$lastName;
