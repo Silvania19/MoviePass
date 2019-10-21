@@ -1,21 +1,29 @@
-[{
-    
-    "name": "sil",
-    "lastName": "ortega",
-    "dni":"12345678" ,
-    "email":"silvaniaortega17@gmail.com",
-    "password": "respirando",
-    "userName": "silvi",
-    "idUser":"1"
-
-},
-{ 
-    "name": "flor",
-    "lastName": "juarez",
-    "dni":"12323678" ,
-    "email":"florTuCULO@gmail.com",
-    "password": "unicornios",
-    "userName": "fiori",
-    "idUser":"2"
-
-}]
+[
+    {
+        "name": "sil",
+        "lastName": "ortega",
+        "dni": "12345678",
+        "email": "silvaniaortega17@gmail.com",
+        "userName": "silvi",
+        "password": "respirando",
+        "idUser": null
+    },
+    {
+        "name": "flor",
+        "lastName": "juarez",
+        "dni": "12323678",
+        "email": "florTuCULO@gmail.com",
+        "userName": "fiori",
+        "password": "unicornios",
+        "idUser": null
+    },
+    {
+        "name": "luciana",
+        "lastName": "juarez",
+        "dni": "34567890",
+        "email": "lalucyrefif@gmail.com",
+        "userName": "lalucy",
+        "password": "florilamejor",
+        "idUser": 3
+    }
+]
