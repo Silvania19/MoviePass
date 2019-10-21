@@ -1,30 +1,36 @@
 <?php include(VIEWS_PATH."header.php");?>
 
 <body>
-<link rel="stylesheet" href="front/styles/style2.css"><!
-<div class="container borde2">
 <h5>Iniciar Sesion</h5>
 
 
-<form action="" method ="" >
+<!--<form action="<?php echo FRONT_ROOT;?>/user/login" method ="post" >
 
-<input type="text" name="name" id=""> UserName
-<input type="password" name="" id=""> Password
-<button type ="submit">Sing in</button>
+<input type="email" name="email" id=""> Email
+<input type="password" name="password" id=""> Password
+<button type ="submit"->Sing in</button> 
 
-<!--<button type="submit">Register</button>-->
+
+
 
 </form>
-<!--</body>
 
 
-<form action="" method ="POST">
-<input type="text" name="" id="">Name
-<input type="text" name="" id="">Lastname
-<input type="email" name="" id="">Email
-<input type="text" name="name" id=""> UserName
-<input type="password" name="" id=""> Password
+
+<button type="submit">Register</button>--> 
+
+
+</body>
+
+
+<form action="<?php echo FRONT_ROOT;?>/user/signUp" method ="POST">
+<input type="text" name="name" id="">Name
+<input type="text" name="lastName" id="">Lastname
+<input type="text" name="dni" id="">Dni
+<input type="email" name="email" id="">Email
+<input type="text" name="userName" id=""> UserName
+<input type="password" name="password" id=""> Password
 <button type="submit">sign up</button>
 
-</form>--></div>
+</form></div>
 <?php include(VIEWS_PATH."footer.php")?>
