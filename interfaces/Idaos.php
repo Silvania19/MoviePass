@@ -6,5 +6,5 @@ interface iDaos
     public function Add($objeto);
     public function Delete($objeto);
     public function Update($objeto);
-    public function Read($email);
+    public function Search($email);
 }
