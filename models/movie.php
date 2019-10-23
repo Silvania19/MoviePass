@@ -25,13 +25,14 @@ class Movie
    }
    public function setTitle($title)
    {
-    $this->titlr=$title;
+    $this->title=$title;
    }
+   
    public function setOriginal_title($original_title)
    {
        $this->original_title=$original_title;
    }
-   public function setOriginal_lenguage($original_lenguage)
+   public function setOriginal_language($original_lenguage)
    {
        $this->original_lenguage=$original_lenguage;
    }
@@ -57,18 +58,71 @@ class Movie
    }
    public function setBackdrop_path($backdrop_path)
    {
-       $this->$backdrop_path=$backdrop_path;
+       $this->backdrop_path=$backdrop_path;
    }
    public function setPopularity($popularity)
    {
-       $this->$popularity=$popularity;
+       $this->popularity=$popularity;
    }
    public function setVote_count($vote_count)
    {
-       $this->$vote_count=$vote_count;
+       $this->vote_count=$vote_count;
    }
    public function setVideo($video)
    {
-       $this->$video=$video;
+       $this->video=$video;
+   }
+   
+   public function getIdMovie()
+   {
+       return  $this->idMovie;
+   }
+   public function getTitle()
+   {
+       return  $this->title;
+   }
+   public function getOriginal_title()
+   {
+       return  $this->original_title;
+   }
+   public function getOriginal_lenguage()
+   {
+       return  $this->original_lenguage;
+   }
+   public function getOverview()
+   {
+       return  $this->overview;
+   }
+   public function getAdult()
+   {
+       return  $this->adult;
+   }
+   public function getPoster_Path()
+   {
+       return  $this->poster_path;
+   }
+   public function getRelease_date()
+   {
+       return  $this->release_date;
+   }
+   public function getGenre_ids()
+   {
+       return  $this->genre_ids;
+   }
+   public function getBackdrop_path()
+   {
+       return  $this->backdrop_path;
+   }
+   public function getPopularity()
+   {
+       return  $this->popularity;
+   }
+   public function getVote_count()
+   {
+       return  $this->vote_count;
+   }
+   public function getVideo()
+   {
+       return  $this->video;
    }
 }
