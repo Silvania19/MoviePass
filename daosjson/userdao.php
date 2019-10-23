@@ -48,7 +48,7 @@ class UserDao implements Idaos
 
 		$this->userList = $newList;
 		$this->saveData();
-	}ss
+	}
 
     public function Add($objeto){
         
@@ -72,7 +72,6 @@ class UserDao implements Idaos
             $valuesArray["lastName"] = $user->getLastName();
             $valuesArray["dni"] = $user->getDni();
             $valuesArray["email"] = $user->getEmail();
-            $valuesArray["userName"] = $user->getUserName();
             $valuesArray["password"] = $user->getPassword();
             $valuesArray["idUser"] = $user->getIdUser();
 
@@ -96,7 +95,7 @@ class UserDao implements Idaos
             foreach($arrayToDecode as $valuesArray)
             {
 
-                $user = new User($valuesArray["name"], $valuesArray["lastName"], $valuesArray["dni"], $valuesArray["email"], $valuesArray["password"], $valuesArray["userName"], $valuesArray["idUser"]);
+                $user = new User($valuesArray["name"], $valuesArray["lastName"], $valuesArray["dni"], $valuesArray["email"], $valuesArray["password"], $valuesArray["idUser"]);
                 
                 array_push($this->userList, $user);
  
