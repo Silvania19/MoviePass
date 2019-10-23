@@ -1,0 +1,9 @@
+[
+    {
+        "idCine":1,
+        "name": "El nuevo",
+        "idUserAdministrator":1,
+        "idLocalidad":1,
+        "email":"nuevo@aqui.com"
+    }
+]
