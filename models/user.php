@@ -5,9 +5,9 @@ class User extends Person{
 
     private $idUser;
 
-public  function __construct($name, $lastName, $dni, $email,$password, $userName)
+public  function __construct($name, $lastName, $dni, $email,$password)
 {
-    parent :: __construct($name, $lastName, $dni, $email, $password, $userName);
+    parent :: __construct($name, $lastName, $dni, $email, $password);
     
 }
 public function setIdUser($idUser)
