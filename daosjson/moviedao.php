@@ -2,20 +2,23 @@
  namespace daosjson;
  use models\Movie as Movie;
  
- class MovieDaos
+ class MovieDao
  {
-  $movieList;
-  public function __constructor()
-  {
-
-  }
-  public function getNowMovie()
+   private $movieList;
+        public function __constructor()
+         {
+            
+        }
+        public function getNowMovie()
         {
-            return $this->retrieveData();
+           
+            $this->retrieveData();
+            return $this->movieList;
+           
         }
         private function retrieveData()
         {
-            $movielist= array();
+            $this->movieList= array();
             $jsonContent= file_get_contents('https://api.themoviedb.org/3/movie/now_playing?api_key=8c491ec0ca4ed58cbf814b5ee1618a44&language=en-US&page=1', true);
             $arrayTodecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
             $filmArray = $arrayTodecode['results'];
@@ -34,10 +37,9 @@
                 $movie->setGenre_ids($indice['genre_ids']);
                 $movie->setTitle($indice['title']);
                 $movie->setOverview($indice['overview']);
-               
-                array_push($movielist, $movie);
+                array_push($this->movieList, $movie);
             }
-            return $movielist;
+          
         }
 
  }
