@@ -1,14 +1,42 @@
-<?php include(VIEWS_PATH."header.php");?>
+<?php include(VIEWS_PATH."header.php");
 
-<body>
-<h5>Iniciar Sesion</h5>
+?>
+
+<main class="login">
 
 
-<!--<form action="<?php echo FRONT_ROOT;?>/user/login" method ="post" >
 
-<input type="email" name="email" id=""> Email
-<input type="password" name="password" id=""> Password
-<button type ="submit"->Sing in</button> 
+        
+              
+<form action="<?php echo FRONT_ROOT;?>/user/login" method ="POST" >
+    
+
+    <header class="text-center">
+    <h2>   
+    <p class="bg-light display-5 ">Login</p> 
+    </h2>
+    </header>
+    <div class="form-group mark">
+    <label for="name"> email </label>
+    <input type="email"  name="email" class="form-control ">
+    </div>
+     <div class="form-group mark">
+<label for="password"> Password</label>
+<input type="password" name="password" class="form-control form-control-lg">
+</div>
+<div class="actions form-group mark">
+
+<button type="button" class="btn btn-link" data-toggle="modal" data-target="#sign-up">
+    Sign up
+</button>
+
+<button type="submit" class="btn btn-dark">
+    Login
+</button>
+
+
+</div>
+
 
 
 
@@ -16,21 +44,23 @@
 </form>
 
 
+<div class="modal fade" id="sign-up"tabindex="-1" role="dialog" aria-labelledby="sign-up" aria-hidden="true" >
+    <div class="modal-dialog" role="document" >
+        <form class="modal-content" action="<?php echo FRONT_ROOT;?>/user/signUp" method="POST">
+            <div class="modal-header">
+                <h2 class="modal-title">Sign up</h2>
+            </div>
+                 <button type="button"class="close" data-dismiss="modal">&times;</button>
+             <div class="modal-body">
+                <label >Name</label><input type="text" name="name" class="form-control">
+                <label >Lastname</label><input type="text" name="lastname"class= "form-control " >
+                <label >Dni</label><input type="text" name="dni"class= "form-control " >
+                <label >Email</label><input type="email" name="email"class= "form-control " >
+                <button type="submit" class="btn btn-dark" data dismiss="modal" > Sign up </button>
+            </div>
+        </form>
+    </div>
+</div>
+</main>
 
-<button type="submit">Register</button>--> 
-
-
-</body>
-
-
-<form action="<?php echo FRONT_ROOT;?>/user/signUp" method ="POST">
-<input type="text" name="name" id="">Name
-<input type="text" name="lastName" id="">Lastname
-<input type="text" name="dni" id="">Dni
-<input type="email" name="email" id="">Email
-<input type="text" name="userName" id=""> UserName
-<input type="password" name="password" id=""> Password
-<button type="submit">sign up</button>
-
-</form></div>
 <?php include(VIEWS_PATH."footer.php")?>
