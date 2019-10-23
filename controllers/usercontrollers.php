@@ -41,8 +41,8 @@ public function signUp()
     $dni=$_POST["dni"];
     $email=$_POST['email'];
     $password=$_POST['password'];
-    $userName=$_POST['userName'];
-    $user=new User($name, $lastName, $dni, $email,$password, $userName);
+    
+    $user=new User($name,$lastName, $dni, $email, $password);
     $this->daoUser->Add($user);
     var_dump($this->daoUser);
 }
