@@ -4,7 +4,6 @@
         "lastName": "ortega",
         "dni": "12345678",
         "email": "silvaniaortega17@gmail.com",
-        "userName": "silvi",
         "password": "respirando",
         "idUser": null
     },
@@ -13,7 +12,6 @@
         "lastName": "juarez",
         "dni": "12323678",
         "email": "florTuCULO@gmail.com",
-        "userName": "fiori",
         "password": "unicornios",
         "idUser": null
     },
@@ -22,8 +20,71 @@
         "lastName": "juarez",
         "dni": "34567890",
         "email": "lalucyrefif@gmail.com",
-        "userName": "lalucy",
         "password": "florilamejor",
-        "idUser": 3
+        "idUser": null
+    },
+    {
+        "name": "jimena",
+        "lastName": null,
+        "dni": "12345467",
+        "email": "lajime@gmail",
+        "password": null,
+        "idUser": null
+    },
+    {
+        "name": "jimena",
+        "lastName": null,
+        "dni": "12345467",
+        "email": "lajime@gmail",
+        "password": null,
+        "idUser": null
+    },
+    {
+        "name": "jime",
+        "lastName": null,
+        "dni": "2345",
+        "email": "hola@hha.com",
+        "password": null,
+        "idUser": null
+    },
+    {
+        "name": "cati",
+        "lastName": null,
+        "dni": "5463728901",
+        "email": "Flor.juarez.50951@jsdhf.com",
+        "password": "tyuhg",
+        "idUser": null
+    },
+    {
+        "name": "cati",
+        "lastName": null,
+        "dni": "5463728901",
+        "email": "Flor.juarez.50951@jsdhf.com",
+        "password": "tyuhg",
+        "idUser": null
+    },
+    {
+        "name": "fede",
+        "lastName": "quer",
+        "dni": "813624",
+        "email": "akayo@gmm.com",
+        "password": "dgdfa",
+        "idUser": null
+    },
+    {
+        "name": "",
+        "lastName": "",
+        "dni": "",
+        "email": "",
+        "password": "",
+        "idUser": null
+    },
+    {
+        "name": "vcbc",
+        "lastName": "VNCN",
+        "dni": "BBDBDB",
+        "email": "florencia.juarez.159@gmail.com",
+        "password": "",
+        "idUser": 11
     }
 ]
