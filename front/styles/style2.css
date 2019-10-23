@@ -1,6 +1,25 @@
-form{
-    
-    background-color:green;
-    
-    border: 2px solid blue;  
+body,html{
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(../img/cortina.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+
+   -moz-background-size: cover;
+     -o-background-size: cover;
+        background-size: cover;
+      
+         
+ 
+     
+}
+form
+{
+   border:2px solid #e1e1e1 ;
+                height: 300px;
+                width: 500px;
+                position: absolute;
+                top: 50%;
+                left: 30%;
+                transform: translate(-50%, -50%);   
+              
 }
