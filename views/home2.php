@@ -6,12 +6,8 @@
       <a href=""class="navbar-brand"><img src="front/img/dog.jpeg" style="width: 70px;"></a>
  
     <li class="nav-item dropdown">
-      <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop">MOVIES</a>
-        <div class="dropdown-menu">
-          <a href=""class="dropdown-item">Estrenos</a>
-          <a href=""class="dropdown-item">Destacadas</a>
-          <a href=""class="dropdown-item">ñe</a>
-        </div> 
+      <a href="<?php echo FRONT_ROOT;?>/movie/seeListMovie" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop">MOVIES</a>
+
    </li>
     <li class="nav-item dropdown">    
         <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop">USER</a>
@@ -21,7 +17,7 @@
           <a href=""class="dropdown-item">Eliminar cuenta</a>
          
         </div>
-   </li>
+    </li>
     </nav>
   
     <?php include(VIEWS_PATH."footer.php");?>
