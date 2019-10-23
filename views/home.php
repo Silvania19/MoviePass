@@ -4,7 +4,7 @@
  
 
 <main class="login">
-<link rel="stylesheet" href="front/styles/style2.css">
+
 <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -17,9 +17,7 @@
 </div>
     
 <?php  include(VIEWS_PATH."login.php");
- use controllers\MovieControllers as movieC;
- $list=new movieC();
- $list->seeListMovie
+
  ?>
 </main>
 <?php include(VIEWS_PATH."footer.php");?>
