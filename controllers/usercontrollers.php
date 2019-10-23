@@ -19,17 +19,19 @@ public function login()
     {
         if($user->getPassword()==$password)
         {
-            $_SESSION[$user];
-            echo "ya esta perra";
+            $_SESSION['user']=$user;
+            include(VIEWS_PATH."home2.php");
         }
         else
         {
             echo "incorrect password";
         }
         
-    }else{
-            echo"incorect user";
-        }
+    }
+    else
+    {
+        echo"incorect user";
+    }
     
 }
 public function signUp()
@@ -40,10 +42,8 @@ public function signUp()
     $email=$_POST['email'];
     $password=$_POST['password'];
     $userName=$_POST['userName'];
-   
     $user=new User($name, $lastName, $dni, $email,$password, $userName);
     $this->daoUser->Add($user);
-
-   var_dump($this->daoUser);
+    var_dump($this->daoUser);
 }
 }
