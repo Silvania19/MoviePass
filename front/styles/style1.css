@@ -1,10 +1,12 @@
-.border {
-    background-color: gray;
-    height: 50px;
-    text-align: center;
+
+.borde{
+    background-color:lightgrey;
+    height: 100px;
+    width: 200px;
+    text-align: end;
 }
 .borde1 {
-    background-color: red;
+    background-color:rgba(255, 255, 0, 0.952);
     height: 50px;
     text-align: center;
 }
@@ -13,12 +15,35 @@
     height: 50px;
     text-align: center;
 }
+
 .border3 {
     background-color: pink;
 }
-form{
-    
-    background-color: red;
-    
-    border: 2px solid blue;  
+body{
+
+        font-family: 'Montserrat', sans-serif;
+        background: url(../img/asientos.jpg)  no-repeat center center fixed;
+         background-repeat: no-repeat;
+         -webkit-background-size: cover;
+        -moz-background-size: cover;
+          -o-background-size: cover;
+             background-size: cover;    
+}
+form
+{
+   border:2px solid #e1e1e1 ;
+                height: 300px;
+                width: 600px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);   
+         
+}
+
+@media(max-width:400px)
+{
+  form{
+      width: 90%; 
+  }
 }
