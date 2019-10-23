@@ -1,7 +1,7 @@
 <?php
 namespace daosjson;
 use models\User as User;
-use interfaces\idaos as Idaos;
+use interfaces\Idaos as Idaos;
 
 class UserDao implements Idaos
 {
@@ -37,18 +37,18 @@ class UserDao implements Idaos
             return $user;
           
     } 
-    public function Delete($objeto){
+    public function Delete($email){
 		$this->retrieveData();
 		$newList = array();
 		foreach ($this->$userList as $user) {
-			if($user->getCode() != $objeto){
+			if($user->getEmail() != $email){
 				array_push($newList, $user);
 			}
 		}
 
-		$this->beerList = $newList;
+		$this->userList = $newList;
 		$this->saveData();
-	}
+	}ss
 
     public function Add($objeto){
         
