@@ -42,12 +42,12 @@ class CineDao implements Idaos
     {
 
     }
-    public function Search($email)
+    public function Search($objeto)
     {
       $cine=null;
         $this->RetrieveData();
         foreach ($this->cineList as $value) { 
-                if ($value->getEmail()==$email){
+                if ($value->getEmail()==$objeto){
                     
                     $cine=$value;       
                 }
