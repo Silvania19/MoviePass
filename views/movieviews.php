@@ -10,20 +10,31 @@ include(VIEWS_PATH."header.php");
      foreach ($listMovie2 as $movie) {
     
 ?>
-
+   
   <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" alt= "<?php $movie->getTitle();?> " class="rounded">
   <br>
   <p>Title: <?php echo $movie->getTitle(); ?> </p>
   <p>Original Title: <?php echo $movie->getOriginal_title(); ?> </p>
   <p>Original lenguage: <?php echo $movie->getOriginal_lenguage(); ?> </p>
   <p>Overview: <?php echo $movie->getOverview(); ?> </p>
-  <p>Adult: <?php echo $movie->getAdult(); ?> </p>
+  <!-- despues ver si va o no <p>Apto:<?php  /* var_dump($movie->getAdult());
+               if($movie->getAdult()==true)
+                 {
+                  var_dump($movie->getAdult());
+                 }
+               else
+                 {
+                  echo "false";
+                 }*/
+             ?>
+    </p>-->
   <p>Release date: <?php echo $movie->getRelease_date(); ?> </p>
-  <p>Genres : <?php echo $movie->getGenres_ids(); ?> </p>
+  <p>Genres : <?php foreach ($movie->getGenre_ids() as $genre) {
+     echo  $genre.",";
+  } ; ?> </p>
   <p>Popularity: <?php echo $movie->getPopularity(); ?> </p>
   <p>Vote Count: <?php echo $movie->getVote_count(); ?> </p>
-  <p>Video: <?php echo $movie->getVideo(); ?> </p>
-  
+  <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded">
  
 
      <?php }}?>
