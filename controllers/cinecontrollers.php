@@ -1,7 +1,7 @@
 <?php
 namespace controllers;
 use models\Cine as cine;
-use daosjson\CineDaos as cineD;
+use daosjson\CineDao as cineD;
 class CineControllers
 {
     private $cinemaRepo;//esta variable, sera aquella aque le iguale lo que traiga de la base de datos. Cuando la tenga
