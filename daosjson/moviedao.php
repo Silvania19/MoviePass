@@ -37,6 +37,7 @@
                 $movie->setGenre_ids($indice['genre_ids']);
                 $movie->setTitle($indice['title']);
                 $movie->setOverview($indice['overview']);
+                $movie->setRelease_date($indice['release_date']);
                 array_push($this->movieList, $movie);
             }
           
