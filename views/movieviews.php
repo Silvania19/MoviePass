@@ -26,12 +26,25 @@ include(VIEWS_PATH."header.php");
                  {
                   echo "false";
                  }*/
-                 
+
              ?>
     </p>-->
   <p>Release date: <?php echo $movie->getRelease_date(); ?> </p>
-  <p>Genres : <?php foreach ($movie->getGenre_ids() as $genre) {
-     echo  $genre.",";
+  <p>Genres : <?php
+                  
+            $arrayIdG= $movie->getGenre_ids();
+            foreach ($arrayIdG as $genre) {
+              foreach($listGenres2 as $valor)
+              {
+               if($valor->getIdGenres() == $genre)
+               {
+                   echo $valor->getNameGenres();
+               }
+               
+              }
+            
+
+          
   } ; ?> </p>
   <p>Popularity: <?php echo $movie->getPopularity(); ?> </p>
   <p>Vote Count: <?php echo $movie->getVote_count(); ?> </p>
