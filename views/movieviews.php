@@ -26,6 +26,7 @@ include(VIEWS_PATH."header.php");
                  {
                   echo "false";
                  }*/
+                 
              ?>
     </p>-->
   <p>Release date: <?php echo $movie->getRelease_date(); ?> </p>
