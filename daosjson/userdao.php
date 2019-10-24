@@ -21,12 +21,12 @@ class UserDao implements Idaos
 
         return $this->userList;
     }
-    public function Search($email)
+    public function Search($objeto)//se recibira un email
     {  
        $user=null;
         $this->RetrieveData();
         foreach ($this->userList as $value) { 
-                if ($value->getEmail()==$email){
+                if ($value->getEmail()==$objeto){
                     
                     $user=$value;
                     // new User($this->userList[i]["name"],  $this->userList[i]["lastName"], $this->userList[i]["dni"], $this->userList[i]["email"], $this->userList[i]["password"], $this->userList[i]["userName"], $this->userList[i]["idUser"] );
