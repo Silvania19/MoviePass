@@ -4,10 +4,9 @@ class Genres
 {
     private $idGenres;
     private $nameGenres;
-    public function __construct($idGenres, $nameGenres)
+    public function __construct()
     {
-      $this->idGenres=$idGenres;
-      $this->nameGenres=$nameGenres;   
+      
     }
     public function setIdGenres($idGenres)
     {
@@ -19,11 +18,11 @@ class Genres
     }
     public function getIdGenres()
     {
-        require $this->idGenres;
+        return $this->idGenres;
     }
     public function getNameGenres()
     {
-        require $this->nameGenres;
+        return $this->nameGenres;
     }
     
 }
