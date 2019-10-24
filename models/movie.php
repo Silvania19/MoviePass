@@ -14,7 +14,7 @@ class Movie
    private $backdrop_path;//camino de fondo 
    private $popularity;
    private $vote_count;
-   private $video;//vote_avarege ver si variable o no
+   private $video;//
    public function __construct()
    {
 
