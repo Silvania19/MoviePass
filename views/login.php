@@ -1,14 +1,14 @@
 <?php include(VIEWS_PATH."header.php");
 
 ?>
-
+<link rel="stylesheet" href="front/styles/forms.css">
 <main class="login">
 
 
 
         
               
-<form action="<?php echo FRONT_ROOT;?>/user/login" method ="POST" >
+<form class="loginForm"action="<?php echo FRONT_ROOT;?>/user/login" method ="POST" >
     
 
     <header class="text-center">
@@ -42,7 +42,7 @@
 
 <div class="modal fade" id="sign-up"tabindex="-1" role="dialog" aria-labelledby="sign-up" aria-hidden="true" >
     <div class="modal-dialog" role="document" >
-        <form class="modal-content" action="<?php echo FRONT_ROOT;?>/user/signUp" method="POST">
+        <form class="modal-content siForm" action="<?php echo FRONT_ROOT;?>/user/signUp" method="POST">
             <div class="modal-header">
                 <h2 class="modal-title">Sign up</h2>
             </div>
