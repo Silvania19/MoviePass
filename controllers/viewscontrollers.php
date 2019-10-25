@@ -12,6 +12,7 @@ class viewscontrollers
     }
     public function cine()
     {
+        
      include(VIEWS_PATH."cineviews.php");     
     }
 }
