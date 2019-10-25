@@ -1,9 +1,9 @@
 [
     {
-        "idCine":1,
-        "name": "El nuevo",
-        "idUserAdministrator":1,
-        "idLocalidad":1,
-        "email":"nuevo@aqui.com"
+        "idCine": 1,
+        "name": "Ambassador",
+        "email": "paseoaldrey@gmail.com",
+        "idUserAdmistrator": "2",
+        "idLocation": "Mar del plata"
     }
 ]
