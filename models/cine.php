@@ -5,15 +5,14 @@ class Cine
     private $idCine;
     private $name;
     private $idUserAdministrator;
-    private $idLocalidad;
+    private $idLocation;
     private $email;
 
-    public function __construct($idCine, $name, $email, $idUserAdministrator, $idLocalidad)
+    public function __construct($name, $email, $idUserAdministrator, $idLocation)
     {
         $this->name=$name;
-        $this->idCine=$idCine;
         $this->idUserAdministrator=$idUserAdministrator;
-        $this->idLocalidad=$idLocalidad;
+        $this->idLocation=$idLocation;
         $this->email=$email;
     }
 
@@ -29,9 +28,9 @@ public function setIdUserAdministrator($idUserAdministrator)
 {
     $this->idUserAdministrator=$idUserAdministrator;
 }
-public function setIdLocalidad($idLocalidad)
+public function setIdLocalidad($idLocation)
 {
-    $this->idLocalidad=$idLocalidad;
+    $this->idLocation=$idLocation;
 }
 public function setEmail($email)
 {
@@ -48,7 +47,7 @@ public function getIdUserAdministrator()
 
 public function getIdLocalidad()
 {
-    return $this->idLocalidad;
+    return $this->idLocation;
 }
 public function getName()
 {
