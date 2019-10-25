@@ -43,7 +43,7 @@ class GenresDao implements idaos
         $jsonContent= file_get_contents('https://api.themoviedb.org/3/genre/movie/list?api_key=8c491ec0ca4ed58cbf814b5ee1618a44&language=en-US', true);
         $arrayTodecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
         $genresArray = $arrayTodecode;
-        var_dump($genresArray);
+   
         foreach($genresArray as $valor)
         {
             foreach($valor as $key=>$valor2)
@@ -51,7 +51,7 @@ class GenresDao implements idaos
                 $genres= new Genres();
                 $genres->setIdGenres($valor2['id']);
                 $genres->setNameGenres($valor2['name']);
-                var_dump($genres);
+                
                 array_push($this->genresList, $genres);
             }
         }
