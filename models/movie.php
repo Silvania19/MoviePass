@@ -18,6 +18,7 @@ class Movie
    public function __construct()
    {
 
+    
    }
    public function setIdMovie($idMovie)
    {
