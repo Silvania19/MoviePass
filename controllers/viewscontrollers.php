@@ -8,10 +8,10 @@ class viewscontrollers
 {
     public function index()
     {
-        include(VIEWS_PATH."home.php");
+        include(VIEWS_PATH."cineviews.php");
     }
     public function seeMovie()
     {
-
+          
     }
 }
