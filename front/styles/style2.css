@@ -12,14 +12,3 @@ body,html{
  
      
 }
-form
-{
-   border:2px solid #e1e1e1 ;
-                height: 300px;
-                width: 500px;
-                position: absolute;
-                top: 50%;
-                left: 30%;
-                transform: translate(-50%, -50%);   
-              
-}
