@@ -1,13 +1,14 @@
 <?php
-namespace daojson;
+namespace daosjson;
 use models\Cine as Cine;
 use interfaces\Idaos as Idaos;
 class CineDao implements Idaos
 {
-  $cineList;
+  private $cineList;
+
    public function __construct()
    {
-
+       $this->cineList=array();
    }
     public function GetAll()
    {
@@ -28,10 +29,18 @@ class CineDao implements Idaos
     {
       $this->retrieveData();
       $newList = array();
-      foreach ($this->$cineList as $cine) {
-        if($cine->getEmail() != $objeto){
+      foreach ($this->cineList as $cine) {
+        if($cine->getEmail() != $email){
           array_push($newList, $cine);
         }
+      }
+      if($this->cineList==NULL)
+      {
+          return false;
+      }
+      else
+      {
+          return true;
       }
   
       $this->cineList = $newList;
@@ -66,7 +75,7 @@ class CineDao implements Idaos
             $valuesArray["name"] = $cine->getName();
             $valuesArray["email"] = $cine->getEmail();
             $valuesArray["idUserAdmistrator"] = $cine->getIdUserAdministrator();
-            $valuesArray["idLocalidad"] = $cine->getIdLocalidad();
+            $valuesArray["idLocation"] = $cine->getIdLocalidad();
           
 
             array_push($arrayToEncode, $valuesArray);
@@ -89,7 +98,7 @@ class CineDao implements Idaos
             foreach($arrayToDecode as $valuesArray)
             {
 
-                $cine = new Cine($valuesArray["idCine"], $valuesArray["name"], $valuesArray["email"], $valuesArray["idUserAdministrator"], $valuesArray["idLocalidad"]);
+                $cine = new Cine( $valuesArray["name"], $valuesArray["email"], $valuesArray["idUserAdmistrator"], $valuesArray["idLocation"]);
                 
                 array_push($this->cineList, $cine);
  
