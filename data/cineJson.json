@@ -1,17 +1,23 @@
 [
     {
-        "idCine": 1,
+        "idCine": null,
         "name": "Ambassador",
         "email": "paseoaldrey@gmail.com",
         "idUserAdmistrator": "2",
         "idLocation": "Mar del plata"
     },
     {
-        "idCine": 2,
+        "idCine": null,
         "name": "gallegos",
         "email": "gallegos@gmail.com",
         "idUserAdmistrator": "1",
         "idLocation": "Mar del plata"
+    },
+    {
+        "idCine": 3,
+        "name": "Tu vieja",
+        "email": "tvueja@gmail.com",
+        "idUserAdmistrator": "2",
+        "idLocation": "mardel"
     }
-
 ]
