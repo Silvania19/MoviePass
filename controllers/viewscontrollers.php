@@ -17,8 +17,9 @@ class viewscontrollers
     }
     public function cine()
     {
-        
-     include(VIEWS_PATH."cineviews.php");     
+      $listCines=$this->listCine->GetAll();     
+     include(VIEWS_PATH."cineviews.php");  
+    
     }
     public function cinemaview()
     {
