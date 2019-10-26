@@ -28,7 +28,7 @@ public function setIdUserAdministrator($idUserAdministrator)
 {
     $this->idUserAdministrator=$idUserAdministrator;
 }
-public function setIdLocalidad($idLocation)
+public function setIdLocation($idLocation)
 {
     $this->idLocation=$idLocation;
 }
@@ -45,7 +45,7 @@ public function getIdUserAdministrator()
     return $this->idUserAdministrator;
 }
 
-public function getIdLocalidad()
+public function getIdLocation()
 {
     return $this->idLocation;
 }
