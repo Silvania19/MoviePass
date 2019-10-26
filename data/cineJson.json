@@ -5,5 +5,13 @@
         "email": "paseoaldrey@gmail.com",
         "idUserAdmistrator": "2",
         "idLocation": "Mar del plata"
+    },
+    {
+        "idCine": 2,
+        "name": "gallegos",
+        "email": "gallegos@gmail.com",
+        "idUserAdmistrator": "1",
+        "idLocation": "Mar del plata"
     }
+
 ]
