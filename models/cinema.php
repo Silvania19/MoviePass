@@ -7,9 +7,9 @@ class Cinema{
    private $numberCinema;
    private $capacity;
 
-   public function __construct($idCinema, $idCine, $numberCinema, $capacity)
+   public function __construct( $idCine, $numberCinema, $capacity)
    {
-      $this->idCinema=$idCinema;
+   
       $this->idCine=$idCine;
       $this->numberCinema=$numberCinema;
       $this->capacity=$capacity;
