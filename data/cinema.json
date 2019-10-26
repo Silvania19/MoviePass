@@ -1,1 +1,8 @@
-[]
+[
+    {
+        "idCinema":"1",
+        "idCine":"3",
+        "numberCinema":"2",
+        "capacity":"12"
+    }
+]
