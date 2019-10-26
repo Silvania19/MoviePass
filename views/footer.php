@@ -2,5 +2,6 @@
 <script src="front/js/popper.min.js"></script>
 
 <script src="front/js/bootstrap.min.js"></script>
+
 </body>
 </html>
