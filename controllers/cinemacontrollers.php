@@ -15,8 +15,11 @@
         $idCine=$_POST['idCine'];
         $numberCinema=$_POST['numberCinema'];
         $capacity=$_POST['capacity'];
+      
         $newCinema= new cinema($idCine, $numberCinema, $capacity);
-        $this->cinemaList->Add($newCinema);
+       
+        echo $this->cinemaList->GetAll();
+        //$this->cinemaList->Add($newCinema);
         
      }
  }
