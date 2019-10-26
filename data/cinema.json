@@ -1,8 +1,14 @@
 [
     {
-        "idCinema":"1",
-        "idCine":"3",
-        "numberCinema":"2",
-        "capacity":"12"
+        "numberCinema": "2",
+        "idCinema": null,
+        "idCine": "3",
+        "capacity": "12"
+    },
+    {
+        "numberCinema": "2",
+        "idCinema": 2,
+        "idCine": "",
+        "capacity": "98"
     }
 ]
