@@ -18,7 +18,7 @@
       
         $newCinema= new cinema($idCine, $numberCinema, $capacity);
        
-        echo $this->cinemaList->GetAll();
+        echo $this->cinemaList->Add($newCinema);
         //$this->cinemaList->Add($newCinema);
         
      }
