@@ -58,56 +58,8 @@
             </div>
         </form>
     </div>
-</div><!--
-<div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="sign-up" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+</div>
 
-            <form class="modal-content" action="<?php echo FRONT_ROOT;?>/user/signUp" method="POST">
-
-                <div class="modal-header">
-                    <h5 class="modal-title">Registrar usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" class="form-control" name="name" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>DNI</label>
-                        <input type="text" class="form-control" name="dni" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Fecha de nacimiento</label>
-                        <input type="date" class="form-control" name="birthdate" />
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" name="email" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="pass" />
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-dark">Registrar</button>
-                </div>
-            </form>
-
-        </div>
-    </div>-->
 </main>
 
 <?php include(VIEWS_PATH."footer.php")?>
