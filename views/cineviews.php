@@ -72,6 +72,5 @@
               </form>
     
 </div>
-
-
+<a href="<?php echo FRONT_ROOT;?>/views/cinemaview">sala</a>
 <?php include(VIEWS_PATH."footer.php");?>

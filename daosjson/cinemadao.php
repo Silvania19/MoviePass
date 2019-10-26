@@ -1,10 +1,10 @@
 <?php
-namespace daojson;
+namespace daosjson;
 use models\Cinema as Cinema;
 use interfaces\Idaos as Idaos;
 class CinemaDao implements Idaos
 {
-  $cinemaList;
+   private $cinemaList;
    public function __construct()
    {
 
