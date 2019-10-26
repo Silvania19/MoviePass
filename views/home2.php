@@ -1,7 +1,9 @@
-<?php  include(VIEWS_PATH."header.php");?>
+<?php include(VIEWS_PATH."header.php"); ?>
+
+<link rel="stylesheet" href="front/styles/style2.css">
    <nav class="navbar navbar-expand-sm bg-danger">
       <ul class="navbar-nav">
-        <a href=""class="navbar-brand"><img src="front/img/dog.jpeg" style="width: 70px;"></a>
+        <a href=""class="navbar-brand siForm"><img src="front/img/dog.jpeg" style="width: 70px;"></a>
  
             <ul class="nav-item dropdown">
               

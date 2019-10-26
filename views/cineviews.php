@@ -1,5 +1,5 @@
 <?php include(VIEWS_PATH."header.php");?>
-
+<link rel="stylesheet" href="front/styles/style2.css">
 <nav class="navbar navbar-expand-sm bg-danger">
       <ul class="navbar-nav">
       <a href=""class="navbar-brand"><img src="front/img/dog.jpeg" style="width: 70px;"></a>
@@ -20,11 +20,17 @@
                      Alter cine 
            </button> 
         </li>
+        <li class="nav-item"><a href="<?php echo FRONT_ROOT;?>/views/cinemaview" class="nav-link"></a>
+           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#-cine">
+                     Salas 
+           </button> 
+        </li>
 
       </ul>
 </nav>
 
 
+<a href="<?php echo FRONT_ROOT;?>/views/cinemaview">sala</a>
  
 <div class="modal fade" id="add-cine">  
 
@@ -72,5 +78,35 @@
               </form>
     
 </div>
-<a href="<?php echo FRONT_ROOT;?>/views/cinemaview">sala</a>
+
+<div class="col" style="border:1px solid gray;">
+       
+                   <table class="table-striped">
+                            <tr><h2>Cines disponibles</h2></tr>
+                            <tr class="table-primary">
+                                    <td>Nombre</td>
+                                    <td>Administrator</td>
+                                    <td>Location</td>
+                                    <td>Email</td>
+                            </tr>
+
+                            <tr class="table-dark ">
+                            <?php
+                                  foreach($listCines as $cines)
+                                 { 
+                             ?>     <tr>
+                                         <td><?php echo $cines->getName();?></td>
+                                         <td><?php echo $cines->getIdUserAdministrator();?></td>
+                                         <td><?php echo $cines->getIdLocation();?></td>
+                                        <td><?php echo $cines->getEmail();?></td>
+                                    </tr>
+                            <?php 
+                                 }
+                       
+                             ?>
+                          
+                  
+                   </table>
+</div>
+
 <?php include(VIEWS_PATH."footer.php");?>
