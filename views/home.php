@@ -7,7 +7,6 @@
 
 <div class="container-fluid">
         <div class="row">
-        hols
             <div class="col">
            <header class="text-center">
 <h1>   <p class="bg-primary display-1 ">MOVIE PASS</p> </h1>
