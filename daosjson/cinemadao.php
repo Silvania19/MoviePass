@@ -7,7 +7,7 @@ class CinemaDao implements Idaos
    private $cinemaList;
    public function __construct()
    {
-     $this->cinemaList=array();
+        $this->cinemaList=array();
    }
     public function GetAll()
    {
@@ -89,8 +89,9 @@ class CinemaDao implements Idaos
 
                 $cinema = new Cinema($valuesArray["idCine"], $valuesArray["numberCinema"], $valuesArray["capacity"]);
                 
+                
                 array_push($this->cinemaList, $cinema);
- 
+               
             }
         }
     }
@@ -100,6 +101,7 @@ class CinemaDao implements Idaos
         $initialPath = "data/cinema.json";
         
         if(file_exists($initialPath)){
+        
             $jsonFilePath = $initialPath;
         }else{
             $jsonFilePath = "../".$initialPath;
