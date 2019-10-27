@@ -10,7 +10,7 @@
             </li>
 
             <li class="nav-item"><a href=""class="nav-link"></a>
-                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-cine">
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-cinema">
                      Remove cinema 
                 </button> 
              </li>
@@ -50,7 +50,22 @@
         </div>
     </form>
 
- 
   
   </div>
+
+  <div class="modal fade" id="remove-cinema">
+    <div class="modal-header">
+        <h2 class="modal-title">Remove cinema</h2>
+                        
+         <button type="button"class="close" data-dismiss="modal">&times;</button>
+     </div>
+            <form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="POST" >
+                     <div class="modal-body">
+                            <label for="numberCinema" >NumberCinema</label><input type="text" name="numberCinema"class= "form-control " >
+                            <button type="submit" class="btn btn-dark" data dismiss="modal" > Remove cinema</button>
+
+                      </div>
+              </form>
+    
+</div>
 </main>

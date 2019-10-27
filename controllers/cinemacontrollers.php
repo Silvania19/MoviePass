@@ -21,5 +21,18 @@
     $this->cinemaList->Add($newCinema);
         
      }
+     public function remove($numberCinema)
+     {
+         $email=$_POST['numberCinema'];
+        
+     if( $this->cinemaList->Delete($numberCinema)==true)
+        {
+            echo 'eliminado con exito';
+        }
+        else{
+            echo 'el cine no existe';
+        }
+ 
+     }
  }
 ?>

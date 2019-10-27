@@ -1,9 +1,21 @@
 [
     {
-        "numberCinema": "2",
+        "numberCinema": "3",
         "idCinema": null,
-        "idCine": "3",
-        "capacity": "12"
+        "idCine": "",
+        "capacity": "200"
+    },
+    {
+        "numberCinema": "4",
+        "idCinema": null,
+        "idCine": "",
+        "capacity": "500"
+    },
+    {
+        "numberCinema": "5",
+        "idCinema": null,
+        "idCine": "",
+        "capacity": "700"
     },
     {
         "numberCinema": "2",
