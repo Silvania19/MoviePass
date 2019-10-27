@@ -24,12 +24,12 @@ class CinemaDao implements Idaos
       $this->SaveData();
 
     }
-    public function Delete($email)
+    public function Delete($numberCinema)
     {
       $this->retrieveData();
       $newList = array();
-      foreach ($this->$cinemaList as $cinema) {
-        if($cinema->getEmail() != $objeto){
+      foreach ($this->cinemaList as $cinema) {
+        if($cinema->getNumberCinema() != $numberCinema){
           array_push($newList, $cinema);
         }
       }
