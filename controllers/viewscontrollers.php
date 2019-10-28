@@ -3,7 +3,7 @@ namespace controllers;
 
 use models\User as User;
 use daosjson\UserDao as userD;
-use daosjson\CineDao as cineD;
+use daodb\CineDao as cineD;
 
 class viewscontrollers
 {
