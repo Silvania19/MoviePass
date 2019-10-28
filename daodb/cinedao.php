@@ -12,6 +12,7 @@ class CineDao implements Idaos
     }
     public function GetAll()
     {
+     
         $sql="SELECT * FROM cines";
         try {
             $this->connection = Connection::getInstance();
@@ -63,7 +64,7 @@ class CineDao implements Idaos
 
     }
     public function Update($objeto){
-        
+
     }
     public function Search($objeto)
     {
