@@ -14,7 +14,7 @@ class CineControllers
     { 
       $name=$_POST['name']; 
       $adm=$_POST['adm'];
-      $idLocation=$_POST['location'];
+      $idLocation=$_POST['address'];
       $email=$_POST['email'];
       $cine=new cine($name,$email,  $adm, $idLocation);
       $this->cinemaRepo->Add($cine);
