@@ -2,7 +2,7 @@
 <main>
     <nav class="navbar navbar-expand-sm bg-danger">
         <ul class="navbar-nav">
-            <a href=""class="navbar-brand"><img src="front/img/dog.jpeg" style="width: 70px;"></a>
+            <a href=""class="navbar-brand"><img src="/MoviePass/front/img/dog.jpeg" style="width: 70px;"></a>
             <li class="nav-item"><a href="" class="nav-link"></a>
                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-cine">
                       Add new cinema
