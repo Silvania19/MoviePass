@@ -1,8 +1,8 @@
-<?include (VIEWS_PATH."header.php"); ?>
-<main>
+<?php include(VIEWS_PATH."header.php"); ?>
+
     <nav class="navbar navbar-expand-sm bg-danger">
         <ul class="navbar-nav">
-            <a href=""class="navbar-brand"><img src="/MoviePass/front/img/dog.jpeg" style="width: 70px;"></a>
+            <a class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
             <li class="nav-item"><a href="" class="nav-link"></a>
                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-cine">
                       Add new cinema
@@ -24,6 +24,7 @@
         </ul>
     </nav>
 
+<div class="modal fade" id=add-cine>
     <form class="modal-content " action="<?php echo FRONT_ROOT;?>/cinema/add" method="POST"> 
         <div class="modal-header"> 
              <h2 class="modal-title">Add cine</h2>
@@ -50,8 +51,7 @@
         </div>
     </form>
 
-  
-  </div>
+</div>
 
   <div class="modal fade" id="remove-cinema">
     <div class="modal-header">
@@ -68,4 +68,5 @@
               </form>
     
 </div>
-</main>
+
+<?php include(VIEWS_PATH."footer.php"); ?>
