@@ -5,14 +5,14 @@ class Cine
     private $idCine;
     private $name;
     private $idUserAdministrator;
-    private $idLocation;
+    private $address;
     private $email;
 
-    public function __construct($name, $email, $idUserAdministrator, $idLocation)
+    public function __construct($name, $email, $idUserAdministrator, $address)
     {
         $this->name=$name;
         $this->idUserAdministrator=$idUserAdministrator;
-        $this->idLocation=$idLocation;
+        $this->address=$address;
         $this->email=$email;
     }
 
@@ -28,9 +28,9 @@ public function setIdUserAdministrator($idUserAdministrator)
 {
     $this->idUserAdministrator=$idUserAdministrator;
 }
-public function setIdLocation($idLocation)
+public function setAddress($address)
 {
-    $this->idLocation=$idLocation;
+    $this->address=$adress;
 }
 public function setEmail($email)
 {
@@ -45,9 +45,9 @@ public function getIdUserAdministrator()
     return $this->idUserAdministrator;
 }
 
-public function getIdLocation()
+public function getAddress()
 {
-    return $this->idLocation;
+    return $this->address;
 }
 public function getName()
 {
