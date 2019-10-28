@@ -1,9 +1,9 @@
 <?php include(VIEWS_PATH."header.php"); ?>
 
-<link rel="stylesheet" href="front/styles/style2.css">
+<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>front/styles/style2.css">
    <nav class="navbar navbar-expand-sm bg-danger">
       <ul class="navbar-nav">
-        <a href=""class="navbar-brand siForm"><img src="/MoviePass/front/img/dog.jpeg" style="width: 70px;"></a>
+        <a href=""class="navbar-brand siForm"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
  
             <ul class="nav ">
               
