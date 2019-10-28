@@ -5,13 +5,7 @@
         "idCine": "",
         "capacity": "200"
     },
-    {
-<<<<<<< HEAD
-        "numberCinema": "4",
-        "idCinema": null,
-        "idCine": "",
-        "capacity": "500"
-    },
+     
     {
         "numberCinema": "5",
         "idCinema": null,
@@ -19,15 +13,18 @@
         "capacity": "700"
     },
     {
-        "numberCinema": "8",
-        "idCinema": 4,
-        "idCine": "",
-        "capacity": "56"
-=======
         "numberCinema": "2",
-        "idCinema": 2,
+        "idCinema": null,
         "idCine": "",
         "capacity": "98"
->>>>>>> 0c09c8bd294e9d2812ba7c7579b192b110aea79c
+    },
+    {
+        "numberCinema": "2",
+        "idCinema": 3,
+        "idCine": "",
+        "capacity": "56"
+
+       
+
     }
 ]
