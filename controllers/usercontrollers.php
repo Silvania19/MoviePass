@@ -61,4 +61,8 @@ public function deleteUser()
          include("index.php");
      }
 }
+public function checkSession()
+{
+    
+}
 }
