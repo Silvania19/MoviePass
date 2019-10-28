@@ -26,9 +26,42 @@
         }
         return self::$instance;
      }
+     
+     public function exucute($query, $parameters=array())
+     {
+        try {
+            $this->pdoStatement=$this->pdo->prepare($query);
+           
+            foreach ($parameters as $parameterName => $value) {
+              $this->pdoStatement->bindParam(":".$parameterName, $value);
+            }
+            $this->pdoStatement->execute();
+            return $this->pdoStatement->fetchAll();
+        } catch (\Excepcion $ex) {
+            throw $ex;
+        }
+     }
+   
 
-     execute //lo ejecuto caundo tengo que traer algo de datos
-     executenot//
+   //  execute lo ejecuto caundo tengo que traer algo de datos
+   public function executeNonQuery($query, $parameters = array())
+   {
+        try
+        {
+             // Creo una sentencia llamando a prepare. Esto devuelve un objeto statement
+             $this->pdoStatement = $this->pdo->prepare($query);
+             foreach($parameters as $parameterName => $value) {
+                  // Reemplazo los marcadores de parametro por los valores reales utilizando el método bindParam().
+                  $this->pdoStatement->bindParam(":$parameterName", $parameters[$parameterName]);
+             }
+             $this->pdoStatement->execute();
+             return $this->pdoStatement->rowCount();
+        }
+        catch(\PDOException $ex)
+        {
+             throw $ex;
+        }
+   }
 
  }
 ?>
