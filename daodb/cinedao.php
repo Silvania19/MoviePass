@@ -12,17 +12,19 @@ class CineDao implements Idaos
     }
     public function GetAll()
     {
-     
+        
         $sql="SELECT * FROM cines";
         try {
             $this->connection = Connection::getInstance();
-            $listCines = $this->connection->execute($sql);
+            $listCines = $this->connection->execute($sql);  
+            var_dump($listCines);
         } catch (\PDOException  $ex) {
             throw $ex;
         }
         if (!empty($listCines))
         {
             return $this->mapear($listCines);
+          
         }
         else{
             return false;
@@ -55,7 +57,7 @@ class CineDao implements Idaos
        $arregloObjetos=array_map(function($pos)
        {
         $newCine =new cine($pos['name'],$pos['email'], $pos['idUserAdaministrator'], $pos['address']);
-        $newCine->setIdCine(($pos['idCine']);
+        $newCine->setIdCine($pos['idCine']);
         return $newCine;
        }, $arreglo);
        return count($arregloObjetos)>1? $arregloObjetos: $arregloObjetos['0'];
