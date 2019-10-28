@@ -8,14 +8,6 @@
         "idUser": null
     },
     {
-        "name": "flor",
-        "lastName": "juarez",
-        "dni": "12323678",
-        "email": "florTuCULO@gmail.com",
-        "password": "unicornios",
-        "idUser": null
-    },
-    {
         "name": "luciana",
         "lastName": "juarez",
         "dni": "34567890",
@@ -85,6 +77,6 @@
         "dni": "BBDBDB",
         "email": "florencia.juarez.159@gmail.com",
         "password": "",
-        "idUser": 11
+        "idUser": null
     }
 ]
