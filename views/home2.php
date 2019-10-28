@@ -14,7 +14,10 @@
                   <a href="<?php echo FRONT_ROOT;?>/views/cine" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop">CINES</a>
                 </li>
                 <li class ="nav-item">
-                  <a href="<?php echo FRONT_ROOT;?>/movie/seeListMovie" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop">USER</a>
+                  <a href="<?php echo FRONT_ROOT;?>/views/user" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop">USER</a>
+                </li>
+                <li class ="nav-item">
+                  <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop">SALIR</a>
                 </li>
             </ul>
          
