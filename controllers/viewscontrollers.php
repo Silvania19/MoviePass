@@ -17,24 +17,23 @@ class viewscontrollers
     public function index()
     {
         
-       // if(isset($_SESSION['user']))
-        //{
-          //  $user=$_SESSION['user'];
-        //    include(VIEWS_PATH."home2.php");
-      //  }
-        //else
-        //{
+      /* if(isset($_SESSION['user']))
+        {
+         $user=$_SESSION['user'];
+         include(VIEWS_PATH."home2.php");
+        }
+        else
+       {*/
              include(VIEWS_PATH."home.php");
-      //  }
+      // }
        
     }
     public function deleteSession()
     {
         if(isset($_SESSION['user']))
         {
-            session_start();
-            session_destroy();
-            include(VIEWS_PATH."home.php");
+            unset($_SESSION['user']);//se usara este porque el destroy destr
+            include(VIEWS_PATH."home2.php");
         }
         
     }
