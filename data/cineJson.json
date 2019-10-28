@@ -14,10 +14,18 @@
         "idLocation": "Mar del plata"
     },
     {
-        "idCine": 3,
+        "idCine": null,
         "name": "Tu vieja",
         "email": "tvueja@gmail.com",
         "idUserAdmistrator": "2",
         "idLocation": "mardel"
+    },
+ 
+    {
+        "idCine": 5,
+        "name": "hermoso",
+        "email": "hermoso@hermo.com",
+        "idUserAdmistrator": "1",
+        "idLocation": "mar del plata"
     }
 ]
