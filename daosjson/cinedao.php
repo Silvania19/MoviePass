@@ -20,8 +20,7 @@ class CineDao implements Idaos
       $this->RetrieveData();
       $id=count($this->cineList);
       $objeto->setIdCine($id+1);
-      $newCine=$objeto;
-      array_push($this->cineList, $newCine);
+      array_push($this->cineList, $objeto);
       $this->SaveData();
 
     }
@@ -75,7 +74,7 @@ class CineDao implements Idaos
             $valuesArray["name"] = $cine->getName();
             $valuesArray["email"] = $cine->getEmail();
             $valuesArray["idUserAdmistrator"] = $cine->getIdUserAdministrator();
-            $valuesArray["idLocation"] = $cine->getIdLocalidad();
+            $valuesArray["idLocation"] = $cine->getIdLocation();
           
 
             array_push($arrayToEncode, $valuesArray);
