@@ -1,7 +1,7 @@
 <?php
 namespace controllers;
 use models\Cine as cine;
-use daosjson\CineDao as cineD;
+use daodb\CineDao as cineD;
 class CineControllers
 {
     private $cinemaRepo;//esta variable, sera aquella aque le iguale lo que traiga de la base de datos. Cuando la tenga
@@ -9,6 +9,7 @@ class CineControllers
     {
         $this->cinemaRepo= new cineD();// sera reemplazado por una instancia de la clases donde tenga  la base correspondiente
     }
+    
     public function add()
     { 
       $name=$_POST['name']; 
