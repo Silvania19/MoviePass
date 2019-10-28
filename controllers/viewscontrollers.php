@@ -2,18 +2,40 @@
 namespace controllers;
 
 use models\User as User;
-use daosjson\userdao as userD;
+use daosjson\UserDao as userD;
 use daosjson\CineDao as cineD;
+
 class viewscontrollers
 {
     private $listCine;
+    private $listUser;
     public function __construct()
     {
         $this->listCine=new cineD();
+        $this->listUser=new userD();
     }
     public function index()
     {
-        include(VIEWS_PATH."home.php");
+        
+      /* if(isset($_SESSION['user']))
+        {
+         $user=$_SESSION['user'];
+         include(VIEWS_PATH."home2.php");
+        }
+        else
+       {*/
+             include(VIEWS_PATH."home.php");
+      // }
+       
+    }
+    public function deleteSession()
+    {
+        if(isset($_SESSION['user']))
+        {
+            unset($_SESSION['user']);//se usara este porque el destroy destr
+            include(VIEWS_PATH."home2.php");
+        }
+        
     }
     public function cine()
     {
@@ -27,4 +49,12 @@ class viewscontrollers
         include(VIEWS_PATH."cinemaviews.php");    
 
     }
+    public function user()
+    {
+      $listUsers=$this->listUser->GetAll(); 
+
+     include(VIEWS_PATH."userviews.php");  
+    
+    }
+
 }
