@@ -5,10 +5,26 @@
         "idCine": "",
         "capacity": "200"
     },
+     
+    {
+        "numberCinema": "5",
+        "idCinema": null,
+        "idCine": "",
+        "capacity": "700"
+    },
     {
         "numberCinema": "2",
-        "idCinema": 2,
+        "idCinema": null,
         "idCine": "",
         "capacity": "98"
+    },
+    {
+        "numberCinema": "2",
+        "idCinema": 3,
+        "idCine": "",
+        "capacity": "56"
+
+       
+
     }
 ]
