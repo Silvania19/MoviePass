@@ -6,6 +6,7 @@
         "capacity": "200"
     },
     {
+<<<<<<< HEAD
         "numberCinema": "4",
         "idCinema": null,
         "idCine": "",
@@ -18,15 +19,15 @@
         "capacity": "700"
     },
     {
+        "numberCinema": "8",
+        "idCinema": 4,
+        "idCine": "",
+        "capacity": "56"
+=======
         "numberCinema": "2",
-        "idCinema": null,
+        "idCinema": 2,
         "idCine": "",
         "capacity": "98"
-    },
-    {
-        "numberCinema": "2",
-        "idCinema": 3,
-        "idCine": "",
-        "capacity": "23"
+>>>>>>> 0c09c8bd294e9d2812ba7c7579b192b110aea79c
     }
 ]

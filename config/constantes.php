@@ -4,8 +4,6 @@
  //$base = explode($_SERVER["DOCUMENT_ROOT"], ROOT);
  //define ("BASE", $base[0]);
  define ("VIEWS_PATH", "views/"); //esta constante define el camino a las vistas, es decir donde estan guardadas las vistas
- define ("ROOT_CLIENT", "/MoviePass/");
- 
  define ("CSS", "front/styles/");//la ruta donde se encuentra los archivos css
  define ("FRONT_ROOT","/MoviePass");
  //constantes para trabajar con base de datos

@@ -1,8 +1,8 @@
 <?php include(VIEWS_PATH."header.php");?>
-<link rel="stylesheet" href="front/styles/style2.css">
+<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>front/styles/style2.css">
 <nav class="navbar navbar-expand-sm bg-danger">
       <ul class="navbar-nav">
-      <a href=""class="navbar-brand"><img src="front/img/dog.jpeg" style="width: 70px;"></a>
+      <a class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
         <li class="nav-item"><a href="" class="nav-link"></a>
            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-cine">
                       Add cine 
@@ -16,21 +16,19 @@
         </li>
 
         <li class="nav-item"><a href="<?php echo FRONT_ROOT;?>/cine/alter"class="nav-link"></a>
-           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-cine">
+           <button type="button" class="btn btn-link" >
                      Alter cine 
            </button> 
         </li>
-        <li class="nav-item"><a href="<?php echo FRONT_ROOT;?>/views/cinemaview" class="nav-link"></a>
-           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#-cine">
-                     Salas 
-           </button> 
-        </li>
+        <li class ="nav-item">
+                  <a href="<?php echo FRONT_ROOT;?>/views/cinemaview" >Salas</a>
+                </li>
 
       </ul>
 </nav>
 
 
-<a href="<?php echo FRONT_ROOT;?>/views/cinemaview">sala</a>
+
  
 <div class="modal fade" id="add-cine">  
 
@@ -86,7 +84,7 @@
                             <tr class="table-primary">
                                     <td>Nombre</td>
                                     <td>Administrator</td>
-                                    <td>Location</td>
+                                    <td>Address</td>
                                     <td>Email</td>
                             </tr>
 
@@ -97,7 +95,7 @@
                              ?>     <tr>
                                          <td><?php echo $cines->getName();?></td>
                                          <td><?php echo $cines->getIdUserAdministrator();?></td>
-                                         <td><?php echo $cines->getIdLocation();?></td>
+                                         <td><?php echo $cines->getAddress();?></td>
                                         <td><?php echo $cines->getEmail();?></td>
                                     </tr>
                             <?php 

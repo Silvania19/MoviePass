@@ -14,7 +14,7 @@ class UserDao implements Idaos
 
     public function Update($objeto)
     {
-         
+        
     }
     public function GetAll(){
         $this->RetrieveData();
@@ -40,7 +40,7 @@ class UserDao implements Idaos
     public function Delete($email){
 		$this->retrieveData();
 		$newList = array();
-		foreach ($this->userList as $user) {
+		foreach ($this->$userList as $user) {
 			if($user->getEmail() != $email){
 				array_push($newList, $user);
 			}

@@ -40,7 +40,7 @@ class CinemaDao implements Idaos
     }
     public function Update($objeto)
     {
-        
+
     }
     public function Search($objeto)
     {
