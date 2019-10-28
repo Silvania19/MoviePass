@@ -8,7 +8,7 @@
  define ("FRONT_ROOT","/MoviePass");
  //constantes para trabajar con base de datos
  define ("DB_HOST", "localhost");
- define ("DB_NAME", "MoviePassDB");
+ define ("DB_NAME", "MoviePass");
  define ("DB_USER", "root");
  define ("DB_PASS", "");
  ?>
