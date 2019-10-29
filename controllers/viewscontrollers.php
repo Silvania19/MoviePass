@@ -17,15 +17,15 @@ class viewscontrollers
     public function index()
     {
         
-      /* if(isset($_SESSION['user']))
+       if(isset($_SESSION['user']))
         {
          $user=$_SESSION['user'];
          include(VIEWS_PATH."home2.php");
         }
         else
-       {*/
+       {
              include(VIEWS_PATH."home.php");
-      // }
+       }
        
     }
     public function deleteSession()
@@ -33,13 +33,14 @@ class viewscontrollers
         if(isset($_SESSION['user']))
         {
             unset($_SESSION['user']);//se usara este porque el destroy destr
-            include(VIEWS_PATH."home2.php");
+            include(VIEWS_PATH."home.php");
         }
         
     }
     public function cine()
     {
-      $listCines=$this->listCine->GetAll();     
+      $listCines=$this->listCine->GetAll();   
+      var_dump($listCines);  
      include(VIEWS_PATH."cineviews.php");  
     
     }
