@@ -68,10 +68,9 @@ class CineDao implements Idaos
     }
     public function Update($objeto, $buscador)
     {
-      $
-      $sql="UPDATE cines set "
+    
     }
-    public function Search($objeto)
+        public function Search($objeto)
     {
       $sql="SELECT * FROM cines where objeto=:email";   
       $parameters['email']=$objeto;
