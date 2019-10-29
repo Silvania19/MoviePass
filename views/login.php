@@ -1,7 +1,7 @@
 <?php include(VIEWS_PATH."header.php");
 
 ?>
-<link rel="stylesheet" href="front/styles/forms.css">
+<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/forms.css">
 <main class="login">
 
 
