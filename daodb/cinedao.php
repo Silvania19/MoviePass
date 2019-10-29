@@ -17,7 +17,7 @@ class CineDao implements Idaos
         try {
             $this->connection = Connection::getInstance();
             $listCines = $this->connection->execute($sql);  
-            var_dump($listCines);
+           
         } catch (\PDOException  $ex) {
             throw $ex;
         }
@@ -34,8 +34,8 @@ class CineDao implements Idaos
     {
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql="INSERT INTO cines (idCine, name, idUserAdministrator, email, address) values VALUES (:idCine, :name, :idUserAdministrator,:email, :address)";
-        $parameters["idCine"]=$objeto->getIdCine();
+        $sql="INSERT INTO cines (name, idUserAdministrator, email, address) VALUES (:name, :idUserAdministrator,:email, :address)";
+      
         $parameters["name"]=$objeto->getName();
         $parameters['idUserAdministrator']=$objeto->getIdUserAdministrator();
         $parameters["address"]=$objeto->getAddress();
@@ -62,11 +62,14 @@ class CineDao implements Idaos
        }, $arreglo);
        return count($arregloObjetos)>1? $arregloObjetos: $arregloObjetos['0'];
    }
-    public function Delete($email){
+    public function Delete($email)
+    {
 
     }
-    public function Update($objeto){
-
+    public function Update($objeto, $buscador)
+    {
+      $
+      $sql="UPDATE cines set "
     }
     public function Search($objeto)
     {
