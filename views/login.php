@@ -45,8 +45,9 @@
         <form class="modal-content siForm" action="<?php echo FRONT_ROOT;?>/user/signUp" method="POST">
             <div class="modal-header">
                 <h2 class="modal-title">Sign up</h2>
+           
+                 <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
             </div>
-                 <button type="button"class="close" data-dismiss="modal">&times;</button>
              <div class="modal-body">
                 <label >Name</label><input type="text" name="name" class="form-control">
                 <label >Lastname</label><input type="text" name="lastName"class= "form-control " >
@@ -63,3 +64,11 @@
 </main>
 
 <?php include(VIEWS_PATH."footer.php")?>
+
+
+<div class="modal-header">
+                    <h5 class="modal-title">Registrar usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
