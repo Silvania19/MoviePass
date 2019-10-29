@@ -64,12 +64,37 @@ class CineDao implements Idaos
    }
     public function Delete($email)
     {
+        $sql = "DELETE FROM cines WHERE email = :email";
+        $parameters['email'] = $email;
 
+        try
+        {
+            $this->connection = Connection::getInstance();
+            return $this->connection->ExecuteNonQuery($sql, $parameters);
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
     }
     public function Update($objeto, $buscador)
     {
-      $
-      $sql="UPDATE cines set "
+        
+      $sql="UPDATE cines set name=:name, idUserAdministrator=:idUserAdministrator, address=:address, email =:email";
+      $parameters["name"]=$objeto->getName();
+      $parameters["idUserAdministrator"]=$objeto->getIdUserAdministrator();
+      $parameters["address"]=$objeto->getAddress();
+      $parameters["email"]=$objeto->getEmail();
+   
+ 
+        try
+        {
+            $this->connection = Connection::getInstance();
+            return $this->connection->ExecuteNonQuery($sql, $parameters);
+        }
+       catch (\PDOException $e) {
+          echo $e;
+      }
     }
     public function Search($objeto)
     {
@@ -90,5 +115,6 @@ class CineDao implements Idaos
           return  false;
       }
     }
+   
 }
 ?>
