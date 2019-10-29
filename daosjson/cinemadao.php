@@ -38,7 +38,7 @@ class CinemaDao implements Idaos
       $this->saveData();
 
     }
-    public function Update($objeto)
+    public function Update($objeto, $buscador)
     {
         
     }
