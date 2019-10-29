@@ -109,7 +109,7 @@
                 <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>
         </div>
         <div class="modal-body">
-                    <label for="email" >Email actual</label><input type="email" name="emailUpdate"class= "form-control " >
+                    <label for="emailupdate" >Email actual</label><input type="email" name="emailupdate"class= "form-control " >
                    <label for="name" >Name</label><input type="text" name="name" class="form-control">
                    <label for="adm">idAdministrator</label><input type="text" name="adm"class= "form-control " >  
                    <label for="address">Address<input type="text" name="address" id=""></label>
