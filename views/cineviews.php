@@ -15,9 +15,9 @@
            </button> 
         </li>
 
-        <li class="nav-item"><a href="<?php echo FRONT_ROOT;?>/cine/alter"class="nav-link"></a>
-           <button type="button" class="btn btn-link" >
-                     Alter cine 
+        <li class="nav-item"><a href=""class="nav-link"></a>
+           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#update-cine" >
+                    Update cine 
            </button> 
         </li>
         <li class ="nav-item">
@@ -42,19 +42,11 @@
         </div>
         <div class="modal-body">
                    <label for="name" >Name</label><input type="text" name="name" class="form-control">
-                   <label for="adm">idAdministrator</label><input type="text" name="adm"class= "form-control " >   
-                     <br>
-                     <br>
-                  <!-- <select class="" id="">
-                      <option value="1" name="location">Mar del plata</option> 
-                      <option value="2"n name="location">Tu vieja</option>
-                      <option value="3" name="location">Tu viejo</option>
-                      <option value="4" name="location">Tu vieja y tu viejo en tanga</option>
-                   </select><br>-->
-                   <label for="address"> <input type="text" name="adress" id="">Address</label>
+                   <label for="adm">idAdministrator</label><input type="text" name="adm"class= "form-control " >  
+                   <label for="address">Address<input type="text" name="address" id=""></label>
                    <br>
                    <label for="email" >Email</label><input type="email" name="email"class= "form-control " >
-                   <button type="submit" class="btn btn-dark" data dismiss="modal" > Sign up </button>
+                   <button type="submit" class="btn btn-dark" data dismiss="modal" > add cine </button>
         </div>
 
  
@@ -89,22 +81,44 @@
                             </tr>
 
                             <tr class="table-dark ">
-                            <?php
-                                  foreach($listCines as $cines)
+                           
+                           <?php
+                            
+                                 foreach($listCines as $cine)
                                  { 
-                             ?>     <tr>
-                                         <td><?php echo $cines->getName();?></td>
-                                         <td><?php echo $cines->getIdUserAdministrator();?></td>
-                                         <td><?php echo $cines->getAddress();?></td>
-                                        <td><?php echo $cines->getEmail();?></td>
+                            ?>     <tr>
+                                         <td><?php echo $cine->getName();?></td>
+                                         <td><?php echo $cine->getIdUserAdministrator();?></td>
+                                         <td><?php echo $cine->getAddress();?></td>
+                                        <td><?php echo $cine->getEmail();?></td>
                                     </tr>
                             <?php 
                                  }
-                       
-                             ?>
-                          
-                  
+                            ?>
+                             
                    </table>
 </div>
+<div class="modal fade" id="update-cine">  
 
+    <form class="modal-content " action="<?php echo FRONT_ROOT;?>/cine/update" method="POST"> 
+    
+            
+        <div class="modal-header"> 
+            <h2 class="modal-title">Update cine</h2>
+                        
+                <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>
+        </div>
+        <div class="modal-body">
+                    <label for="email" >Email actual</label><input type="email" name="emailUpdate"class= "form-control " >
+                   <label for="name" >Name</label><input type="text" name="name" class="form-control">
+                   <label for="adm">idAdministrator</label><input type="text" name="adm"class= "form-control " >  
+                   <label for="address">Address<input type="text" name="address" id=""></label>
+                   <br>
+                   <label for="email" >Email</label><input type="email" name="email"class= "form-control " >
+                   <button type="submit" class="btn btn-dark" data dismiss="modal" > add cine </button>
+        </div>
+
+ 
+    </form>
+</div>
 <?php include(VIEWS_PATH."footer.php");?>

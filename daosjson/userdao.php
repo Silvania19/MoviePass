@@ -12,7 +12,7 @@ class UserDao implements Idaos
        
     }
 
-    public function Update($objeto)
+    public function Update($objeto, $buscador)
     {
          
     }
