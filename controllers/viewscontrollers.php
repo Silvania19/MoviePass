@@ -39,8 +39,9 @@ class viewscontrollers
     }
     public function cine()
     {
-      $listCines=$this->listCine->GetAll();   
-      var_dump($listCines);  
+      $listCines=$this->listCine->GetAll();  
+      
+        
      include(VIEWS_PATH."cineviews.php");  
     
     }
