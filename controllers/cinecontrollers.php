@@ -14,16 +14,24 @@ class CineControllers
     { 
       $name=$_POST['name']; 
       $adm=$_POST['adm'];
-      $idLocation=$_POST['address'];
+      $address=$_POST['address'];
       $email=$_POST['email'];
-      $cine=new cine($name,$email,  $adm, $idLocation);
+      $cine=new cine($name,$email,  $adm, $address);
+     
       $this->cinemaRepo->Add($cine);
       
     }
 
-    public function alter()
+    public function update()
     {
-        
+      $name=$_POST['name']; 
+      $adm=$_POST['adm'];
+      $address=$_POST['address'];
+      $email=$_POST['email'];
+      $emailActual=$_POST['emailupdate'];
+      $cine=new cine($name,$email,  $adm, $address);
+      $this->cinemaRepo->Update($cine, $emailActual);
+      
     }
 
     public function remove($email)
