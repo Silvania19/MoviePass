@@ -51,7 +51,7 @@
                       <option value="3" name="location">Tu viejo</option>
                       <option value="4" name="location">Tu vieja y tu viejo en tanga</option>
                    </select><br>-->
-                   <label for="address"> <input type="text" name="adress" id="">Address</label>
+                   <label for="address"> <input type="text" name="address" id="">Address</label>
                    <br>
                    <label for="email" >Email</label><input type="email" name="email"class= "form-control " >
                    <button type="submit" class="btn btn-dark" data dismiss="modal" > Sign up </button>
@@ -89,10 +89,11 @@
                             </tr>
 
                             <tr class="table-dark ">
-                            <?php
+                           
+                           <?php
                                   foreach($listCines as $cines)
                                  { 
-                             ?>     <tr>
+                            ?>     <tr>
                                          <td><?php echo $cines->getName();?></td>
                                          <td><?php echo $cines->getIdUserAdministrator();?></td>
                                          <td><?php echo $cines->getAddress();?></td>
@@ -100,10 +101,8 @@
                                     </tr>
                             <?php 
                                  }
-                       
-                             ?>
-                          
-                  
+                            ?>
+                             
                    </table>
 </div>
 
