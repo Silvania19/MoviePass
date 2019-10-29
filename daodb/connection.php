@@ -29,7 +29,6 @@
 
      //execute //lo ejecuto caundo tengo que traer algo de datos
      //executenot//
-<<<<<<< HEAD
    
      public function execute($query, $parameters = array())
      {
@@ -53,8 +52,6 @@
                throw $ex; 
           }
      } 
-=======
->>>>>>> be14d19ccfe3ba9558f6303937fd9d6eb3bfbba9
 
  }
 ?>
