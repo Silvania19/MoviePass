@@ -56,7 +56,7 @@ class CineDao implements Idaos
        $arreglo=is_array($arreglo)?$arreglo:[];
        $arregloObjetos=array_map(function($pos)
        {
-        $newCine =new cine($pos['name'],$pos['email'], $pos['idUserAdaministrator'], $pos['address']);
+        $newCine =new cine($pos['name'],$pos['email'], $pos['idUserAdministrator'], $pos['address']);
         $newCine->setIdCine($pos['idCine']);
         return $newCine;
        }, $arreglo);
