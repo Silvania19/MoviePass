@@ -1,5 +1,6 @@
 <?php include(VIEWS_PATH."header.php"); ?>
 
+<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>front/styles/style2.css">
     <nav class="navbar navbar-expand-sm bg-danger">
         <ul class="navbar-nav">
             <a class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
