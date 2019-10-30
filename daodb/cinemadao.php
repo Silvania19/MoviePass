@@ -1,9 +1,10 @@
 <?php
 namespace daodb;
-use models\Cine as cine;
+use models\Cinema as cinema;
 USE interfaces\Idaos as Idaos;
 use daodb\Connection as   Connection;
-class CineDao implements Idaos
+
+class CinemaDao implements Idaos
 {
     private $connection;
     public function __construct()
@@ -13,17 +14,17 @@ class CineDao implements Idaos
     public function GetAll()
     {
         
-        $sql="SELECT * FROM cines";
+        $sql="SELECT * FROM cinemas";
         try {
             $this->connection = Connection::getInstance();
-            $listCines = $this->connection->execute($sql);  
+            $listCinemas = $this->connection->execute($sql);  
            
         } catch (\PDOException  $ex) {
             throw $ex;
         }
-        if (!empty($listCines))
+        if (!empty($listCinemas))
         {
-            return $this->mapear($listCines);
+            return $this->mapear($listCinemas);
           
         }
         else{
@@ -34,12 +35,12 @@ class CineDao implements Idaos
     {
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql="INSERT INTO cines (name, idUserAdministrator, email, address) VALUES (:name, :idUserAdministrator,:email, :address)";
+        $sql="INSERT INTO cinemas (idCine, numberCinema, capacity) VALUES (:idCine,:numberCinema,capacity)";
       
-        $parameters["name"]=$objeto->getName();
-        $parameters['idUserAdministrator']=$objeto->getIdUserAdministrator();
-        $parameters["address"]=$objeto->getAddress();
-        $parameters["email"]=$objeto->getEmail();
+        $parameters["idCine"]=$objeto->getIdCine();
+        $parameters['numberCinema']=$objeto->getNumberCinema();
+        $parameters["capacity"]=$objeto->getCapacity();
+    
         try {
             $this->connection= Connection::getInstance();
             return $this->connection->executeNonQuery($sql, $parameters);
@@ -56,35 +57,24 @@ class CineDao implements Idaos
        $arreglo=is_array($arreglo)?$arreglo:[];
        $arregloObjetos=array_map(function($pos)
        {
-        $newCine =new cine($pos['name'],$pos['email'], $pos['idUserAdministrator'], $pos['address']);
-        $newCine->setIdCine($pos['idCine']);
-        return $newCine;
+        $newCine =new cine($pos['idCine'],$pos['numberCinema'], $pos['capacity']);
+        $newCine->setIdCinema($pos['idCinema']);
+        return $newCinema;
        }, $arreglo);
        return count($arregloObjetos)>1? $arregloObjetos: $arregloObjetos['0'];
    }
-    public function Delete($email)
+    public function Delete($)
     {
-        $sql = "DELETE FROM cines WHERE email = :email";
-        $parameters['email'] = $email;
 
-        try
-        {
-            $this->connection = Connection::getInstance();
-            return $this->connection->ExecuteNonQuery($sql, $parameters);
-        }
-        catch(PDOException $e)
-        {
-            echo $e;
-        }
     }
     public function Update($objeto, $buscador)
     {
-    
+      
     }
-        public function Search($objeto)
+    public function Search($objeto)
     {
-      $sql="SELECT * FROM cines where objeto=:email";   
-      $parameters['email']=$objeto;
+      $sql="SELECT * FROM cinemas where objeto=:numberCinema";   
+      $parameters['numberCinema']=$objeto;
       try {
           $this->connection = Connection:: getInstance();
           $resul=$this->connection->execute($sql, $parameters);
@@ -100,6 +90,8 @@ class CineDao implements Idaos
           return  false;
       }
     }
-   
 }
+?>
+
+
 ?>
