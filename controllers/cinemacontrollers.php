@@ -30,7 +30,7 @@
             echo 'eliminado con exito';
         }
         else{
-            echo 'el cine no existe';
+            echo 'el cinema no existe';
         }
  
      }
