@@ -20,6 +20,23 @@ class MovieControllers
            $listGenres2=$this->listGenres->GetAll(); 
            include(VIEWS_PATH."movieviews.php");
     } 
+    public function filterGenre()
+    {
+        $idGenre=$_POST['idGenre'];
+      
+        $listGenres2=$this->listGenres->GetAll(); 
+        
+        $filter=$this->listMovie->filterGenres($idGenre);
+        include(VIEWS_PATH."movieviews.php");
+    } 
+    public function filterDate()
+       {
+           $date=$_POST['date'];
+           $listGenres2=$this->listGenres->GetAll(); 
+           $filter=$this->listMovie-> filterDate($date);
+           include(VIEWS_PATH."movieviews.php");
+       }
+    
     
 }
 ?>
