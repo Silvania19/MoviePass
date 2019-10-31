@@ -81,6 +81,20 @@ class CinemaDao implements Idaos
     
     public function Update($objeto, $buscador)
     {
+        $sql="UPDATE cines SET idCine=:idCine, numberCine=:numberCine, capacity=:capacity  WHERE idCinema='$buscador';";
+        $parameters['idCine']=$objeto->getIdCine();
+        $parameters["numberCinema"]=$objeto->getNumberCinema();
+        $parameters["capacity"]=$objeto->getCapacity();
+   
+        try
+        {
+            $this->connection = Connection::getInstance();
+            return $this->connection->ExecuteNonQuery($sql, $parameters);
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
       
     }
     public function Search($objeto)
