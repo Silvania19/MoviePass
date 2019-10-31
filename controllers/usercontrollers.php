@@ -47,7 +47,7 @@ public function signUp()
     $_SESSION['user']=$user;//pongo en session al nuevo usuario qye se acabo de resistrar
     include(VIEWS_PATH."home2.php");
 }
-public function deleteUser()
+public function remove()
 {
      
      if(isset($_SESSION['user']))
@@ -57,8 +57,14 @@ public function deleteUser()
      } 
      if (isset($user))
      {
+<<<<<<< HEAD
          $idUser=$user->getIduser();
          $this->daoUser->Delete($idUser);
+=======
+         $email=$user->getEmail();
+         $this->daoUser->Delete($email);
+         unset($_SESSION['user']);
+>>>>>>> f81a6c67683518865d914a269580d65218b51c64
          include(VIEWS_PATH."home.php");
      }
 }
