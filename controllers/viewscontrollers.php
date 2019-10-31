@@ -42,23 +42,26 @@ class viewscontrollers
     public function cine()
     {
       $listCines=$this->listCine->GetAll();  
-      
-        
-     include(VIEWS_PATH."cineviews.php");  
-    
+      include(VIEWS_PATH."cineviews.php");  
     }
     public function cinemaview()
     {
         $listCine2=$this->listCine->GetAll();
         $listCinema2=$this->listCinema->GetAll();
         include(VIEWS_PATH."cinemaviews.php");    
-
     }
     public function user()
     {
       $listUsers=$this->listUser->GetAll(); 
       $user=$_SESSION['user'];
-     include(VIEWS_PATH."userviews.php");  
+      if($user->getIdRol()==2)
+      {
+        include(VIEWS_PATH."administratorviews.php");  
+      }
+      else{
+          include(VIEWS_PATH."userviews.php");  
+      }
+     
     
     }
 
