@@ -79,7 +79,7 @@ class CineDao implements Idaos
     }
     public function Update($objeto, $buscador)
     {
-        $sql="UPDATE cines SET name=:name, idUserAdministrator=:idUserAdministrator, address=:address, email=:email WHERE email = $buscador;";
+        $sql="UPDATE cines SET name=:name, idUserAdministrator=:idUserAdministrator, address=:address, email=:email WHERE email = '$buscador';";
         $parameters['name']=$objeto->getName();
         $parameters["idUserAdministrator"]=$objeto->getIdUserAdministrator();
         $parameters["address"]=$objeto->getAddress();
