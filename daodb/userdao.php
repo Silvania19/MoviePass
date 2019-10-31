@@ -36,7 +36,7 @@ class UserDao implements Idaos
        
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql="INSERT INTO users (name, lastName, dni, email, password ) VALUES (:name, :lastName, :dni, :email, :password)";
+        $sql="INSERT INTO users (name, lastName, dni, email, password, idRol ) VALUES (:name, :lastName, :dni, :email, :password, :idRol)";
        
         
         $valuesArray["name"] = $objeto->getName();
@@ -44,6 +44,7 @@ class UserDao implements Idaos
         $valuesArray['dni']= $objeto->getDni();
         $valuesArray["email"] = $objeto->getEmail();
         $valuesArray["password"] = $objeto->getPassword();
+        $valuesArray['idRol']=$objeto->getIdRol();
        
         try {
             $this->connection= Connection::getInstance();
@@ -61,7 +62,7 @@ class UserDao implements Idaos
        $arreglo=is_array($arreglo)?$arreglo:[];
        $arregloObjetos=array_map(function($pos)
        {
-        $newUser =new user($pos['name'], $pos['lastName'], $pos['dni'] , $pos['email'], $pos['password']);
+        $newUser =new user($pos['name'], $pos['lastName'], $pos['dni'] , $pos['email'], $pos['password'], $pos['idRol']);
         
        $newUser->setIdUser($pos['idUser']);
         return $newUser;
