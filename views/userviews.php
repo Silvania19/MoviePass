@@ -11,10 +11,11 @@
            </button> 
         </li>
 
-        <li class="nav-item"><a href="<?php echo FRONT_ROOT; ?>/user/deleteUser"class="nav-link"></a>
-           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-cine">
-                     Remove account 
-           </button> 
+           
+                    
+            
+           <li class ="nav-item">
+                  <a href="<?php echo FRONT_ROOT; ?>/user/deleteUser" class="nav-link"> Remove account </a>
         </li>
       </ul>
 </nav>
