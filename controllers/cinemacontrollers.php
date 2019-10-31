@@ -1,7 +1,7 @@
 <?php
  namespace  controllers;
  use models\Cinema as cinema;
- use daosjson\CinemaDao as cinemaD;
+ use daodb\CinemaDao as cinemaD;
  class CinemaControllers
  {
      private $cinemaList;
@@ -21,18 +21,12 @@
     $this->cinemaList->Add($newCinema);
         
      }
-     public function remove($numberCinema)
+     public function remove()
      {
-         $email=$_POST['numberCinema'];
+         $idCinema=$_POST['idCinema'];
         
-     if( $this->cinemaList->Delete($numberCinema)==true)
-        {
-            echo 'eliminado con exito';
-        }
-        else{
-            echo 'el cine no existe';
-        }
- 
+        $this->cinemaList->Delete($idCinema);
+        
      }
  }
 ?>
