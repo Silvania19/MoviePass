@@ -2,13 +2,16 @@
 namespace controllers;
 use models\Cine as cine;
 use daodb\CineDao as cineD;
+use daodb\CinemaDao as cinemaD;
 class CineControllers
 {
-    private $cinemaRepo;//esta variable, sera aquella aque le iguale lo que traiga de la base de datos. Cuando la tenga
+    private $cineRepo;//esta variable, sera aquella aque le iguale lo que traiga de la base de datos. Cuando la tenga
+    private $cinemaList;
     public function __construct()
     {
-        $this->cinemaRepo= new cineD();// sera reemplazado por una instancia de la clases donde tenga  la base correspondiente
-    }
+        $this->cineRepo= new cineD();// sera reemplazado por una instancia de la clases donde tenga  la base correspondiente
+        $this->cinemaList= new cinemaD();
+     }
     
     public function add()
     { 
@@ -18,7 +21,7 @@ class CineControllers
       $email=$_POST['email'];
       $cine=new cine($name,$email,  $adm, $address);
      
-      $this->cinemaRepo->Add($cine);
+      $this->cineRepo->Add($cine);
       
     }
 
@@ -30,21 +33,22 @@ class CineControllers
       $email=$_POST['email'];
       $emailActual=$_POST['emailupdate'];
       $cine=new cine($name,$email,  $adm, $address);
-      $this->cinemaRepo->Update($cine, $emailActual);
+      $this->cineRepo->Update($cine, $emailActual);
       
     }
 
-    public function remove($email)
+    public function remove()
     {
-        $email=$_POST['email'];
-       
-    if( $this->cinemaRepo->Delete($email)==true)
-       {
-           echo 'eliminado con exito';
-       }
-       else{
-           echo 'el cine no existe';
-       }
 
+      $idCine=$_POST['idCine'];
+      $listCinema=$this->cinemaList->GetAll();
+     foreach($listCinema as $cinema)
+     {
+         if($cinema->getIdCine()==$idCine)
+         {
+             $this->cinemaList->Delete($cinema->getIdCinema());
+         }
+     }
+     $this->cineRepo->Delete($idCine);
     }
 }
