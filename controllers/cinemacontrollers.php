@@ -27,6 +27,17 @@
         
         $this->cinemaList->Delete($idCinema);
         
+<<<<<<< HEAD
+=======
+     if( $this->cinemaList->Delete($numberCinema)==true)
+        {
+            echo 'eliminado con exito';
+        }
+        else{
+            echo 'el cinema no existe';
+        }
+ 
+>>>>>>> f81a6c67683518865d914a269580d65218b51c64
      }
  }
 ?>
