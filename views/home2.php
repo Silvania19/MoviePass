@@ -15,12 +15,9 @@
                 </li>
                 <li class ="nav-item">
                   <a href="<?php echo FRONT_ROOT;?>/views/user" class="nav-link">USER</a>
-<<<<<<< HEAD
                 </li>
                 <li class ="nav-item">
                   <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="nav-link">SALIR</a>
-=======
->>>>>>> f81a6c67683518865d914a269580d65218b51c64
                 </li>
             </ul>
          
