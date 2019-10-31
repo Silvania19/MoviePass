@@ -64,6 +64,7 @@
                                     <td>Lastname</td>
                                     <td>dni</td>
                                     <td>Email</td>
+                                    <td>rol</td>
                             </tr>
 
                             <tr class="table-dark ">
@@ -73,6 +74,7 @@
                                          <td><?php echo $user->getLastName();?></td>
                                          <td><?php echo $user->getDni();?></td>
                                          <td><?php echo $user->getEmail();?></td>
+                                         <td><?php echo $user->getIdRol();?></td>
                              </tr>
                             
                              
