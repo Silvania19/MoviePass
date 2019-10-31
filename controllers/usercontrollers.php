@@ -1,7 +1,7 @@
 <?php
 namespace controllers;
 use models\User as User;
-use daosjson\UserDao as userD;
+use daodb\UserDao as userD;
 class UserControllers
 {
 private $daoUser;//en esta variable tiene una instancia de la clase Dao user, 
@@ -15,6 +15,7 @@ public function login()
     $password=$_POST["password"];
  
     $user=$this->daoUser->Search($email);
+   
     if(isset($user))
     {
         if($user->getPassword()==$password)
@@ -56,13 +57,11 @@ public function deleteUser()
      } 
      if (isset($user))
      {
-         $email=$user->getEmail();
-         $this->daoUser->Delete($email);
-         include("index.php");
+         $idUser=$user->getIduser();
+         $this->daoUser->Delete($idUser);
+         include(VIEWS_PATH."home.php");
      }
 }
-public function checkSession()
-{
-    
-}
+
+
 }
