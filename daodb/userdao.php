@@ -36,14 +36,14 @@ class UserDao implements Idaos
        
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql="INSERT INTO users (Name, lastName,email, password ) VALUES (:Name, :lastName, :email, :password)";
+        $sql="INSERT INTO users (name, lastName, dni, email, password ) VALUES (:name, :lastName, :dni, :email, :password)";
        
         
-        $valuesArray["name"] = $user->getName();
-        $valuesArray["lastName"] = $user->getLastName();
-        
-        $valuesArray["email"] = $user->getEmail();
-        $valuesArray["password"] = $user->getPassword();
+        $valuesArray["name"] = $objeto->getName();
+        $valuesArray["lastName"] = $objeto->getLastName();
+        $valuesArray['dni']= $objeto->getDni();
+        $valuesArray["email"] = $objeto->getEmail();
+        $valuesArray["password"] = $objeto->getPassword();
        
         try {
             $this->connection= Connection::getInstance();
