@@ -84,7 +84,22 @@ class UserDao implements Idaos
        }
    }
     public function Update($objeto, $buscador)
-    {
+    { 
+        $sql="UPDATE cines SET name=:name, lastName=:lastName, dni=:dni, email=:email, password =:password WHERE idUser=$buscador;";
+        $parameters['name']=$objeto->getName();
+        $parameters["lastName"]=$objeto->getLasName();
+        $parameters["dni"]=$objeto->getDni();
+        $parameters["password"]=$objeto->getPassword();
+        $parameters['email']=$objeto->getEmail();
+        try
+        {
+            $this->connection = Connection::getInstance();
+            return $this->connection->ExecuteNonQuery($sql, $parameters);
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
       
     }
     public function Search($objeto)
