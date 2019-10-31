@@ -47,7 +47,7 @@ public function signUp()
     $_SESSION['user']=$user;//pongo en session al nuevo usuario qye se acabo de resistrar
     include(VIEWS_PATH."home2.php");
 }
-public function remove()
+public function deleteUser()
 {
      
      if(isset($_SESSION['user']))
