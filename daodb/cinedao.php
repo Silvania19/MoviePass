@@ -64,8 +64,8 @@ class CineDao implements Idaos
    }
     public function Delete($email)
     {
-        $sql = "DELETE FROM cines WHERE email = :email";
-        $parameters['email'] = $email;
+        $sql = "DELETE FROM cines WHERE idCine = :idCine";
+        $parameters['idCine'] = $email;
 
         try
         {
@@ -79,11 +79,25 @@ class CineDao implements Idaos
     }
     public function Update($objeto, $buscador)
     {
+        $sql="UPDATE cines SET name=:name, idUserAdministrator=:idUserAdministrator, address=:address, email=:email WHERE email=$buscador";
+        $parameters['name']=$objeto->getName();
+        $parameters["idUserAdministrator"]=$objeto->getIdUserAdministrator();
+        $parameters["address"]=$objeto->getAddress();
+        $parameters['email']=$objeto->getEmail();
+        try
+        {
+            $this->connection = Connection::getInstance();
+            return $this->connection->ExecuteNonQuery($sql, $parameters);
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
     
     }
-        public function Search($objeto)
+    public function Search($objeto)
     {
-      $sql="SELECT * FROM cines where objeto=:email";   
+      $sql="SELECT * FROM cines where email=:email";   
       $parameters['email']=$objeto;
       try {
           $this->connection = Connection:: getInstance();
