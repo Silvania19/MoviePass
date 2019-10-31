@@ -35,7 +35,7 @@ class CinemaDao implements Idaos
     {
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql="INSERT INTO cinemas (idCine, numberCinema, capacity) VALUES (:idCine,:numberCinema,capacity)";
+        $sql="INSERT INTO cinemas (idCine, numberCinema, capacity) VALUES (:idCine,:numberCinema, :capacity)";
       
         $parameters["idCine"]=$objeto->getIdCine();
         $parameters['numberCinema']=$objeto->getNumberCinema();
@@ -57,16 +57,28 @@ class CinemaDao implements Idaos
        $arreglo=is_array($arreglo)?$arreglo:[];
        $arregloObjetos=array_map(function($pos)
        {
-        $newCine =new cine($pos['idCine'],$pos['numberCinema'], $pos['capacity']);
-        $newCine->setIdCinema($pos['idCinema']);
+        $newCinema =new cinema($pos['idCine'],$pos['numberCinema'], $pos['capacity']);
+        $newCinema->setIdCinema($pos['idCinema']);
         return $newCinema;
        }, $arreglo);
        return count($arregloObjetos)>1? $arregloObjetos: $arregloObjetos['0'];
    }
-    public function Delete($)
-    {
+   public function Delete($email)
+   {
+       $sql = "DELETE FROM cinemas WHERE idCinema = :idCinema";
+       $parameters['idCinema'] = $email;
 
-    }
+       try
+       {
+           $this->connection = Connection::getInstance();
+           return $this->connection->ExecuteNonQuery($sql, $parameters);
+       }
+       catch(PDOException $e)
+       {
+           echo $e;
+       }
+   }
+    
     public function Update($objeto, $buscador)
     {
       
@@ -75,6 +87,25 @@ class CinemaDao implements Idaos
     {
       $sql="SELECT * FROM cinemas where objeto=:numberCinema";   
       $parameters['numberCinema']=$objeto;
+      try {
+          $this->connection = Connection:: getInstance();
+          $resul=$this->connection->execute($sql, $parameters);
+      } catch (\PDOException $th) {
+          throw $th;
+      }
+      if(!empty ($resul))
+      {
+          return $this->mapear($resul);
+      }
+      else
+      {
+          return  false;
+      }
+    }
+    public function SearchIdCine($objeto)
+    {
+      $sql="SELECT * FROM cinemas where idCine=:idCine";   
+      $parameters['idCine']=$objeto;
       try {
           $this->connection = Connection:: getInstance();
           $resul=$this->connection->execute($sql, $parameters);
