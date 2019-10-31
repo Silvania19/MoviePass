@@ -6,7 +6,7 @@
       <ul class="navbar-nav">
       <a href=""class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
         <li class="nav-item"><a href="" class="nav-link"></a>
-           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-cine">
+           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#update">
                       Update your perfil
            </button> 
         </li>
@@ -35,4 +35,25 @@
               </form>
     
 </div>
+ 
+<div class="modal fade" id="update">  
+
+<form class="modal-content " action="<?php echo FRONT_ROOT;?>/user/update" method="POST">
+            <div class="modal-header">
+                <h2 class="modal-title">update</h2>
+           
+                 <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
+            </div>
+             <div class="modal-body">
+                <label >Name</label><input type="text" name="name" class="form-control">
+                <label >Lastname</label><input type="text" name="lastName"class= "form-control " >
+                <label >Dni</label><input type="text" name="dni"class= "form-control " >
+                <label >Email</label><input type="email" name="email"class= "form-control " >
+                <label >Password</label><input type="password" name="password"class= "form-control " >
+                
+                <button type="submit" class="btn btn-dark" data dismiss="modal" > update </button>
+            </div>
+        </form>
+</div>
+
 <?php include(VIEWS_PATH."footer.php");?>
