@@ -57,7 +57,7 @@ class viewscontrollers
     public function user()
     {
       $listUsers=$this->listUser->GetAll(); 
-
+      $user=$_SESSION['user'];
      include(VIEWS_PATH."userviews.php");  
     
     }
