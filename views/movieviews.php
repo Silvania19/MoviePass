@@ -30,20 +30,9 @@ include(VIEWS_PATH."header.php");
     $arrayTodecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
     var_dump($arrayTodecode);*/
     
-    foreach ($listMovie2 as $movie)
+    foreach ($listMovie2 as $movie){
 ?>
 
-<<<<<<< HEAD
-<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">
-
- <?php  {?>
-
-
-      
-
-
-  <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" class="img-fluid">
-=======
   <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" alt= "<?php $movie->getTitle();?> " class="rounded">
   <br>
   
@@ -68,7 +57,7 @@ include(VIEWS_PATH."header.php");
             
 
           
-  } ; ?> </p>
+  }  ?> </p>
   <p>Popularity: <?php echo $movie->getPopularity(); ?> </p>
   <p>Vote Count: <?php echo $movie->getVote_count(); ?> </p>
   <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded">
@@ -88,7 +77,6 @@ include(VIEWS_PATH."header.php");
 ?>
 
   <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" alt= "<?php $movie->getTitle();?> " class="rounded">
->>>>>>> 2253ecd4f8bd61d636cb0bb83cb3cc9ce1e36eb6
   <br>
   
   <h3>Title: <?php echo $movie->getTitle(); ?> </h3>
@@ -100,32 +88,28 @@ include(VIEWS_PATH."header.php");
   <p>Genres : <?php
                   
             $arrayIdG= $movie->getGenre_ids();
-        
+            foreach ($arrayIdG as $genre) {
+              foreach($listGenres2 as $valor)
+              {
+               if($valor->getIdGenres() == $genre)
+               {
+                   echo $valor->getNameGenres();
+               }
+               
+              }
+            
 
           
-  } ; ?> </p>
+  }  ?> </p>
   <p>Popularity: <?php echo $movie->getPopularity(); ?> </p>
   <p>Vote Count: <?php echo $movie->getVote_count(); ?> </p>
   <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded">
-<<<<<<< HEAD
-   
-   <a href="#demo" class="carousel-control-prev" data-slide="prev"></a><span class="carousel-control-prev-icon"></span>
- <a href="#demo" class="carousel-control-next" data-slide="next"></a><span class="carousel-control-next-icon"></span>r
-    </div>
-   </div>
-   </div> 
-         </div>
-    </div></div>
-</div>
-     <?php }?>
-=======
     
 
 
 
      <?php }}?>
      
->>>>>>> 2253ecd4f8bd61d636cb0bb83cb3cc9ce1e36eb6
  
 <?php include(VIEWS_PATH."footer.php");?>
 
