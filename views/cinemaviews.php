@@ -9,20 +9,66 @@
                 </button> 
             </li>
 
-            <li class="nav-item"><a href=""class="nav-link"></a>
-                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-cinema">
-                     Remove cinema 
-                </button> 
-             </li>
-
             <li class="nav-item"><a href="" class="nav-link"></a>
                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-cinema">
-                     Alter cinema
+                     Update cinema
                 </button> 
              </li>
 
         </ul>
     </nav>
+<?php 
+if (!empty($listCinema2))
+{
+
+    ?>
+   <div class="col" style="border:1px solid gray;">
+       
+                   <table class="table-striped">
+                            <tr><h2>Salas </h2></tr>
+                            <tr class="table-primary">
+                                    <td>Nombre del Cine     </td>
+                                    <td>numero de sala  </td>
+                                    <td>capacity      </td>
+                                    
+                            </tr>
+
+                            <tr class="table-dark ">
+                           
+                           <?php
+                            
+                                 foreach($listCinema2 as $cinema)
+                                 { 
+                            ?>     <tr>
+                                        <td>
+                                            <?php 
+                                                 foreach($listCine2 as $cine)
+                                                    {
+                                                         if($cine->getIdCine()== $cinema->getIdCine())
+                                                        {
+                                                           echo $cine->getName();
+                                                        }
+                                                    }
+                                             ?>
+                                         </td>
+                                         <td><?php echo $cinema->getNumberCinema();?></td>
+                                         <td><?php echo $cinema->getCapacity();?></td>
+                                        <td>
+                                        <form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="post">
+                                          <input type="checkbox" name="idCinema" id="" value="<?php echo $cinema->getIdCinema(); ?>">
+                                          <input type="submit" value="eliminar">
+                                        </form>
+                                        </td>
+                                    </tr>
+                            <?php 
+                                 }
+                            ?>
+                             
+                   </table>
+</div>
+<?php
+}
+?>
 
 <div class="modal fade" id=add-cine>
     <form class="modal-content " action="<?php echo FRONT_ROOT;?>/cinema/add" method="POST"> 
