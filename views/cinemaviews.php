@@ -1,11 +1,10 @@
 <?php include(VIEWS_PATH."header.php"); ?>
 
-<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>front/styles/style2.css">
     <nav class="navbar navbar-expand-sm bg-danger">
         <ul class="navbar-nav">
             <a class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
             <li class="nav-item"><a href="" class="nav-link"></a>
-                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-cine">
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-cinema">
                       Add new cinema
                 </button> 
             </li>
@@ -28,7 +27,7 @@ if (!empty($listCinema2))
                    <table class="table-striped">
                             <tr><h2>Salas </h2></tr>
                             <tr class="table-primary">
-                                    <td>Nombre del Cine     </td>
+                                    <td>Nombre DEL Cine     </td>
                                     <td>numero de sala  </td>
                                     <td>capacity      </td>
                                     
@@ -71,7 +70,7 @@ if (!empty($listCinema2))
 }
 ?>
 
-<div class="modal fade" id=add-cine>
+<div class="modal fade" id=add-cinema>
     <form class="modal-content " action="<?php echo FRONT_ROOT;?>/cinema/add" method="POST"> 
         <div class="modal-header"> 
              <h2 class="modal-title">Add cine</h2>
