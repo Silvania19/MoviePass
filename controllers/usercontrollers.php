@@ -62,6 +62,18 @@ public function deleteUser()
          include(VIEWS_PATH."home.php");
      }
 }
-
+public function update()
+{
+    $User1=$_SESSION['user'];
+    $name=$_POST['name'];
+    $lastName=$_POST['lastName'];
+    $dni=$_POST["dni"];
+    $email=$_POST['email'];
+    $password=$_POST['password'];
+    $user=new User($name,$lastName, $dni, $email, $password);
+    $this->daoUser->Update($user, $User1->getIduser());
+    $_SESSION['user']=$user;
+    include(VIEWS_PATH."userviews.php");
+}
 
 }
