@@ -17,7 +17,7 @@
                   <a href="<?php echo FRONT_ROOT;?>/views/user" class="nav-link">USER</a>
                 </li>
                 <li class ="nav-item">
-                  <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="nav-link">SALIR</a>
+                  <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="nav-link">LOGOUT</a>
                 </li>
             </ul>
          
