@@ -1,21 +1,5 @@
 [
     {
-        "name": "sil",
-        "lastName": "ortega",
-        "dni": "12345678",
-        "email": "silvaniaortega17@gmail.com",
-        "password": "respirando",
-        "idUser": null
-    },
-    {
-        "name": "luciana",
-        "lastName": "juarez",
-        "dni": "34567890",
-        "email": "lalucyrefif@gmail.com",
-        "password": "florilamejor",
-        "idUser": null
-    },
-    {
         "name": "jimena",
         "lastName": null,
         "dni": "12345467",
@@ -61,14 +45,6 @@
         "dni": "813624",
         "email": "akayo@gmm.com",
         "password": "dgdfa",
-        "idUser": null
-    },
-    {
-        "name": "",
-        "lastName": "",
-        "dni": "",
-        "email": "",
-        "password": "",
         "idUser": null
     },
     {
