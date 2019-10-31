@@ -14,7 +14,7 @@
                   <a href="<?php echo FRONT_ROOT;?>/views/cine" class="nav-link " >CINES</a>
                 </li>
                 <li class ="nav-item">
-                  <a href="<?php echo FRONT_ROOT;?>/movie/seeListMovie" class="nav-link">USER</a>
+                  <a href="<?php echo FRONT_ROOT;?>/views/user" class="nav-link">USER</a>
                 </li>
                 <li class ="nav-item">
                   <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="nav-link">SALIR</a>
