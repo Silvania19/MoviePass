@@ -53,21 +53,7 @@
     </form>
 </div>
 
-<div class="modal fade" id="remove-cine">
-    <div class="modal-header">
-        <h2 class="modal-title">Remove cine</h2>
-                        
-         <button type="button"class="close" data-dismiss="modal">&times;</button>
-     </div>
-            <form action="<?php echo FRONT_ROOT;?>/cine/remove" method="POST" >
-                     <div class="modal-body">
-                            <label for="email" >Email</label><input type="email" name="email"class= "form-control " >
-                            <button type="submit" class="btn btn-dark" data dismiss="modal" > Remove cine</button>
 
-                      </div>
-              </form>
-    
-</div>
 
 <div class="col" style="border:1px solid gray;">
        
@@ -91,6 +77,12 @@
                                          <td><?php echo $cine->getIdUserAdministrator();?></td>
                                          <td><?php echo $cine->getAddress();?></td>
                                         <td><?php echo $cine->getEmail();?></td>
+                                        <td>
+                                        <form action="<?php echo FRONT_ROOT;?>/cine/remove" method="post">
+                                          <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
+                                          <input type="submit" value="eliminar">
+                                        </form>
+                                        </td>
                                     </tr>
                             <?php 
                                  }
@@ -115,7 +107,7 @@
                    <label for="address">Address<input type="text" name="address" id=""></label>
                    <br>
                    <label for="email" >Email</label><input type="email" name="email"class= "form-control " >
-                   <button type="submit" class="btn btn-dark" data dismiss="modal" > add cine </button>
+                   <button type="submit" class="btn btn-dark" data dismiss="modal" > update </button>
         </div>
 
  
