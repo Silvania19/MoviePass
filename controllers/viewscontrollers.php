@@ -2,17 +2,19 @@
 namespace controllers;
 
 use models\User as User;
-use daosjson\UserDao as userD;
+use daodb\UserDao as userD;
 use daodb\CineDao as cineD;
-
+use daodb\CinemaDao as cinemaD;
 class viewscontrollers
 {
     private $listCine;
     private $listUser;
+    private $listCinema;
     public function __construct()
     {
         $this->listCine=new cineD();
         $this->listUser=new userD();
+        $this->listCinema=new cinemaD();
     }
     public function index()
     {
@@ -48,6 +50,7 @@ class viewscontrollers
     public function cinemaview()
     {
         $listCine2=$this->listCine->GetAll();
+        $listCinema2=$this->listCinema->GetAll();
         include(VIEWS_PATH."cinemaviews.php");    
 
     }
