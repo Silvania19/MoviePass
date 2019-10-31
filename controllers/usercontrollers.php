@@ -42,7 +42,8 @@ public function signUp()
     $dni=$_POST["dni"];
     $email=$_POST['email'];
     $password=$_POST['password'];
-    $user=new User($name,$lastName, $dni, $email, $password);
+    $idRol=1;
+    $user=new User($name,$lastName, $dni, $email, $password, $idRol);
     $this->daoUser->Add($user);
     $_SESSION['user']=$user;//pongo en session al nuevo usuario qye se acabo de resistrar
     include(VIEWS_PATH."home2.php");
