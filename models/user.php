@@ -4,6 +4,7 @@ use models\Person as Person;
 class User extends Person{
 
     private $idUser;
+    private $idRol;
 
 public  function __construct($name, $lastName, $dni, $email,$password)
 {
