@@ -1,7 +1,7 @@
 
 <?php include(VIEWS_PATH."header.php");?>
 
-<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">
+<!--<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">-->
 <nav class="navbar navbar-expand-sm bg-danger">
       <ul class="navbar-nav">
       <a href=""class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
@@ -56,4 +56,26 @@
         </form>
 </div>
 
+<div class="col" style="border:1px solid gray;">
+<table class="table-striped">
+                            <tr><h2>your perfil</h2></tr>
+                            <tr class="table-primary">
+                                    <td>Name</td>
+                                    <td>Lastname</td>
+                                    <td>dni</td>
+                                    <td>Email</td>
+                            </tr>
+
+                            <tr class="table-dark ">
+                           
+                            <tr>
+                                         <td><?php echo $user->getName();?></td>
+                                         <td><?php echo $user->getLastName();?></td>
+                                         <td><?php echo $user->getDni();?></td>
+                                         <td><?php echo $user->getEmail();?></td>
+                             </tr>
+                            
+                             
+  </table>
+  </div>
 <?php include(VIEWS_PATH."footer.php");?>
