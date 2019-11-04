@@ -48,7 +48,7 @@ class CineDao implements Idaos
     }
     public function Update($objeto, $buscador)
     {
-
+        
     }
     public function Search($objeto)
     {
@@ -64,6 +64,7 @@ class CineDao implements Idaos
             return $cine;
           
     }
+ 
     private function SaveData()
     {
         $arrayToEncode = array();
