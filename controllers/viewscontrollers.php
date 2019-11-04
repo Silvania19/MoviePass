@@ -26,7 +26,7 @@ class viewscontrollers
         }
         else
        {
-             include(VIEWS_PATH."home.php");
+        include(VIEWS_PATH."home.php");
        }
        
     }
@@ -61,8 +61,10 @@ class viewscontrollers
       else{
           include(VIEWS_PATH."userviews.php");  
       }
-     
-    
+    }
+    public function cartelera()
+    {
+      include(VIEWS_PATH."carteleraviews.php");
     }
 
 }
