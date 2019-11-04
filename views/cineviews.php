@@ -1,4 +1,11 @@
-<?php include(VIEWS_PATH."header.php");?>
+<?php include(VIEWS_PATH."header.php");
+
+?>
+<?php
+$user=$_SESSION['user'];
+if($user->getIdRol()==2)
+{
+?>
 <link rel="stylesheet" href="<?php echo FRONT_ROOT;?>front/styles/style2.css">
 <nav class="navbar navbar-expand-sm bg-danger">
       <ul class="navbar-nav">
@@ -113,4 +120,45 @@
  
     </form>
 </div>
+ <?php } 
+ if($user->getIdRol()==1)
+ {
+?>
+<div class="col" style="border:1px solid gray;">
+       
+       <table class="table-striped">
+                <tr><h2>Cines disponibles</h2></tr>
+                <tr class="table-primary">
+                        <td>Nombre</td>
+                        <td>Administrator</td>
+                        <td>Address</td>
+                        <td>Email</td>
+                </tr>
+
+                <tr class="table-dark ">
+               
+               <?php
+                
+                     foreach($listCines as $cine)
+                     { 
+                ?>     <tr>
+                             <td><?php echo $cine->getName();?></td>
+                             <td><?php echo $cine->getIdUserAdministrator();?></td>
+                             <td><?php echo $cine->getAddress();?></td>
+                            <td><?php echo $cine->getEmail();?></td>
+                            <td>
+                            <form action="<?php echo FRONT_ROOT;?>/cine/remove" method="post">
+                              <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
+                              <input type="submit" value="verCartera">
+                            </form>
+                            </td>
+                        </tr>
+                <?php 
+                     }
+                ?>
+                 
+       </table>
+</div>
+<?php 
+}?>
 <?php include(VIEWS_PATH."footer.php");?>
