@@ -20,8 +20,10 @@ class CineControllers
       $address=$_POST['address'];
       $email=$_POST['email'];
       $cine=new cine($name,$email,  $adm, $address);
-     
       $this->cineRepo->Add($cine);
+      $listCines=$this->cineRepo->GetAll();
+      echo" <script>alert('added cine');</script>" ;
+      include(VIEWS_PATH."cineviews.php");
       
     }
 
@@ -34,6 +36,9 @@ class CineControllers
       $emailActual=$_POST['emailupdate'];
       $cine=new cine($name,$email,  $adm, $address);
       $this->cineRepo->Update($cine, $emailActual);
+      $listCines=$this->cineRepo->GetAll();
+      echo" <script>alert('updated cine');</script>" ;
+      include(VIEWS_PATH."cineviews.php");
       
     }
 
@@ -50,5 +55,9 @@ class CineControllers
          }
      }
      $this->cineRepo->Delete($idCine);
+     $listCines=$this->cineRepo->GetAll();
+     echo" <script>alert('deleted cine');</script>" ;
+     include(VIEWS_PATH."cineviews.php");
+     
     }
 }
