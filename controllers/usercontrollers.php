@@ -16,7 +16,7 @@ public function login()
  
     $user=$this->daoUser->Search($email);
    
-    if(isset($user))
+    if($user)
     {
         if($user->getPassword()==$password)
         {
@@ -25,13 +25,15 @@ public function login()
         }
         else
         {
-            echo "incorrect password";
+        echo" <script>alert('incorrect password');</script>" ;
+        include(VIEWS_PATH."home.php");
         }
         
     }
     else
     {
-        echo"incorect user";
+        echo "<script>alert('incorrect user');</script>" ;
+        include(VIEWS_PATH."home.php");
     }
     
 }
@@ -43,6 +45,7 @@ public function signUp()
     $email=$_POST['email'];
     $password=$_POST['password'];
     $idRol=1;
+  
     $user=new User($name,$lastName, $dni, $email, $password, $idRol);
     $this->daoUser->Add($user);
     $_SESSION['user']=$user;//pongo en session al nuevo usuario qye se acabo de resistrar
