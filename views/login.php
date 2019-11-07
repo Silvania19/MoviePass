@@ -54,7 +54,7 @@
                 <label >Dni</label><input type="text" name="dni"class= "form-control " >
                 <label >Email</label><input type="email" name="email"class= "form-control " >
                 <label >Password</label><input type="password" name="password"class= "form-control " >
-                
+          
                 <button type="submit" class="btn btn-dark" data dismiss="modal" > Sign up </button>
             </div>
         </form>
