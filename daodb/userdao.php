@@ -97,7 +97,7 @@ class UserDao implements Idaos
             $this->connection = Connection::getInstance();
             return $this->connection->ExecuteNonQuery($sql, $parameters);
         }
-        catch(PDOException $e)
+        catch(\PDOException $e)
         {
             echo $e;
         }
@@ -111,7 +111,9 @@ class UserDao implements Idaos
           $this->connection = Connection:: getInstance();
           $resul=$this->connection->execute($sql, $parameters);
       } catch (\PDOException $th) {
-          throw $th;
+          echo '<script>';
+          echo 'console.log("error en la base. Archivo:userdao.php)';
+          echo '</script>';
       }
       if(!empty ($resul))
       {
