@@ -37,11 +37,11 @@ class UserDao implements Idaos
             return $user;
           
     } 
-    public function Delete($email){
+    public function Delete($objeto){
 		$this->retrieveData();
 		$newList = array();
 		foreach ($this->userList as $user) {
-			if($user->getEmail() != $email){
+			if($user->getEmail() != $objeto){
 				array_push($newList, $user);
 			}
 		}
