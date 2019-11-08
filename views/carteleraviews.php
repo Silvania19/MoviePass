@@ -19,13 +19,13 @@ if(!isset($control)&& !isset($control2))
                             
                                  foreach($cines as $cine)
                                  { 
-                            ?> 
+                            ?>     
                                     <td> Cine:    </td>
                                     <td><?php echo $cine->getName();?></td>
                                     <td>  
                                     <form action="<?php echo FRONT_ROOT;?>/projection/addparte1" method="post">
                                           <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
-                                          <input type="submit" value="add projection">
+                                          <input type="submit" value="Agregar pelicula a cartelera">
                                         </form>
                                         
                                  </td>
@@ -33,27 +33,43 @@ if(!isset($control)&& !isset($control2))
                                </tr>
                               
                                 <tr>
-                                     <?php 
+                                     <?php  
                                       foreach($cartelera as $projection)
                                       {
+                                       
                                         if($projection->getIdCine()==$cine->getIdCine()) 
                                         {
                                       ?>
                                         
-                                        <?php 
+                                        <?php
                                            foreach($movies as $movie)
                                            {
                                                if($projection->getIdMovie()==$movie->getIdMovie())
-                                                   {
+                                                   { 
+                                                     
+
                                         ?>
                                                        <td><?php echo $movie->getTitle(); ?></td>
                                                        <td> <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded"></td>
+                                                       <td>
+                                                    <form action="<?php echo FRONT_ROOT;?>/projection/addparte2" method="post">
+                                                       <input type="checkbox" name="datos" id="" value="<?php echo   $movie->getIdMovie()."-".$cine->getIdCine();?>">
+                                                       <input type="submit" value="Agregar funcion">
+                                                    </form>
+                                                   </td>
                                         <?php
-                                                   }     
-                                          
+                                                   } 
+                                                   
+                                              
+                                             
                                             }
                                        
                                         ?>
+
+                                </tr>
+                                <tr>
+                                <td>  
+                                       
                                 </tr>
                                 <tr>
                                          <td>Fecha: </td>
@@ -113,16 +129,18 @@ if(isset($control)&& !isset($control2))
 <?php
  if(!empty($listMovie2))
 {
-  
-    
     foreach ($listMovie2 as $movie){
-?>
+     
+    
+     if($this->exist($movie->getIdMovie(), $idCine)==false){
+ ?>
+     
 
   <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" alt= "<?php $movie->getTitle();?> " class="rounded">
   <br>
   <form action="<?php echo FRONT_ROOT; ?>/projection/addparte2" method="post">
   <h3>Title: <input type="submit" value=" <?php echo $movie->getTitle(); ?> ">
-  <input type="checkbox" name="idMovie" id="" value="<?php echo $movie->getIdMovie()."-".$idCine;?>">
+  <input type="checkbox" name="datos" id="" value="<?php echo $movie->getIdMovie()."-".$idCine;?>">
  </h3>
   </form>
   <p>Original Title: <?php echo $movie->getOriginal_title(); ?> </p>
@@ -153,7 +171,7 @@ if(isset($control)&& !isset($control2))
 
 
 
-     <?php }}?>
+     <?php }}}?>
   <?php   
      if(!empty($filter))
 {
@@ -204,7 +222,7 @@ if(isset($control)&& !isset($control2))
 if(!isset($control)&& isset($control2))
 {
 ?>
-    <form class="form-control"action="<?php echo FRONT_ROOT;?>/projection/add" method="post">
+    <form class="form-control"action="<?php echo FRONT_ROOT;?>/projection/addProjection" method="post">
     <h3> COMPLE</h3>
     <label for="datos">confirmar</label>
     <input type="checkbox" name="datos" value="<?php echo $datos; ?>" id=""><br>
