@@ -13,25 +13,22 @@
 
     <header class="text-center">
     <h2>   
-    <p class="bg-light display-5 ">Login</p> 
+    <p class="bg-light display-5 ">Iniciar sesion</p> 
     </h2>
     </header>
     <div class="form-group mark">
-    <label for="name"> email </label>
+    <label for="name"> Email </label>
     <input type="email"  name="email" class="form-control ">
     </div>
      <div class="form-group mark">
-<label for="password"> Password</label>
+<label for="password"> Contraseña</label>
 <input type="password" name="password" class="form-control form-control-lg">
 </div>
 <div class="actions form-group mark">
 
-<button type="button" class="btn btn-link" data-toggle="modal" data-target="#sign-up">
-    Sign up
-</button>
-
-<button type="submit" class="btn btn-dark">
-    Login
+<a href="" class="btn btn-primary" data-toggle="modal" data-target="#sign-up" > Registrarse</a>
+<button type="submit" class="btn btn-primary">
+    Iniciar sesion
 </button>
 
 
@@ -49,13 +46,13 @@
                  <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
             </div>
              <div class="modal-body">
-                <label >Name</label><input type="text" name="name" class="form-control">
-                <label >Lastname</label><input type="text" name="lastName"class= "form-control " >
+                <label >Nombre</label><input type="text" name="name" class="form-control">
+                <label >Apellido</label><input type="text" name="lastName"class= "form-control " >
                 <label >Dni</label><input type="text" name="dni"class= "form-control " >
                 <label >Email</label><input type="email" name="email"class= "form-control " >
-                <label >Password</label><input type="password" name="password"class= "form-control " >
+                <label >Contraseña</label><input type="password" name="password"class= "form-control " >
           
-                <button type="submit" class="btn btn-dark" data dismiss="modal" > Sign up </button>
+                <button type="submit" class="btn btn-dark" data dismiss="modal" > Registrarse </button>
             </div>
         </form>
     </div>
