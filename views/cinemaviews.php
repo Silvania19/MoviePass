@@ -35,8 +35,8 @@ if (!empty($listCinema2))
                    <table class="table-striped">
                             <tr><h2>Salas </h2></tr>
                             <tr class="table-primary">
-                                    <td>Nombre DEL Cine     </td>
-                                    <td>numero de sala  </td>
+                                    <td>Nombre del Cine     </td>
+                                    <td>nombre de sala  </td>
                                     <td>capacity      </td>
                                     
                             </tr>
@@ -59,7 +59,7 @@ if (!empty($listCinema2))
                                                     }
                                              ?>
                                          </td>
-                                         <td><?php echo $cinema->getNumberCinema();?></td>
+                                         <td><?php echo $cinema->getnameCinema();?></td>
                                          <td><?php echo $cinema->getCapacity();?></td>
                                         <td>
                                         <form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="post">
@@ -99,7 +99,7 @@ if (!empty($listCinema2))
                 ?>
             </select><br>
             
-            <label for="numberCinema">Number of cinema</label><input type="text" name="numberCinema"class= "form-control " > <br>
+            <label for="nameCinema">nombre</label><input type="text" name="nameCinema"class= "form-control " > <br>
             <label for="capacity"> Capacity <input type="text" name="capacity" id=""></label> <br><!--podria ser un arreglo que en cada posicion tenga un numero que le corresponde asiento-->
             <button type="submit" class="btn btn-dark" data dismiss="modal" > Add new cinema </button>
         </div>
@@ -115,7 +115,7 @@ if (!empty($listCinema2))
      </div>
             <form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="POST" >
                      <div class="modal-body">
-                            <label for="numberCinema" >NumberCinema</label><input type="text" name="numberCinema"class= "form-control " >
+                            <label for="nameCinema" >nameCinema</label><input type="text" name="nameCinema"class= "form-control " >
                             <button type="submit" class="btn btn-dark" data dismiss="modal" > Remove cinema</button>
 
                       </div>
