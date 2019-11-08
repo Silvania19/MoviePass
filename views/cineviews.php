@@ -16,16 +16,6 @@ if($user->getIdRol()==2)
            </button> 
         </li>
 
-        <li class="nav-item"><a href=""class="nav-link"></a>
-           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-cine">
-                     Remove cine 
-           </button> 
-        </li>
-
-        <li class="nav-item"><a href=""class="nav-link"></a>
-           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#update-cine" >
-                    Update cine 
-           </button> 
         </li>
         <li class ="nav-item">
                   <a href="<?php echo FRONT_ROOT;?>/views/cinemaview" >Salas</a>
@@ -49,10 +39,10 @@ if($user->getIdRol()==2)
         </div>
         <div class="modal-body">
                    <label for="name" >Name</label><input type="text" name="name" class="form-control">
-                   <label for="adm">idAdministrator</label><input type="text" name="adm"class= "form-control " >  
+                    
                    <label for="address">Address<input type="text" name="address" id=""></label>
                    <br>
-                   <label for="email" >Email</label><input type="email" name="email"class= "form-control " >
+                  
                    <button type="submit" class="btn btn-dark" data dismiss="modal" > add cine </button>
         </div>
 
@@ -70,7 +60,7 @@ if($user->getIdRol()==2)
                                     <td>Nombre</td>
                                     <td>Administrator</td>
                                     <td>Address</td>
-                                    <td>Email</td>
+                                   
                             </tr>
 
                             <tr class="table-dark ">
@@ -83,12 +73,19 @@ if($user->getIdRol()==2)
                                          <td><?php echo $cine->getName();?></td>
                                          <td><?php echo $cine->getIdUserAdministrator();?></td>
                                          <td><?php echo $cine->getAddress();?></td>
-                                        <td><?php echo $cine->getEmail();?></td>
+                                        
                                         <td>
                                         <form action="<?php echo FRONT_ROOT;?>/cine/remove" method="post">
                                           <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
                                           <input type="submit" value="eliminar">
                                         </form>
+                                        <form action="<?php echo FRONT_ROOT;?>/cine/update" method="post">
+                                         <input type="checkbox" name="idCine" value ="<?php echo $cine->getIdCine(); ?>" id="">
+                                        <button type="button"class="btn btn-link" data-toggle="modal" data-target="#update-cine" name="idCine"value="<?php echo $idCine=$cine->getIdCine(); ?>">
+                                        
+                                        </form>
+                      Add cine 
+           </button> 
                                         </td>
                                     </tr>
                             <?php 
@@ -103,17 +100,15 @@ if($user->getIdRol()==2)
     
             
         <div class="modal-header"> 
-            <h2 class="modal-title">Update cine</h2>
+            <h2 class="modal-title">Update cine
+           </h2>
                         
                 <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>
         </div>
         <div class="modal-body">
-                    <label for="emailupdate" >Email actual</label><input type="email" name="emailupdate"class= "form-control " >
-                   <label for="name" >Name</label><input type="text" name="name" class="form-control">
-                   <label for="adm">idAdministrator</label><input type="text" name="adm"class= "form-control " >  
+                    <label for="idCine" >modificar</label><input type="checkbox" name="idCine" value ="idCine" class= "form-control " >
+                   <label for="name" >Name</label><input type="text" name="name" class="form-control">  
                    <label for="address">Address<input type="text" name="address" id=""></label>
-                   <br>
-                   <label for="email" >Email</label><input type="email" name="email"class= "form-control " >
                    <button type="submit" class="btn btn-dark" data dismiss="modal" > update </button>
         </div>
 
@@ -132,7 +127,7 @@ if($user->getIdRol()==2)
                         <td>Nombre</td>
                         <td>Administrator</td>
                         <td>Address</td>
-                        <td>Email</td>
+                        
                 </tr>
 
                 <tr class="table-dark ">
@@ -145,7 +140,7 @@ if($user->getIdRol()==2)
                              <td><?php echo $cine->getName();?></td>
                              <td><?php echo $cine->getIdUserAdministrator();?></td>
                              <td><?php echo $cine->getAddress();?></td>
-                            <td><?php echo $cine->getEmail();?></td>
+                         
                             <td>
                             <form action="<?php echo FRONT_ROOT;?>/cine/remove" method="post">
                               <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
