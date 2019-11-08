@@ -34,12 +34,12 @@ class CineDao implements Idaos
     {
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql="INSERT INTO cines (name, idUserAdministrator, email, address) VALUES (:name, :idUserAdministrator,:email, :address)";
+        $sql="INSERT INTO cines (name, idUserAdministrator, address) VALUES (:name, :idUserAdministrator, :address)";
       
         $parameters["name"]=$objeto->getName();
         $parameters['idUserAdministrator']=$objeto->getIdUserAdministrator();
         $parameters["address"]=$objeto->getAddress();
-        $parameters["email"]=$objeto->getEmail();
+      
         try {
             $this->connection= Connection::getInstance();
             return $this->connection->executeNonQuery($sql, $parameters);
@@ -56,16 +56,16 @@ class CineDao implements Idaos
        $arreglo=is_array($arreglo)?$arreglo:[];
        $arregloObjetos=array_map(function($pos)
        {
-        $newCine =new cine($pos['name'],$pos['email'], $pos['idUserAdministrator'], $pos['address']);
+        $newCine =new cine($pos['name'], $pos['idUserAdministrator'], $pos['address']);
         $newCine->setIdCine($pos['idCine']);
         return $newCine;
        }, $arreglo);
        return count($arregloObjetos)>1? $arregloObjetos: $arregloObjetos['0'];
    }
-    public function Delete($email)
+    public function Delete($objeto)
     {
         $sql = "DELETE FROM cines WHERE idCine = :idCine";
-        $parameters['idCine'] = $email;
+        $parameters['idCine'] = $objeto;
 
         try
         {
@@ -79,11 +79,11 @@ class CineDao implements Idaos
     }
     public function Update($objeto, $buscador)
     {
-        $sql="UPDATE cines SET name=:name, idUserAdministrator=:idUserAdministrator, address=:address, email=:email WHERE email = '$buscador';";
+        $sql="UPDATE cines SET name=:name, idUserAdministrator=:idUserAdministrator, address=:address WHERE idCine = '$buscador';";
         $parameters['name']=$objeto->getName();
         $parameters["idUserAdministrator"]=$objeto->getIdUserAdministrator();
         $parameters["address"]=$objeto->getAddress();
-        $parameters['email']=$objeto->getEmail();
+       
         try
         {
             $this->connection = Connection::getInstance();
@@ -97,8 +97,8 @@ class CineDao implements Idaos
     }
     public function Search($objeto)
     {
-      $sql="SELECT * FROM cines where email=:email";   
-      $parameters['email']=$objeto;
+      $sql="SELECT * FROM cines where idCine=:idCine";   
+      $parameters['idCine']=$objeto;
       try {
           $this->connection = Connection:: getInstance();
           $resul=$this->connection->execute($sql, $parameters);
