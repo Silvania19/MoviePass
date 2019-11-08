@@ -4,23 +4,10 @@
 <nav class="navbar navbar-expand-sm bg-danger">
       <ul class="navbar-nav">
       <a href=""class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
-        <li class="nav-item"><a href="" class="nav-link"></a>
-           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#update">
-                      Update your perfil
-           </button> 
-        </li>
+      
+       
 
-           
-                    
-            
-           <li class ="nav-item">
-                  <a href="<?php echo FRONT_ROOT; ?>/user/deleteUser" class="nav-link"> Remove account </a>
-        </li>
-        <li class="nav-item"><a href="" class="nav-link"></a>
-           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-adm">
-                     Add oter administrator
-           </button> 
-        </li>
+    
       </ul>
 </nav>
 
@@ -60,30 +47,7 @@
         </form>
 </div>
 
-<div class="col" style="border:1px solid gray;">
-<table class="table-striped">
-                            <tr><h2>your perfil</h2></tr>
-                            <tr class="table-primary">
-                                    <td>Name</td>
-                                    <td>Lastname</td>
-                                    <td>dni</td>
-                                    <td>Email</td>
-                                    <td>rol</td>
-                            </tr>
 
-                            <tr class="table-dark ">
-                           
-                            <tr>
-                                         <td><?php echo $user->getName();?></td>
-                                         <td><?php echo $user->getLastName();?></td>
-                                         <td><?php echo $user->getDni();?></td>
-                                         <td><?php echo $user->getEmail();?></td>
-                                         <td><?php echo $user->getIdRol();?></td>
-                             </tr>
-                            
-                             
-  </table>
-  </div>
  <div class="modal fade" id="add-adm">  
 
 <form class="modal-content " action="<?php echo FRONT_ROOT;?>/adminstrator/addAdministrator" method="POST">
@@ -102,5 +66,48 @@
                 <button type="submit" class="btn btn-dark" data dismiss="modal" > add new adminstrator </button>
             </div>
         </form>
+</div>
+
+<center>
+<div class="coteiner w-50">
+    <div class="card w-50 " width="40" alt="40">
+ 
+      <img src="<?php echo FRONT_ROOT;?>/front/img/usuario.png" alt="500" width="300">
+        <div class="card-body w-40 ">
+          <h3 class="card-title"><?php echo $user->getName();?></h3>
+          
+          <p  class="card-text">Apellido:<?php echo $user->getLastName();?></p>
+          <p class="card-text">Dni:<?php echo $user->getDni();?></p>
+          <p class="card-text">Email:<?php echo $user->getEmail();?></p>
+         
+         <div class="class-footer">
+            <a href="" class="btn btn-primary"type="button" class="btn btn-link" data-toggle="modal" data-target="#update">Modificar perfil</a>
+
+
+            <a href="" class="btn btn-primary"type="button" class="btn btn-link" data-toggle="modal" data-target="#eliminar">Eliminar usuario</a>
+        
+            <a href="" class="btn btn-primary"type="button" class="btn btn-link" data-toggle="modal" data-target="#add-adm">Agregar administrador</a>
+          
+          </div>
+      
+      </div>
+</div>
+
+</center>
+<div class="modal fade" id="eliminar"tabindex="-1" role="dialog" aria-labelledby="eliminar" aria-hidden="true" >
+
+<form action="<?php echo FRONT_ROOT;?>/user/deleteUser" method="POST">
+<h5>¿Esta seguro de eliminar usuario?</h5>
+
+<label > SI</label> <input type="checkbox" name="verificacion" class="form-control" value="si">
+           
+  <label>NO</label>  <input type="checkbox" name="verificacion" class="form-control" value="no">
+  <button type="submit" class="btn btn-dark" data dismiss="modal" > Enviar </button>
+           
+     
+
+
+</form>
+
 </div>
 <?php include(VIEWS_PATH."footer.php");?>
