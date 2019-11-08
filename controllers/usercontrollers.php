@@ -53,7 +53,9 @@ public function signUp()
 }
 public function deleteUser()
 {
-     
+     $verificacion=$_POST['verificacion'];
+     if($verificacion=='si')
+     {
      if(isset($_SESSION['user']))
      {
 
@@ -63,7 +65,16 @@ public function deleteUser()
      {
          $idUser=$user->getIduser();
          $this->daoUser->Delete($idUser);
+         echo" <script>alert('user deleted');</script>" ;
          include(VIEWS_PATH."home.php");
+        
+     }
+    }
+     if($verificacion=='no')
+     {
+       
+        $user=$_SESSION['user'];
+         include(VIEWS_PATH."administratorviews.php");
      }
 }
 public function update()
