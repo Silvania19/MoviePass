@@ -16,10 +16,10 @@
      public function add()
      {
         $idCine=$_POST['idCine'];
-        $numberCinema=$_POST['numberCinema'];
+        $nameCinema=$_POST['nameCinema'];
         $capacity=$_POST['capacity'];
       
-        $newCinema= new cinema($idCine, $numberCinema, $capacity);
+        $newCinema= new cinema($idCine, $nameCinema, $capacity);
        
     $this->cinemaList->Add($newCinema);
     $listCine2=$this->cineList->GetAll();
