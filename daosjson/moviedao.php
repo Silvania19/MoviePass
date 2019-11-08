@@ -9,7 +9,7 @@
          {
             
         }
-        public function getNowMovie()
+        public function GetAll()
         {
            
             $this->retrieveData();
