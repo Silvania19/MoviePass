@@ -69,10 +69,10 @@ class UserDao implements Idaos
        }, $arreglo);
        return count($arregloObjetos)>1? $arregloObjetos: $arregloObjetos['0'];
    }
-   public function Delete($email)
+   public function Delete($objeto)
    {
        $sql = "DELETE FROM users WHERE idUser = :idUser";
-       $parameters['idUser'] = $email;
+       $parameters['idUser'] = $objeto;
 
        try
        {
