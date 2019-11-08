@@ -16,7 +16,7 @@ class MovieControllers
 
     public function seeListMovie()
     {
-           $listMovie2=$this->listMovie->getNowMovie();
+           $listMovie2=$this->listMovie->GetAll();
            $listGenres2=$this->listGenres->GetAll(); 
            include(VIEWS_PATH."movieviews.php");
     } 
