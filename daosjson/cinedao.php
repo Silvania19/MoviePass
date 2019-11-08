@@ -24,12 +24,12 @@ class CineDao implements Idaos
       $this->SaveData();
 
     }
-    public function Delete($email)
+    public function Delete($objeto)
     {
       $this->retrieveData();
       $newList = array();
       foreach ($this->cineList as $cine) {
-        if($cine->getEmail() != $email){
+        if($cine->getIdCine() != $objeto){
           array_push($newList, $cine);
         }
       }
@@ -55,7 +55,7 @@ class CineDao implements Idaos
       $cine=null;
         $this->RetrieveData();
         foreach ($this->cineList as $value) { 
-                if ($value->getEmail()==$objeto){
+                if ($value->getIdCine()==$objeto){
                     
                     $cine=$value;       
                 }
@@ -73,9 +73,9 @@ class CineDao implements Idaos
         { 
             $valuesArray["idCine"] = $cine->getIdCine();
             $valuesArray["name"] = $cine->getName();
-            $valuesArray["email"] = $cine->getEmail();
+           
             $valuesArray["idUserAdmistrator"] = $cine->getIdUserAdministrator();
-            $valuesArray["idLocation"] = $cine->getIdLocation();
+            $valuesArray["address"] = $cine->getAddress();
           
 
             array_push($arrayToEncode, $valuesArray);
@@ -98,7 +98,7 @@ class CineDao implements Idaos
             foreach($arrayToDecode as $valuesArray)
             {
 
-                $cine = new Cine( $valuesArray["name"], $valuesArray["email"], $valuesArray["idUserAdmistrator"], $valuesArray["idLocation"]);
+                $cine = new Cine( $valuesArray["name"], $valuesArray["idUserAdmistrator"], $valuesArray["address"]);
                 
                 array_push($this->cineList, $cine);
  
