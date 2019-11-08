@@ -1,24 +1,9 @@
 
 <?php include(VIEWS_PATH."header.php");?>
 
-<!--<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">-->
-<nav class="navbar navbar-expand-sm bg-danger">
-      <ul class="navbar-nav">
-      <a href=""class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
-        <li class="nav-item"><a href="" class="nav-link"></a>
-           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#update">
-                      Update your perfil
-           </button> 
-        </li>
 
-           
-                    
-            
-           <li class ="nav-item">
-                  <a href="<?php echo FRONT_ROOT; ?>/user/deleteUser" class="nav-link"> Remove account </a>
-        </li>
-      </ul>
-</nav>
+<!--<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">-->
+
 
 <div class="modal fade" id="remove-user">
     <div class="modal-header">
@@ -55,29 +40,29 @@
             </div>
         </form>
 </div>
+<center>
+<div class="coteiner w-50">
+    <div class="card w-50 " width="40" alt="40">
+ 
+      <img src="<?php echo FRONT_ROOT;?>/front/img/usuario.png" alt="500" width="300">
+        <div class="card-body w-40 ">
+          <h3 class="card-title"><?php echo $user->getName();?></h3>
+          
+          <p  class="card-text">Apellido:<?php echo $user->getLastName();?></p>
+          <p class="card-text">Dni:<?php echo $user->getDni();?></p>
+          <p class="card-text">Email:<?php echo $user->getEmail();?></p>
+         
+         <div class="class-footer">
+            <a href="" class="btn btn-primary"type="button" class="btn btn-link" data-toggle="modal" data-target="#update">Modificar perfil</a>
+            <a href="" class="btn btn-primary"type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-user">Eliminar usuario</a>
+          
+          </div>
+      
+      </div>
+</div>
 
-<div class="col" style="border:1px solid gray;">
-<table class="table-striped">
-                            <tr><h2>your perfil</h2></tr>
-                            <tr class="table-primary">
-                                    <td>Name</td>
-                                    <td>Lastname</td>
-                                    <td>dni</td>
-                                    <td>Email</td>
-                                    <td>rol</td>
-                            </tr>
+</center>
 
-                            <tr class="table-dark ">
-                           
-                            <tr>
-                                         <td><?php echo $user->getName();?></td>
-                                         <td><?php echo $user->getLastName();?></td>
-                                         <td><?php echo $user->getDni();?></td>
-                                         <td><?php echo $user->getEmail();?></td>
-                                         <td><?php echo $user->getIdRol();?></td>
-                             </tr>
-                            
-                             
-  </table>
-  </div>
+
+
 <?php include(VIEWS_PATH."footer.php");?>
