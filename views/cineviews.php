@@ -7,9 +7,10 @@ if($user->getIdRol()==2)
 {
 ?>
 <link rel="stylesheet" href="<?php echo FRONT_ROOT;?>front/styles/style2.css">
-<nav class="navbar navbar-expand-sm bg-danger">
-      <ul class="navbar-nav">
-      <a class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
+<nav class="navbar navbar-expand-sm bg-danger"> 
+     <a class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
+      <ul class="navbar-nav ml-auto">
+
         <li class="nav-item"><a href="" class="nav-link"></a>
            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-cine">
                       Add cine 
@@ -27,8 +28,16 @@ if($user->getIdRol()==2)
                     Update cine 
            </button> 
         </li>
-        <li class ="nav-item">
+        <li class ="nav-item"> 
                   <a href="<?php echo FRONT_ROOT;?>/views/cinemaview" >Salas</a>
+                </li>
+                <li class ="nav-item dropdown ">
+               <button type="button" class="btn btn-primary" data-toggle="dropdown">USUARIO</button>
+               <div class="dropdown-menu">
+               <a href="" class="dropdown-item"><?php echo $_SESSION['user']->getName();?></a>
+               <a href="<?php echo FRONT_ROOT;?>/views/user" class="dropdown-item">Ver Perfil</a>
+               <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="dropdown-item">Salir</a>
+               </div>
                 </li>
 
       </ul>
@@ -64,8 +73,8 @@ if($user->getIdRol()==2)
 
 <div class="col" style="border:1px solid gray;">
        
-                   <table class="table-striped">
-                            <tr><h2>Cines disponibles</h2></tr>
+                   <table class="table table-borderer table-hover ">
+                           <tr><h2>Cines disponibles</h2></tr>
                             <tr class="table-primary">
                                     <td>Nombre</td>
                                     <td>Administrator</td>
@@ -124,9 +133,27 @@ if($user->getIdRol()==2)
  if($user->getIdRol()==1)
  {
 ?>
+
+<nav class="navbar navbar-expand-sm bg-danger"> 
+<a class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
+      <ul class="navbar-nav ml-auto">
+     
+        <li class="nav-item"><a href="" class="nav-link"></a>
+
+                <li class ="nav-item dropdown ">
+               <button type="button" class="btn btn-primary" data-toggle="dropdown">USUARIO</button>
+               <div class="dropdown-menu">
+               <a href="" class="dropdown-item"><?php echo $_SESSION['user']->getName();?></a>
+               <a href="<?php echo FRONT_ROOT;?>/views/user" class="dropdown-item">Ver Perfil</a>
+               <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="dropdown-item">Salir</a>
+               </div>
+                </li>
+
+      </ul>
+</nav>
 <div class="col" style="border:1px solid gray;">
        
-       <table class="table-striped">
+       <table class="  table-borderer table-hover ">
                 <tr><h2>Cines disponibles</h2></tr>
                 <tr class="table-primary">
                         <td>Nombre</td>
