@@ -114,7 +114,46 @@ class ProjectionDao implements Idaos
       {
           return  false;
       }
-    }
+}
+public function SearchXCine($objeto)
+{
+  $sql="SELECT * FROM projections where idCine=:idCine";   
+  $parameters['idCine']=$objeto;
+  try {
+      $this->connection = Connection:: getInstance();
+      $resul=$this->connection->execute($sql, $parameters);
+  } catch (\PDOException $th) {
+      throw $th;
+  }
+  if(!empty ($resul))
+  {
+      return $this->mapear($resul);
+  }
+  else
+  {
+      return  false;
+  }
+}
+public function SearchXMovie($idMovie, $idCine)
+{
+  $sql="SELECT * FROM projections where idMovie=:idMovie and idCine=:idCine";   
+  $parameters['idMovie']=$idMovie;
+  $parameters['idCine']=$idCine;
+  try {
+      $this->connection = Connection:: getInstance();
+      $resul=$this->connection->execute($sql, $parameters);
+  } catch (\PDOException $th) {
+      throw $th;
+  }
+  if(!empty ($resul))
+  {
+      return true;
+  }
+  else
+  {
+      return  false;
+  }
+}
    
 }
 ?>
