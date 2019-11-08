@@ -2,25 +2,30 @@
 
 <link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">
    <nav class="navbar navbar-expand-sm bg-danger">
-      <ul class="navbar-nav">
-        <a href=""class="navbar-brand siForm"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
+          <a href=""class="navbar-brand siForm"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
+      <ul class="navbar-nav ml-auto">
+
  
-            <ul class="nav ">
-              
+           
                 <li class ="nav-item">
-                  <a href="<?php echo FRONT_ROOT;?>/movie/seeListMovie" class="nav-link " >MOVIES</a>
+                  <a href="<?php echo FRONT_ROOT;?>/movie/seeListMovie" class="nav-link " >PELICULAS</a>
                 </li>
                 <li class ="nav-item">
                   <a href="<?php echo FRONT_ROOT;?>/views/cine" class="nav-link " >CINES</a>
                 </li>
-                <li class ="nav-item">
-                  <a href="<?php echo FRONT_ROOT;?>/views/user" class="nav-link">USER</a>
-                </li>
+               
                 <a href="<?php echo FRONT_ROOT;?>/views/cartelera" class="nav-link">CARTELERA</a>
                 </li>
-                <li class ="nav-item">
-                  <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="nav-link">LOGOUT</a>
+
+                <li class ="nav-item dropdown float-right">
+               <button type="button" class="btn btn-primary" data-toggle="dropdown">USUARIO</button>
+               <div class="dropdown-menu">
+               <a href="" class="dropdown-item"><?php echo $_SESSION['user']->getName();?></a>
+               <a href="<?php echo FRONT_ROOT;?>/views/user" class="dropdown-item">Ver Perfil</a>
+               <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="dropdown-item">Salir</a>
+               </div>
                 </li>
+               
             </ul>
          
         </div>
