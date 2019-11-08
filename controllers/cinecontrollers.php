@@ -16,10 +16,10 @@ class CineControllers
     public function add()
     { 
       $name=$_POST['name']; 
-      $adm=$_POST['adm'];
+      
       $address=$_POST['address'];
-      $email=$_POST['email'];
-      $cine=new cine($name,$email,  $adm, $address);
+      $user=$_SESSION['user'];
+      $cine=new cine($name,  $user->getIdUser(), $address);
       $this->cineRepo->Add($cine);
       $listCines=$this->cineRepo->GetAll();
       echo" <script>alert('added cine');</script>" ;
@@ -30,12 +30,12 @@ class CineControllers
     public function update()
     {
       $name=$_POST['name']; 
-      $adm=$_POST['adm'];
+     
       $address=$_POST['address'];
-      $email=$_POST['email'];
-      $emailActual=$_POST['emailupdate'];
-      $cine=new cine($name,$email,  $adm, $address);
-      $this->cineRepo->Update($cine, $emailActual);
+      $user=$_SESSION['user'];
+      $IdCine=$_POST['idCine'];
+      $cine=new cine($name, $user->getIdUser(),  $address);
+      $this->cineRepo->Update($cine, $idCine);
       $listCines=$this->cineRepo->GetAll();
       echo" <script>alert('updated cine');</script>" ;
       include(VIEWS_PATH."cineviews.php");
