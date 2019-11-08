@@ -35,10 +35,10 @@ class CinemaDao implements Idaos
     {
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql="INSERT INTO cinemas (idCine, numberCinema, capacity) VALUES (:idCine,:numberCinema, :capacity)";
+        $sql="INSERT INTO cinemas (idCine, nameCinema, capacity) VALUES (:idCine,:nameCinema, :capacity)";
       
         $parameters["idCine"]=$objeto->getIdCine();
-        $parameters['numberCinema']=$objeto->getNumberCinema();
+        $parameters['nameCinema']=$objeto->getnameCinema();
         $parameters["capacity"]=$objeto->getCapacity();
     
         try {
@@ -57,16 +57,16 @@ class CinemaDao implements Idaos
        $arreglo=is_array($arreglo)?$arreglo:[];
        $arregloObjetos=array_map(function($pos)
        {
-        $newCinema =new cinema($pos['idCine'],$pos['numberCinema'], $pos['capacity']);
+        $newCinema =new cinema($pos['idCine'],$pos['nameCinema'], $pos['capacity']);
         $newCinema->setIdCinema($pos['idCinema']);
         return $newCinema;
        }, $arreglo);
        return count($arregloObjetos)>1? $arregloObjetos: $arregloObjetos['0'];
    }
-   public function Delete($email)
+   public function Delete($objeto)
    {
        $sql = "DELETE FROM cinemas WHERE idCinema = :idCinema";
-       $parameters['idCinema'] = $email;
+       $parameters['idCinema'] = $objeto;
 
        try
        {
@@ -83,7 +83,7 @@ class CinemaDao implements Idaos
     {
         $sql="UPDATE cines SET idCine=:idCine, numberCine=:numberCine, capacity=:capacity  WHERE idCinema='$buscador';";
         $parameters['idCine']=$objeto->getIdCine();
-        $parameters["numberCinema"]=$objeto->getNumberCinema();
+        $parameters["nameCinema"]=$objeto->getnameCinema();
         $parameters["capacity"]=$objeto->getCapacity();
    
         try
@@ -99,8 +99,8 @@ class CinemaDao implements Idaos
     }
     public function Search($objeto)
     {
-      $sql="SELECT * FROM cinemas where objeto=:numberCinema";   
-      $parameters['numberCinema']=$objeto;
+      $sql="SELECT * FROM cinemas where objeto=:nameCinema";   
+      $parameters['nameCinema']=$objeto;
       try {
           $this->connection = Connection:: getInstance();
           $resul=$this->connection->execute($sql, $parameters);
