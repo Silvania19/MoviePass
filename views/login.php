@@ -49,7 +49,7 @@
                  <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
             </div>
              <div class="modal-body">
-                <label >Name</label><input type="text" name="name" class="form-control">
+                <label >Name</label><input type="text" name="name" class="form-control" required>
                 <label >Lastname</label><input type="text" name="lastName"class= "form-control " >
                 <label >Dni</label><input type="text" name="dni"class= "form-control " >
                 <label >Email</label><input type="email" name="email"class= "form-control " >
