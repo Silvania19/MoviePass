@@ -24,12 +24,12 @@ class CinemaDao implements Idaos
       $this->SaveData();
 
     }
-    public function Delete($numberCinema)
+    public function Delete($objeto)
     {
       $this->retrieveData();
       $newList = array();
       foreach ($this->cinemaList as $cinema) {
-        if($cinema->getNumberCinema() != $numberCinema){
+        if($cinema->getIdCinema() != $objeto){
           array_push($newList, $cinema);
         }
       }
@@ -47,7 +47,7 @@ class CinemaDao implements Idaos
       $cinema=null;
         $this->RetrieveData();
         foreach ($this->cineList as $value) { 
-                if ($value->getNumberCinema()==$objeto){
+                if ($value->getIdCinema()==$objeto){
                     
                     $cinema=$value;       
                 }
@@ -62,7 +62,7 @@ class CinemaDao implements Idaos
         $fileJson=$this->GetJsonFilePath();
         foreach($this->cinemaList as $cinema)
         { 
-            $valuesArray["numberCinema"] = $cinema->getNumberCinema();
+            $valuesArray["nameCinema"] = $cinema->getnameCinema();
             $valuesArray["idCinema"] = $cinema->getIdCinema();
             $valuesArray["idCine"] = $cinema->getIdCine();
             $valuesArray["capacity"] = $cinema->getCapacity();
@@ -87,7 +87,7 @@ class CinemaDao implements Idaos
             foreach($arrayToDecode as $valuesArray)
             {
 
-                $cinema = new Cinema($valuesArray["idCine"], $valuesArray["numberCinema"], $valuesArray["capacity"]);
+                $cinema = new Cinema($valuesArray["idCine"], $valuesArray["nameCinema"], $valuesArray["capacity"]);
                 
                 
                 array_push($this->cinemaList, $cinema);
