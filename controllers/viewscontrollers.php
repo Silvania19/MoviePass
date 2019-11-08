@@ -73,7 +73,7 @@ class viewscontrollers
     { 
       $cines=$this->listCine->GetAll();
       $cartelera=$this->listProjection->GetAll();
-      $movies=$this->listMovie->getNowMovie();
+      $movies=$this->listMovie->GetAll();
       include(VIEWS_PATH."carteleraviews.php");
 
     }
