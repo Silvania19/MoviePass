@@ -4,14 +4,14 @@ namespace models;
 class Cinema{
    private $idCinema;
    private $idCine;
-   private $numberCinema;
+   private $nameCinema;
    private $capacity;
 
-   public function __construct( $idCine, $numberCinema, $capacity)
+   public function __construct( $idCine, $nameCinema, $capacity)
    {
    
       $this->idCine=$idCine;
-      $this->numberCinema=$numberCinema;
+      $this->nameCinema=$nameCinema;
       $this->capacity=$capacity;
    }
    public function setIdCinema($idCinema)
@@ -22,9 +22,9 @@ class Cinema{
    {
       $this->idCine=$idCine;
    }
-   public function setNumberCinema($numberCinema)
+   public function setNameCinema($nameCinema)
    {
-      $this->numberCinema=$numberCinema;
+      $this->nameCinema=$nameCinema;
    }
    public function setCapacity($capacity)
    {
@@ -38,9 +38,9 @@ class Cinema{
    {
       return $this->idCine;
    }
-   public function getNumberCinema()
+   public function getnameCinema()
    {
-      return $this->numberCinema;
+      return $this->nameCinema;
    }
    public function getCapacity()
    {
