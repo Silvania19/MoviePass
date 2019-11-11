@@ -7,6 +7,7 @@ use daodb\CineDao as cineD;
 use daodb\CinemaDao as cinemaD;
 use daodb\ProjectionDao as ProjectionD;
 use daosjson\MovieDao as movieD;
+use controllers\UserControllers as C_User;
 class viewscontrollers
 {
     private $listCine;
@@ -14,6 +15,7 @@ class viewscontrollers
     private $listCinema;
     private $listProjection;
     private $listMovie;
+    private $usercontroller;
     public function __construct()
     {
         $this->listCine=new cineD();
@@ -21,11 +23,14 @@ class viewscontrollers
         $this->listCinema=new cinemaD();
         $this->listProjection= new ProjectionD();
         $this->listMovie=new movieD();
+        $this->usercontroller= new C_User ();
     }
     public function index()
     {
+      $this->userController = new C_User;
+      $user = $this->userController->checkSession();
         
-       if(isset($_SESSION['user']))
+       if($user)
         {
          $user=$_SESSION['user'];
          include(VIEWS_PATH."home2.php");
