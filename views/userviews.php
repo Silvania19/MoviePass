@@ -3,20 +3,20 @@
 
 
 
-<div class="modal fade" id="remove-user">
-    <div class="modal-header">
-        <h2 class="modal-title">Remove user</h2>
-                        
-         <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>
-     </div>
-            <form action="<?php echo FRONT_ROOT;?>/user/remove" method="POST" >
-                     <div class="modal-body">
-                            <label for="email" >Email</label><input type="text" name="email"class= "form-control " >
-                            <button type="submit" class="btn btn-dark" data dismiss="modal" > Remove user</button>
 
-                      </div>
-              </form>
-    
+
+<div class="modal fade" id="remove-user"tabindex="-1" role="dialog" aria-labelledby="eliminar" aria-hidden="true" >
+
+<form action="<?php echo FRONT_ROOT;?>/user/deleteUser" method="POST">
+<h5>¿Esta seguro de eliminar usuario?</h5>
+
+<label > SI</label> <input type="checkbox" name="verificacion" class="form-control" value="si">
+           
+  <label>NO</label>  <input type="checkbox" name="verificacion" class="form-control" value="no">
+  <button type="submit" class="btn btn-dark" data dismiss="modal" > Enviar </button>
+
+</form>
+
 </div>
  
 <div class="modal fade" id="update">  
