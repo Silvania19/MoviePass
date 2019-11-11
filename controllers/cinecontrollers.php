@@ -24,7 +24,7 @@ class CineControllers
       
     }
 
-    public function update($name=null, $address=null, $IdCine=null)
+    public function update($name=null, $address=null, $idCine=null)
     {
       $user=$_SESSION['user'];
       $cine=new cine($name, $user->getIdUser(),  $address);
