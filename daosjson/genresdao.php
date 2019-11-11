@@ -18,7 +18,7 @@ class GenresDao implements idaos
     public function Add($objeto){
 
     }
-    public function Delete($email){
+    public function Delete($objeto){
 
     }
     public function Update($objeto, $buscador){
