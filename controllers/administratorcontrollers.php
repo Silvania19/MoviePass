@@ -10,13 +10,9 @@ public function __construct()
     $this->daoUser = new userD();
 }
 
-public function addAdministrator()
+public function addAdministrator( $name=null, $lastName=null, $dni=null, $email=null, $password=null)
 {
-    $name=$_POST['name'];
-    $lastName=$_POST['lastName'];
-    $dni=$_POST["dni"];
-    $email=$_POST['email'];
-    $password=$_POST['password'];
+   
     $idRol=2;
     $user=new User($name,$lastName, $dni, $email, $password, $idRol);
     $this->daoUser->Add($user);
