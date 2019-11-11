@@ -46,13 +46,8 @@
                  <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
             </div>
              <div class="modal-body">
-<<<<<<< HEAD
                 <label >Nombre</label><input type="text" name="name" class="form-control">
                 <label >Apellido</label><input type="text" name="lastName"class= "form-control " >
-=======
-                <label >Name</label><input type="text" name="name" class="form-control" required>
-                <label >Lastname</label><input type="text" name="lastName"class= "form-control " >
->>>>>>> 56401ac34b529f9b067999dc9797999464380c4f
                 <label >Dni</label><input type="text" name="dni"class= "form-control " >
                 <label >Email</label><input type="email" name="email"class= "form-control " >
                 <label >Contraseña</label><input type="password" name="password"class= "form-control " >
