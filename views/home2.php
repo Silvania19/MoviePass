@@ -1,6 +1,5 @@
 <?php include(VIEWS_PATH."header.php"); ?>
 
-<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">
    <nav class="navbar navbar-expand-sm bg-danger">
           <a href=""class="navbar-brand siForm"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
       <ul class="navbar-nav ml-auto">

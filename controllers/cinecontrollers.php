@@ -13,12 +13,9 @@ class CineControllers
         $this->cinemaList= new cinemaD();
      }
     
-    public function add()
+    public function add($name=null, $address=null)
     { 
-      $name=$_POST['name']; 
-      
-      $address=$_POST['address'];
-      $user=$_SESSION['user'];
+       $user=$_SESSION['user'];
       $cine=new cine($name,  $user->getIdUser(), $address);
       $this->cineRepo->Add($cine);
       $listCines=$this->cineRepo->GetAll();
@@ -27,13 +24,9 @@ class CineControllers
       
     }
 
-    public function update()
+    public function update($name=null, $address=null, $IdCine=null)
     {
-      $name=$_POST['name']; 
-     
-      $address=$_POST['address'];
       $user=$_SESSION['user'];
-      $IdCine=$_POST['idCine'];
       $cine=new cine($name, $user->getIdUser(),  $address);
       $this->cineRepo->Update($cine, $idCine);
       $listCines=$this->cineRepo->GetAll();
@@ -42,12 +35,10 @@ class CineControllers
       
     }
 
-    public function remove()
+    public function remove($idCine=null)
     {
-
-      $idCine=$_POST['idCine'];
       $listCinema=$this->cinemaList->GetAll();
-     foreach($listCinema as $cinema)
+      foreach($listCinema as $cinema)
      {
          if($cinema->getIdCine()==$idCine)
          {

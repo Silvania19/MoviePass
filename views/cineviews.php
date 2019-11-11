@@ -1,12 +1,10 @@
-<?php include(VIEWS_PATH."header.php");
-
-?>
+<?php include(VIEWS_PATH."header.php");?>
 <?php
-$user=$_SESSION['user'];
-if($user->getIdRol()==2)
+    $user=$_SESSION['user'];
+    if($user->getIdRol()==2)
 {
 ?>
-<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>front/styles/style2.css">
+
 <nav class="navbar navbar-expand-sm bg-danger"> 
      <a class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
       <ul class="navbar-nav ml-auto">
@@ -91,10 +89,10 @@ if($user->getIdRol()==2)
                                         <form action="<?php echo FRONT_ROOT;?>/cine/update" method="post">
                                          <input type="checkbox" name="idCine" value ="<?php echo $cine->getIdCine(); ?>" id="">
                                         <button type="button"class="btn btn-link" data-toggle="modal" data-target="#update-cine" name="idCine"value="<?php echo $idCine=$cine->getIdCine(); ?>">
-                                        
+                                    
                                         </form>
-                      Add cine 
-           </button> 
+                            Modificar cine
+              </button> 
                                         </td>
                                     </tr>
                             <?php 
@@ -115,7 +113,7 @@ if($user->getIdRol()==2)
                 <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>
         </div>
         <div class="modal-body">
-                    <label for="idCine" >modificar</label><input type="checkbox" name="idCine" value ="idCine" class= "form-control " >
+                   
                    <label for="name" >Name</label><input type="text" name="name" class="form-control">  
                    <label for="address">Address<input type="text" name="address" id=""></label>
                    <button type="submit" class="btn btn-dark" data dismiss="modal" > update </button>

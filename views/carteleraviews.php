@@ -239,10 +239,25 @@ if(!isset($control)&& isset($control2))
     <h3> COMPLE</h3>
     <label for="datos">confirmar</label>
     <input type="checkbox" name="datos" value="<?php echo $datos; ?>" id=""><br>
-    <label for="date">date</label>
+    <label for="date">Fecha</label>
     <input type="date" name="date" id=""><br>
-    <label for="hour">hour</label>
+    <label for="hour">Hora</label>
     <input type="time" name="hour" id="">
+    <label for="hour">Sala</label>
+    <select name="idSala" id="">
+    <?php 
+    if(is_array($listCinemas2)){
+     foreach($listCinemas2 as $cinema)
+     {?>
+     <option value="<?php echo $cinema->getIdCinema();?>"><?php echo $cinema->getnameCinema();?></option>
+    <?php
+     }}
+     if(is_object($listCinemas2)){?>
+      <option value="<?php echo $listCinemas2->getIdCinema();?>">"<?php echo $listCinemas2->getnameCinema();?></option>
+   <?php  }
+    ?>
+    </select><br>
+   
     <input type="submit" value="enviar">
     </form>
     

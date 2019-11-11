@@ -9,11 +9,9 @@ public function __construct()
 {
     $this->daoUser = new userD();
 }
-public function login()
+public function login($email = null, $password = null)
 {  
-    $email=$_POST['email'];
-    $password=$_POST["password"];
- 
+
     $user=$this->daoUser->Search($email);
    
     if($user)
@@ -37,23 +35,18 @@ public function login()
     }
     
 }
-public function signUp()
+public function signUp($name=null , $lastName=null ,  $dni=null ,  $email=null , $password=null)
 {
-    $name=$_POST['name'];
-    $lastName=$_POST['lastName'];
-    $dni=$_POST["dni"];
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-    $idRol=1;
   
+    $idRol=1;
     $user=new User($name,$lastName, $dni, $email, $password, $idRol);
     $this->daoUser->Add($user);
     $_SESSION['user']=$user;//pongo en session al nuevo usuario qye se acabo de resistrar
     include(VIEWS_PATH."home2.php");
 }
-public function deleteUser()
+public function deleteUser( $verificacion=null)
 {
-     $verificacion=$_POST['verificacion'];
+    
      if($verificacion=='si')
      {
      if(isset($_SESSION['user']))
@@ -77,14 +70,9 @@ public function deleteUser()
          include(VIEWS_PATH."administratorviews.php");
      }
 }
-public function update()
+public function update( $name=null, $lastName=null, $dni=null,  $email=null,  $password=null)
 {
-    $User1=$_SESSION['user'];
-    $name=$_POST['name'];
-    $lastName=$_POST['lastName'];
-    $dni=$_POST["dni"];
-    $email=$_POST['email'];
-    $password=$_POST['password'];
+    $User1=$_SESSION['user'];//ver esto
     $user=new User($name,$lastName, $dni, $email, $password);
     $this->daoUser->Update($user, $User1->getIduser());
     $_SESSION['user']=$user;
