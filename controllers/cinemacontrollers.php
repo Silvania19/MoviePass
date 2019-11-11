@@ -13,27 +13,29 @@
          $this->cineList= new cineD();
      }
 
-     public function add( $idCine=null, $nameCinema=null, $capacity=null)
+     public function add($nameCinema=null, $capacity=null, $idCine=null)
      {
        
       
         $newCinema= new cinema($idCine, $nameCinema, $capacity);
         $this->cinemaList->Add($newCinema);
-        $listCine2=$this->cineList->GetAll();
-        $listCinema2=$this->cinemaList->GetAll();
+       
+       
+        $user=$_SESSION['user'];
+        $listCines=$this->cineList->GetAll();  
+       
         echo" <script>alert('added cinema');</script>" ;
-        include(VIEWS_PATH."cinemaviews.php");
+        include(VIEWS_PATH."cineviews.php"); 
     
         
      }
-     public function remove( $idCinema=null)
+     public function remove($idCinema=null)
      {
         $this->cinemaList->Delete($idCinema);
-        
-        $listCine2=$this->cineList->GetAll();
-        $listCinema2=$this->cinemaList->GetAll();
+        $user=$_SESSION['user'];
+        $listCines=$this->cineList->GetAll();  
         echo" <script>alert('deleted cinema');</script>" ;
-        include(VIEWS_PATH."cinemaviews.php");
+        include(VIEWS_PATH."cineviews.php");
  
      }
  }
