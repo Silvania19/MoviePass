@@ -48,8 +48,16 @@ class viewscontrollers
     }
     public function cine()
     {
+      $user=$_SESSION['user'];
       $listCines=$this->listCine->GetAll();  
       include(VIEWS_PATH."cineviews.php");  
+    }
+    public function cine2($idCine)
+    {
+      $user=$_SESSION['user'];
+      $cine=$this->listCine->Search($idCine);
+      $cinemasCine=$this->listCinema->SearchIdCine($idCine);
+      include(VIEWS_PATH."cineviews2.php");  
     }
     public function cinemaview()
     {
