@@ -8,7 +8,8 @@ class Router
     }
     public static function address(Request $request)
     {
-        $controller= $request->getController()."controllers";
+        //instancia la controladora
+        $controller= $request->getController()."controllers";//tenia q borrarlo 
         $method= $request->getMethod();
         $parameters= $request->getParameters();//viewscontrollers
         //controllers/viewscontrollers
