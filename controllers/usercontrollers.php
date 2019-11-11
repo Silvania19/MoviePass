@@ -78,5 +78,21 @@ public function update( $name=null, $lastName=null, $dni=null,  $email=null,  $p
     $_SESSION['user']=$user;
     include(VIEWS_PATH."userviews.php");
 }
+public function checkSession ()
+{
+    if (session_status() == PHP_SESSION_NONE)
+        session_start();
+
+    if(isset($_SESSION['user'])) {
+
+        $user = $this->daoUser->Search($_SESSION['user']->getEmail());
+
+        if($user->getPass() == $_SESSION['user']->getPassword())
+            return $user;
+
+      } else {
+        return false;
+      }
+}
 
 }
