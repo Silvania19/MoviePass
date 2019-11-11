@@ -1,5 +1,6 @@
 <?php include(VIEWS_PATH."header.php");?>
 
+<!--<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">-->
 <nav class="navbar navbar-expand-sm bg-danger">
       <ul class="navbar-nav">
       <a href=""class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
@@ -10,21 +11,7 @@
       </ul>
 </nav>
 
-<div class="modal fade" id="remove-user">
-    <div class="modal-header">
-        <h2 class="modal-title">Remove user</h2>
-                        
-         <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>
-     </div>
-            <form action="<?php echo FRONT_ROOT;?>/user/remove" method="POST" >
-                     <div class="modal-body">
-                            <label for="email" >Email</label><input type="text" name="email"class= "form-control " >
-                            <button type="submit" class="btn btn-dark" data dismiss="modal" > Remove user</button>
 
-                      </div>
-              </form>
-    
-</div>
  
 <div class="modal fade" id="update">  
 
@@ -102,11 +89,11 @@
            
   <label>NO</label>  <input type="checkbox" name="verificacion" class="form-control" value="no">
   <button type="submit" class="btn btn-dark" data dismiss="modal" > Enviar </button>
-           
-     
-
 
 </form>
 
 </div>
+
+
+
 <?php include(VIEWS_PATH."footer.php");?>
