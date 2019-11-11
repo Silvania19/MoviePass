@@ -1,8 +1,8 @@
 <?php include(VIEWS_PATH."header.php");?>
 <?php
-    $user=$_SESSION['user'];
+    
     if($user->getIdRol()==2)
-{
+     {
 ?>
 
 <nav class="navbar navbar-expand-sm bg-danger"> 
@@ -15,18 +15,6 @@
            </button> 
         </li>
 
-        </li>
-        <li class ="nav-item"> 
-                  <a href="<?php echo FRONT_ROOT;?>/views/cinemaview" >Salas</a>
-                </li>
-                <li class ="nav-item dropdown ">
-               <button type="button" class="btn btn-primary" data-toggle="dropdown">USUARIO</button>
-               <div class="dropdown-menu">
-               <a href="" class="dropdown-item"><?php echo $_SESSION['user']->getName();?></a>
-               <a href="<?php echo FRONT_ROOT;?>/views/user" class="dropdown-item">Ver Perfil</a>
-               <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="dropdown-item">Salir</a>
-               </div>
-                </li>
 
       </ul>
 </nav>
@@ -61,68 +49,50 @@
 
 <div class="col" style="border:1px solid gray;">
        
-                   <table class="table table-borderer table-hover ">
-                           <tr><h2>Cines disponibles</h2></tr>
-                            <tr class="table-primary">
-                                    <td>Nombre</td>
-                                    <td>Administrator</td>
-                                    <td>Address</td>
+  <table class="table table-borderer table-hover ">
+    <tr><h2>Cines disponibles</h2></tr>
+    <tr class="table-primary">
+        <td>Nombre</td>
+        <td>Administrator</td>
+        <td>Address</td>
                                    
-                            </tr>
+    </tr>
 
-                            <tr class="table-dark ">
+     <tr class="table-dark ">
                            
-                           <?php
+      <?php
                             
-                                 foreach($listCines as $cine)
-                                 { 
-                            ?>     <tr>
-                                         <td><?php echo $cine->getName();?></td>
-                                         <td><?php echo $cine->getIdUserAdministrator();?></td>
-                                         <td><?php echo $cine->getAddress();?></td>
-                                        
-                                        <td>
-                                        <form action="<?php echo FRONT_ROOT;?>/cine/remove" method="post">
-                                          <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
-                                          <input type="submit" value="eliminar">
-                                        </form>
-                                        <form action="<?php echo FRONT_ROOT;?>/cine/update" method="post">
-                                         <input type="checkbox" name="idCine" value ="<?php echo $cine->getIdCine(); ?>" id="">
-                                        <button type="button"class="btn btn-link" data-toggle="modal" data-target="#update-cine" name="idCine"value="<?php echo $idCine=$cine->getIdCine(); ?>">
-                                    
-                                        </form>
-                            Modificar cine
-              </button> 
-                                        </td>
-                                    </tr>
-                            <?php 
-                                 }
-                            ?>
+        foreach($listCines as $cine)
+          { 
+      ?>     
+      <tr>
+        <td><?php echo $cine->getName();?></td>
+        <td><?php echo $cine->getIdUserAdministrator();?></td>
+        <td><?php echo $cine->getAddress();?></td>
+        <td>
+            <form action="<?php echo FRONT_ROOT;?>/views/cine2" method="post">
+               <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
+               <input type="submit" value="Ver cine">
+            </form>
+        </td>
+       </tr>
+        <?php 
+          }
+        ?>
                              
-                   </table>
+   </table>
 </div>
-<div class="modal fade" id="update-cine">  
-
-    <form class="modal-content " action="<?php echo FRONT_ROOT;?>/cine/update" method="POST"> 
-    
-            
-        <div class="modal-header"> 
-            <h2 class="modal-title">Update cine
-           </h2>
-                        
-                <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>
-        </div>
-        <div class="modal-body">
-                   
-                   <label for="name" >Name</label><input type="text" name="name" class="form-control">  
-                   <label for="address">Address<input type="text" name="address" id=""></label>
-                   <button type="submit" class="btn btn-dark" data dismiss="modal" > update </button>
-        </div>
-
  
-    </form>
-</div>
- <?php } 
+
+<?php 
+  
+
+?>
+
+
+
+ <?php 
+ } 
  if($user->getIdRol()==1)
  {
 ?>
