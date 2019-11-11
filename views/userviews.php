@@ -2,8 +2,6 @@
 <?php include(VIEWS_PATH."header.php");?>
 
 
-<!--<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">-->
-
 
 <div class="modal fade" id="remove-user">
     <div class="modal-header">
