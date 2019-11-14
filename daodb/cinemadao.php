@@ -35,11 +35,12 @@ class CinemaDao implements Idaos
     {
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql="INSERT INTO cinemas (idCine, nameCinema, capacity) VALUES (:idCine,:nameCinema, :capacity)";
+        $sql="INSERT INTO cinemas (idCine, nameCinema, capacity,price) VALUES (:idCine,:nameCinema, :capacity,:price)";
       
         $parameters["idCine"]=$objeto->getIdCine();
         $parameters['nameCinema']=$objeto->getnameCinema();
         $parameters["capacity"]=$objeto->getCapacity();
+        $parameters["price"]=$objeto->getPrice();
     
         try {
             $this->connection= Connection::getInstance();
@@ -57,7 +58,7 @@ class CinemaDao implements Idaos
        $arreglo=is_array($arreglo)?$arreglo:[];
        $arregloObjetos=array_map(function($pos)
        {
-        $newCinema =new cinema($pos['idCine'],$pos['nameCinema'], $pos['capacity']);
+        $newCinema =new cinema($pos['idCine'],$pos['nameCinema'], $pos['capacity'],$pos['price']);
         $newCinema->setIdCinema($pos['idCinema']);
         return $newCinema;
        }, $arreglo);
@@ -85,6 +86,7 @@ class CinemaDao implements Idaos
         $parameters['idCine']=$objeto->getIdCine();
         $parameters["nameCinema"]=$objeto->getnameCinema();
         $parameters["capacity"]=$objeto->getCapacity();
+        $parameters=["price"]=$objeto->getPrice();
    
         try
         {
