@@ -37,16 +37,19 @@ class ProjectionControllers
   $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
   include(VIEWS_PATH."carteleraviews.php");
  }
- public function addProjection($datos=null, $datos=null, $hour=null)
+ public function addProjection($datos=null, $date=null, $hour=null)
  {
   
   $array=explode("-", $datos);
   $idMovie=$array['0'];
   $idCine=$array['1'];
   $veri=0;
+  $duration=0;
   $cartelera=$this->listProjection->GetAll();
   $cines=$this->listCine->GetAll();
   $movies=$this->listMovie->GetAll();
+ 
+  
   foreach($cartelera as $projection)
   {
     if($projection->getDate()==$date && $projection->getIdMovie()==$idMovie){
@@ -63,6 +66,13 @@ class ProjectionControllers
   }
   else
   {
+      foreach($movies as $movie)
+      {
+        if($movie->getIdMovie()=$idMovie)
+        {
+            $duration=$hour+$movie->getDuration();
+        }
+      }
       $projection= new projection($date, $hour, $idCine, $idMovie);
       $this->listProjection->Add($projection);
        echo" <script>alert('added projection');</script>" ;
