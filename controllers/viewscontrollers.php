@@ -24,10 +24,11 @@ class viewscontrollers
         $this->listProjection= new ProjectionD();
         $this->listMovie=new movieD();
         $this->usercontroller= new C_User ();
+        $this->userController = new C_User;
     }
     public function index()
     {
-      $this->userController = new C_User;
+      
       $user = $this->userController->checkSession();
         
        if($user)
