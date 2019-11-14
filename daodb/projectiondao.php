@@ -35,12 +35,14 @@ class ProjectionDao implements Idaos
     {
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql="INSERT INTO projections (date, hour, idCine, idMovie) VALUES (:date, :hour, :idCine,:idMovie)";
+        $sql="INSERT INTO projections (date, hour, idCine, idMovie, idCinema, duration) VALUES (:date, :hour, :idCine,:idMovie, :idCinema, :duration)";
       
         $parameters["date"]=$objeto->getDate();
         $parameters['hour']=$objeto->getHour();
         $parameters["idCine"]=$objeto->getIdCine();
         $parameters["idMovie"]=$objeto->getIdMovie();
+        $parameters["idCinema"]=$objeto->getIdCinema();
+        $parameters["duration"]=$objeto->getDuration();
         try {
             $this->connection= Connection::getInstance();
             return $this->connection->executeNonQuery($sql, $parameters);
@@ -57,7 +59,7 @@ class ProjectionDao implements Idaos
        $arreglo=is_array($arreglo)?$arreglo:[];
        $arregloObjetos=array_map(function($pos)
        {
-        $newProjection =new projection($pos['date'],$pos['hour'], $pos['idCine'], $pos['idMovie']);
+        $newProjection =new projection($pos['date'],$pos['hour'], $pos['idCine'], $pos['idMovie'], $pos['idCinema'], $pos['duration']);
         $newProjection->setIdProjection($pos['idProjection']);
         return $newProjection;
        }, $arreglo);
@@ -80,11 +82,13 @@ class ProjectionDao implements Idaos
     }
     public function Update($objeto, $buscador)
     {
-        $sql="UPDATE projections SET date=:date, hour=:hour, idCine=:idCine, idMovie=:idMovie WHERE email = '$buscador';";
+        $sql="UPDATE projections SET date=:date, hour=:hour, idCine=:idCine, idMovie=:idMovie, idCinema=:idCinema, duration=:duration WHERE email = '$buscador';";
         $parameters['hour']=$objeto->getHour();
         $parameters["date"]=$objeto->getDate();
         $parameters["idCine"]=$objeto->getIdCine();
         $parameters['idMovie']=$objeto->getIdMovie();
+        $parameters["idCinema"]=$objeto->getIdCinema();
+        $parameters['duration']=$objeto->getDuration();
         try
         {
             $this->connection = Connection::getInstance();
