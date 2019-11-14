@@ -60,6 +60,7 @@
                                 <tr>
                                     <td><?php echo $cinema->getnameCinema();?></td>
                                     <td><?php echo $cinema->getCapacity();?></td>
+                                    <td><?php echo $cinema->getPrice();?></td>
                                     <td><?php echo 'hola';?></td>
                                     <td>
                                         <form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="post">
@@ -116,6 +117,7 @@
                    <input type="text" name="name" class="form-control">  
                    <label for="address">Address</label>
                    <input type="text" name="address" id="">
+                   
                    <label for="address">$estas seguro de modificar?</label>
                    <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
                    <button type="submit" class="btn btn-dark" data dismiss="modal" > update </button>
@@ -138,6 +140,8 @@
                     <input type="text" name="nameCinema"class= "form-control " > <br>
                     <label for="capacity"> Total de butacas</label> 
                      <input type="text" name="capacity" id=""><br>
+                     <label for="price">Price</label> 
+                     <input type="text" name="price" id=""><br>
                      <label for="idCine">¿Estas seguro de agregar?</label><br>
                      <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
                     <button type="submit" class="btn btn-dark" data dismiss="modal" > Agregar nueva sala</button>
