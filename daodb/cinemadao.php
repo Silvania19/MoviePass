@@ -35,7 +35,7 @@ class CinemaDao implements Idaos
     {
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql="INSERT INTO cinemas (idCine, nameCinema, capacity,price) VALUES (:idCine,:nameCinema, :capacity,:price)";
+        $sql="INSERT INTO cinemas (idCine, nameCinema, capacity,price) VALUES (:idCine,:nameCinema, :capacity,:price);";
       
         $parameters["idCine"]=$objeto->getIdCine();
         $parameters['nameCinema']=$objeto->getnameCinema();
@@ -82,11 +82,11 @@ class CinemaDao implements Idaos
     
     public function Update($objeto, $buscador)
     {
-        $sql="UPDATE cines SET idCine=:idCine, numberCine=:numberCine, capacity=:capacity  WHERE idCinema='$buscador';";
+        $sql="UPDATE cines SET idCine=:idCine, numberCine=:numberCine, capacity=:capacity, price=:price  WHERE idCinema='$buscador';";
         $parameters['idCine']=$objeto->getIdCine();
         $parameters["nameCinema"]=$objeto->getnameCinema();
         $parameters["capacity"]=$objeto->getCapacity();
-        $parameters=["price"]=$objeto->getPrice();
+        $parameters["price"]=$objeto->getPrice();
    
         try
         {
