@@ -6,13 +6,14 @@ class Cinema{
    private $idCine;
    private $nameCinema;
    private $capacity;
-
-   public function __construct( $idCine, $nameCinema, $capacity)
+   private $price;
+   public function __construct( $idCine, $nameCinema, $capacity,$price)
    {
    
       $this->idCine=$idCine;
       $this->nameCinema=$nameCinema;
       $this->capacity=$capacity;
+      $this->price=$price;
    }
    public function setIdCinema($idCinema)
    {
@@ -25,6 +26,14 @@ class Cinema{
    public function setNameCinema($nameCinema)
    {
       $this->nameCinema=$nameCinema;
+   }
+   public function setPrice()
+   {
+       $this->price=$price;
+   }
+   public function getPrice()
+   {
+      return $this->price;
    }
    public function setCapacity($capacity)
    {
