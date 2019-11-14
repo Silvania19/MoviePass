@@ -99,27 +99,27 @@ if (!empty($listCinema2))
             
             <label for="nameCinema">Nombre<input type="text" name="nameCinema"class= "form-control " ></label> <br>
             <label for="capacity"> Capacidad <input type="text" name="capacity" id=""></label> <br><!--podria ser un arreglo que en cada posicion tenga un numero que le corresponde asiento-->
-            <label for="price">Price<input type="text" name="" id=""></label> <br>
+            <label for="price">Price<input type="text" name="price" id=""></label> <br>
             <button type="submit" class="btn btn-dark" data dismiss="modal" > Add new cinema </button>
         </div>
     </form>
 
 </div>
 
-  <div class="modal fade" id="remove-cinema">
-    <div class="modal-header">
-        <h2 class="modal-title">Remove cinema</h2>
-                        
-         <button type="button"class="close" data-dismiss="modal">&times;</button>
-     </div>
-            <form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="POST" >
-                     <div class="modal-body">
-                            <label for="nameCinema" >nameCinema</label><input type="text" name="nameCinema"class= "form-control " >
-                            <button type="submit" class="btn btn-dark" data dismiss="modal" > Remove cinema</button>
+ 
 
-                      </div>
-              </form>
-    
+<div class="modal fade" id="remove-cinema"tabindex="-1" role="dialog" aria-labelledby="eliminar" aria-hidden="true" >
+
+<form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="POST">
+<h5>¿Esta seguro de eliminar cinema?</h5>
+
+<label > SI</label> <input type="checkbox" name="verificacion" class="form-control" value="si">
+           
+  <label>NO</label>  <input type="checkbox" name="verificacion" class="form-control" value="no">
+  <button type="submit" class="btn btn-dark" data dismiss="modal" > Enviar </button>
+
+</form>
+
 </div>
 
 <?php include(VIEWS_PATH."footer.php"); ?>
