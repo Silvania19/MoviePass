@@ -32,8 +32,9 @@ if (!empty($listCinema2))
                             <tr><h2>Salas </h2></tr>
                             <tr class="table-primary">
                                     <td>Nombre del Cine     </td>
-                                    <td>nombre de sala  </td>
-                                    <td>capacity      </td>
+                                    <td>Nombre de sala  </td>
+                                    <td>Capacidad    </td>
+                                    <td>Precio</td>
                                     
                             </tr>
 
@@ -57,6 +58,7 @@ if (!empty($listCinema2))
                                          </td>
                                          <td><?php echo $cinema->getnameCinema();?></td>
                                          <td><?php echo $cinema->getCapacity();?></td>
+                                         <td><?php echo $cinema->getPrice();?></td>
                                         <td>
                                         <form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="post">
                                           <input type="checkbox" name="idCinema" id="" value="<?php echo $cinema->getIdCinema(); ?>">
@@ -77,11 +79,11 @@ if (!empty($listCinema2))
 <div class="modal fade" id=add-cinema>
     <form class="modal-content " action="<?php echo FRONT_ROOT;?>/cinema/add" method="POST"> 
         <div class="modal-header"> 
-             <h2 class="modal-title">Add cine</h2>
+             <h2 class="modal-title">Add cinema</h2>
             <button type="button"class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-            <label for="idCine">elija al cine que quiere agregar</label><br>
+            <label for="idCine">Elija al cine que quiere agregar</label><br>
             <select name="idCine" id="">
                 <?php
                     foreach($listCine2 as $cine)
@@ -95,8 +97,9 @@ if (!empty($listCinema2))
                 ?>
             </select><br>
             
-            <label for="nameCinema">nombre</label><input type="text" name="nameCinema"class= "form-control " > <br>
-            <label for="capacity"> Capacity <input type="text" name="capacity" id=""></label> <br><!--podria ser un arreglo que en cada posicion tenga un numero que le corresponde asiento-->
+            <label for="nameCinema">Nombre<input type="text" name="nameCinema"class= "form-control " ></label> <br>
+            <label for="capacity"> Capacidad <input type="text" name="capacity" id=""></label> <br><!--podria ser un arreglo que en cada posicion tenga un numero que le corresponde asiento-->
+            <label for="price">Price<input type="text" name="" id=""></label> <br>
             <button type="submit" class="btn btn-dark" data dismiss="modal" > Add new cinema </button>
         </div>
     </form>
