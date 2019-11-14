@@ -29,20 +29,16 @@
     
         
      }
-     public function remove($idCinema=null,$verificacion=null)
+     public function remove($idCinema=null)
      {
-        if($verificacion=='si')
-        {
+       
         $this->cinemaList->Delete($idCinema);
         $user=$_SESSION['user'];
         $listCines=$this->cineList->GetAll();  
         echo" <script>alert('deleted cinema');</script>" ;
         include(VIEWS_PATH."cineviews.php");
-         }
-         else if($verificacion=='no')
-         {
-            include(VIEWS_PATH."cineviews.php");
-         }
+         
+        
        
  
      }
