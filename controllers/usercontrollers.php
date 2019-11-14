@@ -87,7 +87,7 @@ public function checkSession ()
 
         $user = $this->daoUser->Search($_SESSION['user']->getEmail());
 
-        if($user->getPass() == $_SESSION['user']->getPassword())
+        if($user->getPassword() == $_SESSION['user']->getPassword())
             return $user;
 
       } else {
