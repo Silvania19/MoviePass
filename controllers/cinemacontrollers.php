@@ -13,11 +13,11 @@
          $this->cineList= new cineD();
      }
 
-     public function add($nameCinema=null, $capacity=null, $idCine=null)
+     public function add($nameCinema=null, $capacity=null, $idCine=null, $price=null)
      {
        
       
-        $newCinema= new cinema($idCine, $nameCinema, $capacity);
+        $newCinema= new cinema($idCine, $nameCinema, $capacity,$price);
         $this->cinemaList->Add($newCinema);
        
        
