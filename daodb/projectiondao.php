@@ -126,6 +126,7 @@ public function SearchXCine($objeto)
   try {
       $this->connection = Connection:: getInstance();
       $resul=$this->connection->execute($sql, $parameters);
+      
   } catch (\PDOException $th) {
       throw $th;
   }
@@ -146,12 +147,39 @@ public function SearchXMovie($idMovie, $idCine)
   try {
       $this->connection = Connection:: getInstance();
       $resul=$this->connection->execute($sql, $parameters);
+      
   } catch (\PDOException $th) {
       throw $th;
   }
   if(!empty ($resul))
   {
       return true;
+  }
+  else
+  {
+      return  false;
+  }
+}
+
+
+public function SearchXMovieXCineXDate($idMovie, $idCine, $date)
+{
+  $sql="SELECT * FROM projections where (idCine=$idCine and idMovie=$idMovie and date='$date');";   
+  $parameters['idCine']=$idCine;
+  $parameters['idMovie']=$idMovie;
+  $parameters['date']=$date;
+  var_dump($sql);
+  
+  try {
+      $this->connection = Connection:: getInstance();
+      $resul=$this->connection->execute($sql);
+      var_dump($resul);
+  } catch (\PDOException $th) {
+      throw $th;
+  }
+  if(!empty ($resul))
+  {
+      return $this->mapear($resul);
   }
   else
   {
