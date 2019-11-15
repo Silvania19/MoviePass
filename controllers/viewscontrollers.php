@@ -23,13 +23,13 @@ class viewscontrollers
         $this->listCinema=new cinemaD();
         $this->listProjection= new ProjectionD();
         $this->listMovie=new movieD();
-        $this->usercontroller= new C_User ();
-        $this->userController = new C_User;
+        $this->usercontroller= new C_User();
+       
     }
     public function index()
     {
       
-      $user = $this->userController->checkSession();
+      $user = $this->usercontroller->checkSession();
         
        if($user)
         {
@@ -54,13 +54,13 @@ class viewscontrollers
     }
     public function cine()
     {
-      $user=$_SESSION['user'];
+      $user=$this->usercontroller->checkSession();
       $listCines=$this->listCine->GetAll();  
       include(VIEWS_PATH."cineviews.php");  
     }
     public function cine2($idCine)
     {
-      $user=$_SESSION['user'];
+      $user=$this->usercontroller->checkSession();
       $cine=$this->listCine->Search($idCine);
       $cinemasCine=$this->listCinema->SearchIdCine($idCine);
       include(VIEWS_PATH."cineviews2.php");  
@@ -74,7 +74,7 @@ class viewscontrollers
     public function user()
     {
       $listUsers=$this->listUser->GetAll(); 
-      $user=$_SESSION['user'];
+      $user=$this->userController->checkSession();
       if($user->getIdRol()==2)
       {
         include(VIEWS_PATH."administratorviews.php");  
