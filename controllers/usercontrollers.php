@@ -2,12 +2,18 @@
 namespace controllers;
 use models\User as User;
 use daodb\UserDao as userD;
+use daodb\ProjectionDao as projectionD;
+use daosjson\MovieDao as movieD;
 class UserControllers
 {
 private $daoUser;//en esta variable tiene una instancia de la clase Dao user, 
+private $listMovie;
+private $listProjection;
 public function __construct()
 {
     $this->daoUser = new userD();
+    $this->listMovie= new movieD();
+    $this->listProjection= new projectionD();
 }
 public function login($email = null, $password = null)
 {  
@@ -19,6 +25,8 @@ public function login($email = null, $password = null)
         if($user->getPassword()==$password)
         {
             $_SESSION['user']=$user;
+            $projections=$this->listProjection->GetAll();
+            $movies=$this->listMovie->GetAll();
             include(VIEWS_PATH."home2.php");
         }
         else
