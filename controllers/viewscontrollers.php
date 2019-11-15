@@ -33,7 +33,7 @@ class viewscontrollers
         
        if($user)
         {
-         $user=$_SESSION['user'];
+        
          include(VIEWS_PATH."home2.php");
         }
         else
@@ -45,9 +45,11 @@ class viewscontrollers
     }
     public function deleteSession()
     {
-        if(isset($_SESSION['user']))
+      $user = $this->usercontroller->checkSession();
+
+        if(isset($user)
         {
-            unset($_SESSION['user']);//se usara este porque el destroy destr
+            unset($user);//se usara este porque el destroy destr
             include(VIEWS_PATH."home.php");
         }
         
@@ -90,6 +92,13 @@ class viewscontrollers
       $movies=$this->listMovie->GetAll();
       include(VIEWS_PATH."carteleraviews.php");
 
+    }
+    public function cartelerauser()
+    {
+      $cines=$this->listCine->GetAll();
+      $cartelera=$this->listProjection->GetAll();
+      $movies=$this->listMovie->GetAll();
+      include(VIEWS_PATH."cartelerauser.php")
     }
 
 }
