@@ -74,7 +74,7 @@ class viewscontrollers
     public function user()
     {
       $listUsers=$this->listUser->GetAll(); 
-      $user=$this->userController->checkSession();
+      $user=$this->usercontroller->checkSession();
       if($user->getIdRol()==2)
       {
         include(VIEWS_PATH."administratorviews.php");  
