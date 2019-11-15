@@ -113,7 +113,7 @@ class UserDao implements Idaos
       } catch (\PDOException $th) {
           echo '<script>';
           echo 'console.log("error en la base. Archivo:userdao.php)';
-          echo '</script>';
+          echo '</script>';//sacar 
       }
       if(!empty ($resul))
       {
