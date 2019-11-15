@@ -1,15 +1,7 @@
 <?php include(VIEWS_PATH."header.php");?>
 
 <!--<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">-->
-<nav class="navbar navbar-expand-sm bg-danger">
-      <ul class="navbar-nav">
-      <a href=""class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
-      
-       
 
-    
-      </ul>
-</nav>
 
 
  
@@ -85,9 +77,9 @@
 <form action="<?php echo FRONT_ROOT;?>/user/deleteUser" method="POST">
 <h5>¿Esta seguro de eliminar usuario?</h5>
 
-<label > SI</label> <input type="checkbox" name="verificacion" class="form-control" value="si">
+<label > SI</label> <input type="radio" name="verificacion" class="form-control" value="si">
            
-  <label>NO</label>  <input type="checkbox" name="verificacion" class="form-control" value="no">
+  <label>NO</label>  <input type="radio" name="verificacion" class="form-control" value="no">
   <button type="submit" class="btn btn-dark" data dismiss="modal" > Enviar </button>
 
 </form>
