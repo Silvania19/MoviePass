@@ -15,6 +15,7 @@ class Movie
    private $popularity;
    private $vote_count;
    private $video;//
+   private $dates;
    public function __construct()
    {
 
@@ -23,6 +24,10 @@ class Movie
    public function setIdMovie($idMovie)
    {
     $this->idMovie=$idMovie;
+   }
+   public function setDates($dates)
+   {
+    $this->dates=$dates;
    }
    public function setTitle($title)
    {
@@ -77,6 +82,10 @@ class Movie
    public function getIdMovie()
    {
        return  $this->idMovie;
+   }
+   public function getDates()
+   {
+       return  $this->dates;
    }
    public function getTitle()
    {
