@@ -101,8 +101,8 @@ class CinemaDao implements Idaos
     }
     public function Search($objeto)
     {
-      $sql="SELECT * FROM cinemas where objeto=:nameCinema";   
-      $parameters['nameCinema']=$objeto;
+      $sql="SELECT * FROM cinemas where idCinema=:idCinema";   
+      $parameters['idCinema']=$objeto;
       try {
           $this->connection = Connection:: getInstance();
           $resul=$this->connection->execute($sql, $parameters);
