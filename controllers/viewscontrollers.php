@@ -48,7 +48,7 @@ class viewscontrollers
     {
       $user = $this->usercontroller->checkSession();
 
-        if(isset($user)
+        if(isset($user))
         {
             unset($user);//se usara este porque el destroy destr
             include(VIEWS_PATH."home.php");
@@ -99,7 +99,7 @@ class viewscontrollers
       $cines=$this->listCine->GetAll();
       $cartelera=$this->listProjection->GetAll();
       $movies=$this->listMovie->GetAll();
-      include(VIEWS_PATH."cartelerauser.php")
+      include(VIEWS_PATH."cartelerauser.php");
     }
 
 }
