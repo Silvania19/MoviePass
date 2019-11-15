@@ -45,9 +45,12 @@ class ProjectionControllers
   $projection=$this->listProjection->SearchXMovieXCineXDate($array['0'], $array['1'], $date);
 
 
-  if($projection)
+  if(is_object($projection))
   {
-    $listCinema2=$this->listCinema->Search($projection->getIdCinema()); 
+    $listCinemas2=$this->listCinema->Search($projection->getIdCinema()); 
+    
+    $datos=$datos."+".$date;
+     include(VIEWS_PATH."carteleraviews.php");
   }
   else
   {
