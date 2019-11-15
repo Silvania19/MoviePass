@@ -28,6 +28,12 @@
             
                 </li>
 
+                <li class="nav-item"><a href="" class="nav-link"></a>
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-cinema">
+                       Eliminar sala
+                    </button> 
+            
+                </li>
 
             </ul>
         </nav>
@@ -155,6 +161,20 @@
             </form>
 
         </div>
+
+        <div class="modal fade" id="remove-cinema" tabindex="-1" role="dialog" aria-labelledby="eliminar" aria-hidden="true" >
+            <form  class="group-form" action="<?php echo FRONT_ROOT;?>/cine/remove" method="POST">
+                <h5>¿Esta seguro de eliminar la sala?</h5>
+                <label>SI</label>
+                <input type="radio" name="verificacion" class="form-control" value="<?php echo $cine->getIdCinema(); ?>">
+                <label>NO</label> 
+                <input type="radio" name="verificacion" class="form-control" value="no">
+                <button type="submit" class="btn btn-dark" data dismiss="modal" > Enviar </button>
+
+            </form>
+
+         </div>
+
 
         <div class="modal fade" id="delete-cine" tabindex="-1" role="dialog" aria-labelledby="eliminar" aria-hidden="true" >
             <form  class="group-form" action="<?php echo FRONT_ROOT;?>/cine/remove" method="POST">
