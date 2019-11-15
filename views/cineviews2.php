@@ -16,6 +16,12 @@
             
                 </li>
                 <li class="nav-item"><a href="" class="nav-link"></a>
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#delete-cine">
+                        Eliminar cine
+                    </button> 
+            
+                </li>
+                <li class="nav-item"><a href="" class="nav-link"></a>
                     <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-cinema">
                         Agregar sala
                     </button> 
@@ -140,15 +146,28 @@
                     <input type="text" name="nameCinema"class= "form-control " > <br>
                     <label for="capacity"> Total de butacas</label> 
                      <input type="text" name="capacity" id=""><br>
-                     <label for="price">Price</label> 
+                     <label for="price">Price</label><br>
                      <input type="text" name="price" id=""><br>
-                     <label for="idCine">¿Estas seguro de agregar?</label><br>
-                     <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
+                     <label for="idCine">¿Estas seguro de agregar?</label>
+                     <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>"><br>
                     <button type="submit" class="btn btn-dark" data dismiss="modal" > Agregar nueva sala</button>
-        </div>
-    </form>
+               </div>
+            </form>
 
-</div>
+        </div>
+
+        <div class="modal fade" id="delete-cine" tabindex="-1" role="dialog" aria-labelledby="eliminar" aria-hidden="true" >
+            <form  class="group-form" action="<?php echo FRONT_ROOT;?>/cine/remove" method="POST">
+                <h5>¿Esta seguro de eliminar el cine?</h5>
+                <label>SI</label>
+                <input type="radio" name="verificacion" class="form-control" value="<?php echo $cine->getIdCine(); ?>">
+                <label>NO</label> 
+                <input type="radio" name="verificacion" class="form-control" value="no">
+                <button type="submit" class="btn btn-dark" data dismiss="modal" > Enviar </button>
+
+            </form>
+
+         </div>
 
 <?php
     }
