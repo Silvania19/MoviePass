@@ -193,15 +193,8 @@
                              <td>Horario: </td>
                              <td><?php echo $projection->getHour();?> </td>
                     </tr>
-                    <tr>
-                    <td>  
-                        <form action="<?php echo FRONT_ROOT;?>/projection/delete" method="post">
-                              <input type="checkbox" name="idProjection" id="" value="<?php echo $projection->getIdProjection(); ?>">
-                              <input type="submit" value="eliminar">
-                            </form>
-                            
-                     </td>    
-                    </tr>
+                 
+                  
                           <?php }
                         
                         } ?>
@@ -209,10 +202,9 @@
                 <?php 
                      }
                 ?>
-                  </tr>  
+                  
        </table>
 </div>
-<?php
-}
+
 
 <?php include(VIEWS_PATH."header.php");?>
