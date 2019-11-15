@@ -8,6 +8,7 @@
  {
      private $cinemaList;
      private $cineList;
+     private $projectionList;
      private $userControlllers;
      public function __construct()
      {
@@ -32,26 +33,72 @@
     
         
      }
-<<<<<<< HEAD
-     public function remove($idCinema=null)
-     {
-       
-=======
-     public function remove($idCinema=null,$verificacion=null)
+     public function remove($verificacion=null)
      { 
+
         $user=$this->userControllers->checkSession();
-        if($verificacion=='si')
+        if($verificacion=='no')
         {
->>>>>>> 6ab5779e6dba76e1a19a3e698b3811b14cbe6c70
-        $this->cinemaList->Delete($idCinema);
-       
-        $listCines=$this->cineList->GetAll();  
-        echo" <script>alert('deleted cinema');</script>" ;
+      
+        $listCines=$this->cineList->GetAll(); 
         include(VIEWS_PATH."cineviews.php");
          
-        
+        }
+        else
+        {
+          $idCinema=$verificacion;
+          $projectionL= $this->projectionList->GetAll();
+
+          foreach($projectionL as $projection)
+          {
+              if($projection->getIdCinema()==$idCinema)
+              {
+                  $this->projectionList->Delete($projection->getIdProjection());
+              }
+          }
+
+          $this->cinemaList->Delete($idCinema);
+          $listCinema=$this->cinemaList->GetAll();
+          echo" <script>alert('deleted cinema');</script>" ;
+          include(VIEWS_PATH."cineviews.php");
+        }
        
  
      }
+
+     public function remove($verificacion=null)
+     {
+       $user=$this->userControllers->checkSession();
+       
+       if($verificacion=='no')
+       {
+         $listCines=$this->cineRepo->GetAll();
+         include(VIEWS_PATH."cineviews.php");
+       }
+       else 
+       {
+         $idCine=$verificacion;
+         $listCinema=$this->cinemaList->GetAll();
+         $projectionL=$this->projectionList->GetAll();
+         foreach($listCinema as $cinema)
+         {
+             if($cinema->getIdCine()==$idCine)
+             {
+                 $this->cinemaList->Delete($cinema->getIdCinema());
+             }
+         }
+         foreach($projectionL as $projection)
+         {
+             if($projection->getIdCine()==$idCine)
+             {
+                 $this->projectionList->Delete($projection->getIdProjection());
+             }
+         }
+         $this->cineRepo->Delete($idCine);
+         $listCines=$this->cineRepo->GetAll();
+         echo" <script>alert('deleted cine');</script>" ;
+         include(VIEWS_PATH."cineviews.php");
+       }
+         
  }
 ?>
