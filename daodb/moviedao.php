@@ -33,7 +33,7 @@ class MovieDao
         $movie->setRelease_date($indice['release_date']);
         array_push($this->movieList, $movie);
 
-}
+    }
 
 }
 ?>

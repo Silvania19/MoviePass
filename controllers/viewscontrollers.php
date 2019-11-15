@@ -33,8 +33,9 @@ class viewscontrollers
         
        if($user)
         {
-        
-         include(VIEWS_PATH."home2.php");
+        $projections=$this->listProjection->GetAll();
+        $movies=$this->listMovie->GetAll();
+        include(VIEWS_PATH."home2.php");
         }
         else
        {
