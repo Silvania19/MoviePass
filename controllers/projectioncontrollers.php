@@ -32,17 +32,39 @@ class ProjectionControllers
  }
  public function addparte2($datos=null)
  {
-  $array=explode("-", $datos);
+  $array=explode("+", $datos);
   $control2=1;
   $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
   include(VIEWS_PATH."carteleraviews.php");
  }
- public function addProjection($datos=null, $date=null, $hour=null)
+ public function addparte3($datos=null, $date=null)
  {
   
-  $array=explode("-", $datos);
+  $array=explode("+", $datos);
+  $control3=1;
+  $projection=$this->listProjection->SearchXMovieXCineXDate($array['0'], $array['1'], $date);
+
+
+  if($projection)
+  {
+    $listCinema2=$this->listCinema->Search($projection->getIdCinema()); 
+  }
+  else
+  {
+    $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
+     $datos=$datos."+".$date;
+     include(VIEWS_PATH."carteleraviews.php");
+  }
+ 
+ }
+ public function addProjection($datos=null, $hour=null, $idCinema)
+ {
+  
+  $array=explode("+", $datos);
+ 
   $idMovie=$array['0'];
   $idCine=$array['1'];
+  $date=$array['2'];
   $veri=0;
   $duration=0;
   $cartelera=$this->listProjection->GetAll();
@@ -66,14 +88,14 @@ class ProjectionControllers
   }
   else
   {
-      foreach($movies as $movie)
+     /* foreach($movies as $movie)
       {
         if($movie->getIdMovie()=$idMovie)
         {
             $duration=$hour+$movie->getDuration();
         }
-      }
-      $projection= new projection($date, $hour, $idCine, $idMovie);
+      }*/
+      $projection= new projection($date, $hour, $idCine, $idMovie, $idCinema, $duration);
       $this->listProjection->Add($projection);
        echo" <script>alert('added projection');</script>" ;
        include(VIEWS_PATH."carteleraviews.php");
