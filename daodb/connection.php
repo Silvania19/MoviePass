@@ -42,7 +42,7 @@
                     // Reemplazo los marcadores de parametro por los valores reales utilizando el método bindParam().
                     $this->pdoStatement->bindParam(":".$parameterName, $value);
                }
-  var_dump($this->pdoStatement);
+ 
                $this->pdoStatement->execute();
 
                return $this->pdoStatement->fetchAll();
