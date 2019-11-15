@@ -1,12 +1,28 @@
 <?php include(VIEWS_PATH."header.php");
-      include(VIEWS_PATH."nav.php");
-if(!isset($control)&& !isset($control2))
+     
+if(!isset($control)&& !isset($control2)&& !isset($control3))
 {
 
 
 ?>
 
+<nav class="navbar navbar-expand-sm bg-danger">
+    <a href=""class="navbar-brand "><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
+        <ul class="navbar-nav ml-auto">
+           
+             <li class ="nav-item  ">
+                <div class="dropdown">
+                   <button type="button" class="btn btn-primary dropdown-toggle"  data-toggle="dropdown">USUARIO</button>
+                    <div class="dropdown-menu">
+                     <a href="" class="dropdown-item"><?php echo $_SESSION['user']->getName();?></a>
+                     <a href="<?php echo FRONT_ROOT;?>/views/user" class="dropdown-item">Ver Perfil</a>
+                     <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="dropdown-item">Salir</a>
+               </div>
+               </div>
+             </li>
 
+        </ul>
+    </nav>
    <div class="col" style="border:1px solid gray;">
        
                    <table class="table-striped">
@@ -54,7 +70,7 @@ if(!isset($control)&& !isset($control2))
                                                        <td> <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded"></td>
                                                        <td>
                                                     <form action="<?php echo FRONT_ROOT;?>/projection/addparte2" method="post">
-                                                       <input type="checkbox" name="datos" id="" value="<?php echo   $movie->getIdMovie()."-".$cine->getIdCine();?>">
+                                                       <input type="checkbox" name="datos" id="" value="<?php echo   $movie->getIdMovie()."+".$cine->getIdCine();?>">
                                                        <input type="submit" value="Agregar funcion">
                                                     </form>
                                                    </td>
@@ -101,7 +117,7 @@ if(!isset($control)&& !isset($control2))
 </div>
 <?php
 }
-if(isset($control)&& !isset($control2))
+if(isset($control)&& !isset($control2) && !isset($control3))
 {
     
 
@@ -141,7 +157,7 @@ if(isset($control)&& !isset($control2))
   <br>
   <form action="<?php echo FRONT_ROOT; ?>/projection/addparte2" method="post">
   <h3>Title: <input type="submit" value=" <?php echo $movie->getTitle(); ?> ">
-  <input type="checkbox" name="datos" id="" value="<?php echo $movie->getIdMovie()."-".$idCine;?>">
+  <input type="checkbox" name="datos" id="" value="<?php echo $movie->getIdMovie()."+".$idCine;?>">
  </h3>
   </form>
   <p>Original Title: <?php echo $movie->getOriginal_title(); ?> </p>
@@ -167,6 +183,7 @@ if(isset($control)&& !isset($control2))
   }  ?> </p>
   <p>Popularity: <?php echo $movie->getPopularity(); ?> </p>
   <p>Vote Count: <?php echo $movie->getVote_count(); ?> </p>
+  <p>dATES: <?php echo $movie->getDates(); ?></p>
   <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded">
     
 
@@ -220,32 +237,53 @@ if(isset($control)&& !isset($control2))
  
 <?php
 }
-if(!isset($control)&& isset($control2))
+if(!isset($control)&& isset($control2) && !isset($control3))
 {
 ?>
+    <form class="form-control"action="<?php echo FRONT_ROOT;?>/projection/addparte3" method="post">
+        <h3> COMPLE</h3>
+        <label for="datos">confirmar</label>
+        <input type="checkbox" name="datos" value="<?php echo $datos; ?>" id=""><br>
+        <label for="date">Fecha</label>
+        <input type="date" name="date">
+        <input type="submit" value="enviar">
+    </form>
+<?php
+}
+?>
+<?php 
+  if(!isset($control1)&& !isset($control2) && isset($control3))
+  {
+
+?>
     <form class="form-control"action="<?php echo FRONT_ROOT;?>/projection/addProjection" method="post">
-    <h3> COMPLE</h3>
-    <label for="datos">confirmar</label>
-    <input type="checkbox" name="datos" value="<?php echo $datos; ?>" id=""><br>
-    <label for="date">Fecha</label>
-    <input type="date" name="date" id=""><br>
-    <label for="hour">Hora</label>
-    <input type="time" name="hour" id="">
-    <label for="hour">Sala</label>
-    <select name="idSala" id="">
-    <?php 
-    if(is_array($listCinemas2)){
-     foreach($listCinemas2 as $cinema)
-     {?>
-     <option value="<?php echo $cinema->getIdCinema();?>"><?php echo $cinema->getnameCinema();?></option>
-    <?php
-     }}
-     if(is_object($listCinemas2)){?>
-      <option value="<?php echo $listCinemas2->getIdCinema();?>">"<?php echo $listCinemas2->getnameCinema();?></option>
-   <?php  }
-    ?>
-    </select><br>
-   
+        <h3> COMPLE</h3>
+        <label for="datos">confirmar</label>
+        <input type="checkbox" name="datos" value="<?php echo $datos; ?>" id=""><br>
+        <label for="hour">Hora</label>
+        <input type="time" name="hour" id="">
+        <label for="hour">Sala</label>
+        <select name="idCinema" id="">
+      
+
+            <?php 
+              if(is_array($listCinemas2))
+              {
+                  foreach($listCinemas2 as $cinema)
+                  {
+            ?>
+                      <option value="<?php echo $cinema->getIdCinema();?>"><?php echo $cinema->getnameCinema();?></option>
+                  <?php
+                  }
+              }
+                    if(is_object($listCinemas2))
+                    {
+                  ?>
+                      <option value="<?php echo $listCinemas2->getIdCinema();?>">"<?php echo $listCinemas2->getnameCinema();?></option>
+                  <?php  
+                  }
+                  ?>
+        </select><br>
     <input type="submit" value="enviar">
     </form>
     

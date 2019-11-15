@@ -1,10 +1,6 @@
 
 <?php include(VIEWS_PATH."header.php");?>
 
-
-
-
-
 <div class="modal fade" id="remove-user"tabindex="-1" role="dialog" aria-labelledby="eliminar" aria-hidden="true" >
 
 <form  class="group-form" action="<?php echo FRONT_ROOT;?>/user/deleteUser" method="POST">
