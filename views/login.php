@@ -41,7 +41,7 @@
     <div class="modal-dialog" role="document" >
         <form class="modal-content " action="<?php echo FRONT_ROOT;?>/user/signUp" method="POST">
             <div class="modal-header">
-                <h2 class="modal-title">Sign up</h2>
+                <h2 class="modal-title">Registrarse</h2>
            
                  <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
             </div>
@@ -63,9 +63,3 @@
 <?php include(VIEWS_PATH."footer.php")?>
 
 
-<div class="modal-header">
-                    <h5 class="modal-title">Registrar usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
