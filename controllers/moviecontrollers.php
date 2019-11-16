@@ -20,19 +20,36 @@ class MovieControllers
            $listGenres2=$this->listGenres->GetAll(); 
            include(VIEWS_PATH."movieviews.php");
     } 
-    public function filterGenre($idGenre=null)
+
+    public function filterGenres($movies, $idGenre)
     {
-        $listGenres2=$this->listGenres->GetAll(); 
+        $retorno=array();
+        foreach($movies as $movie)
+        {
+            $arrayG=$movie->getGenre_ids();
+            foreach($arrayG as $genre)
+            {
+                if($genre == $idGenre)
+                {
+                    array_push($retorno, $movie);
+                }
+            }
+        }
+            return $retorno;
+    }
+    public function filterDate($movies, $date)
+    {
+        $retorno=array();
+        foreach($this->movieList as $movie)
+        {
+            if($date == $movie->getRelease_date())
+            {
+                array_push($retorno, $movie);
+            }
+        }
+            return $retorno;
+    }
         
-        $filter=$this->listMovie->filterGenres($idGenre);
-        include(VIEWS_PATH."movieviews.php");
-    } 
-    public function filterDate($date=null)
-       {
-           $listGenres2=$this->listGenres->GetAll(); 
-           $filter=$this->listMovie-> filterDate($date);
-           include(VIEWS_PATH."movieviews.php");
-       }
     
     
 }
