@@ -31,8 +31,12 @@ class viewscontrollers
     }
     public function index()
     {
-      
-      $user = $this->usercontroller->checkSession();
+       
+      $cines=$this->listCine->GetAll();
+      $cartelera=$this->listProjection->GetAllActuales();
+      $movies=$this->listMovie->GetAll();
+      include(VIEWS_PATH."cartelerauser.php");
+      /*$user = $this->usercontroller->checkSession();
         
        if($user)
         {
@@ -46,7 +50,7 @@ class viewscontrollers
        {
         include(VIEWS_PATH."home.php");
        }
-       
+       */
       
     }
     public function deleteSession()
@@ -103,7 +107,7 @@ class viewscontrollers
     public function cartelerauser()
     {
       $cines=$this->listCine->GetAll();
-      $cartelera=$this->listProjection->GetAll();
+      $cartelera=$this->listProjection->GetAllActuales();
       $movies=$this->listMovie->GetAll();
       include(VIEWS_PATH."cartelerauser.php");
     }
