@@ -43,38 +43,20 @@
             }
           
         }
-        
-        public function filterGenres($idGenre)
+        public function Search($idMovie)
         {
-            $this->retrieveData();
-            $retorno=array();
-            foreach($this->movieList as $movie)
+            $movies=$this->GetAll();
+            $movieReto=null;
+            foreach($movies as $movie)
             {
-                $arrayG=$movie->getGenre_ids();
-                foreach($arrayG as $genre)
+                if($movie->getIdMovie()==$idMovie)
                 {
-                    if($genre == $idGenre)
-                    {
-                        array_push($retorno, $movie);
-                    }
+                    $movieReto=$movie;
                 }
             }
-            return $retorno;
+            return $movieReto;
         }
-        public function filterDate($date)
-        {
-            $this->retrieveData();
-            $retorno=array();
-            foreach($this->movieList as $movie)
-            {
-                
-                    if($date == $movie->getRelease_date())
-                    {
-                        array_push($retorno, $movie);
-                    }
-            }
-            return $retorno;
-        }
+
         
 
 

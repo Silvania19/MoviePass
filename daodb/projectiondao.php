@@ -161,9 +161,9 @@ public function SearchXCine($objeto)
       return  false;
   }
 }
-public function SearchXMovie($idMovie, $idCine)
+public function SearchXMovie($idMovie)
 {
-  $sql="SELECT * FROM projections where idMovie=:idMovie";   
+  $sql="SELECT * FROM projections as p where idMovie=:idMovie and year(p.date)>=year(now()) and month(p.date)>=month(now()) and day(p.date)>day(now()) union select* from projections as p where year(p.date)=year(now()) and month(p.date)=month(now()) and day(p.date)=day(now()) and hour(p.hour) > hour(now());";   
   $parameters['idMovie']=$idMovie;
  
   try {
