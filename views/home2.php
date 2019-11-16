@@ -71,15 +71,49 @@
         {
           foreach($movies as $movie)
           {
+      ?>
+            <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" alt= "<?php $movie->getTitle();?> " class="rounded"><br>
             
+            <form action="<?php echo FRONT_ROOT; ?>/projection/addparte2" method="post"><!--esta direccion esta mal ahi que mandarlo a un metodo de la cartelera que le muestre, solo
+            las funciones de la pelicula que se esta leyendo-->
+                 <h3>Title: <input type="submit" value=" <?php echo $movie->getTitle(); ?> ">
+                 <input type="checkbox" name="datos" id="" value="<?php echo $movie->getIdMovie()?>"><!-- creo que esta bien porque con el idDe la pelicula podriamos mostrar todas las funciones
+                 de esa pelicula en el futuro-->
+                 </h3>
+            </form>
+            <p>Original Title: <?php echo $movie->getOriginal_title(); ?> </p>
+            <p>Original lenguage: <?php echo $movie->getOriginal_lenguage(); ?> </p>
+            <p>Overview: <?php echo $movie->getOverview(); ?> </p>
+          
+            <p>Release date: <?php echo $movie->getRelease_date(); ?> </p>
+            <p>Genres : 
+                   <?php
+                            
+                      $arrayIdG= $movie->getGenre_ids();
+                      foreach ($arrayIdG as $genre)
+                      {
+                        foreach($listGenres2 as $valor)
+                        {
+                         if($valor->getIdGenres() == $genre)
+                         {
+                             echo $valor->getNameGenres();
+                         }
+                         
+                        }
+                      
+          
+                    
+                       } 
+                   ?>
+             </p>
+            <p>Popularity: <?php echo $movie->getPopularity(); ?> </p>
+            <p>Vote Count: <?php echo $movie->getVote_count(); ?> </p>
+            
+            <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded">
+           <?php
           }
         }
-
-      ?>
-
-
-    <?php
      }
-    ?>
+           ?>
   
 <?php include(VIEWS_PATH."footer.php");?>
