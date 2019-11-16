@@ -183,7 +183,7 @@ if(isset($control)&& !isset($control2) && !isset($control3))
   }  ?> </p>
   <p>Popularity: <?php echo $movie->getPopularity(); ?> </p>
   <p>Vote Count: <?php echo $movie->getVote_count(); ?> </p>
-  <p>dATES: <?php echo $movie->getDates(); ?></p>
+  
   <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded">
     
 
