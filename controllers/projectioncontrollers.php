@@ -6,6 +6,7 @@ use daosjson\MovieDao as movieD;
 use daosjson\GenresDao as genreD;
 use daodb\CineDao as cineD;
 use daodb\CinemaDao as cinemaD;
+use controllers\MovieControllers as movieC;
 class ProjectionControllers
 {
    private $listMovie;
@@ -13,6 +14,7 @@ class ProjectionControllers
    private $listProjection;
    private $listCine;
    private $listCinema;
+   private $movieContro;
   public function __construct()
   {
      $this->listMovie=new movieD();
@@ -20,13 +22,22 @@ class ProjectionControllers
      $this->listProjection=new projectionD();
      $this->listCine=new cineD();
      $this->listCinema=new cinemaD();
+     $this->movieContro= new movieC();
   }
  public function addparte1($idCine=null)
  {
   
    $control=1;
    $listProjection2=$this->listProjection->GetAll();
-   $listMovie2=$this->listMovie->GetAll();
+   $movies=$this->listMovie->GetAll();
+   $listMovies2= array();
+   foreach($movies as $movie)
+   {
+     if($this->exist($movie->getIdMovie(), $idCine)==false)
+     {
+       array_push($listMovies2, $movie);
+     }
+   }
    $listGenres2=$this->listGenre->GetAll();
    include(VIEWS_PATH."carteleraviews.php");
  }
@@ -121,6 +132,7 @@ class ProjectionControllers
    
       $projections= $this->listProjection->SearchXCine($idCine);
       $retorno=false;
+      $movies=array();
       if($projections !=false){
       if(is_array($projections))
       {
@@ -130,8 +142,7 @@ class ProjectionControllers
          
             if($value->getIdMovie()==$idMovie) 
              {
-               
-              $retorno= true;
+               $retorno= true;
              }
 
         }
@@ -152,6 +163,30 @@ class ProjectionControllers
     }
     return $retorno;
   }
+
+   public function filterGenre($datos)
+ {
+   $array=explode("+", $datos);
+   $idGenre=$array['0'];
+   $idCine=$array['1'];
+   $control=1;
+   $listProjection2=$this->listProjection->GetAll();
+   $movies=$this->listMovie->GetAll();
+   $listMovies2= array();
+   foreach($movies as $movie)
+   {
+     if($this->exist($movie->getIdMovie(), $idCine)==false)
+     {
+       array_push($listMovies2, $movie);
+     }
+   }
+   if(empty($listMovies2))
+   {
+     $filter=$this->movieContro->filterGenres($listMovies2, $idGenre);
+   }
+   $listGenres2=$this->listGenre->GetAll();
+   include(VIEWS_PATH."carteleraviews.php");
+ }
 
 }
 
