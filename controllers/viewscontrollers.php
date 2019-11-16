@@ -38,6 +38,7 @@ class viewscontrollers
         {
       
         $movies=$this->SeeMovies();
+       
         $listGenres2=$this->listGenre->GetAll();
         include(VIEWS_PATH."home2.php");
         }
@@ -94,6 +95,7 @@ class viewscontrollers
     { 
       $cines=$this->listCine->GetAll();
       $cartelera=$this->listProjection->GetAllActuales();
+      
       $movies=$this->listMovie->GetAll();
       include(VIEWS_PATH."carteleraviews.php");
 
@@ -110,9 +112,10 @@ class viewscontrollers
     {
       
       $movies=$this->listMovie->GetAll();
+      
       $resulMovie=array();
-      if(isset($movies))
-      {
+      if(!empty($movies))
+      {  
         foreach($movies as $movie)
         {
           if($this->listProjection->SearchXMovie($movie->getIdMovie()))
@@ -122,7 +125,9 @@ class viewscontrollers
           }
         }
       }
+      
       return $resulMovie;
+
     }
 
 }
