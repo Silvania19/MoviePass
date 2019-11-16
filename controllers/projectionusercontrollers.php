@@ -24,6 +24,7 @@
             $this->listCinema=new cinemaD();
             $this->movieContro= new movieC();
         }
+        
 
 
     }
