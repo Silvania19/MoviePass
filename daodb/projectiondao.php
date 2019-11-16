@@ -31,6 +31,28 @@ class ProjectionDao implements Idaos
             return false;
         }
     }
+    public function GetAllActuales()
+    {
+
+
+        
+        $sql="SELECT * FROM projections  as p where year(p.date)>=year(now()) and month(p.date)>=month(now()) and day(p.date)>day(now()) union select* from projections as p where year(p.date)=year(now()) and month(p.date)=month(now()) and day(p.date)=day(now()) and hour(p.hour) > hour(now());";
+        try {
+            $this->connection = Connection::getInstance();
+            $listProjection = $this->connection->execute($sql);  
+           
+        } catch (\PDOException  $ex) {
+            throw $ex;
+        }
+        if (!empty($listProjection))
+        {
+            return $this->mapear($listProjection);
+          
+        }
+        else{
+            return false;
+        }
+    }
     public function Add($objeto)
     {
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
@@ -141,9 +163,9 @@ public function SearchXCine($objeto)
 }
 public function SearchXMovie($idMovie, $idCine)
 {
-  $sql="SELECT * FROM projections where idMovie=:idMovie and idCine=:idCine";   
+  $sql="SELECT * FROM projections where idMovie=:idMovie";   
   $parameters['idMovie']=$idMovie;
-  $parameters['idCine']=$idCine;
+ 
   try {
       $this->connection = Connection:: getInstance();
       $resul=$this->connection->execute($sql, $parameters);
