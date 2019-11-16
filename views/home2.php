@@ -67,7 +67,7 @@
         </ul>
        </nav>
       <?php 
-        if(isset($movies))
+        if(!empty($movies))
         {
           foreach($movies as $movie)
           {
