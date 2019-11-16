@@ -10,7 +10,9 @@
         <ul class="navbar-nav ml-auto">
               
               
-      
+          <li class ="nav-item">
+            <a href="<?php echo FRONT_ROOT;?>/movie/seeListMovie" class="nav-link " >PELICULAS</a>
+          </li>
           <li class ="nav-item">
             <a href="<?php echo FRONT_ROOT;?>/views/cine" class="nav-link " >CINES</a>
           </li>
@@ -30,7 +32,6 @@
                   
         </ul>
        </nav>
-       <?php include(VIEWS_PATH."cartelerauser.php");?>
     <?php 
      } 
      
@@ -65,6 +66,17 @@
                   
         </ul>
        </nav>
+      <?php 
+        if(isset($movies))
+        {
+          foreach($movies as $movie)
+          {
+            
+          }
+        }
+
+      ?>
+
 
     <?php
      }
