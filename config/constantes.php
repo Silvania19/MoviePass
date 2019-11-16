@@ -11,5 +11,6 @@
  define ("DB_NAME", "MoviePass");
  define ("DB_USER", "root");
  define ("DB_PASS", "");
+ define('DIR_QR', 'temp/');
  ?>
  
