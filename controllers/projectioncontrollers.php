@@ -85,16 +85,24 @@ class ProjectionControllers
   $cines=$this->listCine->GetAll();
   $movies=$this->listMovie->GetAll();
  
-  
-  foreach($cartelera as $projection)
+  if(is_array($cartelera))
   {
-    if($projection->getDate()==$date && $projection->getIdMovie()==$idMovie){
+    foreach($cartelera as $projection)
+    {
+      if($projection->getDate()==$date && $projection->getIdMovie()==$idMovie){
 
+        $veri=1;
+      }
+    }
+  }
+  if(is_object($cartelera))
+  {
+    if($cartelera->getDate()==$date && $cartelera->getIdMovie()==$idMovie)
+    {
       $veri=1;
+    }
   }
-  
-      
-  }
+ 
   if($veri==1)
   {
     echo" <script>alert('no se puede agregar en este fecha. Verifique que la fecha ingresada no sea igual a la de otro de cine');</script>" ;
@@ -110,7 +118,7 @@ class ProjectionControllers
         }
       }*/
       $projection= new projection($date, $hour, $idCine, $idMovie, $idCinema, $duration);
-      $this->listProjection->Add($projection);
+       $this->listProjection->Add($projection);
        echo" <script>alert('added projection');</script>" ;
        include(VIEWS_PATH."carteleraviews.php");
     
@@ -164,15 +172,13 @@ class ProjectionControllers
     return $retorno;
   }
 
-   public function filterGenre($datos)
+   public function filterGenre($idCine=null, $idGenre)
  {
-   $array=explode("+", $datos);
-   $idGenre=$array['0'];
-   $idCine=$array['1'];
    $control=1;
    $listProjection2=$this->listProjection->GetAll();
    $movies=$this->listMovie->GetAll();
    $listMovies2= array();
+   $filter=array();
    foreach($movies as $movie)
    {
      if($this->exist($movie->getIdMovie(), $idCine)==false)
@@ -180,13 +186,48 @@ class ProjectionControllers
        array_push($listMovies2, $movie);
      }
    }
-   if(empty($listMovies2))
+   
+   if(!empty($listMovies2))
    {
      $filter=$this->movieContro->filterGenres($listMovies2, $idGenre);
-   }
+     
+    }
+    $listMovies2=array();
+   
    $listGenres2=$this->listGenre->GetAll();
    include(VIEWS_PATH."carteleraviews.php");
  }
+ public function filterDate($idCine=null,  $date=null)
+ {
+  $control=1;
+   $listProjection2=$this->listProjection->GetAll();
+   $movies=$this->listMovie->GetAll();
+   $listMovies2= array();
+   $filter=array();
+   foreach($movies as $movie)
+   {
+     if($this->exist($movie->getIdMovie(), $idCine)==false)
+     {
+       array_push($listMovies2, $movie);
+     }
+   }
+   
+   if(!empty($listMovies2))
+   {
+     $filter=$this->movieContro->filterDate($listMovies2, $date);
+     
+    }
+    $listMovies2=array();
+   
+       $listGenres2=$this->listGenre->GetAll();
+       include(VIEWS_PATH."carteleraviews.php");
+    
+  
+   
+   
+  
+ }
+
 
 }
 
