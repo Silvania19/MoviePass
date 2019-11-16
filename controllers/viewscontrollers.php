@@ -89,7 +89,7 @@ class viewscontrollers
     public function cartelera()
     { 
       $cines=$this->listCine->GetAll();
-      $cartelera=$this->listProjection->GetAll();
+      $cartelera=$this->listProjection->GetAllActuales();
       $movies=$this->listMovie->GetAll();
       include(VIEWS_PATH."carteleraviews.php");
 
@@ -100,6 +100,25 @@ class viewscontrollers
       $cartelera=$this->listProjection->GetAll();
       $movies=$this->listMovie->GetAll();
       include(VIEWS_PATH."cartelerauser.php");
+    }
+
+    public function SeeMovies()
+    {
+      
+      $movies=$this->listMovie->GetAll();
+      $resulMovie=array();
+      if(isset($movies))
+      {
+        foreach($movies as $movie)
+        {
+          if($this->listProjection->SearchXMovie($movie->getIdMovie()))
+          {
+            
+              array_push($resulMovie, $movie);
+          }
+        }
+      }
+      return $resulMovie;
     }
 
 }
