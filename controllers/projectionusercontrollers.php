@@ -28,7 +28,7 @@
             $this->userContro= new userC();
         }
 
-        public function filterGenre($idCine=null, $idGenre=null)
+        public function filterGenre($idGenre=null)
         {
            $user=$this->userContro->checkSession();
             $movies=$this->moviesProjections();
@@ -51,6 +51,40 @@
             $listGenres2=$this->listGenre->GetAll();
             include(VIEWS_PATH."home2.php");
         }
+        public function filterDateProjection($date=null)
+        {
+            $user=$this->userContro->checkSession();
+            $projections=$this->listProjection->getAllActuales();
+           
+            $filter=array();
+            if(!empty($projections))
+            { 
+                if(is_array($projections))
+                {
+                    foreach($projections as $pro)
+                    {
+                        
+                        if($pro->getDate()==$date)
+                        {
+                          $movie=$this->listMovie->Search($pro->getIdMovie());
+                          array_push($filter, $movie);
+                        }
+                    }
+                }
+                if(is_object($projections))
+                {
+                    if($projections->getDate()==$date)
+                        {
+                          $movie=$this->listMovie->Search($projections->getIdMovie());
+                          array_push($filter, $movie);
+                        }
+                }
+             
+             $listGenres2=$this->listGenre->GetAll();
+            
+             include(VIEWS_PATH."home2.php");
+            }
+        }   
         public function moviesProjections()
         {
           
