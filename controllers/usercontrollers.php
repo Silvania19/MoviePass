@@ -4,16 +4,20 @@ use models\User as User;
 use daodb\UserDao as userD;
 use daodb\ProjectionDao as projectionD;
 use daosjson\MovieDao as movieD;
+use daosjson\GenresDao as genreD;
 class UserControllers
 {
 private $daoUser;//en esta variable tiene una instancia de la clase Dao user, 
 private $listMovie;
 private $listProjection;
+private $listGenre;
 public function __construct()
 {
     $this->daoUser = new userD();
     $this->listMovie= new movieD();
     $this->listProjection= new projectionD();
+    $this->listGenre= new genreD();
+
 }
 public function login($email = null, $password = null)
 {  
@@ -25,8 +29,8 @@ public function login($email = null, $password = null)
         if($user->getPassword()==$password)
         {
             $_SESSION['user']=$user;
-            $projections=$this->listProjection->GetAll();
-            $movies=$this->listMovie->GetAll();
+            $movies=$this->SeeMovies();
+            $listGenres2=$this->listGenre->GetAll();
             include(VIEWS_PATH."home2.php");
         }
         else
@@ -102,5 +106,24 @@ public function checkSession ()
         return false;
       }
 }
+public function SeeMovies()
+{
+  
+  $movies=$this->listMovie->GetAll();
+  $resulMovie=array();
+  if(isset($movies))
+  {
+    foreach($movies as $movie)
+    {
+      if($this->listProjection->SearchXMovie($movie->getIdMovie()))
+      {
+        
+          array_push($resulMovie, $movie);
+      }
+    }
+  }
+  return $resulMovie;
+}
+
 
 }
