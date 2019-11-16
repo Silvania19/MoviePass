@@ -69,13 +69,12 @@
 
           <form action="<?php echo FRONT_ROOT;?>/projectionuser/filterGenre" method="POST">
             Filtar por genero
-            <input type="checkbox" name="idCine" value= "<?php echo $idCine;?>"id="">
-            <select name="idGenre" >
+             <select name="idGenre" >
               <?php
                 foreach($listGenres2 as $valor)
                 {
               ?>
-              <option value=<?php echo $valor->getIdGenres();?>><?php echo $valor->getNameGenres(); ?></option>
+                <option value=<?php echo $valor->getIdGenres();?>><?php echo $valor->getNameGenres(); ?></option>
                <?php    
                 } 
                 ?>
@@ -84,7 +83,6 @@
           </form>
           <form action="<?php echo FRONT_ROOT;?>/projectionuser/filterDateProjection" method="POST">
             Filtar por fecha
-            <input type="checkbox" name="idCine" value="<?php echo $idCine; ?>" id="">
             <input type="date" name="date"  id="">
             <button type="submit" class="btn btn-dark"> buscar </button>
           </form> <br>
