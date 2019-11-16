@@ -24,6 +24,7 @@ class MovieControllers
     public function filterGenres($movies, $idGenre)
     {
         $retorno=array();
+        
         foreach($movies as $movie)
         {
             $arrayG=$movie->getGenre_ids();
@@ -35,12 +36,13 @@ class MovieControllers
                 }
             }
         }
-            return $retorno;
+        
+        return $retorno;
     }
     public function filterDate($movies, $date)
     {
         $retorno=array();
-        foreach($this->movieList as $movie)
+        foreach($movies as $movie)
         {
             if($date == $movie->getRelease_date())
             {
