@@ -42,7 +42,10 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
                       </td>
               </tr>
               <tr>
-                <?php  
+                <?php 
+                 if(is_array($cartelera))
+                 {
+                   
                    foreach($cartelera as $projection)
                      {
                        if($projection->getIdCine()==$cine->getIdCine()) 
@@ -81,12 +84,56 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
                                   </form>
                                 </td>    
                               </tr>
-      <?php
-       }
-                     } ?>
-                            
-                            <?php 
-                                 }
+             <?php
+                          }
+                         } 
+                        }
+                        if(is_object($cartelera))
+                        {
+                          if($cartelera->getIdCine()==$cine->getIdCine())
+                          {
+                            foreach($movies as $movie)
+                            {
+                              if($cartelera->getIdMovie()==$movie->getIdMovie())
+                              {
+                             
+              ?>              
+                                 <td><?php echo $movie->getTitle(); ?></td>
+                                <td> <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded"></td>
+                                 <td>
+                                    <form action="<?php echo FRONT_ROOT;?>/projection/addparte2" method="post">
+                                      <input type="checkbox" name="datos" id="" value="<?php echo   $movie->getIdMovie()."+".$cine->getIdCine();?>">
+                                      <input type="submit" value="Agregar funcion">
+                                    </form>
+                                   </td>
+                                <?php
+                              } 
+                          }
+                                ?>
+                          </tr>
+                          <tr>
+                              <td>Fecha: </td>
+                                <td><?php echo $cartelera->getDate();?> </td>
+                            </tr>
+                            <tr>
+                              <td>Horario: </td>
+                              <td><?php echo $cartelera->getHour();?> </td>
+                            </tr>
+                            <tr>
+                                <td>  
+                                  <form action="<?php echo FRONT_ROOT;?>/projection/delete" method="post">
+                                    <input type="checkbox" name="idProjection" id="" value="<?php echo $cartelera->getIdProjection(); ?>">
+                                      <input type="submit" value="eliminar">
+                                  </form>
+                                </td>    
+                              </tr> 
+                 <?php    
+                              }
+                            }
+                          }
+                        
+              
+                      
                             ?>
                               </tr>  
                    </table>
@@ -97,23 +144,26 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
   {
 ?>
     <form action="<?php echo FRONT_ROOT;?>/projection/filterGenre" method="POST">
-      Filtar por genero <br>
-      <select name="datos" >
+      Filtar por genero
+      <input type="checkbox" name="idCine" value= "<?php echo $idCine;?>"id="">
+      <select name="idGenre" >
         <?php
           foreach($listGenres2 as $valor)
           {
         ?>
-            <option value=<?php echo $valor->getIdGenres().'+'.$idCine;?>><?php echo $valor->getNameGenres(); ?></option>
+            <option value=<?php echo $valor->getIdGenres();?>><?php echo $valor->getNameGenres(); ?></option>
         <?php    
           } 
         ?>
       </select>
-      <button type="submit" class="btn btn-dark"  > search </button>
+      <button type="submit" class="btn btn-dark"  > buscar </button>
      </form>
      <form action="<?php echo FRONT_ROOT;?>/projection/filterDate" method="POST">
-         Filtar por fecha <br>
-        <input type="date" name="date" id="">
-        <button type="submit" class="btn btn-dark"> search </button>
+         Filtar por fecha
+        <input type="checkbox" name="idCine" value="<?php echo $idCine; ?>" id="">
+        <input type="date" name="date"  id="">
+
+        <button type="submit" class="btn btn-dark"> buscar </button>
       </form> <br>
 <?php
  if(!empty($listMovies2))
@@ -134,8 +184,8 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
       <p>Original lenguage: <?php echo $movie->getOriginal_lenguage(); ?> </p>
       <p>Overview: <?php echo $movie->getOverview(); ?> </p>
 
-  <p>Release date: <?php echo $movie->getRelease_date(); ?> </p>
-  <p>Genres : <?php
+      <p>Release date: <?php echo $movie->getRelease_date(); ?> </p>
+      <p>Genres : <?php
                   
             $arrayIdG= $movie->getGenre_ids();
             foreach ($arrayIdG as $genre) {
