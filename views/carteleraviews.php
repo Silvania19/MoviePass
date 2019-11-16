@@ -96,7 +96,7 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
   if(isset($control)&& !isset($control2) && !isset($control3))
   {
 ?>
-    <form action="<?php echo FRONT_ROOT;?>/projections/filterGenre" method="POST">
+    <form action="<?php echo FRONT_ROOT;?>/projection/filterGenre" method="POST">
       Filtar por genero <br>
       <select name="datos" >
         <?php
@@ -110,7 +110,7 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
       </select>
       <button type="submit" class="btn btn-dark"  > search </button>
      </form>
-     <form action="<?php echo FRONT_ROOT;?>/projections/filterDate" method="POST">
+     <form action="<?php echo FRONT_ROOT;?>/projection/filterDate" method="POST">
          Filtar por fecha <br>
         <input type="date" name="date" id="">
         <button type="submit" class="btn btn-dark"> search </button>
