@@ -131,7 +131,7 @@
                              <td><?php echo $cine->getAddress();?></td>
                          
                             <td>
-                            <form action="<?php echo FRONT_ROOT;?>/cine/remove" method="post">
+                            <form action="<?php echo FRONT_ROOT;?>/projectionuser/carteleraXMovies" method="post">
                               <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
                               <input type="submit" value="verCartera">
                             </form>
