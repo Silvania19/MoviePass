@@ -112,7 +112,7 @@
                         {
                     ?>
                             <tr>
-                                Aun no fueron cargadas salsa, por favor agreguelas
+                                Aun no fueron cargadas salas, por favor agreguelas
                             </tr>
                     <?php
                         }
