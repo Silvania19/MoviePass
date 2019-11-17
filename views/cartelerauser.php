@@ -20,8 +20,6 @@
 
 
 
-/////////////////////////////
-
 <div class="col" style="border:1px solid gray;">
        
        <table class="table-striped">
