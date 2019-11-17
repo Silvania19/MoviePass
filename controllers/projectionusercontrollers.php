@@ -118,7 +118,7 @@
                 if(is_object($projection))
                 {
                     
-                   if( ($projections->getIdMovie()=$idMovie) && ($projection->getIdCine()==$cines->getIdCine())&& ($projection->getIdMovie()==$idMovie)
+                   if($projections->getIdMovie()==$idMovie && $projection->getIdCine()==$cines->getIdCine()&& $projection->getIdMovie()==$idMovie)
                    {
                     $movie=$this->listMovie->Search($movies->getIdMovie());
                     $cine=$this->listCine->Search($cines->getIdCine());

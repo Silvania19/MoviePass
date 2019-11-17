@@ -3,6 +3,7 @@
  use models\Cinema as cinema;
  use daodb\CinemaDao as cinemaD;
  use daodb\CineDao as cineD;
+ use daodb\ProjectionDao as projectionD;
  use controllers\UserControllers as userC;
  class CinemaControllers
  {
@@ -15,6 +16,7 @@
          $this->cinemaList= new cinemaD();
          $this->cineList= new cineD();
          $this->userControllers= new userC();
+         $this->projectionList= new projectionD();
      }
 
      public function add($nameCinema=null, $capacity=null, $price=null,  $idCine=null)
@@ -58,7 +60,7 @@
           }
 
           $this->cinemaList->Delete($idCinema);
-          $listCinema=$this->cinemaList->GetAll();
+          $listCines=$this->cineList->GetAll();
           echo" <script>alert('deleted cinema');</script>" ;
           include(VIEWS_PATH."cineviews.php");
         }
@@ -66,7 +68,7 @@
  
      }
 
-     public function remove($verificacion=null)
+   /*  public function remove($verificacion=null)
      {
        $user=$this->userControllers->checkSession();
        
@@ -100,5 +102,6 @@
          include(VIEWS_PATH."cineviews.php");
        }
          
- }
+    }*/
+}
 ?>
