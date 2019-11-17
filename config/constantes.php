@@ -16,5 +16,6 @@
  //$con->close();
  
 
+ define('DIR_QR', 'temp/');
  ?>
  
