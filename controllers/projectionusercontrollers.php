@@ -84,7 +84,53 @@
             
              include(VIEWS_PATH."home2.php");
             }
-        }   
+        } 
+        public function moviesxCines($idMovie=null)
+        {
+            
+            $user=$this->userContro->checkSession();
+            $projections=$this->listProjection->GetAllActuales();
+            $movies=$this->listMovie->GetAll();
+            $cines=$this->listCine->GetAll();
+           
+            if(!empty($projections))
+            {
+                if(is_array($projections))
+                {
+                   foreach($cines as $c)
+                   {
+                       foreach($projections as $proj)
+                       {
+                           foreach($movies as $mo)
+                           {
+                             
+                             if(($proj->getIdCine()==$c->getIdCine())&& ($proj->getIdMovie()==$idMovie)&&($mo->getIdMovie()==$idMovie))
+                             {
+                              $movie=$this->listMovie->Search($mo->getIdMovie());
+                              $cine=$this->listCine->Search($c->getIdCine());
+                              $proj=$this->listProjection->Search($proj->getIdProjection());
+                             
+                             }
+                           }
+                       }
+                   }
+                }
+                if(is_object($projection))
+                {
+                    
+                   if( ($projections->getIdMovie()=$idMovie) && ($projection->getIdCine()==$cines->getIdCine())&& ($projection->getIdMovie()==$idMovie)
+                   {
+                    $movie=$this->listMovie->Search($movies->getIdMovie());
+                    $cine=$this->listCine->Search($cines->getIdCine());
+                    $proj=$this->listProjection->Search($projections->getIdProjection());
+                   }
+                }
+                   include(VIEWS_PATH."cartelerauser.php");
+            }
+           
+
+  
+        }  
         public function moviesProjections()
         {
           
@@ -105,6 +151,32 @@
           
           return $resulMovie;
     
+        }
+        public function carteleraXMovies($idCine)
+        {
+            
+            $cines= $this->listCine->GetAll();
+            $projection=$this->listProjection->GetAllActuales();
+            if(!empty($cines))
+            {
+                 foreach ($cines as $c)
+                 {
+                     foreach ($projection as $p) 
+                     {
+                         if($c->getIdCine()==$idCine)
+                        { 
+                           if($p->getIdCine()==$idCine)
+                           {
+                            $cine=$this->listCines->Search($c->getIdCine());
+                            $projection=$this->listProjection->Search($p->getIdCine());
+                           }
+                        }
+                     }
+                    
+                
+                 }
+                 include(VIEWS_PATH."cartelerauser.php");
+            }
         }
 
     }
