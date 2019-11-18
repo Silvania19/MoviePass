@@ -30,10 +30,13 @@
                
                  <tr class="table-primary">
                <?php
-                
+               
+                if(!empty($cartelera))
+                {
+                   
                      foreach($cines as $cine)
                      { 
-                ?>     
+                ?>   
                         <td> Cine:    </td>
                         <td><?php echo $cine->getName();?></td>
                         <td>  
@@ -43,18 +46,21 @@
                   
                     <tr>
                          <?php  
+
                           foreach($cartelera as $projection)
                           {
-                           
+                          
                             if($projection->getIdCine()==$cine->getIdCine()) 
                             {
                           ?>
                             
                             <?php
+                           
                                foreach($movies as $movie)
                                {
+                                
                                    if($projection->getIdMovie()==$movie->getIdMovie())
-                                       { 
+                                       {  
                                          
 
                             ?>
@@ -88,10 +94,12 @@
                 
                 <?php 
                      }
+                
+                    }
                 ?>
                   
        </table>
 </div>
 
 
-<?php include(VIEWS_PATH."header.php");?>
+<?php include(VIEWS_PATH."footer.php");?>

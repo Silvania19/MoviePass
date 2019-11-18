@@ -76,4 +76,39 @@ class CineControllers
       }
         
     }
+     /*  public function remove($verificacion=null)
+     {
+       $user=$this->userControllers->checkSession();
+       
+       if($verificacion=='no')
+       {
+         $listCines=$this->cineRepo->GetAll();
+         include(VIEWS_PATH."cineviews.php");
+       }
+       else 
+       {
+         $idCine=$verificacion;
+         $listCinema=$this->cinemaList->GetAll();
+         $projectionL=$this->projectionList->GetAll();
+         foreach($listCinema as $cinema)
+         {
+             if($cinema->getIdCine()==$idCine)
+             {
+                 $this->cinemaList->Delete($cinema->getIdCinema());
+             }
+         }
+         foreach($projectionL as $projection)
+         {
+             if($projection->getIdCine()==$idCine)
+             {
+                 $this->projectionList->Delete($projection->getIdProjection());
+             }
+         }
+         $this->cineRepo->Delete($idCine);
+         $listCines=$this->cineRepo->GetAll();
+         echo" <script>alert('deleted cine');</script>" ;
+         include(VIEWS_PATH."cineviews.php");
+       }
+         
+    }*/
 }

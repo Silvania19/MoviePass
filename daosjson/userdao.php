@@ -14,7 +14,16 @@ class UserDao implements Idaos
 
     public function Update($objeto, $buscador)
     {
-         
+         $user=$this->Search($buscardor);
+         if(!empty($user))
+         {
+             $user->setName($objeto->getName());
+             $user->setLastName($objeto->getLastName());
+             $user->setDni($objeto->getDni());
+             $user->setPassword($objeto->getPassword());
+             $user->setEmail($objeto->getEmail());
+             $user->setIdRol($objeto->getIdRol());
+         }
     }
     public function GetAll(){
         $this->RetrieveData();
@@ -53,8 +62,8 @@ class UserDao implements Idaos
     public function Add($objeto){
         
         $this->RetrieveData();
-        $id=count($this->userList);
-        $objeto->setIdUser($id+1);
+        $id=$this->GetNextId();
+        $objeto->setIdUser($id);
         $newUser=$objeto;
         array_push($this->userList, $newUser);
 
@@ -74,6 +83,7 @@ class UserDao implements Idaos
             $valuesArray["email"] = $user->getEmail();
             $valuesArray["password"] = $user->getPassword();
             $valuesArray["idUser"] = $user->getIdUser();
+            $valuesArray["idRol"] = $user->getIdRol();
 
             array_push($arrayToEncode, $valuesArray);
         }
@@ -95,12 +105,24 @@ class UserDao implements Idaos
             foreach($arrayToDecode as $valuesArray)
             {
 
-                $user = new User($valuesArray["name"], $valuesArray["lastName"], $valuesArray["dni"], $valuesArray["email"], $valuesArray["password"], $valuesArray["idUser"]);
-                
+                $user = new User($valuesArray["name"], $valuesArray["lastName"], $valuesArray["dni"], $valuesArray["email"], $valuesArray["password"], $valuesArray["idRol"]);
+                $user->setIdUser($valuesArray['idUser']);
                 array_push($this->userList, $user);
  
             }
         }
+    }
+    
+    private function GetNextId()
+    {
+        $id = 0;
+        $this->RetrieveData();
+        foreach($this->userList as $user)
+        {
+            $id = ($user->getIdUser() > $id) ? $user->getIdUser() : $id;
+        }
+
+        return $id + 1;
     }
     //funcion para que devuelve si es que existe el 
     function GetJsonFilePath(){

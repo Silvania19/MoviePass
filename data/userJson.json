@@ -1,58 +1,21 @@
 [
+    
     {
-        "name": "jimena",
-        "lastName": null,
-        "dni": "12345467",
-        "email": "lajime@gmail",
-        "password": null,
-        "idUser": null
-    },
-    {
-        "name": "jimena",
-        "lastName": null,
-        "dni": "12345467",
-        "email": "lajime@gmail",
-        "password": null,
-        "idUser": null
-    },
-    {
-        "name": "jime",
-        "lastName": null,
-        "dni": "2345",
-        "email": "hola@hha.com",
-        "password": null,
-        "idUser": null
-    },
-    {
-        "name": "cati",
-        "lastName": null,
-        "dni": "5463728901",
-        "email": "Flor.juarez.50951@jsdhf.com",
-        "password": "tyuhg",
-        "idUser": null
-    },
-    {
-        "name": "cati",
-        "lastName": null,
-        "dni": "5463728901",
-        "email": "Flor.juarez.50951@jsdhf.com",
-        "password": "tyuhg",
-        "idUser": null
-    },
-    {
-        "name": "fede",
-        "lastName": "quer",
-        "dni": "813624",
-        "email": "akayo@gmm.com",
-        "password": "dgdfa",
-        "idUser": null
-    },
-    {
-        "name": "vcbc",
-        "lastName": "VNCN",
-        "dni": "BBDBDB",
+        "name": "florencia",
+        "lastName": "juarez",
+        "dni": "9138421",
         "email": "florencia.juarez.159@gmail.com",
-        "password": "",
-        "idUser": null
+        "password": "lafiori",
+        "idUser": 1,
+        "idRol": 2
+    },
+    {
+        "name": "luci",
+        "lastName": "juarez",
+        "dni": "9138421",
+        "email": "lalu@la",
+        "password": "lali",
+        "idUser": 2,
+        "idRol": 1
     }
 ]
