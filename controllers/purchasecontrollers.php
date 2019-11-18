@@ -25,7 +25,7 @@
         }
         
 
-        public function addPart1($idProjection)
+        public function addPart1($idProjection=null)
         {
             $user=$this->userContro->checkSession();
             $projection=$this->listProjection->Search($idProjection);
@@ -35,6 +35,12 @@
             include(VIEWS_PATH."formpurchase.php");
 
         }
+        public function add($quantityTicket=null,$idProjection=null)
+        {
+            $user=$this->userContro->checkSession();
+            
+            $projection=$this->listProjection->Search($idProjection);
 
+        }
 
     }

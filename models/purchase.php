@@ -7,28 +7,32 @@ class Purchase
   private $discount;
   private $amount;//total
   private $quantityTickets;
-  private $wayToPay;
   private $idProjection;
-  private $remainder;//remanente
+  private $time;
+ 
   
 
 
-  public function __constructor($idPurchase,$discount,$amount,$quantityTickets,$wayToPay,$idProjection,$remaider)
+  public function __constructor($discount,$amount,$quantityTickets, $idProjection,$time)
   {
-      $this->idPurchase=$idPurchase;
+      
       $this->discount=$discount;
       $this->amount=$amount;
       $this->quantityTickets=$quantityTickets;
-      $this->wayToPay=$wayToPay;
+    
       $this->idProjection=$idProjection;
-      $this->remaider=$remaider;
+      $this->time=$time;
+     
   }
 
     public function setIdPurchase($idPurchase)
     {
         $this->idPurchase=$idPurchase;
     }
-
+    public function setTime($time)
+    {
+        $this->time=$time;
+    }
     public function setDiscount($discount)
     {
         $this->discount=$discount;
@@ -44,20 +48,12 @@ class Purchase
         $this->quantityTickets=$quantityTickets;
     }
 
-    public function setWayToPay($wayToPay)
-    {
-        $this->wayToPay=$wayToPay;
-    }
-
+    
     public function setIdProjection($idProjection)
     {
         $this->idProjection=$idProjection;
     }
 
-    public function setRemaider($remaider)
-    {
-        $this->remaider=$remaider;
-    }
 
     public function getIdPurchase()
     {
@@ -79,19 +75,15 @@ class Purchase
         return $this->quantityTickets;
     }
 
-    public function getWayToPay()
-    {
-        return $this->wayToPay;
-    }
-
+  
     public function getIdProjection()
     {
         return $this->idProjection;
     }
 
-    public function getRemaider()
+    public function getTime()
     {
-        return $this->remaider;
+        return $this->time;
     }
 }
 
