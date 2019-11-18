@@ -26,7 +26,7 @@
         {  
 
             $user=$this->daoUser->Search($email);
-        
+            $control=null;
             if($user)
             {
                 if($user->getPassword()==$password)
@@ -38,13 +38,15 @@
                 }
                 else
                 {
-                echo" <script>alert('incorrect password');</script>" ;
-                include(VIEWS_PATH."home.php");
+                    $control=1;
+                    $vari='incorrect password';
+                    include(VIEWS_PATH."home.php");
                 }
                 
             }
             else
-            {
+            {   
+                $control=2;
                 echo "<script>alert('incorrect user');</script>" ;
                 include(VIEWS_PATH."home.php");
             }

@@ -8,7 +8,8 @@
    
     <link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/img/cine.jpg">
     <link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/css/bootstrap.css">
-    <link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/forms.css">
+    <link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">
+
     
     
    <link rel="" href="">
