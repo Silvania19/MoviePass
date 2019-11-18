@@ -101,7 +101,7 @@ class viewscontrollers
       $user=$this->usercontroller->checkSession();
       $cines=$this->listCine->GetAll();
       $cartelera=$this->listProjection->GetAllActuales();
-      $movies=$this->SeeMovies();
+      $movies=$this->movieContro->SeeMovies();
       include(VIEWS_PATH."cartelerauser.php");
     }
 
