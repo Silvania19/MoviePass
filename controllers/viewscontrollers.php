@@ -71,12 +71,7 @@ class viewscontrollers
       $cinemasCine=$this->listCinema->SearchIdCine($idCine);
       include(VIEWS_PATH."cineviews2.php");  
     }
-    public function cinemaview()
-    {
-        $listCine2=$this->listCine->GetAll();
-        $listCinema2=$this->listCinema->GetAll();
-        include(VIEWS_PATH."cinemaviews.php");    
-    }
+
     public function user()
     {
       $listUsers=$this->listUser->GetAll(); 
@@ -91,6 +86,7 @@ class viewscontrollers
     }
     public function cartelera()
     { 
+      $user=$this->usercontroller->checkSession();
       $cines=$this->listCine->GetAll();
       $cartelera=$this->listProjection->GetAllActuales();
       $movies=$this->listMovie->GetAll();
@@ -99,6 +95,7 @@ class viewscontrollers
     }
     public function cartelerauser()
     {
+      $user=$this->usercontroller->checkSession();
       $cines=$this->listCine->GetAll();
       $cartelera=$this->listProjection->GetAllActuales();
       $movies=$this->SeeMovies();
