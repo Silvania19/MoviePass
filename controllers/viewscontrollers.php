@@ -8,6 +8,7 @@ use daodb\CinemaDao as cinemaD;
 use daodb\ProjectionDao as ProjectionD;
 use daosjson\MovieDao as movieD;
 use daosjson\GenresDaos as genreD;
+use controllers\MovieControllers as movieC;
 use controllers\UserControllers as C_User;
 class viewscontrollers
 {
@@ -18,6 +19,7 @@ class viewscontrollers
     private $listMovie;
     private $usercontroller;
     private $listGenres;
+    private $movieContro;
     public function __construct()
     {
         $this->listCine=new cineD();
@@ -27,6 +29,7 @@ class viewscontrollers
         $this->listMovie=new movieD();
         $this->usercontroller= new C_User();
         $this->listGenres= new genreD();
+        $this->movieContro=new movieC();
     }
     public function index()
     {
@@ -36,7 +39,7 @@ class viewscontrollers
        if($user)
         {
         $projections=$this->listProjection->GetAllActuales();
-        $movies=$this->SeeMovies();
+        $movies=$this->movieContro->SeeMovies();
         $listGenres2=$this->listGenres->GetAll();
         include(VIEWS_PATH."home2.php");
         }
@@ -102,24 +105,6 @@ class viewscontrollers
       include(VIEWS_PATH."cartelerauser.php");
     }
 
-    public function SeeMovies()
-    {
-      
-      $movies=$this->listMovie->GetAll();
-      $resulMovie=array();
-      if(isset($movies))
-      {
-        foreach($movies as $movie)
-        {
-         
-          if($this->listProjection->SearchXMovie($movie->getIdMovie()))
-          {  
-              
-              array_push($resulMovie, $movie);
-          }
-        }
-      }
-      return $resulMovie;
-    }
+  
 
 }
