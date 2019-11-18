@@ -7,7 +7,7 @@ use daodb\CineDao as cineD;
 use daodb\CinemaDao as cinemaD;
 use daodb\ProjectionDao as ProjectionD;
 use daosjson\MovieDao as movieD;
-use daosjson\GenresDaos as genreD;
+use daosjson\GenresDao as genreD;
 use controllers\UserControllers as C_User;
 class viewscontrollers
 {
