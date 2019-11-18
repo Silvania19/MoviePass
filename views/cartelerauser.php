@@ -65,8 +65,7 @@
 
                             ?>
                                            <td><?php echo $movie->getTitle(); ?></td>
-                                           <td> <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded"></td>
-                                        
+                                           <td> <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" class="rounded"></td>
                             <?php
                                        } 
                                        
@@ -86,7 +85,7 @@
                              <td>Horario: </td>
                              <td><?php echo $projection->getHour();?> </td>
                     </tr>
-                 
+                    <tr></tr>
                   
                           <?php }
                         
