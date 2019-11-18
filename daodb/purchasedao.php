@@ -90,7 +90,7 @@
          $parameters['discount']=$objeto->getDiscount();
         
          $parameters["quantityTickets"]=$objeto->getQuantityTickets();
-          $parameters["amount"]=$();
+          $parameters["amount"]=$objeto->getAmount();
          $parameters['idProjection']=$objeto->getIdProjection();
          $parameters['time']=$objeto->getTime();
          try

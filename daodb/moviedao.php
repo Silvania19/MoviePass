@@ -14,7 +14,7 @@ class MovieDao
     $jsonContent= file_get_contents('https://api.themoviedb.org/3/movie/now_playing?api_key=8c491ec0ca4ed58cbf814b5ee1618a44&language=en-US&page=1', true);
     $arrayTodecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
     $filmArray = $arrayTodecode['results'];
-    insert
+  
     foreach ($filmArray as $indice)
     {
         $movie= new Movie();
