@@ -56,7 +56,7 @@
             $idRol=1;
             $user=new User($name,$lastName, $dni, $email, $password, $idRol);
             $this->daoUser->Add($user);
-            $movies=$this->SeeMovies();
+            $movies=$this->movieContro->SeeMovies();
             $listGenres2=$this->listGenre->GetAll();
             $_SESSION['user']=$user;//pongo en session al nuevo usuario qye se acabo de resistrar
             include(VIEWS_PATH."home2.php");

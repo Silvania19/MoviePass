@@ -3,7 +3,7 @@ namespace controllers;
 use models\Movie as Movie;
 use daosjson\MovieDao as movieD;
 use daosjson\GenresDao as genresD;
-use daodb\ProjectionsDao as projectionD;
+use daodb\ProjectionDao as projectionD;
 class MovieControllers
 { 
     private $listMovie;
@@ -13,7 +13,7 @@ class MovieControllers
     {
         $this->listMovie=new movieD();
         $this->listGenres=new genresD();
-        $this->listProjection= new projectionsD();
+        $this->listProjection= new projectionD();
     }
 
     public function seeListMovie()
@@ -57,7 +57,7 @@ class MovieControllers
     public function SeeMovies()
     {
     
-        $movies=$this->GetAll();
+        $movies=$this->listMovie->GetAll();
         $resulMovie=array();
         if(isset($movies))
         {
