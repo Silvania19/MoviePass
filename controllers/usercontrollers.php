@@ -46,8 +46,8 @@
             }
             else
             {   
-                $control=2;
-                echo "<script>alert('incorrect user');</script>" ;
+                $control=1;
+                $vari='incorrect user';
                 include(VIEWS_PATH."home.php");
             }
             
@@ -65,7 +65,7 @@
         }
         public function deleteUser( $verificacion=null)
         {
-            
+            $control=null;
             if($verificacion=='si')
             {
             if(isset($_SESSION['user']))

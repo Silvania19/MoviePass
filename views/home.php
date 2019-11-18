@@ -1,10 +1,14 @@
 <?php include(VIEWS_PATH."header.php");?>
-<?php 
+<?php
+  
    if($control==1)
    {
 ?>
       <script>alert('<?php echo $vari?>')</script>
-
+<?php     
+   }
+    
+?>
       <main class="login">
         <div class="container-fluid">
           <div class="row">
@@ -18,8 +22,5 @@
         </div>
         <?php  include(VIEWS_PATH."login.php");?>
       </main>
-<?php     
-   }
-    
-?>
+
 <?php include(VIEWS_PATH."footer.php");?>
