@@ -7,6 +7,7 @@
  class PurchaseDao implements Idaos
  {
      private $connection;
+    
      public function __construct()
      {
  
@@ -42,10 +43,9 @@
          $valuesArray["discount"] = $objeto->getDiscount();
          $valuesArray["amount"] = $objeto->getAmount();
          $valuesArray['quantityTickets']= $objeto->getQuantityTickets();
-         $
          $valuesArray["idProjection"] = $objeto->getIdProjection();
          $valuesArray['time']=$objeto->getTime();
-        
+         
          try {
              $this->connection= Connection::getInstance();
              return $this->connection->executeNonQuery($sql, $valuesArray);
@@ -87,11 +87,11 @@
      public function Update($objeto, $buscador)
      { 
          $sql="UPDATE projections SET  discount=:discount, amount=:amount, quantityTickets=:quantityTickets,  idProjection =:idProjection, time=:time WHERE idPurchase='$buscador';";
-         $parameters['discount']=$objeto->getName();
-         $parameters["amount"]=$objeto-> getLastName();
-         $parameters["quantityTickets"]=$objeto->getDni();
-         
-         $parameters['idProjection']=$objeto->getEmail();
+         $parameters['discount']=$objeto->getDiscount();
+        
+         $parameters["quantityTickets"]=$objeto->getQuantityTickets();
+          $parameters["amount"]=$();
+         $parameters['idProjection']=$objeto->getIdProjection();
          $parameters['time']=$objeto->getTime();
          try
          {
@@ -123,6 +123,7 @@
            return  false;
        }
      }
+    
    
 }
 ?>

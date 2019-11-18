@@ -185,7 +185,7 @@ public function SearchXMovie($idMovie)
   }
 }
 
-public function SearchXProjection($idProjection)
+public function SearchXProjectionAmount($idProjection)
 {
     $sql= "SELECT c.price from cinemas as c join projections as p on p.idCinema=c.idCinema where p.idProjection=:idProjection ;";
     $parameters['idProjection']= $idProjection;

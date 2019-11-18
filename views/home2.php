@@ -45,13 +45,13 @@
               
               
           <li class ="nav-item">
-            <a href="<?php echo FRONT_ROOT;?>/movie/seeListMovie" class="nav-link " >PELICULAS</a>
+              <a href="<?php echo FRONT_ROOT;?>/movie/seeListMovie" class="nav-link " >PELICULAS</a>
           </li>
           <li class ="nav-item">
-            <a href="<?php echo FRONT_ROOT;?>/views/cine" class="nav-link " >CINES</a>
+              <a href="<?php echo FRONT_ROOT;?>/views/cine" class="nav-link " >CINES</a>
           </li>
           <li>
-            <a href="<?php echo FRONT_ROOT;?>/views/cartelerauser" class="nav-link">CARTELERA</a>
+              <a href="<?php echo FRONT_ROOT;?>/views/cartelerauser" class="nav-link">CARTELERA</a>
           </li>
           <li class ="nav-item  ">
             <div class="dropdown">
