@@ -32,9 +32,9 @@
                <?php
                
                 if(!empty($cartelera))
-                {
-                   
-                     foreach($cines as $cine)
+                {  
+                  
+                foreach($cines as $cine)
                      { 
                 ?>   
                         <td> Cine:    </td>
@@ -43,50 +43,56 @@
                       
                   
                    </tr>
-                  
-                    <tr>
-                         <?php  
+                    
+                      <tr >
+                          <?php  
 
-                          foreach($cartelera as $projection)
-                          {
-                          
-                            if($projection->getIdCine()==$cine->getIdCine()) 
+                            foreach($cartelera as $projection)
                             {
-                          ?>
                             
-                            <?php
-                           
-                               foreach($movies as $movie)
-                               {
-                                
-                                   if($projection->getIdMovie()==$movie->getIdMovie())
-                                       {  
-                                         
-
+                              if($projection->getIdCine()==$cine->getIdCine()) 
+                              {
                             ?>
-                                           <td><?php echo $movie->getTitle(); ?></td>
-                                           <td> <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" class="rounded"></td>
-                            <?php
-                                       } 
-                                       
+                              
+                              <?php
+                            
+                                foreach($movies as $movie)
+                                {
                                   
-                                 
-                                }
-                           
-                            ?>
+                                    if($projection->getIdMovie()==$movie->getIdMovie())
+                                        {  
+                                          
 
-                    </tr>
-                  
-                    <tr>
-                             <td>Fecha: </td>
-                             <td><?php echo $projection->getDate();?> </td>
-                    </tr>
-                    <tr>
-                             <td>Horario: </td>
-                             <td><?php echo $projection->getHour();?> </td>
-                    </tr>
-                    <tr></tr>
-                  
+                              ?>
+                                            <td><?php echo $movie->getTitle(); ?></td>
+                                            <td> <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" class="rounded"></td>
+                              <?php
+                                        } 
+                                        
+                                    
+                                  
+                                  }
+                            
+                              ?>
+
+                      </tr>
+                 
+                    
+                      <tr>
+                                <td>Fecha: </td>
+                                <td><?php echo $projection->getDate();?> </td>
+                        </tr>
+                        <tr>
+                                <td>Horario: </td>
+                                <td><?php echo $projection->getHour();?> </td>
+                                <td>
+                                    <form action="<?php echo FRONT_ROOT;?>/purchase/addPart1" method="post">
+                                      <input type="checkbox" name="datos" id="" value="<?php echo  $projection->getIdProjection();?>">
+                                      <input type="submit" value="Agregar al carrito">
+                                    </form>
+                                   </td>
+                        </tr>
+                    
                           <?php }
                         
                         } ?>
