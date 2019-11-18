@@ -185,6 +185,29 @@ public function SearchXMovie($idMovie)
   }
 }
 
+public function SearchXProjection($idProjection)
+{
+    $sql= "SELECT c.price from cinemas as c join projections as p on p.idCinema=c.idCinema where p.idProjection=:idProjection";
+    $parameters['idProjection']= $idProjection;
+
+    try {
+        $this->connection = Connection:: getInstance();
+        $resul=$this->connection->execute($sql, $parameters);
+        
+       
+    } catch (\PDOException $th) {
+        throw $th;
+    }
+    if(!empty ($resul))
+    {
+        return $resul;
+    }
+    else
+    {
+        return  false;
+    }
+}
+
 
 public function SearchXMovieXCineXDate($idMovie, $idCine, $date)
 {

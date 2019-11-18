@@ -100,7 +100,7 @@
          }
          catch(\PDOException $e)
          {
-             echo $e;
+            throw $e;
          }
        
      }
@@ -112,9 +112,7 @@
            $this->connection = Connection:: getInstance();
            $resul=$this->connection->execute($sql, $parameters);
        } catch (\PDOException $th) {
-           echo '<script>';
-           echo 'console.log("error en la base. Archivo:purchasedao.php)';
-           echo '</script>';//sacar 
+           throw $th;
        }
        if(!empty ($resul))
        {
@@ -125,4 +123,6 @@
            return  false;
        }
      }
+   
+}
 ?>
