@@ -20,7 +20,7 @@
             $this->listCinema= new cinemaD();
             $this->userContro=new userC();
         }
-        public function generateTicket($idProjection)
+        public function generateTicket($idProjection=null)
         {
             $user=$this->userContro->checkSession();
             $idUser=$user->getIdUser();

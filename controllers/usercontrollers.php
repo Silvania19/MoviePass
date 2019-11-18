@@ -1,7 +1,7 @@
 <?php
     namespace controllers;
     use models\User as User;
-    use daodb\UserDao as userD;
+    use daosjson\UserDao as userD;
     use daodb\ProjectionDao as projectionD;
     use daosjson\MovieDao as movieD;
     use daosjson\GenresDao as genreD;
@@ -109,20 +109,20 @@
         public function SeeMovies()
         {
         
-        $movies=$this->listMovie->GetAll();
-        $resulMovie=array();
-        if(isset($movies))
-        {
-            foreach($movies as $movie)
+            $movies=$this->listMovie->GetAll();
+            $resulMovie=array();
+            if(isset($movies))
             {
-            if($this->listProjection->SearchXMovie($movie->getIdMovie()))
-            {
-                
-                array_push($resulMovie, $movie);
+                foreach($movies as $movie)
+                {
+                if($this->listProjection->SearchXMovie($movie->getIdMovie()))
+                {
+                    
+                    array_push($resulMovie, $movie);
+                }
+                }
             }
-            }
-        }
-        return $resulMovie;
+            return $resulMovie;
         }
 
 

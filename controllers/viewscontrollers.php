@@ -2,7 +2,7 @@
 namespace controllers;
 
 use models\User as User;
-use daodb\UserDao as userD;
+use daosjson\UserDao as userD;
 use daodb\CineDao as cineD;
 use daodb\CinemaDao as cinemaD;
 use daodb\ProjectionDao as ProjectionD;
@@ -98,7 +98,7 @@ class viewscontrollers
     {
       $cines=$this->listCine->GetAll();
       $cartelera=$this->listProjection->GetAllActuales();
-      $movies=$this->listMovie->GetAll();
+      $movies=$this->SeeMovies();
       include(VIEWS_PATH."cartelerauser.php");
     }
 
@@ -111,9 +111,10 @@ class viewscontrollers
       {
         foreach($movies as $movie)
         {
+         
           if($this->listProjection->SearchXMovie($movie->getIdMovie()))
-          {
-            
+          {  
+              
               array_push($resulMovie, $movie);
           }
         }

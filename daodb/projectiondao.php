@@ -36,7 +36,7 @@ class ProjectionDao implements Idaos
 
 
         
-        $sql="SELECT * FROM projections  as p where year(p.date)>=year(now()) and month(p.date)>=month(now()) and day(p.date)>day(now()) union select* from projections as p where year(p.date)=year(now()) and month(p.date)=month(now()) and day(p.date)=day(now()) and hour(p.hour) > hour(now());";
+        $sql="SELECT * FROM projections  as p where year(p.date)>=year(now()) and month(p.date)>=month(now())  union select* from projections as p where year(p.date)=year(now()) and month(p.date)=month(now()) and day(p.date)=day(now()) and hour(p.hour) > hour(now());";
         try {
             $this->connection = Connection::getInstance();
             $listProjection = $this->connection->execute($sql);  
@@ -163,13 +163,15 @@ public function SearchXCine($objeto)
 }
 public function SearchXMovie($idMovie)
 {
-  $sql="SELECT * FROM projections as p where idMovie=:idMovie and year(p.date)>=year(now()) and month(p.date)>=month(now()) and day(p.date)>day(now()) union select* from projections as p where year(p.date)=year(now()) and month(p.date)=month(now()) and day(p.date)=day(now()) and hour(p.hour) > hour(now());";   
+  $sql="SELECT * FROM projections as p where p.idMovie=:idMovie and year(p.date)>=year(now()) and month(p.date)>=month(now())  union select* from projections as p where p.idMovie=:idMovie and year(p.date)=year(now()) and month(p.date)=month(now()) and day(p.date)=day(now()) and hour(p.hour) > hour(now());";   
   $parameters['idMovie']=$idMovie;
  
+
   try {
       $this->connection = Connection:: getInstance();
       $resul=$this->connection->execute($sql, $parameters);
       
+     
   } catch (\PDOException $th) {
       throw $th;
   }

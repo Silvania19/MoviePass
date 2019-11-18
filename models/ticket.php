@@ -71,12 +71,5 @@
             return $this->idProjection;
         }
 
-        public function createNewTicket($ticket)
-        {
-            $ticket = $this->generateRandomTicket();
-            $this->dao->create($ticket);
-            $ticket = $this->dao->readLastTicket();
-             return $ticket;
-        }
 
     }
