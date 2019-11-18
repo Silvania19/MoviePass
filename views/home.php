@@ -1,7 +1,7 @@
 <?php include(VIEWS_PATH."header.php");?>
 <?php
   
-   if($control==1)
+   if($controScript==1)
    {
 ?>
       <script>alert('<?php echo $vari?>')</script>

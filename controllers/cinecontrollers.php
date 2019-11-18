@@ -21,28 +21,31 @@ class CineControllers
     
     public function add($name=null, $address=null)
     { 
+      $controScript=1;
        $user=$this->userControllers->checkSession();
       $cine=new cine($name,  $user->getIdUser(), $address);
       $this->cineRepo->Add($cine);
       $listCines=$this->cineRepo->GetAll();
-      echo" <script>alert('added cine');</script>" ;
+      $messaje='added cine';
       include(VIEWS_PATH."cineviews.php");
       
     }
 
     public function update($name=null, $address=null, $idCine=null)
     {
+      $controScript=1;
       $user=$this->userControllers->checkSession();
       $cine=new cine($name, $user->getIdUser(), $address);
       $this->cineRepo->Update($cine, $idCine);
       $listCines=$this->cineRepo->GetAll();
-      echo" <script>alert('updated cine');</script>" ;
+      $message='updated cine';
       include(VIEWS_PATH."cineviews.php");
       
     }
 
     public function remove($verificacion=null)
     {
+      $controScript=1;
       $user=$this->userControllers->checkSession();
       
       if($verificacion=='no')
@@ -71,7 +74,7 @@ class CineControllers
         }
         $this->cineRepo->Delete($idCine);
         $listCines=$this->cineRepo->GetAll();
-        echo" <script>alert('deleted cine');</script>" ;
+       $message='deleted cine';
         include(VIEWS_PATH."cineviews.php");
       }
         

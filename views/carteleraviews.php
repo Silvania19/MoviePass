@@ -1,5 +1,11 @@
-<?php include(VIEWS_PATH."header.php");
-     
+<?php include(VIEWS_PATH."header.php");?>
+<?php
+    if($controScript==1)
+    {
+?>
+      <script>alert('<?php echo $message?>')</script>
+<?php  
+    }   
 if(!isset($control)&& !isset($control2)&& !isset($control3))
 {
 

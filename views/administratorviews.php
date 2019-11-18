@@ -14,11 +14,16 @@
                  <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
             </div>
              <div class="modal-body">
-                <label >Name</label><input type="text" name="name" class="form-control">
-                <label >Lastname</label><input type="text" name="lastName"class= "form-control " >
-                <label >Dni</label><input type="text" name="dni"class= "form-control " >
-                <label >Email</label><input type="email" name="email"class= "form-control " >
-                <label >Password</label><input type="password" name="password"class= "form-control " >
+                <label >Name</label>
+                <input type="text" name="name" class="form-control" required="">
+                <label >Lastname</label>
+                <input type="text" name="lastName"class= "form-control " required="">
+                <label >Dni</label>
+                <input type="text" name="dni"class= "form-control " required="">
+                <label >Email</label>
+                <input type="email" name="email"class= "form-control " required="">
+                <label >Password</label>
+                <input type="password" name="password"class= "form-control " required="" >
                 
                 <button type="submit" class="btn btn-dark" data dismiss="modal" > update </button>
             </div>
@@ -35,13 +40,18 @@
                  <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
             </div>
              <div class="modal-body">
-                <label >Name</label><input type="text" name="name" class="form-control">
-                <label >Lastname</label><input type="text" name="lastName"class= "form-control " >
-                <label >Dni</label><input type="text" name="dni"class= "form-control " >
-                <label >Email</label><input type="email" name="email"class= "form-control " >
-                <label >Password</label><input type="password" name="password"class= "form-control " >
+                <label >Name</label>
+                <input type="text" name="name" class="form-control" required="">
+                <label >Lastname</label>
+                <input type="text" name="lastName"class= "form-control " required="" >
+                <label >Dni</label>
+                <input type="text" name="dni"class= "form-control " required="" >
+                <label >Email</label>
+                <input type="email" name="email"class= "form-control " required="">
+                <label >Password</label>
+                <input type="password" name="password"class= "form-control " required="">
                 
-                <button type="submit" class="btn btn-dark" data dismiss="modal" > add new adminstrator </button>
+                <button type="submit" class="btn btn-dark" data dismiss="modal" > Agregar nuevo administrador </button>
             </div>
         </form>
 </div>
@@ -77,9 +87,10 @@
 <form action="<?php echo FRONT_ROOT;?>/user/deleteUser" method="POST">
 <h5>¿Esta seguro de eliminar usuario?</h5>
 
-<label > SI</label> <input type="radio" name="verificacion" class="form-control" value="si">
-           
-  <label>NO</label>  <input type="radio" name="verificacion" class="form-control" value="no">
+  <label > SI</label> 
+  <input type="radio" name="verificacion" class="form-control" value="si" >
+  <label>NO</label> 
+   <input type="radio" name="verificacion" class="form-control" value="no">
   <button type="submit" class="btn btn-dark" data dismiss="modal" > Enviar </button>
 
 </form>

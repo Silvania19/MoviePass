@@ -52,7 +52,7 @@ class viewscontrollers
     }
     public function deleteSession()
     {
-      $control=0;
+      
       $user = $this->usercontroller->checkSession();
 
         if(isset($user))

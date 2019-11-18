@@ -22,7 +22,7 @@
      public function add($nameCinema=null, $capacity=null, $price=null,  $idCine=null)
      {
        
-      
+        $controlScript=1;
         $newCinema= new cinema($idCine, $nameCinema, $capacity,$price);
         $this->cinemaList->Add($newCinema);
        
@@ -30,7 +30,7 @@
         $user=$this->userControllers->checkSession();
         $listCines=$this->cineList->GetAll();  
        
-        echo" <script>alert('added cinema');</script>" ;
+        $message='added cinema';
         include(VIEWS_PATH."cineviews.php"); 
     
         
@@ -61,7 +61,8 @@
 
           $this->cinemaList->Delete($idCinema);
           $listCines=$this->cineList->GetAll();
-          echo" <script>alert('deleted cinema');</script>" ;
+          $controlScript=1;
+          $message='deleted cinema';
           include(VIEWS_PATH."cineviews.php");
         }
        

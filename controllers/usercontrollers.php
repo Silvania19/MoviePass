@@ -26,7 +26,7 @@
         {  
 
             $user=$this->daoUser->Search($email);
-            $control=null;
+            $controScript=0;
             if($user)
             {
                 if($user->getPassword()==$password)
@@ -38,7 +38,7 @@
                 }
                 else
                 {
-                    $control=1;
+                    $controScript=1;
                     $vari='incorrect password';
                     include(VIEWS_PATH."home.php");
                 }
@@ -46,7 +46,7 @@
             }
             else
             {   
-                $control=1;
+                $controScript=1;
                 $vari='incorrect user';
                 include(VIEWS_PATH."home.php");
             }
@@ -65,7 +65,7 @@
         }
         public function deleteUser( $verificacion=null)
         {
-            $control=null;
+            $controScript=0;
             if($verificacion=='si')
             {
             if(isset($_SESSION['user']))
@@ -75,9 +75,10 @@
             } 
             if (isset($user))
             {
+                $controScript=1;
                 $idUser=$user->getIduser();
                 $this->daoUser->Delete($idUser);
-                echo" <script>alert('user deleted');</script>" ;
+                $vari='user deleted' ;
                 include(VIEWS_PATH."home.php");
                 
             }

@@ -1,4 +1,10 @@
 <?php include(VIEWS_PATH."header.php"); 
+   if($controlError=1)
+   {
+?>
+     <script>alert('<?php echo $vari?>')</script>
+<?php  
+   }
    if($user->getIdRol()==2)  
    {
 ?>
@@ -83,7 +89,7 @@
           </form>
           <form action="<?php echo FRONT_ROOT;?>/projectionuser/filterDateProjection" method="POST">
             Filtar por fecha
-            <input type="date" name="date"  id="">
+            <input type="date" name="date"  id="" required="">
             <button type="submit" class="btn btn-dark"> buscar </button>
           </form> <br>
 
@@ -95,11 +101,9 @@
       ?>
             <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" alt= "<?php $movie->getTitle();?> " class="rounded"><br>
             
-            <form action="<?php echo FRONT_ROOT; ?>/projectionuser/carteleraxMovie" method="post"><!--esta direccion esta mal ahi que mandarlo a un metodo de la cartelera que le muestre, solo
-            las funciones de la pelicula que se esta leyendo-->
+            <form action="<?php echo FRONT_ROOT; ?>/projectionuser/carteleraxMovie" method="post">
                  <h3>Title: <input type="submit" value=" <?php echo $movie->getTitle(); ?> ">
-                 <input type="checkbox" name="datos" id="" value="<?php  echo $movie->getIdMovie();?>"><!-- creo que esta bien porque con el idDe la pelicula podriamos mostrar todas las funciones
-                 de esa pelicula en el futuro-->
+                 <input type="checkbox" name="datos" id="" value="<?php  echo $movie->getIdMovie();?>" required="" >
                  </h3>
             </form>
             <p>Original Title: <?php echo $movie->getOriginal_title(); ?> </p>
@@ -146,7 +150,7 @@
             <form action="<?php echo FRONT_ROOT; ?>/projectionuser/moviesxCines" method="post"><!--esta direccion esta mal ahi que mandarlo a un metodo de la cartelera que le muestre, solo
             las funciones de la pelicula que se esta leyendo-->
                  <h3>Title: <input type="submit" value=" <?php echo $movie->getTitle(); ?> ">
-                 <input type="checkbox" name="datos" id="" value="<?php echo $movie->getIdMovie()?>"><!-- creo que esta bien porque con el idDe la pelicula podriamos mostrar todas las funciones
+                 <input type="checkbox" name="datos" id="" value="<?php echo $movie->getIdMovie()?>" required=""><!-- creo que esta bien porque con el idDe la pelicula podriamos mostrar todas las funciones
                  de esa pelicula en el futuro-->
                  </h3>
             </form>

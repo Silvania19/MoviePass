@@ -105,7 +105,8 @@ class ProjectionControllers
  
   if($veri==1)
   {
-    echo" <script>alert('no se puede agregar en este fecha. Verifique que la fecha ingresada no sea igual a la de otro de cine');</script>" ;
+    $controlScript=1;
+   $message='no se puede agregar en este fecha. Verifique que la fecha ingresada no sea igual a la de otro de cine';
     include(VIEWS_PATH."carteleraviews.php");
   }
   else
@@ -119,7 +120,8 @@ class ProjectionControllers
       }*/
       $projection= new projection($date, $hour, $idCine, $idMovie, $idCinema, $duration);
        $this->listProjection->Add($projection);
-       echo" <script>alert('added projection');</script>" ;
+       $controlScript=1;
+       $message='added projection';
        include(VIEWS_PATH."carteleraviews.php");
     
   }
@@ -132,7 +134,8 @@ class ProjectionControllers
    $cines=$this->listCine->GetAll();
    $cartelera=$this->listProjection->GetAll();
    $movies=$this->listMovie->GetAll();
-   echo" <script>alert('deleted projection');</script>" ;
+   $controlScript=1;
+  $message='deleted projection';
    include(VIEWS_PATH."carteleraviews.php");
  }
  public function exist($idMovie, $idCine)
