@@ -76,7 +76,7 @@ class CinemaDao implements Idaos
        }
        catch(PDOException $e)
        {
-           echo $e;
+           throw $e;
        }
    }
     
@@ -95,7 +95,7 @@ class CinemaDao implements Idaos
         }
         catch(PDOException $e)
         {
-            echo $e;
+            throw $e;
         }
       
     }

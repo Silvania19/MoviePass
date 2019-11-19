@@ -75,7 +75,7 @@
         }
         catch(PDOException $e)
         {
-            echo $e;
+            throw $e;
         }
     }
         
@@ -92,7 +92,7 @@
             }
             catch(PDOException $e)
             {
-                echo $e;
+               throw $e;
             }
         
         }

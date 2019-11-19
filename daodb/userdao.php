@@ -81,7 +81,7 @@ class UserDao implements Idaos
        }
        catch(PDOException $e)
        {
-           echo $e;
+           throw $e;
        }
    }
     public function Update($objeto, $buscador)
@@ -99,7 +99,7 @@ class UserDao implements Idaos
         }
         catch(\PDOException $e)
         {
-            echo $e;
+            throw $e;
         }
       
     }
@@ -111,9 +111,7 @@ class UserDao implements Idaos
           $this->connection = Connection:: getInstance();
           $resul=$this->connection->execute($sql, $parameters);
       } catch (\PDOException $th) {
-          echo '<script>';
-          echo 'console.log("error en la base. Archivo:userdao.php)';
-          echo '</script>';//sacar 
+        throw  $th;
       }
       if(!empty ($resul))
       {

@@ -74,7 +74,7 @@ class CineDao implements Idaos
         }
         catch(PDOException $e)
         {
-            echo $e;
+            throw $e;
         }
     }
     public function Update($objeto, $buscador)
@@ -91,7 +91,7 @@ class CineDao implements Idaos
         }
         catch(PDOException $e)
         {
-            echo $e;
+            throw $e;
         }
     
     }
