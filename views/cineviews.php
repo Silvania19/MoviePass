@@ -1,11 +1,11 @@
 <?php include(VIEWS_PATH."header.php");?>
 <?php
-  if(isset($controScript))
-  {
-    if($controScript==1)
-    {
+ if(isset($controlScript))
+ {
+   if($controlScript==1)
+   {
 ?>
-      <script>alert('<?php echo $message?>')</script>
+     <script>alert('<?php echo $message?>')</script>
 <?php  
     }
   }

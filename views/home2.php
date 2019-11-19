@@ -1,10 +1,10 @@
 <?php include(VIEWS_PATH."header.php"); 
-if(isset($controlError))
+if(isset($controlScript))
 {
-   if($controlError=1)
-   {
+  if($controlScript==1)
+  {
 ?>
-     <script>alert('<?php echo $massage?>')</script>
+    <script>alert('<?php echo $message?>')</script>
 <?php  
    }
 }

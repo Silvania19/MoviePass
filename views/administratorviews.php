@@ -1,8 +1,15 @@
 <?php include(VIEWS_PATH."header.php");?>
-
-<!--<link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/front/styles/style2.css">-->
-
-
+<?php
+if(isset($controlScript))
+  {
+    if($controlScript==1)
+    {
+?>
+      <script>alert('<?php echo $message?>')</script>
+<?php
+    }
+  }
+?>
 
  
 <div class="modal fade" id="update">  

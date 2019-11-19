@@ -1,7 +1,13 @@
 <?php 
-    include(VIEWS_PATH."header.php"); 
-    if($user->getIdRol()==2)
+    include(VIEWS_PATH."header.php");
+    if(isset($controlScript))
+  {
+    if($controlScript==1)
     {
+?>
+    <script>alert('<?php echo $message?>')</script> 
+<?php  if($user->getIdRol()==2)
+         {
        
 ?>      
        <nav class="navbar navbar-expand-sm bg-danger"> 

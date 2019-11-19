@@ -118,7 +118,7 @@ class viewscontrollers
       }
       else
       {
-        $controScript=1;
+        $controlScript=1;
         $message="Hubo problemas con la verificacion de los datos del usuario. Por favor inicia sesion otra vez. Con datos actuales.";
         include(VIEWS_PATH."home.php");
       }

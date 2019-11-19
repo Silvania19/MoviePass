@@ -43,7 +43,7 @@
          $valuesArray['quantityTickets']= $objeto->getQuantityTickets();
          $valuesArray["idProjection"] = $objeto->getIdProjection();
          $valuesArray['time']=$objeto->getTime();
-         $valuesArray['idUser']=$objeto->getIdUser();
+         $valuesArray['idUser']= $objeto->getIdUser();
          
          try {
              $this->connection= Connection::getInstance();

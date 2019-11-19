@@ -76,13 +76,25 @@
                     $discount=0;
                     $amount2=$amount;
                 }
-            }
+            } 
+            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getIdUser());
+            try
+            {
             
-         
-            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getUser());
             $purchases= $this->listPurchase->Add($purchase);
-            $listPurchase=$this->listPurchase->GetAll();
+            $listPurchase=$this->listPurchase->GetAll(); 
             include(VIEWS_PATH."shoppingpurchase.php");
+            }
+            catch (\PDOException  $ex) {
+                
+                $controlScritpt=1;
+                $message='error en la base';
+                include(VIEWS_PATH."home2.php");//esta mal debe incluir otra vista pero no se cual, 
+            }
+         
+           
+           
+           
 
         }
 

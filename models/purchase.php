@@ -90,7 +90,7 @@ class Purchase
     {
         return $this->time;
     }
-    public function getIdUse()
+    public function getIdUser()
     {
         return $this->idUser;
     }

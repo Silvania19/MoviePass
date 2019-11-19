@@ -39,16 +39,16 @@
                 }
                 else
                 {
-                    $controScript=1;
-                    $massage='incorrect password';
+                    $controlScript=1;
+                    $message='incorrect password';
                     include(VIEWS_PATH."home.php");
                 }
                 
             }
             else
             {   
-                $controScript=1;
-                $massage='incorrect user';
+                $controlScript=1;
+                $message='incorrect user';
                 include(VIEWS_PATH."home.php");
             }
             
@@ -76,7 +76,7 @@
             } 
             if (isset($user))
             {
-                $controScript=1;
+                $controlScript=1;
                 $idUser=$user->getIduser();
                 $this->daoUser->Delete($idUser);
                 $massage='user deleted' ;

@@ -1,6 +1,16 @@
 <?php 
     include(VIEWS_PATH."header.php");
     include(VIEWS_PATH."nav.php");
+   
+    if(isset($controlScript))
+    {
+      if($controlScript==1)
+      {
+  ?>
+        <script>alert('<?php echo $message?>')</script>
+<?php  
+    }
+  }
     
 ?>
     <div class="col" style="border:1px solid gray loginForm;">
