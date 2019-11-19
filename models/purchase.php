@@ -13,13 +13,12 @@ class Purchase
   
 
 
-  public function __constructor($discount,$amount,$quantityTickets, $idProjection,$time)
+  public function __construct($discount, $amount, $quantityTickets, $idProjection, $time)
   {
-      
+    
       $this->discount=$discount;
       $this->amount=$amount;
       $this->quantityTickets=$quantityTickets;
-    
       $this->idProjection=$idProjection;
       $this->time=$time;
      

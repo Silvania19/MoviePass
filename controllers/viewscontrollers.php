@@ -32,16 +32,15 @@ class viewscontrollers
         $this->movieContro=new movieC();
     }
     public function index()
-    {
-       
+    { 
        $user = $this->usercontroller->checkSession();
-        
-       if($user)
+       if(isset($user))
         {
-        $projections=$this->listProjection->GetAllActuales();
-        $movies=$this->movieContro->SeeMovies();
-        $listGenres2=$this->listGenres->GetAll();
-        include(VIEWS_PATH."home2.php");
+         
+          $projections=$this->listProjection->GetAllActuales();
+          $movies=$this->movieContro->SeeMovies();
+          $listGenres2=$this->listGenres->GetAll();
+          include(VIEWS_PATH."home2.php");
         }
         else
        {
@@ -52,10 +51,9 @@ class viewscontrollers
     }
     public function deleteSession()
     {
-      
+     
       $user = $this->usercontroller->checkSession();
-
-        if(isset($user))
+      if(isset($user))
         {
             unset($user);//se usara este porque el destroy destr
             include(VIEWS_PATH."home.php");
@@ -104,6 +102,25 @@ class viewscontrollers
       $cartelera=$this->listProjection->GetAllActuales();
       $movies=$this->movieContro->SeeMovies();
       include(VIEWS_PATH."cartelerauser.php");
+    }
+
+    public function home2()
+    {
+      $user=$this->usercontroller->checkSession();
+      if(isset($user))
+      {
+        
+          $projections=$this->listProjection->GetAllActuales();
+          $movies=$this->movieContro->SeeMovies();
+          $listGenres2=$this->listGenres->GetAll();
+          include(VIEWS_PATH."home2.php");
+      }
+      else
+      {
+        $controScript=1;
+        $message="Hubo problemas con la verificacion de los datos del usuario. Por favor inicia sesion otra vez. Con datos actuales.";
+        include(VIEWS_PATH."home.php");
+      }
     }
 
   

@@ -28,12 +28,6 @@
             
                 </li>
 
-                <li class="nav-item"><a href="" class="nav-link"></a>
-                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-cinema">
-                       Eliminar sala
-                    </button> 
-            
-                </li>
                 <li class ="nav-item  ">
                 <div class="dropdown">
                    <button type="button" class="btn btn-primary dropdown-toggle"  data-toggle="dropdown">USUARIO</button>
@@ -100,11 +94,15 @@
                             <td><?php echo $cinemasCine->getCapacity();?></td>
                             <td><?php echo 'hola';?></td>
                             <td>
+                             <div class="modal fade" id="remove-cinema">  
+
                                 <form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="post">
                                     <input type="checkbox" name="idCinema" id="" value="<?php echo $cinemasCine->getIdCinema(); ?>">
                                     <input type="submit" value="eliminar">
                                 </form>
+                             </div>
                             </td>
+
                         </tr>
                     <?php
                         }
@@ -131,8 +129,7 @@
             
                  <div class="modal-header"> 
                      <h2 class="modal-title">Update cine</h2>
-                     <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>
-                 </div>
+                     <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>                  </div>
                 <div class="modal-body">
                    <label for="name" >Name</label>
                    <input type="text" name="name" class="form-control">  
@@ -141,14 +138,14 @@
                    
                    <label for="address">$estas seguro de modificar?</label>
                    <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
-                   <button type="submit" class="btn btn-dark" data dismiss="modal" > update </button>
+                   <button type="submit" class="btn btn-dark" data dismiss="modal" > Update </button>
                 </div>
 
  
              </form>
         </div>
 
-        <div class="modal fade" id=add-cinema>
+        <div class="modal fade" id=add-cinema  tabindex="-1" role="dialog" aria-labelledby="add-cinema" aria-hidden="true">
             <form class="modal-content " action="<?php echo FRONT_ROOT;?>/cinema/add" method="POST"> 
                 <div class="modal-header"> 
                     <h2 class="modal-title">Agregar salas</h2>
@@ -171,33 +168,22 @@
 
         </div>
 
-        <div class="modal fade" id="remove-cinema" tabindex="-1" role="dialog" aria-labelledby="eliminar" aria-hidden="true" >
-            <form  class="group-form" action="<?php echo FRONT_ROOT;?>/cine/remove" method="POST">
-                <h5>¿Esta seguro de eliminar la sala?</h5>
-                <label>SI</label>
-                <input type="radio" name="verificacion" class="form-control" value="<?php echo $cine->getIdCinema(); ?>">
-                <label>NO</label> 
-                <input type="radio" name="verificacion" class="form-control" value="no">
-                <button type="submit" class="btn btn-dark" data dismiss="modal" > Enviar </button>
-
-            </form>
-
-         </div>
+ 
 
 
         <div class="modal fade" id="delete-cine" tabindex="-1" role="dialog" aria-labelledby="eliminar" aria-hidden="true" >
             <form  class="group-form" action="<?php echo FRONT_ROOT;?>/cine/remove" method="POST">
                 <h5>¿Esta seguro de eliminar el cine?</h5>
                 <label>SI</label>
-                <input type="radio" name="verificacion" class="form-control" value="<?php echo $cine->getIdCine(); ?>">
+                <input type="radio" name="verificacion" class="form-control" value="<?php echo $cine->getIdCine(); ?>" required="">
                 <label>NO</label> 
-                <input type="radio" name="verificacion" class="form-control" value="no">
+                <input type="radio" name="verificacion" class="form-control" value="no" required="">
                 <button type="submit" class="btn btn-dark" data dismiss="modal" > Enviar </button>
 
             </form>
 
          </div>
-
+        
 <?php
     }
 

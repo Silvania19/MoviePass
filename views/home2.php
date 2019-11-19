@@ -1,10 +1,13 @@
 <?php include(VIEWS_PATH."header.php"); 
+if(isset($controlError))
+{
    if($controlError=1)
    {
 ?>
-     <script>alert('<?php echo $vari?>')</script>
+     <script>alert('<?php echo $massage?>')</script>
 <?php  
    }
+}
    if($user->getIdRol()==2)  
    {
 ?>

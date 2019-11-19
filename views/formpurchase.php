@@ -1,4 +1,8 @@
-<?php include(VIEWS_PATH."header.php");?>
+<?php 
+    include(VIEWS_PATH."header.php");
+    include(VIEWS_PATH."nav.php");
+    
+?>
     <div class="col" style="border:1px solid gray loginForm;">
        
         <table class="  table-borderer table-hover table-primary">
@@ -31,7 +35,7 @@
                 <td>
                     <form action="<?php echo FRONT_ROOT;?>/purchase/add" method="POST">
                             <label ><h5>Cantidad de entradas</h5></label>
-                            <input type="text" name="quantityTickets" class="form-control">
+                            <input type="number" name="quantityTickets" class="form-control">
                             <input type="checkbox" name="idProjection" id="" value="<?php echo   $projection->getIdProjection();?>">
                             <input type="submit" value="Confirmar">
                     </form>

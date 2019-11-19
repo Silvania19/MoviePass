@@ -1,13 +1,14 @@
 <?php include(VIEWS_PATH."header.php");?>
 <?php
-  
-   if($controScript==1)
-   {
+  if(isset($controScript))
+  {
+    if($controScript==1)
+    {
 ?>
-      <script>alert('<?php echo $vari?>')</script>
+      <script>alert('<?php echo $massage?>')</script>
 <?php     
    }
-    
+  } 
 ?>
       <main class="login">
         <div class="container-fluid">

@@ -23,7 +23,7 @@
          } catch (\PDOException  $ex) {
              throw $ex;
          }
-         if (!empty($listUser))
+         if (!empty($listPurchases))
          {
              return $this->mapear($listPurchases);
            
@@ -37,9 +37,7 @@
         
          // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
          // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-         $sql="INSERT INTO purchases (discount, amount, quantityTickets, idProjection, time) VALUES (:discount, :amount, :quantityTickets, :wayToPay, :idProjection, :time)";
-        
-         
+         $sql="INSERT INTO purchases (discount, amount, quantityTickets, idProjection, time) VALUES (:discount, :amount, :quantityTickets, :idProjection, :time)";
          $valuesArray["discount"] = $objeto->getDiscount();
          $valuesArray["amount"] = $objeto->getAmount();
          $valuesArray['quantityTickets']= $objeto->getQuantityTickets();

@@ -1,5 +1,9 @@
 
-<?php include(VIEWS_PATH."header.php");?>
+<?php 
+    include(VIEWS_PATH."header.php");
+    include(VIEWS_PATH."nav.php");
+
+?>
 
 <div class="modal fade" id="remove-user"tabindex="-1" role="dialog" aria-labelledby="eliminar" aria-hidden="true" >
 

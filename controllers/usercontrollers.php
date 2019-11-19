@@ -26,8 +26,9 @@
         {  
 
             $user=$this->daoUser->Search($email);
+            
             $controScript=0;
-            if($user)
+            if(isset($user))
             {
                 if($user->getPassword()==$password)
                 {
@@ -39,7 +40,7 @@
                 else
                 {
                     $controScript=1;
-                    $vari='incorrect password';
+                    $massage='incorrect password';
                     include(VIEWS_PATH."home.php");
                 }
                 
@@ -47,7 +48,7 @@
             else
             {   
                 $controScript=1;
-                $vari='incorrect user';
+                $massage='incorrect user';
                 include(VIEWS_PATH."home.php");
             }
             
@@ -78,7 +79,7 @@
                 $controScript=1;
                 $idUser=$user->getIduser();
                 $this->daoUser->Delete($idUser);
-                $vari='user deleted' ;
+                $massage='user deleted' ;
                 include(VIEWS_PATH."home.php");
                 
             }

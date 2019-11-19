@@ -44,6 +44,7 @@
         }
         public function add($quantityTicket=null,$idProjection=null)
         {
+            
             $user=$this->userContro->checkSession();
             $projection=$this->listProjection->Search($idProjection);
             $price=$this->listProjection->SearchXProjectionAmount($idProjection);
@@ -53,6 +54,7 @@
             $Quantitydiscount=$amount/$porciento*100;
             $time= strftime("%Y-%m-%d %I:%M:%S %p", time());
             $day=strftime("%A", time());
+            
             if($day=='Tuesday'|| $day=='Wednesday')
             {
                 if($quantityTicket>=2)
@@ -66,10 +68,10 @@
                     $amount2=$amount;
                 }
             }
-            $purchase=new purchase($discount, $amount, $quantityTicket,$projection,$time);
+            
+         
+            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time);
             $purchases= $this->listPurchase->Add($purchase);
-            
-            
             $listPurchase=$this->listPurchase->GetAll();
             include(VIEWS_PATH."shoppingpurchase.php");
 

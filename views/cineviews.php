@@ -1,12 +1,14 @@
 <?php include(VIEWS_PATH."header.php");?>
 <?php
+  if(isset($controScript))
+  {
     if($controScript==1)
     {
 ?>
       <script>alert('<?php echo $message?>')</script>
 <?php  
     }
-    
+  }
     if($user->getIdRol()==2)
      {
 ?>
@@ -109,10 +111,8 @@
  } 
  if($user->getIdRol()==1)
  {
-   include(VIEWS_PATH."nav.php");
+   include (VIEWS_PATH."nav.php");
 ?>
-
-
 <div class="col" style="border:1px solid gray;">
        
        <table class="  table-borderer table-hover ">
