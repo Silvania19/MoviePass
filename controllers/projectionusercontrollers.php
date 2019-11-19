@@ -174,7 +174,14 @@
         public function carteleraXCine($idCine)
         {
             $user=$this->userContro->checkSession();
-            $projections=$this->listProjection->GetAllActuales();
+            try {
+                 $projections=$this->listProjection->GetAllActuales();
+            } catch (\Throwable $th) {
+                $controlScritpt=1;
+                $message='error en la base';
+              //  include(VIEWS_PATH."userviews.php");
+            }
+           
             $listMoviesAct=$this->moviesProjections();
             $movies=array();
            
@@ -190,9 +197,15 @@
                       
                              if($proj->getIdCine()==$idCine)
                              {
-                               
-                                   $cines['0']=$this->listCine->Search($idCine);
+                                   try {
+                                         $cines['0']=$this->listCine->Search($idCine);
                                       array_push($cartelera,  $proj);
+                                   } catch (\Throwable $th) {
+                                    $controlScritpt=1;
+                                    $message='error en la base';
+                                  //  include(VIEWS_PATH."userviews.php");
+                                   }
+                                 
                             }
                             
                        }
@@ -214,9 +227,16 @@
                     
                    if($projections->getIdMovie()==$idMovie && $projection->getIdCine()==$cines->getIdCine()&& $projection->getIdMovie()==$idMovie)
                    {
-                    $movie=$this->listMovie->Search($movies->getIdMovie());
+                       try {
+                           $movie=$this->listMovie->Search($movies->getIdMovie());
                     $cine=$this->listCine->Search($cines->getIdCine());
                     array_push($cartelera, $this->listProjection->Search($projections->getIdProjection()));
+                       } catch (\Throwable $th) {
+                        $controlScritpt=1;
+                        $message='error en la base';
+                        //include(VIEWS_PATH."userviews.php");
+                       }
+                    
                    }
                 }
                   

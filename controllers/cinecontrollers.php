@@ -24,8 +24,15 @@ class CineControllers
       $controlScript=1;
        $user=$this->userControllers->checkSession();
       $cine=new cine($name,  $user->getIdUser(), $address);
-      $this->cineRepo->Add($cine);
+      try {
+         $this->cineRepo->Add($cine);
       $listCines=$this->cineRepo->GetAll();
+      } catch (\Throwable $th) {
+        $controlScritpt=1;
+        $message='error en la base';
+       // include(VIEWS_PATH."userviews.php");
+      }
+     
       $messaje='added cine';
       include(VIEWS_PATH."cineviews.php");
       
@@ -37,7 +44,14 @@ class CineControllers
       $user=$this->userControllers->checkSession();
       $cine=new cine($name, $user->getIdUser(), $address);
       $this->cineRepo->Update($cine, $idCine);
-      $listCines=$this->cineRepo->GetAll();
+      try {
+          $listCines=$this->cineRepo->GetAll();
+      } catch (\Throwable $th) {
+        $controlScritpt=1;
+        $message='error en la base';
+       // include(VIEWS_PATH."userviews.php");
+      }
+    
       $message='updated cine';
       include(VIEWS_PATH."cineviews.php");
       
@@ -50,14 +64,28 @@ class CineControllers
       
       if($verificacion=='no')
       {
-        $listCines=$this->cineRepo->GetAll();
+        try {
+          $listCines=$this->cineRepo->GetAll();
         include(VIEWS_PATH."cineviews.php");
+        } catch (\Throwable $th) {
+          $controlScritpt=1;
+         $message='error en la base';
+         //include(VIEWS_PATH."userviews.php");
+        }
+        
       }
       else 
       {
         $idCine=$verificacion;
-        $listCinema=$this->cinemaList->GetAll();
+        try {
+           $listCinema=$this->cinemaList->GetAll();
         $projectionL=$this->projectionList->GetAll();
+        } catch (\Throwable $th) {
+          $controlScritpt=1;
+          $message='error en la base';
+          //include(VIEWS_PATH."userviews.php");
+        }
+       
         foreach($listCinema as $cinema)
         {
             if($cinema->getIdCine()==$idCine)
@@ -69,13 +97,28 @@ class CineControllers
         {
             if($projection->getIdCine()==$idCine)
             {
-                $this->projectionList->Delete($projection->getIdProjection());
+              try {
+                 $this->projectionList->Delete($projection->getIdProjection());
+              } catch (\Throwable $th) {
+                $controlScritpt=1;
+                $message='error en la base';
+                //include(VIEWS_PATH."userviews.php");
+              }
+               
             }
         }
-        $this->cineRepo->Delete($idCine);
+        try {
+            $this->cineRepo->Delete($idCine);
         $listCines=$this->cineRepo->GetAll();
         $message='deleted cine';
         include(VIEWS_PATH."cineviews.php");
+        } catch (\Throwable $th) {
+          $controlScritpt=1;
+          $message='error en la base';
+          //include(VIEWS_PATH."userviews.php");
+        }
+      
+        
       }
         
     }

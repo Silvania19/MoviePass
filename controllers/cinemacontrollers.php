@@ -18,20 +18,27 @@
          $this->userControllers= new userC();
          $this->projectionList= new projectionD();
      }
-
+  
+  
      public function add($nameCinema=null, $capacity=null, $price=null,  $idCine=null)
      {
        
         $controlScript=1;
         $newCinema= new cinema($idCine, $nameCinema, $capacity,$price);
-        $this->cinemaList->Add($newCinema);
-       
-       
+        try {
+           $this->cinemaList->Add($newCinema); 
         $user=$this->userControllers->checkSession();
         $listCines=$this->cineList->GetAll();  
-       
         $message='added cinema';
         include(VIEWS_PATH."cineviews.php"); 
+      
+        } catch (\Throwable $th) {
+          $controlScritpt=1;
+         $message='error en la base';
+         include(VIEWS_PATH."cineviews2.php");
+        }
+       
+       
     
         
      }
@@ -42,32 +49,60 @@
         if($verificacion=='no')
         {
       
-        $listCines=$this->cineList->GetAll(); 
+          try {
+             $listCines=$this->cineList->GetAll(); 
         include(VIEWS_PATH."cineviews.php");
+          } catch (\Throwable $th) {
+            $controlScritpt=1;
+            $message='error en la base';
+           // include(VIEWS_PATH."userviews.php");
+          }
+       
          
         }
         else
         {
           $idCinema=$verificacion;
-          $projectionL= $this->projectionList->GetAll();
+          try {
+             $projectionL= $this->projectionList->GetAll();
+          } catch (\Throwable $th) {
+            $controlScritpt=1;
+            $message='error en la base';
+            //include(VIEWS_PATH."userviews.php");
+          }
+         
 
           foreach($projectionL as $projection)
           {
               if($projection->getIdCinema()==$idCinema)
               {
+                try {
                   $this->projectionList->Delete($projection->getIdProjection());
+                } catch (\Throwable $th) {
+                  $controlScritpt=1;
+                  $message='error en la base';
+                 // include(VIEWS_PATH."userviews.php");
+                }
+                  
               }
           }
-
+          try {
           $this->cinemaList->Delete($idCinema);
           $listCines=$this->cineList->GetAll();
           $controlScript=1;
           $message='deleted cinema';
           include(VIEWS_PATH."cineviews.php");
+          } catch (\Throwable $th) {
+            $controlScritpt=1;
+         $message='error en la base';
+         include(VIEWS_PATH."cineviews.php");
+          }
+          
         }
        
  
      }
+
 
    /*  public function remove($verificacion=null)
      {

@@ -24,8 +24,14 @@
         }
         public function login($email = null, $password = null)
         {  
-
-            $user=$this->daoUser->Search($email);
+            try {
+                $user=$this->daoUser->Search($email);
+            } catch (\Throwable $th) {
+                $controlScritpt=1;
+                $message='error en la base';
+                include(VIEWS_PATH."home.php");
+            }
+           
             
             $controScript=0;
             if(isset($user))
@@ -34,22 +40,22 @@
                 {
                     $_SESSION['user']=$user;
                     $movies=$this->movieContro->SeeMovies();
-                    $listGenres2=$this->listGenre->GetAll();
-                    include(VIEWS_PATH."home2.php");
-                }
-                else
-                {
-                    $controlScript=1;
-                    $message='incorrect password';
-                    include(VIEWS_PATH."home.php");
-                }
-                
-            }
-            else
-            {   
-                $controlScript=1;
-                $message='incorrect user';
-                include(VIEWS_PATH."home.php");
+                    try {
+                        try {
+                             $listGenres2=$this->listGenre->GetAll();
+                        include(VIEWS_PATH."home2.php");
+                        } catch (\Throwable $th) {
+                            $controlScritpt=1;
+                            $message='error en la base';
+                            //no se include(VIEWS_PATH."userviews.php");
+                        }
+                        
+                        
+                    } catch (\Throwable $th) {
+                        include(VIEWS_PATH."home.php");
+                    }
+                   
+               }
             }
             
         }
@@ -58,11 +64,18 @@
         
             $idRol=1;
             $user=new User($name,$lastName, $dni, $email, $password, $idRol);
-            $this->daoUser->Add($user);
-            $movies=$this->movieContro->SeeMovies();
-            $listGenres2=$this->listGenre->GetAll();
-            $_SESSION['user']=$user;//pongo en session al nuevo usuario qye se acabo de resistrar
-            include(VIEWS_PATH."home2.php");
+            try {
+                $this->daoUser->Add($user);
+                $movies=$this->movieContro->SeeMovies();
+                $listGenres2=$this->listGenre->GetAll();
+                $_SESSION['user']=$user;//pongo en session al nuevo usuario qye se acabo de resistrar
+                include(VIEWS_PATH."home2.php");
+            } catch (\PDOException $th) {
+                $controlScritpt=1;
+                $message='error en la base';
+                include(VIEWS_PATH."home2.php");
+            }
+           
         }
         public function deleteUser( $verificacion=null)
         {
@@ -78,10 +91,17 @@
             {
                 $controlScript=1;
                 $idUser=$user->getIduser();
-                $this->daoUser->Delete($idUser);
+                try {
+                     $this->daoUser->Delete($idUser);
                 $massage='user deleted' ;
                 include(VIEWS_PATH."home.php");
                 
+                } catch (\PDOException $th) {
+                    $controlScritpt=1;
+                    $message='error en la base';
+                    include(VIEWS_PATH."home.php");
+                }
+               
             }
             }
             if($verificacion=='no')
@@ -95,9 +115,16 @@
         {
             $User1=$_SESSION['user'];//ver esto
             $user=new User($name,$lastName, $dni, $email, $password);
-            $this->daoUser->Update($user, $User1->getIduser());
+            try {
+                 $this->daoUser->Update($user, $User1->getIduser());
             $_SESSION['user']=$user;
             include(VIEWS_PATH."userviews.php");
+            } catch (\PDOException $th) {
+                $controlScritpt=1;
+         $message='error en la base';
+         include(VIEWS_PATH."userviews.php");
+            }
+           
         }
         public function checkSession ()
         {
@@ -105,11 +132,17 @@
                 session_start();
 
             if(isset($_SESSION['user'])) {
-
-                $user = $this->daoUser->Search($_SESSION['user']->getEmail());
-
+                try {
+                    $user = $this->daoUser->Search($_SESSION['user']->getEmail()) ;
+                } catch (\Throwable $th) {
+                    $controlScritpt=1;
+                    $message='error en la base';
+                    include(VIEWS_PATH."home.php");
+                }
                 if($user->getPassword() == $_SESSION['user']->getPassword())
                     return $user;
+
+              
 
             } else {
                 return false;

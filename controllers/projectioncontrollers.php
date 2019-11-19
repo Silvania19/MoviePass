@@ -26,10 +26,17 @@ class ProjectionControllers
   }
  public function addparte1($idCine=null)
  {
-  
-   $control=1;
-   $listProjection2=$this->listProjection->GetAll();
+
+       $control=1;
+       try {
+          $listProjection2=$this->listProjection->GetAll();
    $movies=$this->listMovie->GetAll();
+       } catch (\Throwable $th) {
+        $controlScritpt=1;
+        $message='error en la base';
+       // include(VIEWS_PATH."userviews.php");
+       }
+  
    $listMovies2= array();
    foreach($movies as $movie)
    {
@@ -38,36 +45,108 @@ class ProjectionControllers
        array_push($listMovies2, $movie);
      }
    }
-   $listGenres2=$this->listGenre->GetAll();
+   try {
+      $listGenres2=$this->listGenre->GetAll();
    include(VIEWS_PATH."carteleraviews.php");
+   } catch (\Throwable $th) {
+    $controlScritpt=1;
+    $message='error en la base';
+    //include(VIEWS_PATH."userviews.php");
+   }
+  
  }
  public function addparte2($datos=null)
  {
   $array=explode("+", $datos);
   $control2=1;
-  $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
+  try {
+    $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
   include(VIEWS_PATH."carteleraviews.php");
+  } catch (\Throwable $th) {
+    $controlScritpt=1;
+    $message='error en la base';
+    include(VIEWS_PATH."carteleraviews.php");
+  }
+  
+
+  
+  
+
  }
  public function addparte3($datos=null, $date=null)
  {
   
   $array=explode("+", $datos);
   $control3=1;
+  try {
+    $projection=$this->listProjection->SearchXMovieXCineXDate($array['0'], $array['1'], $date);
+
+  } catch (\Throwable $th) {
+    $controlScritpt=1;
+         $message='error en la base';
+        // include(VIEWS_PATH."userviews.php");
+  }
+  
+
+  if(is_object($projection))
+  {
+    try {
+        $listCinemas2=$this->listCinema->Search($projection->getIdCinema()); 
+    
+    $datos=$datos."+".$date;
+     include(VIEWS_PATH."carteleraviews.php");
+    } catch (\Throwable $th) {
+      $controlScritpt=1;
+      $message='error en la base';
+     // include(VIEWS_PATH."userviews.php");
+    }
+  
+  }
+  else
+  {
+    try {
+       $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
+     $datos=$datos."+".$date;
+     include(VIEWS_PATH."carteleraviews.php");
+    } catch (\Throwable $th) {
+      $controlScritpt=1;
+      $message='error en la base';
+     // include(VIEWS_PATH."userviews.php");
+    }
+   
+  }
+ 
+  } catch (\Throwable $th) {
+     $array=explode("+", $datos);
+  $control3=1;
   $projection=$this->listProjection->SearchXMovieXCineXDate($array['0'], $array['1'], $date);
 
 
   if(is_object($projection))
   {
-    $listCinemas2=$this->listCinema->Search($projection->getIdCinema()); 
-    
+    try {
+         $listCinemas2=$this->listCinema->Search($projection->getIdCinema());
     $datos=$datos."+".$date;
      include(VIEWS_PATH."carteleraviews.php");
+    } catch (\Throwable $th) {
+      $controlScritpt=1;
+      $message='error en la base';
+      //include(VIEWS_PATH."userviews.php");
+    }
+ 
   }
   else
   {
-    $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
+    try {
+       $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
      $datos=$datos."+".$date;
      include(VIEWS_PATH."carteleraviews.php");
+    } catch (\Throwable $th) {
+      $controlScritpt=1;
+      $message='error en la base';
+      //include(VIEWS_PATH."userviews.php");
+    }
+   
   }
  
  }
@@ -81,9 +160,16 @@ class ProjectionControllers
   $date=$array['2'];
   $veri=0;
   $duration=0;
-  $cartelera=$this->listProjection->GetAll();
+  try {
+    $cartelera=$this->listProjection->GetAll();
   $cines=$this->listCine->GetAll();
   $movies=$this->listMovie->GetAll();
+  } catch (\Throwable $th) {
+    $controlScritpt=1;
+    $message='error en la base';
+   // include(VIEWS_PATH."userviews.php");
+  }
+  
  
   if(is_array($cartelera))
   {
@@ -118,30 +204,55 @@ class ProjectionControllers
             $duration=$hour+$movie->getDuration();
         }
       }*/
-      $projection= new projection($date, $hour, $idCine, $idMovie, $idCinema, $duration);
-       $this->listProjection->Add($projection);
-       $controlScript=1;
-       $message='added projection';
-       include(VIEWS_PATH."carteleraviews.php");
-    
+     
+       
+      try
+       { 
+        $projection= new projection($date, $hour, $idCine, $idMovie, $idCinema, $duration);
+        $this->listProjection->Add($projection);
+        include(VIEWS_PATH."carteleraviews.php");
+       } 
+       catch (\PDOException $th)
+        {
+        $controlScript=1;
+        $message='added projection';
+        include(VIEWS_PATH."carteleraviews.php");
+        }
   }
 
  }
+ 
+
+
+
  public function delete($idProjection=null)
  {
+    try {
+      $this->listProjection->Delete($idProjection);
+    $cines=$this->listCine->GetAll();
+    $cartelera=$this->listProjection->GetAll();
+    $movies=$this->listMovie->GetAll();
+    include(VIEWS_PATH."carteleraviews.php");
+    } catch (\Throwable $th) {
+      $controlScript=1;
+    $message='deleted projection';
+    include(VIEWS_PATH."carteleraviews.php");
+    }
   
-   $this->listProjection->Delete($idProjection);
-   $cines=$this->listCine->GetAll();
-   $cartelera=$this->listProjection->GetAll();
-   $movies=$this->listMovie->GetAll();
-   $controlScript=1;
-  $message='deleted projection';
-   include(VIEWS_PATH."carteleraviews.php");
+  
  }
+
+ 
  public function exist($idMovie, $idCine)
   {
-   
-      $projections= $this->listProjection->SearchXCine($idCine);
+    try {
+       $projections= $this->listProjection->SearchXCine($idCine);
+    } catch (\Throwable $th) {
+      $controlScritpt=1;
+      $message='error en la base';
+      //include(VIEWS_PATH."userviews.php");
+    }
+      
       $retorno=false;
       $movies=array();
       if($projections !=false){
@@ -173,36 +284,55 @@ class ProjectionControllers
       $retorno= false;
     }
     return $retorno;
-  }
+      
 
+  }
+  
    public function filterGenre($idCine=null, $idGenre)
  {
-   $control=1;
-   $listProjection2=$this->listProjection->GetAll();
-   $movies=$this->listMovie->GetAll();
-   $listMovies2= array();
-   $filter=array();
-   foreach($movies as $movie)
-   {
-     if($this->exist($movie->getIdMovie(), $idCine)==false)
-     {
-       array_push($listMovies2, $movie);
-     }
-   }
-   
-   if(!empty($listMovies2))
-   {
-     $filter=$this->movieContro->filterGenres($listMovies2, $idGenre);
-     
+  
+        $control=1;
+        try {
+            $listProjection2=$this->listProjection->GetAll();
+            $movies=$this->listMovie->GetAll();
+        } catch (\Throwable $th) {
+          $controlScritpt=1;
+         $message='error en la base';
+         //include(VIEWS_PATH."userviews.php");
+        }
+  
+    $listMovies2= array();
+    $filter=array();
+    foreach($movies as $movie)
+    {
+      if($this->exist($movie->getIdMovie(), $idCine)==false)
+      {
+        array_push($listMovies2, $movie);
+      }
     }
-    $listMovies2=array();
+    
+    if(!empty($listMovies2))
+    {
+      $filter=$this->movieContro->filterGenres($listMovies2, $idGenre);
+      
+      }
+      $listMovies2=array();
+    try {
+       $listGenres2=$this->listGenre->GetAll();
+    include(VIEWS_PATH."carteleraviews.php");
+    } catch (\Throwable $th) {
+      $controlScritpt=1;
+      $message='error en la base';
+      //include(VIEWS_PATH."userviews.php");
+    }
    
-   $listGenres2=$this->listGenre->GetAll();
-   include(VIEWS_PATH."carteleraviews.php");
+  
+  
  }
  public function filterDate($idCine=null,  $date=null)
  {
-  $control=1;
+ 
+      $control=1;
    $listProjection2=$this->listProjection->GetAll();
    $movies=$this->listMovie->GetAll();
    $listMovies2= array();
@@ -221,13 +351,16 @@ class ProjectionControllers
      
     }
     $listMovies2=array();
-   
-       $listGenres2=$this->listGenre->GetAll();
+       try {
+          $listGenres2=$this->listGenre->GetAll();
        include(VIEWS_PATH."carteleraviews.php");
-    
-  
-   
-   
+       } catch (\Throwable $th) {
+        $controlScritpt=1;
+        $message='error en la base';
+        //include(VIEWS_PATH."userviews.php");
+       }
+      
+ 
   
  }
 
