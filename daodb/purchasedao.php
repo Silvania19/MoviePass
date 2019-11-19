@@ -37,12 +37,13 @@
         
          // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
          // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-         $sql="INSERT INTO purchases (discount, amount, quantityTickets, idProjection, time) VALUES (:discount, :amount, :quantityTickets, :idProjection, :time)";
+         $sql="INSERT INTO purchases (discount, amount, quantityTickets, idProjection, time, idUser) VALUES (:discount, :amount, :quantityTickets, :idProjection, :time, :idUser)";
          $valuesArray["discount"] = $objeto->getDiscount();
          $valuesArray["amount"] = $objeto->getAmount();
          $valuesArray['quantityTickets']= $objeto->getQuantityTickets();
          $valuesArray["idProjection"] = $objeto->getIdProjection();
          $valuesArray['time']=$objeto->getTime();
+         $valuesArray['idUser']=$objeto->getIdUser();
          
          try {
              $this->connection= Connection::getInstance();
@@ -60,9 +61,9 @@
         $arreglo=is_array($arreglo)?$arreglo:[];
         $arregloObjetos=array_map(function($pos)
         {
-         $newPurchase =new purchase($pos['discount'], $pos['amount'], $pos['quantityTickets'], $pos['idProjection'], $pos['time']);
+         $newPurchase =new purchase($pos['discount'], $pos['amount'], $pos['quantityTickets'], $pos['idProjection'], $pos['time'], $pos['idUser']);
          
-        $newPurchase->setIdPurchase($pos['idPurchase']);
+         $newPurchase->setIdPurchase($pos['idPurchase']);
          return $newPurchase;
         }, $arreglo);
         return count($arregloObjetos)>1? $arregloObjetos: $arregloObjetos['0'];

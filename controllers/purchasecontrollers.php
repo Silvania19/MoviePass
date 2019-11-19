@@ -79,7 +79,7 @@
             }
             
          
-            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time);
+            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getUser());
             $purchases= $this->listPurchase->Add($purchase);
             $listPurchase=$this->listPurchase->GetAll();
             include(VIEWS_PATH."shoppingpurchase.php");

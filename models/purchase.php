@@ -9,11 +9,12 @@ class Purchase
   private $quantityTickets;
   private $idProjection;
   private $time;
+  private $idUser;
  
   
 
 
-  public function __construct($discount, $amount, $quantityTickets, $idProjection, $time)
+  public function __construct($discount, $amount, $quantityTickets, $idProjection, $time, $idUser)
   {
     
       $this->discount=$discount;
@@ -21,8 +22,13 @@ class Purchase
       $this->quantityTickets=$quantityTickets;
       $this->idProjection=$idProjection;
       $this->time=$time;
+      $this->idUser=$idUser;
      
   }
+    public function setIdUser($idUser)
+    {
+        $this->idUser=$idUser;
+    }
 
     public function setIdPurchase($idPurchase)
     {
@@ -83,6 +89,10 @@ class Purchase
     public function getTime()
     {
         return $this->time;
+    }
+    public function getIdUse()
+    {
+        return $this->idUser;
     }
 }
 
