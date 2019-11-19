@@ -55,8 +55,15 @@
         {
             
             $user=$this->userContro->checkSession();
-            $projection=$this->listProjection->Search($idProjection);
-            $price=$this->listProjection->SearchXProjectionAmount($idProjection);
+            try {
+                $projection=$this->listProjection->Search($idProjection);
+                $price=$this->listProjection->SearchXProjectionAmount($idProjection);
+            } catch (\Throwable $th) {
+                $controlScritpt=1;
+                $message='error en la base';
+                include(VIEWS_PATH."formpurchase.php");
+            }
+            
             $amount=$price*$quantityTicket;
             $porciento=25;
             $discount=0.0;

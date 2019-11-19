@@ -64,21 +64,42 @@ class viewscontrollers
     public function cine()
     {
       $user=$this->usercontroller->checkSession();
-      $listCines=$this->listCine->GetAll();  
-      include(VIEWS_PATH."cineviews.php");  
+      try {
+        $listCines=$this->listCine->GetAll();  
+      include(VIEWS_PATH."cineviews.php"); 
+      } catch (\Throwable $th) {
+        $controlScritpt=1;
+        $message='error en la base';
+        include(VIEWS_PATH."cineviews.php");
+      }
+       
     }
     public function cine2($idCine)
     {
       $user=$this->usercontroller->checkSession();
-      $cine=$this->listCine->Search($idCine);
-      $cinemasCine=$this->listCinema->SearchIdCine($idCine);
-      include(VIEWS_PATH."cineviews2.php");  
+      try {
+        $cine=$this->listCine->Search($idCine);
+        $cinemasCine=$this->listCinema->SearchIdCine($idCine);
+      } catch (\Throwable $th) {
+        $controlScritpt=1;
+        $message='error en la base';
+        include(VIEWS_PATH."cineviews.php");
+      }
+      
+       
     }
 
     public function user()
     {
-      $listUsers=$this->listUser->GetAll(); 
+      try {
+         $listUsers=$this->listUser->GetAll(); 
       $user=$this->usercontroller->checkSession();
+      } catch (\Throwable $th) {
+        $controlScritpt=1;
+        $message='error en la base';
+      
+      }
+     
       if($user->getIdRol()==2)
       {
         include(VIEWS_PATH."administratorviews.php");  
@@ -90,19 +111,33 @@ class viewscontrollers
     public function cartelera()
     { 
       $user=$this->usercontroller->checkSession();
-      $cines=$this->listCine->GetAll();
+      try {
+         $cines=$this->listCine->GetAll();
       $cartelera=$this->listProjection->GetAllActuales();
       $movies=$this->listMovie->GetAll();
-      include(VIEWS_PATH."carteleraviews.php");
+      } catch (\Throwable $th) {
+        $controlScritpt=1;
+        $message='error en la base';
+        include(VIEWS_PATH."carteleraviews.php");
+      }
+     
 
     }
     public function cartelerauser()
     {
       $user=$this->usercontroller->checkSession();
-      $cines=$this->listCine->GetAll();
+      try {
+         $cines=$this->listCine->GetAll();
       $cartelera=$this->listProjection->GetAllActuales();
       $movies=$this->movieContro->SeeMovies();
       include(VIEWS_PATH."cartelerauser.php");
+      } catch (\Throwable $th) {
+        $controlScritpt=1;
+        $message='error en la base';
+        include(VIEWS_PATH."cartelerauser.php");
+      }
+     
+      
     }
 
     public function home2()
@@ -110,18 +145,19 @@ class viewscontrollers
       $user=$this->usercontroller->checkSession();
       if($user)
       {
-        
-          $projections=$this->listProjection->GetAllActuales();
+          try {
+             $projections=$this->listProjection->GetAllActuales();
           $movies=$this->movieContro->SeeMovies();
           $listGenres2=$this->listGenres->GetAll();
           include(VIEWS_PATH."home2.php");
-      }
-      else
-      {
-        $controlScript=1;
+          } catch (\Throwable $th) {
+           $controlScript=1;
         $message="Hubo problemas con la verificacion de los datos del usuario. Por favor inicia sesion otra vez. Con datos actuales.";
         include(VIEWS_PATH."home.php");
+          }
+         
       }
+    
     }
 
   

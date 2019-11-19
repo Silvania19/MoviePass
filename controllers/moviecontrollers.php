@@ -18,9 +18,16 @@ class MovieControllers
 
     public function seeListMovie()
     {
-           $listMovie2=$this->listMovie->GetAll();
+        try {
+             $listMovie2=$this->listMovie->GetAll();
            $listGenres2=$this->listGenres->GetAll(); 
            include(VIEWS_PATH."movieviews.php");
+        } catch (\Throwable $th) {
+            $controlScritpt=1;
+         $message='error en la base';
+         //include(VIEWS_PATH."userviews.php");
+        }
+          
     } 
 
     public function filterGenres($movies, $idGenre)
@@ -56,8 +63,14 @@ class MovieControllers
         
     public function SeeMovies()
     {
-    
-        $movies=$this->listMovie->GetAll();
+        try {
+                    $movies=$this->listMovie->GetAll();
+        } catch (\Throwable $th) {
+            $controlScritpt=1;
+         $message='error en la base';
+        // include(VIEWS_PATH."userviews.php");
+        }
+
         $resulMovie=array();
         if(isset($movies))
         {
