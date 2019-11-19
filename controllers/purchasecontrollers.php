@@ -34,12 +34,21 @@
 
         public function addPart1($idProjection=null)
         {
+            try
+            {
             $user=$this->userContro->checkSession();
             $projection=$this->listProjection->Search($idProjection);
             $movie= $this->listMovie->Search($projection->getIdMovie());
             $cine=$this->listCine->Search($projection->getIdCine());
             $price=$this->listProjection->SearchXProjectionAmount($idProjection);
             include(VIEWS_PATH."formpurchase.php");
+            }
+            catch (\Exception  $ex) {
+
+               $message= 'console.log("error en la base. Archivo:userdao.php)';
+               include(VIEWS_PATH."formpurchase.php");
+            }
+           
 
         }
         public function add($quantityTicket=null,$idProjection=null)

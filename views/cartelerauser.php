@@ -72,7 +72,7 @@
                                 <td><?php echo $projection->getHour();?> </td>
                                 <td>
                                     <form action="<?php echo FRONT_ROOT;?>/purchase/addPart1" method="post">
-                                      <input type="checkbox" name="datos" id="" value="<?php echo  $projection->getIdProjection();?>">
+                                      <input type="checkbox" name="datos" id="" value="<?php echo  $projection->getIdProjection();?>" required="">
                                       <input type="submit" value="Agregar al carrito">
                                     </form>
                                    </td>

@@ -35,8 +35,8 @@
                 <td>
                     <form action="<?php echo FRONT_ROOT;?>/purchase/add" method="POST">
                             <label ><h5>Cantidad de entradas</h5></label>
-                            <input type="number" name="quantityTickets" class="form-control">
-                            <input type="checkbox" name="idProjection" id="" value="<?php echo   $projection->getIdProjection();?>">
+                            <input type="number" name="quantityTickets" min="1" class="form-control">
+                            <input type="checkbox" name="idProjection" id="" value="<?php echo   $projection->getIdProjection();?>" required="">
                             <input type="submit" value="Confirmar">
                     </form>
                 </td>

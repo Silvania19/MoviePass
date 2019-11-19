@@ -32,10 +32,11 @@ class viewscontrollers
         $this->movieContro=new movieC();
     }
     public function index()
-    { 
-       $user = $this->usercontroller->checkSession();
-       if(isset($user))
+    {  
+      $user = $this->usercontroller->checkSession();
+       if($user)
         {
+         
          
           $projections=$this->listProjection->GetAllActuales();
           $movies=$this->movieContro->SeeMovies();
@@ -53,9 +54,9 @@ class viewscontrollers
     {
      
       $user = $this->usercontroller->checkSession();
-      if(isset($user))
+      if($user)
         {
-            unset($user);//se usara este porque el destroy destr
+            unset($_SESSION['user']);//se usara este porque el destroy destr
             include(VIEWS_PATH."home.php");
         }
         
@@ -107,7 +108,7 @@ class viewscontrollers
     public function home2()
     {
       $user=$this->usercontroller->checkSession();
-      if(isset($user))
+      if($user)
       {
         
           $projections=$this->listProjection->GetAllActuales();
