@@ -141,6 +141,13 @@ if(isset($controlScript))
            <?php
           }
         }
+        else 
+        {
+          ?>
+             <img src="<?php echo FRONT_ROOT?>/front/img/perro2.jpg" class="rounded center",  style="width: 600px; higth: 500px;"><br>
+             <p> <strong> No sabes cuanto lo siento bro, <br> pero no hay projecciones de pelicuals cargadas, la vida es injusta</strong></p>
+          <?php
+        }
         if(!empty($filter))
         {
            if(is_array($filter))
