@@ -11,40 +11,47 @@
             <?php 
             if(is_array($listPurchase))
             { 
-                foreach( $listPurchase as $purchases)
+                foreach($listPurchase as $purchases)
                 {
+                    if($purchases->getIdUser()==$user->getIdUser())
+                    {
+                 
             ?>           
-                     <tr>
-                        <td><h3><?php echo $purchases->getAmount();?></h3></td>
-                    </tr>
+                        <tr>
+                            <td><h3><?php echo $purchases->getAmount();?></h3></td>
+                        </tr>
 
-                    <tr>
-                        <td><h3><?php echo $purchases->getQuantityTickets();?></h3></td>
-                    </tr>
-                        
-                    <tr>
-                        <td><h3><?php echo $purchases->getTime();?></h3></td>
-                    </tr>
+                        <tr>
+                            <td><h3><?php echo $purchases->getQuantityTickets();?></h3></td>
+                        </tr>
+                            
+                        <tr>
+                            <td><h3><?php echo $purchases->getTime();?></h3></td>
+                        </tr>
                 <?php 
+                    }
                  }
             } 
             else
             {
                 if(is_object($listPurchase))
                 {
+                    if($purchases->getIdUser()==$user->getIdUser())
+                    {
                 ?>
-                <tr>
-                    <td><h3><?php echo $listPurchase->getAmount();?></h3></td>
-                </tr>
+                        <tr>
+                            <td><h3><?php echo $listPurchase->getAmount();?></h3></td>
+                        </tr>
 
-                <tr>
-                    <td><h3><?php echo $listPurchase->getQuantityTickets();?></h3></td>
-                </tr>
-                    
-                <tr>
-                    <td><h3><?php echo $listPurchase->getTime();?></h3></td>
-                </tr>
+                        <tr>
+                            <td><h3><?php echo $listPurchase->getQuantityTickets();?></h3></td>
+                        </tr>
+                            
+                        <tr>
+                            <td><h3><?php echo $listPurchase->getTime();?></h3></td>
+                        </tr>
             <?php
+                    }
                 }
             }
             ?>
