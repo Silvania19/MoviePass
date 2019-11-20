@@ -16,7 +16,7 @@ class CinemaDao implements Idaos
         
         $sql="SELECT * FROM cinemas";
         try {
-            $this->connection = Connection::getInstance();
+          $this->connection = Connection::getInstance();
             $listCinemas = $this->connection->execute($sql);  
            
         } catch (\PDOException  $ex) {
@@ -31,7 +31,7 @@ class CinemaDao implements Idaos
             return false;
         }
     }
-    public function Add($objeto)
+                                                                           public function Add($objeto)
     {
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
