@@ -22,6 +22,9 @@ include(VIEWS_PATH."header.php");
    <button type="submit" class="btn btn-dark"  > search </button>
  
  </form> <br>
+ <div class="container">
+  <div class="row">
+    <div class="col">
  <div class="carousel slide" data-ride="carousel">
 <ul class="carousel-indicators">
 <?php
@@ -80,6 +83,9 @@ include(VIEWS_PATH."header.php");
 
 
      <?php }}?>
+     </div>
+     </div>
+     </div>
      </div>
   <?php   
      if(!empty($filter))
