@@ -5,6 +5,7 @@
      private $idPay;
      private $wayToPay;
      private $idPurchase;
+     private $fecha;
 
 
      public function __construct()
@@ -12,6 +13,7 @@
          $this->idPay=$idPay;
          $this->wayToPay=$wayToPay;
          $this->idPurchase=$idPurchase;
+         $this->fecha=$fecha;
          
      }
      public function setIdPay($idPay)
@@ -26,6 +28,10 @@
      {
       $this->idPurchase=$idPurchase;
      }
+     public function setFecha($fecha)
+     {
+       $this->fecha=$fecha;
+     }
      public function getIdPay()
      {
        return  $this->idPay;
@@ -38,6 +44,9 @@
      {
        return  $this->idPurchase;
      }
-     
+     public function getFecha()
+     {
+       return  $this->fecha;
+     }
  }
 ?>
