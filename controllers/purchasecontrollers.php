@@ -65,12 +65,13 @@
             }
             
             $amount=$price*$quantityTicket;
-            $porciento=25;
+             
             $discount=0.0;
-            $Quantitydiscount=$amount/$porciento*100;
+            $Quantitydiscount=$amount*PORCENTAJE_DESCUENTO/100;
+            echo $Quantitydiscount;
             $time= strftime("%Y-%m-%d %I:%M:%S %p", time());
             $day=strftime("%A", time());
-            
+            $movie=$this->listMovie->Search($projection->getIdMovie());
             if($day=='Tuesday'|| $day=='Wednesday')
             {
                 if($quantityTicket>=2)
@@ -84,6 +85,7 @@
                     $amount2=$amount;
                 }
             } 
+            
             $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getIdUser());
             try
             {
@@ -98,11 +100,18 @@
                 $message='error en la base';
                 include(VIEWS_PATH."home2.php");//esta mal debe incluir otra vista pero no se cual, 
             }
-         
-           
-           
-           
-
+       
+        }
+        public function delete($idPurchase=null)
+        {
+            $user=$this->userContro->checkSession();
+            try {
+                $this->listPurchase->Delete($idPurchase);
+                $listPurchase=$this->listPurchase->SearchXUser($);
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+            
         }
 
     }

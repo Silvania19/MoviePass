@@ -12,7 +12,7 @@
  define ("DB_USER", "root");
  define ("DB_PASS", "");
 
- 
+ define("PORCENTAJE_DESCUENTO", 25);
  //$con->close();
  
 

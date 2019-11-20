@@ -115,6 +115,7 @@ class viewscontrollers
          $cines=$this->listCine->GetAll();
       $cartelera=$this->listProjection->GetAllActuales();
       $movies=$this->listMovie->GetAll();
+      include(VIEWS_PATH."carteleraviews.php");
       } catch (\Throwable $th) {
         $controlScritpt=1;
         $message='error en la base';

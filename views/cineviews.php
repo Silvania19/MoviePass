@@ -49,9 +49,11 @@
                 <button type="button"class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-                   <label for="name" >Name</label><input type="text" name="name" class="form-control">
+                   <label for="name" >Name</label>
+                   <input type="text" name="name" class="form-control" required="">
                     
-                   <label for="address">Address<input type="text" name="address" id=""></label>
+                   <label for="address">Address</label>
+                     <input type="text" name="address" id="" required="">
                    <br>
                   
                    <button type="submit" class="btn btn-dark" data dismiss="modal" > add cine </button>
