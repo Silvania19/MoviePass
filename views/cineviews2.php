@@ -6,6 +6,9 @@
     {
 ?>
     <script>alert('<?php echo $message?>')</script> 
+    <?php
+    }
+}?>
 <?php  if($user->getIdRol()==2)
          {
        
@@ -85,7 +88,7 @@
                                     <td><?php echo 'hola';?></td>
                                     <td>
                                         <form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="post">
-                                            <input type="checkbox" name="idCinema" id="" value="<?php echo $cinema->getIdCinema(); ?>">
+                                            <input type="checkbox" name="idCinema" id="" value="<?php echo $cinema->getIdCinema(); ?>" required="">
                                             <input type="submit" value="eliminar">
                                         </form>
                                     </td>
@@ -103,7 +106,7 @@
                              <div class="modal fade" id="remove-cinema">  
 
                                 <form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="post">
-                                    <input type="checkbox" name="idCinema" id="" value="<?php echo $cinemasCine->getIdCinema(); ?>">
+                                    <input type="checkbox" name="idCinema" id="" value="<?php echo $cinemasCine->getIdCinema(); ?>" required="">
                                     <input type="submit" value="eliminar">
                                 </form>
                              </div>
@@ -138,12 +141,12 @@
                      <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>                  </div>
                 <div class="modal-body">
                    <label for="name" >Name</label>
-                   <input type="text" name="name" class="form-control">  
+                   <input type="text" name="name" class="form-control" required="">  
                    <label for="address">Address</label>
-                   <input type="text" name="address" id="">
+                   <input type="text" name="address" id="" required="">
                    
                    <label for="address">$estas seguro de modificar?</label>
-                   <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
+                   <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>" required="">
                    <button type="submit" class="btn btn-dark" data dismiss="modal" > Update </button>
                 </div>
 
@@ -161,13 +164,13 @@
                     
                     
                     <label for="nameCinema">nombre</label>
-                    <input type="text" name="nameCinema"class= "form-control " > <br>
-                    <label for="capacity"> Total de butacas</label> 
-                     <input type="text" name="capacity" id=""><br>
+                    <input type="text" name="nameCinema"class= "form-control " required=""> <br>
+                    <label for="capacity"> Total de butacas</label><br>
+                     <input type="text" name="capacity" id="" required=""><br>
                      <label for="price">Price</label><br>
-                     <input type="text" name="price" id=""><br>
+                     <input type="text" name="price" id="" required=""><br>
                      <label for="idCine">¿Estas seguro de agregar?</label>
-                     <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>"><br>
+                     <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>" required=""><br>
                     <button type="submit" class="btn btn-dark" data dismiss="modal" > Agregar nueva sala</button>
                </div>
             </form>
@@ -192,6 +195,5 @@
         
 <?php
     }
-
-    include(VIEWS_PATH."footer.php");
+     include(VIEWS_PATH."footer.php");
 ?>
