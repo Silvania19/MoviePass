@@ -3,7 +3,7 @@
     use models\Purchase as purchase;
     use daodb\ProjectionDao as projectionD;
     use daodb\PurchaseDao as purchaseD;
-        use daodb\CineDao as cineD;
+    use daodb\CineDao as cineD;
     use controllers\MovieControllers as movieC;
     use controllers\UserControllers as userC;
     use daosjson\MovieDao as movieD;

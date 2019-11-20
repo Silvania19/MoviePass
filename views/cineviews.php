@@ -44,15 +44,15 @@
     
             
         <div class="modal-header"> 
-            <h2 class="modal-title">Add cine</h2>
+            <h2 class="modal-title">Agregar cine</h2>
                         
                 <button type="button"class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-                   <label for="name" >Name</label>
+                   <label for="name" >Nombre</label>
                    <input type="text" name="name" class="form-control" required="">
                     
-                   <label for="address">Address</label>
+                   <label for="address">Direccion</label>
                      <input type="text" name="address" id="" required="">
                    <br>
                   
