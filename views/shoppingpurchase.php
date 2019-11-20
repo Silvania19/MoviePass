@@ -17,6 +17,22 @@
                     {
                  
             ?>           
+             
+                      <tr>
+                            <td><h4>Funcion   </h4></td> 
+                        
+                            <td>Pelicula:</td>
+                            <td><?php echo $movie->getTitle();?></td>
+                    
+                        </tr>
+                        <tr>
+                            
+                            <td>fecha</td>
+                            <td><h3><?php echo $projection->getDate();?></h3></td>
+                            <td>hora</td>
+                            <td><h3><?php echo $projection->getHour();?></h3></td>
+                        </tr>
+                       
                         <tr>
                             <td><h4>Monto   </h4></td>
                             <td><h3><?php echo $purchases->getAmount();?></h3></td>
@@ -33,6 +49,12 @@
                         <tr>
                             <td><h4>Fecha de compra   </h4></td>
                             <td><h3><?php echo $purchases->getTime();?></h3></td>
+                        </tr>
+                        <tr>
+                            <form action="<?php echo FRONT_ROOT;?>/purchase/delete" method="post">
+                             <input type="checkbox" name="idPurchase" id="" required="">
+                             <input type="submit" value="Eliminar">
+                           </form>
                         </tr>
                        
                 <?php 
