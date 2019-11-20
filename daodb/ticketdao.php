@@ -1,6 +1,6 @@
 <?php
     namespace daodb;
-    use models\Ticket as tiquet;
+    use models\Ticket as ticket;
     use interfaces\Idaos as Idaos;
     class TicketDao implements Idaos
     {
@@ -15,14 +15,14 @@
             $sql="SELECT * FROM tickets";
             try {
                 $this->connection = Connection::getInstance();
-                $listUser = $this->connection->execute($sql);  
+                $listTicket = $this->connection->execute($sql);  
                
             } catch (\PDOException  $ex) {
                 throw $ex;
             }
-            if (!empty($listUser))
+            if (!empty($listTicket))
             {
-                return $this->mapear($listUser);
+                return $this->mapear($listTicket);
               
             }
             else{
@@ -34,15 +34,15 @@
            
             // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
             // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-            $sql="INSERT INTO users (numberTicket, qr, idProjection, price,  idUser) VALUES (:numberTicket, :qr, :idProjection, :price, :idUser)";
+            $sql="INSERT INTO tickets (numberTicket, price,idUser,  qr, idProjection) VALUES (:numberTicket, :price, :idUser, :qr, :idProjection)";
            
             
             $valuesArray["numberTicket"] = $objeto->getNumberTicket();
-            $valuesArray["qr"] = $objeto->getQr();
-            $valuesArray['idProjection']= $objeto->getIdProjection();
-            $valuesArray["price"] = $objeto->getPrice();
+             $valuesArray["price"] = $objeto->getPrice();
             $valuesArray["idUser"] = $objeto->getIdUser();
-            
+            $valuesArray["qr"] = $objeto->getQr();
+           
+             $valuesArray['idProjection']= $objeto->getIdProjection();
            
             try {
                 $this->connection= Connection::getInstance();
@@ -65,6 +65,7 @@
            $newTicket->setIdTicket($pos['idTicket']);
             return $newTicket;
            }, $arreglo);
+           
            return count($arregloObjetos)>1? $arregloObjetos: $arregloObjetos['0'];
        }
        public function Delete($objeto)
@@ -109,9 +110,7 @@
               $this->connection = Connection:: getInstance();
               $resul=$this->connection->execute($sql, $parameters);
           } catch (\PDOException $th) {
-              echo '<script>';
-              echo 'console.log("error en la base. Archivo:userdao.php)';
-              echo '</script>';//sacar 
+           throw $th;
           }
           if(!empty ($resul))
           {
@@ -123,24 +122,45 @@
           }
         }
         public function SearchXnumber ($number)
-    {
-        $sql = "SELECT * FROM tickets where numberTicket = :numberTicket";
+       {
+            $sql = "SELECT * FROM tickets where numberTicket = :numberTicket";
 
-        $parameters['numberTicket'] = $number;
+            $parameters['numberTicket'] = $number;
 
-        try
-        {
-            $this->connection = Connection::getInstance();
-            $resul = $this->connection->execute($sql, $parameters);
-        }
-        catch(PDOException $e)
-        {
-            throw $e;
-        }
+            try
+            {
+                $this->connection = Connection::getInstance();
+                $resul = $this->connection->execute($sql, $parameters);
+            }
+            catch(PDOException $e)
+            {
+                throw $e;
+            }
 
-        if(!empty($resul))
-            return true;
-        else
-            return false;
-    }
+            if(!empty($resul))
+                return true;
+            else
+                return false;
+       }
+       public function SearchXUser ($idUser)
+       {
+            $sql = "SELECT * FROM tickets where idUser = :idUser";
+
+            $parameters['idUser'] = $idUser;
+
+            try
+            {
+                $this->connection = Connection::getInstance();
+                $resul = $this->connection->execute($sql, $parameters);
+            }
+            catch(PDOException $e)
+            {
+                throw $e;
+            }
+
+            if(!empty($resul))
+                return $this->mapear($resul);
+            else
+                return false;
+       }
     }

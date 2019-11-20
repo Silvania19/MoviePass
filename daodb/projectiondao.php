@@ -102,6 +102,23 @@ class ProjectionDao implements Idaos
             throw $e;
         }
     }
+
+
+    public function Delete($objeto)
+    {
+        $sql = "DELETE FROM users WHERE idUser = :idUser";
+        $parameters['idUser'] = $objeto;
+
+        try
+        {
+            $this->connection = Connection::getInstance();
+            return $this->connection->ExecuteNonQuery($sql, $parameters);
+        }
+        catch(PDOException $e)
+        {
+            throw $e;
+        }
+    }
     public function Update($objeto, $buscador)
     {
         $sql="UPDATE projections SET date=:date, hour=:hour, idCine=:idCine, idMovie=:idMovie, idCinema=:idCinema, duration=:duration WHERE email = '$buscador';";

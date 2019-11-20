@@ -71,15 +71,17 @@
     public function Delete($objeto)
     {
         $sql = "DELETE FROM purchases WHERE idPurchase = :idPurchase";
+       
         $parameters['idPurchase'] = $objeto;
- 
+        
         try
         {
             $this->connection = Connection::getInstance();
             return $this->connection->ExecuteNonQuery($sql, $parameters);
+            
         }
         catch(PDOException $e)
-        {
+        {   
             throw $e;
         }
     }
@@ -98,7 +100,7 @@
              return $this->connection->ExecuteNonQuery($sql, $parameters);
          }
          catch(\PDOException $e)
-         {
+         { 
             throw $e;
          }
        

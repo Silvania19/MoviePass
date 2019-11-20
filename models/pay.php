@@ -40,7 +40,7 @@
      {
        return $this->wayToPay;
      }
-     public function getIPurchase()
+     public function getIdPurchase()
      {
        return  $this->idPurchase;
      }
