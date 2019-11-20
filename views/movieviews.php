@@ -22,7 +22,10 @@ include(VIEWS_PATH."header.php");
    <button type="submit" class="btn btn-dark"  > search </button>
  
  </form> <br>
+ <div class="carousel slide" data-ride="carousel">
+<ul class="carousel-indicators">
 <?php
+ 
  if(!empty($listMovie2))
 {
   
@@ -33,9 +36,14 @@ include(VIEWS_PATH."header.php");
     foreach ($listMovie2 as $movie){
 ?>
 
-  <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" alt= "<?php $movie->getTitle();?> " class="rounded">
-  <br>
+   <li data-target="demo" class="active"></li>
+ </ul>
+ <div class="carousel-inner">
+  <div class=carousel-item>
+  <img class="img-fluid" src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" alt= "<?php $movie->getTitle();?> " class="rounded">
   
+<br>
+     <div class="carousel-item active" >
   <h3>Title: <?php echo $movie->getTitle(); ?> </h3>
   <p>Original Title: <?php echo $movie->getOriginal_title(); ?> </p>
   <p>Original lenguage: <?php echo $movie->getOriginal_lenguage(); ?> </p>
@@ -60,12 +68,19 @@ include(VIEWS_PATH."header.php");
   }  ?> </p>
   <p>Popularity: <?php echo $movie->getPopularity(); ?> </p>
   <p>Vote Count: <?php echo $movie->getVote_count(); ?> </p>
-  <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded">
-    
+      </div>
+   </div>
+  </div>
+ <a href="#demo"class="carousel-control-prev" data-slide="prev"></a><span class="carousel-control-prev-icon"></span>
+ <a href="#demo"class="carousel-control-next" data-slide="next"></a><span class="carousel-control-next-icon"></span>
+
+ <!---<img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded">
+    --->
 
 
 
      <?php }}?>
+     </div>
   <?php   
      if(!empty($filter))
 {
