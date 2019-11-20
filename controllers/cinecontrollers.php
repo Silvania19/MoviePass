@@ -79,36 +79,41 @@ class CineControllers
         $idCine=$verificacion;
         try {
            $listCinema=$this->cinemaList->GetAll();
-        $projectionL=$this->projectionList->GetAll();
+           $projectionL=$this->projectionList->GetAll();
         } catch (\Throwable $th) {
           $controlScritpt=1;
           $message='error en la base';
           //include(VIEWS_PATH."userviews.php");
         }
-       
-        foreach($listCinema as $cinema)
+        if(!empty($listCinema))
         {
-            if($cinema->getIdCine()==$idCine)
-            {
-                $this->cinemaList->Delete($cinema->getIdCinema());
-            }
-        }
-        foreach($projectionL as $projection)
-        {
-            if($projection->getIdCine()==$idCine)
-            {
-              try {
-                 $this->projectionList->Delete($projection->getIdProjection());
-              } catch (\Throwable $th) {
-                $controlScritpt=1;
-                $message='error en la base';
-                //include(VIEWS_PATH."userviews.php");
+          foreach($listCinema as $cinema)
+          {
+              if($cinema->getIdCine()==$idCine)
+              {
+                  $this->cinemaList->Delete($cinema->getIdCinema());
               }
-               
+          }
+        }
+        if(!empty($projectionL))
+        {
+            foreach($projectionL as $projection)
+            {
+                if($projection->getIdCine()==$idCine)
+                {
+                  try {
+                    $this->projectionList->Delete($projection->getIdProjection());
+                  } catch (\Throwable $th) {
+                    $controlScritpt=1;
+                    $message='error en la base';
+                    //include(VIEWS_PATH."userviews.php");
+                  }
+                  
+                }
             }
         }
         try {
-            $this->cineRepo->Delete($idCine);
+        $this->cineRepo->Delete($idCine);
         $listCines=$this->cineRepo->GetAll();
         $message='deleted cine';
         include(VIEWS_PATH."cineviews.php");

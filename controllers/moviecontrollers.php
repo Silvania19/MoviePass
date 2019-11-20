@@ -62,11 +62,11 @@ class MovieControllers
     }
         
     public function SeeMovies()
-    {
+    {   
         try {
-                    $movies=$this->listMovie->GetAll();
+        $movies=$this->listMovie->GetAll();
         } catch (\Throwable $th) {
-            $controlScritpt=1;
+        $controlScritpt=1;
          $message='error en la base';
         // include(VIEWS_PATH."userviews.php");
         }
@@ -76,11 +76,16 @@ class MovieControllers
         {
             foreach($movies as $movie)
             {
-            if($this->listProjection->SearchXMovie($movie->getIdMovie()))
-            {
-                
-                array_push($resulMovie, $movie);
-            }
+                try {
+                    if($this->listProjection->SearchXMovie($movie->getIdMovie()))
+                    {
+                       ECHO 'HOLA'; 
+                        array_push($resulMovie, $movie);
+                    }
+               } catch (\Throwable $th) {
+                $controlScritpt=1;
+                $message='error en la base';
+                }
             }
         }
         return $resulMovie;

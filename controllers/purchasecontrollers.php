@@ -65,9 +65,10 @@
             }
             
             $amount=$price*$quantityTicket;
-            $porciento=25;
+            
             $discount=0.0;
-            $Quantitydiscount=$amount/$porciento*100;
+            $Quantitydiscount=$amount*PORCENTAJE_DESCUENTO/100;
+            echo $Quantitydiscount;
             $time= strftime("%Y-%m-%d %I:%M:%S %p", time());
             $day=strftime("%A", time());
             
@@ -84,6 +85,7 @@
                     $amount2=$amount;
                 }
             } 
+            
             $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getIdUser());
             try
             {
