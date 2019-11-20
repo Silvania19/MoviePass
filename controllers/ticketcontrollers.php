@@ -6,7 +6,7 @@
     use phpqrcode\QRcode as QRcode;
     use daodb\ProjectionDao as projectionD;
     use daodb\CinemaDao as cinemaD;
-    use daodb\UserControllers as userC;
+    use controllers\UserControllers as userC;
     class TicketControllers
     {
         private $listTickets;
@@ -22,17 +22,35 @@
         }
         public function generateTicket($idProjection=null)
         {
+          
             $user=$this->userContro->checkSession();
             $idUser=$user->getIdUser();
-            $projection=$this->listProjection->Search($idProjection);
-            $cinema=$this->listCinema->Search($projection->idCinema());
+            $projection=$this->listProjection->Search($idProjection);  
+           
+            $cinema=$this->listCinema->Search($projection->getIdCinema());
+             
             $price=$cinema->getPrice();
             $number=$this->generateRandomNumberTicket();
            
             $qr=$this->generateRandomQr($number);
+            
             $newTicket= new ticket($number, $price, $idUser, $qr, $idProjection);
-            $this->listTickets->Add($$newTicket);
-            include(VIEWS_PATH."ticketviews.php");
+           
+            $this->listTickets->Add($newTicket);
+           
+        }
+        public function SeeTicket()
+        {
+            $user=$this->userContro->checkSession();
+           
+            try {
+                 $listTickets2=$this->listTickets->SearchXUser($user->getIdUser());
+                 include(VIEWS_PATH."ticketviews.php");
+            } catch (\Throwable $th) {
+                 $controlScript=1;
+                 $message="error en la base";
+            }
+            
         }
 
         public function generateRandomNumberTicket()

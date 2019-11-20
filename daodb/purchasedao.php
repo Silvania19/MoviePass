@@ -66,6 +66,7 @@ class PurchaseDao implements Idaos
     public function Delete($objeto)
     {
         $sql = "DELETE FROM purchases WHERE idPurchase = :idPurchase";
+       
         $parameters['idPurchase'] = $objeto;
 
         try {
@@ -75,19 +76,23 @@ class PurchaseDao implements Idaos
             throw $e;
         }
     }
-    public function Update($objeto, $buscador)
-    {
-        $sql = "UPDATE projections SET  discount=:discount, amount=:amount, quantityTickets=:quantityTickets,  idProjection =:idProjection, time=:time WHERE idPurchase='$buscador';";
-        $parameters['discount'] = $objeto->getDiscount();
-
-        $parameters["quantityTickets"] = $objeto->getQuantityTickets();
-        $parameters["amount"] = $objeto->getAmount();
-        $parameters['idProjection'] = $objeto->getIdProjection();
-        $parameters['time'] = $objeto->getTime();
-        try {
-            $this->connection = Connection::getInstance();
-            return $this->connection->ExecuteNonQuery($sql, $parameters);
-        } catch (\PDOException $e) {
+  
+     public function Update($objeto, $buscador)
+     { 
+         $sql="UPDATE projections SET  discount=:discount, amount=:amount, quantityTickets=:quantityTickets,  idProjection =:idProjection, time=:time WHERE idPurchase='$buscador';";
+         $parameters['discount']=$objeto->getDiscount();
+        
+         $parameters["quantityTickets"]=$objeto->getQuantityTickets();
+          $parameters["amount"]=$objeto->getAmount();
+         $parameters['idProjection']=$objeto->getIdProjection();
+         $parameters['time']=$objeto->getTime();
+         try
+         {
+             $this->connection = Connection::getInstance();
+             return $this->connection->ExecuteNonQuery($sql, $parameters);
+         }
+         catch(\PDOException $e)
+         { 
             throw $e;
         }
     }

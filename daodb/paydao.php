@@ -35,12 +35,12 @@
         {
             // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
             // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-            $sql="INSERT INTO cinemas (wayToPay, idPurchase,fecha) VALUES (:wayToPay,:idPurchase,:fecha);";
-        
+            $sql="INSERT INTO pays (wayToPay, idPurchase,fecha) VALUES (:wayToPay,:idPurchase,:fecha);";
+             
             $parameters["wayToPay"]=$objeto->getWayToPay();
-            $parameters['idPurchase']=$objeto->geyIdPurchase();
-            $parameters['fecha']=$objeto->geyFecha();
-        
+            $parameters['idPurchase']=$objeto->getIdPurchase();
+            $parameters['fecha']=$objeto->getFecha();
+            
             try {
                 $this->connection= Connection::getInstance();
                 return $this->connection->executeNonQuery($sql, $parameters);
@@ -57,7 +57,7 @@
         $arreglo=is_array($arreglo)?$arreglo:[];
         $arregloObjetos=array_map(function($pos)
         {
-            $newPay =new pay($pos['wayToPay'],$pos['idPurchase']), $pos['fecha'];
+            $newPay =new pay($pos['wayToPay'], $pos['idPurchase'], $pos['fecha']);
             $newPay->setIdPurchase($pos['idPay']);
             return $newPay;
         }, $arreglo);
@@ -116,4 +116,5 @@
             return  false;
         }
         }
+    }
 ?>

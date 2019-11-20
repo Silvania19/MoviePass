@@ -8,9 +8,9 @@
      private $fecha;
 
 
-     public function __construct()
+     public function __construct( $wayToPay, $idPurchase, $fecha)
      {
-         $this->idPay=$idPay;
+        
          $this->wayToPay=$wayToPay;
          $this->idPurchase=$idPurchase;
          $this->fecha=$fecha;
@@ -40,7 +40,7 @@
      {
        return $this->wayToPay;
      }
-     public function getIPurchase()
+     public function getIdPurchase()
      {
        return  $this->idPurchase;
      }
