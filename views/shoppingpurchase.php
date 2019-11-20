@@ -1,9 +1,21 @@
-<?php 
-    include(VIEWS_PATH."header.php"); 
-    include (VIEWS_PATH."nav.php");
-?> 
-    <div class="col" style="border:1px solid gray;">
-        <table class="  table-borderer table-hover table-primary">
+<?php
+include(VIEWS_PATH . "header.php");
+include(VIEWS_PATH . "nav.php");
+
+if (isset($controlScript)) {
+    if ($controlScript == 1) {
+        ?>
+        <script>
+            alert('<?php echo $message ?>')
+        </script>
+<?php
+    }
+}
+
+?>
+
+  
+        <table class=" table-borderer table-hover ">
             <tr>
                 <td><h3><?php echo "Carrito de compras";?></h3></td>
             </tr>
@@ -26,10 +38,7 @@
                     
                     
                 ?>           
-                
-                        <tr>
-                                <td><h4>Funcion   </h4></td> 
-                            </tr>
+                      
                                 <?php
                                     if(is_array($projections))
                                     {
@@ -45,8 +54,9 @@
                                                             if($movie->getIdMovie()==$projection->getIdMovie())
                                                             {
                                                                 ?>
-                                                                <td>Pelicula:</td>
-                                                                    <td><?php echo $movie->getTitle();?></td>
+                                                           <div class="col" style="border:1px solid gray;">
+                                                                <td><h4>Pelicula:</h4></td>
+                                                                    <td><h3><?php echo $movie->getTitle();?></h3></td>
                                                         
                                                     <?php   
                                                             }
@@ -54,11 +64,13 @@
                                                     }
                                                     ?>
                                                 <tr>
-                                
-                                                <td>fecha</td>
-                                                <td><h3><?php echo $projection->getDate();?></h3></td>
-                                                <td>hora</td>
-                                                <td><h3><?php echo $projection->getHour();?></h3></td>
+                                                 <tr>
+                                                <td><h4>Fecha</h4></td>
+                                                <td><h5><?php echo $projection->getDate();?></h5></td>
+                                                </tr>
+                                                <tr>
+                                                <td><h4>Hora</h4></td>
+                                                <td><h5><?php echo $projection->getHour();?></h5></td>
                                                 </tr>   
                                         
                                         <?php
@@ -75,20 +87,20 @@
                         
                             <tr>
                                 <td><h4>Monto   </h4></td>
-                                <td><h3><?php echo $purchases->getAmount();?></h3></td>
+                                <td><h5><?php echo $purchases->getAmount();?></h5></td>
                             </tr>
                             <tr>
                                 <td><h4>Descuento   </h4></td>
-                                <td><h3><?php echo $purchases->getDiscount();?></h3></td>
+                                <td><h5><?php echo $purchases->getDiscount();?></h5></td>
                             </tr>
                             <tr>
                                 <td><h4>Cantidad de entradas  </h4></td>
-                                <td><h3><?php echo $purchases->getQuantityTickets();?></h3></td>
+                                <td><h5><?php echo $purchases->getQuantityTickets();?></h5></td>
                             </tr>
                                 
                             <tr>
                                 <td><h4>Fecha de compra   </h4></td>
-                                <td><h3><?php echo $purchases->getTime();?></h3></td>
+                                <td><h5><?php echo $purchases->getTime();?></h5></td>
                             </tr>
                             <tr>
                                 <td>
@@ -98,7 +110,7 @@
                                     </form>
                                 </td>
                             </tr>
-                        
+                    
                     <?php 
                         }
                     
@@ -181,6 +193,7 @@
                                     </form>
                                 </td>
                             </tr>
+                            ----------------------------------------------------------------------------------------------
                 <?php
                         }
                     }
@@ -202,7 +215,9 @@
             </div>
             <div class="modal-body">
                     <label for="name" >corresp. Cia de crédito (Visa ó Master)</label>
-                    <input type="text" name="waytopay" class="form-control" required="">
+                   
+                    <select name="waytopay" id="" required=""class="form-control">Master</select>
+                    <select name="waytopay" id=""required=""class="form-control">Visa</select>
                     <button type="submit" class="btn btn-dark" data dismiss="modal" > Listo </button>
             </div>
 
