@@ -33,13 +33,14 @@ class PurchaseDao implements Idaos
 
         // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
         // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql = "INSERT INTO purchases (discount, amount, quantityTickets, idProjection, time, idUser) VALUES (:discount, :amount, :quantityTickets, :idProjection, :time, :idUser)";
+        $sql = "INSERT INTO purchases (discount, amount, quantityTickets, idProjection, time, idUser, state) VALUES (:discount, :amount, :quantityTickets, :idProjection, :time, :idUser, :state)";
         $valuesArray["discount"] = $objeto->getDiscount();
         $valuesArray["amount"] = $objeto->getAmount();
         $valuesArray['quantityTickets'] = $objeto->getQuantityTickets();
         $valuesArray["idProjection"] = $objeto->getIdProjection();
         $valuesArray['time'] = $objeto->getTime();
         $valuesArray['idUser'] = $objeto->getIdUser();
+        $valuesArray['state'] = $objeto->getState();
 
         try {
             $this->connection = Connection::getInstance();
@@ -56,7 +57,7 @@ class PurchaseDao implements Idaos
     {
         $arreglo = is_array($arreglo) ? $arreglo : [];
         $arregloObjetos = array_map(function ($pos) {
-            $newPurchase = new purchase($pos['discount'], $pos['amount'], $pos['quantityTickets'], $pos['idProjection'], $pos['time'], $pos['idUser']);
+            $newPurchase = new purchase($pos['discount'], $pos['amount'], $pos['quantityTickets'], $pos['idProjection'], $pos['time'], $pos['idUser'],  $pos['state']);
 
             $newPurchase->setIdPurchase($pos['idPurchase']);
             return $newPurchase;
@@ -66,6 +67,19 @@ class PurchaseDao implements Idaos
     public function Delete($objeto)
     {
         $sql = "DELETE FROM purchases WHERE idPurchase = :idPurchase";
+       
+        $parameters['idPurchase'] = $objeto;
+
+        try {
+            $this->connection = Connection::getInstance();
+            return $this->connection->ExecuteNonQuery($sql, $parameters);
+        } catch (PDOException $e) {
+            throw $e;
+        }
+    }
+    public function inactivate($objeto)
+    {
+        $sql = "UPDATE purchases SET state=false WHERE idPurchase = :idPurchase";
        
         $parameters['idPurchase'] = $objeto;
 

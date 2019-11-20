@@ -40,23 +40,27 @@
                 {
                     foreach($listPurchasesToPay as $purchase)
                     {
-                        $pay= new pay($waytopay3, $purchase->getIdPurchase(), $date);
-                        
-                        try {
-                           
-                            //$this->listPays->add($pay);
-                           
-                           //$this->ticketContro->generateTicket($purchase->getIdProjection());
-                           
-                            $this->listPurchase->Delete($purchase->getIdPurchase());
+                        if($purchase->getState==true)
+                        {
+                            $pay= new pay($waytopay3, $purchase->getIdPurchase(), $date);
                             
-                           
-                        } catch (\PDOException $th) {
-                           
-                            $controlScript=1;
+                            try {
                             
-                            $message="error en la base";
+                                //$this->listPays->add($pay);
+                            
+                                //$this->ticketContro->generateTicket($purchase->getIdProjection());
+                            
+                                $this->listPurchase->inactivate($purchase->getIdPurchase());
+                                
+                            
+                            } catch (\PDOException $th) {
+                            
+                                $controlScript=1;
+                                
+                                $message="error en la base";
+                            }
                         }
+                        
                     
                     }
                    $this->ticketContro->SeeTicket(); 

@@ -14,7 +14,7 @@ class UserDao implements Idaos
 
     public function Update($objeto, $buscador)
     {
-         $user=$this->Search($buscardor);
+         $user=$this->Search($buscador);
          if(!empty($user))
          {
              $user->setName($objeto->getName());
