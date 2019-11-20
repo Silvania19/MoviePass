@@ -18,6 +18,7 @@
         private $listPurchase;
         private $listMovie;
         private $projection;
+        private $moviesContro;
 
 
         public function __construct()
@@ -28,6 +29,7 @@
             $this->userContro=new userC();
             $this->listPurchase=new purchaseD();
             $this->listMovie=new movieD();
+            $this->moviesContro= new movieC();
         }
 
         
@@ -55,6 +57,7 @@
         {
             
             $user=$this->userContro->checkSession();
+            
             try {
                 $projection=$this->listProjection->Search($idProjection);
                 $price=$this->listProjection->SearchXProjectionAmount($idProjection);
@@ -68,16 +71,17 @@
              
             $discount=0.0;
             $Quantitydiscount=$amount*PORCENTAJE_DESCUENTO/100;
-            echo $Quantitydiscount;
+            
             $time= strftime("%Y-%m-%d %I:%M:%S %p", time());
             $day=strftime("%A", time());
-            $movie=$this->listMovie->Search($projection->getIdMovie());
+           
             if($day=='Tuesday'|| $day=='Wednesday')
             {
-                if($quantityTicket>=2)
-                {
+                if($quantityTicket >= 2)
+                { 
                     $discount=$Quantitydiscount;
                     $amount2=$amount-$discount;
+                    echo 'descuento';
                 }
                 else
                 {
@@ -85,6 +89,7 @@
                     $amount2=$amount;
                 }
             } 
+           
             
             $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getIdUser());
             try
@@ -92,6 +97,8 @@
             
             $purchases= $this->listPurchase->Add($purchase);
             $listPurchase=$this->listPurchase->GetAll(); 
+            $movies=$this->moviesContro->SeeMovies();
+            $projections= $this->listProjection->getAllActuales();
             include(VIEWS_PATH."shoppingpurchase.php");
             }
             catch (\PDOException  $ex) {
@@ -107,9 +114,15 @@
             $user=$this->userContro->checkSession();
             try {
                 $this->listPurchase->Delete($idPurchase);
-                $listPurchase=$this->listPurchase->SearchXUser($);
+                $listPurchase=$this->listPurchase->SearchXUser($user->getIdUser());
+                $movies=$this->moviesContro->SeeMovies();
+                $projections= $this->listProjection->getAllActuales();
+                include(VIEWS_PATH."shoppingpurchase.php");
             } catch (\Throwable $th) {
-                //throw $th;
+               
+                $controlScritpt=1;
+                $message='error en la base';
+                include(VIEWS_PATH."home2.php");
             }
             
         }
