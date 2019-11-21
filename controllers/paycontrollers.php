@@ -114,9 +114,6 @@
             
         }
 
-        public function KnowAmount()
-        {
-            $this->listPurchase->GetAll();
-        }
+      
     }
 ?>
