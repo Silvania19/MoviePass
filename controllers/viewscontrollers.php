@@ -79,13 +79,17 @@ class viewscontrollers
     }
     public function seeShopping()
     {
-      $user=$this->usercontroller->checkSession();
       try {
-        $listPurc=$this->listPurchase->GetAll(); 
-        $listProj=$this->listProjection->GetAll(); 
-        $listMov=$this->listMovie->GetAll();
-      include(VIEWS_PATH."shoppingpurchase.php"); 
-      } catch (\Throwable $th) {
+         $user=$this->usercontroller->checkSession();
+      
+    $listPurchase=$this->listPurchase->GetAll(); 
+    $movies=$this->movieContro->SeeMovies();
+    $projections= $this->listProjection->getAllActuales();
+    include(VIEWS_PATH."shoppingpurchase.php");
+      } 
+     
+     
+       catch (\Throwable $th) {
         $controlScritpt=1;
         $message='error en la base';
         include(VIEWS_PATH."home2.php");

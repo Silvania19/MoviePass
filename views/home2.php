@@ -83,7 +83,7 @@ if(isset($controlScript))
             <p>Popularity: <?php echo $movie->getPopularity(); ?> </p>
             <p>Vote Count: <?php echo $movie->getVote_count(); ?> </p>
             
-            <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded">
+            
            <?php
           }
         }

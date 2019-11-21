@@ -3,20 +3,28 @@ namespace controllers;
 use models\Cine as cine;
 use daodb\CineDao as cineD;
 use daodb\CinemaDao as cinemaD;
-use daodb\Projectiondao as projectionD;
+
 use controllers\UserControllers as userC;
+
+use daosjson\GenresDao as genreD;
+use controllers\MovieControllers as movieC;
+use daodb\ProjectionDao as ProjectionD;
 class CineControllers
 {
     private $cineRepo;//esta variable, sera aquella aque le iguale lo que traiga de la base de datos. Cuando la tenga
     private $cinemaList;
     private $userControllers;
-    private $projectionList;
+    private $listProjection;
+    private $listGenres;
+    private $movieContro;
     public function __construct()
     {
         $this->cineRepo= new cineD();// sera reemplazado por una instancia de la clases donde tenga  la base correspondiente
         $this->cinemaList= new cinemaD();
         $this->userControllers= new userC();
-        $this->projectionList= new projectionD();
+         $this->listGenres= new genreD();
+    $this->movieContro=new movieC();
+$this->listProjection= new ProjectionD();
      }
     
     public function add($name=null, $address=null)
@@ -70,7 +78,12 @@ class CineControllers
         } catch (\Throwable $th) {
           $controlScritpt=1;
          $message='error en la base';
-         //include(VIEWS_PATH."userviews.php");
+       
+         $projections=$this->listProjection->GetAllActuales();
+                 $movies=$this->movieContro->SeeMovies();
+                 $listGenres2=$this->listGenres->GetAll();
+                 include(VIEWS_PATH."home2.php");
+        
         }
         
       }

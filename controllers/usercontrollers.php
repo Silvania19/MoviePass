@@ -33,27 +33,22 @@
             }
            
             
-            $controScript=0;
+            
             if(isset($user))
             {
                 if($user->getPassword()==$password)
                 {
                     $_SESSION['user']=$user;
-                    $movies=$this->movieContro->SeeMovies();
-                    try {
-                        try {
-                             $listGenres2=$this->listGenre->GetAll();
-                        include(VIEWS_PATH."home2.php");
+                    try { 
+                          $movies=$this->movieContro->SeeMovies();
+                          $listGenres2=$this->listGenre->GetAll();
+                           include(VIEWS_PATH."home2.php");
                         } catch (\Throwable $th) {
                             $controlScritpt=1;
                             $message='error en la base';
                             //no se include(VIEWS_PATH."userviews.php");
                         }
                         
-                        
-                    } catch (\Throwable $th) {
-                        include(VIEWS_PATH."home.php");
-                    }
                    
                }
             }
@@ -73,7 +68,7 @@
             } catch (\PDOException $th) {
                 $controlScritpt=1;
                 $message='error en la base';
-                include(VIEWS_PATH."home2.php");
+                include(VIEWS_PATH."home.php");
             }
            
         }

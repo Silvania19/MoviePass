@@ -158,7 +158,7 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
         <input type="checkbox" name="idCine" value="<?php echo $idCine; ?>" id="" required="">
         <input type="date" name="date"  id="">
 
-        <button type="submit" class="btn btn-dark"> buscar </button>
+        <button type="submit" class="btn btn-dark"> Buscar </button>
       </form> <br>
 <?php
  if(!empty($listMovies2))
