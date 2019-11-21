@@ -197,10 +197,10 @@ class ProjectionDao implements Idaos
             return  false;
         }
     }
-    public function SearchXIdCinema()
+    public function SearchXIdCinema($idCinema)
     {
-        $sql = "SELECT c.price from cinemas as c join projections as p on p.idCinema=c.idCinema where p.idProjection=:idProjection ;";
-        $parameters['idProjection'] = $idProjection;
+        $sql = "SELECT p.* from projections as p join cinemas as c on p.idCinema=c.idCinema where p.idCinema=:idCinema;";
+        $parameters['idCinema'] = $idCinema;
 
         try {
             $this->connection = Connection::getInstance();
@@ -209,10 +209,8 @@ class ProjectionDao implements Idaos
             throw $th;
         }
         if (!empty($resul)) {
-            $reto1 = $resul['0'];
-            $reto = $reto1['0'];
-
-            return $reto;
+            
+            return $this->mapear($resul);
         } else {
             return  false;
         }

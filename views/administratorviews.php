@@ -22,18 +22,18 @@ if(isset($controlScript))
                  <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
             </div>
              <div class="modal-body">
-                <label >Name</label>
+                <label >nombre</label>
                 <input type="text" name="name" class="form-control" required="">
-                <label >Lastname</label>
+                <label >apellido</label>
                 <input type="text" name="lastName"class= "form-control " required="">
                 <label >Dni</label>
                 <input type="text" name="dni"class= "form-control " required="">
                 <label >Email</label>
                 <input type="email" name="email"class= "form-control " required="">
-                <label >Password</label>
+                <label >contraseña</label>
                 <input type="password" name="password"class= "form-control " required="" >
                 
-                <button type="submit" class="btn btn-dark" data dismiss="modal" > Update </button>
+                <button type="submit" class="btn btn-dark" data dismiss="modal" > modificar </button>
             </div>
         </form>
 </div>
@@ -48,15 +48,15 @@ if(isset($controlScript))
                  <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
             </div>
              <div class="modal-body">
-                <label >Name</label>
+                <label >Nombre</label>
                 <input type="text" name="name" class="form-control" required="">
-                <label >Lastname</label>
+                <label >Apellido</label>
                 <input type="text" name="lastName"class= "form-control " required="" >
                 <label >Dni</label>
                 <input type="text" name="dni"class= "form-control " required="" >
                 <label >Email</label>
                 <input type="email" name="email"class= "form-control " required="">
-                <label >Password</label>
+                <label >Contraseña</label>
                 <input type="password" name="password"class= "form-control " required="">
                 
                 <button type="submit" class="btn btn-dark" data dismiss="modal" > Agregar nuevo administrador </button>

@@ -38,40 +38,137 @@ public function addAdministrator( $name=null, $lastName=null, $dni=null, $email=
     }
    
 }
-public function Collection($idCine)
+public function Collection($idCine=null)
 {
+    $user=$this->userContro->checkSession();
+    $amount=0;
     try {
-          $user=$this->userContro->checkSession();
-    $purchases= $this->listPurchase->SearchXIdPurchase();
-    $pays= $this->listPays->GetAll();
-    $cines=$this->listCine->GetAll();
-    $projection=$this->listProjection->SeachIdCinema();
-    $cinema=$this->listCinema->SearcIdCine();
+    
+    $purchases= $this->listPurchase->SearchPurchasePay();
+    $cinemasOfCine=$this->listCinema->SearchIdCine($idCine);
+    $cine=$this->listCine->Search($idCine);
+    //$pays= $this->listPays->GetAll();
    
-    foreach($cine as $c)
+  //  $projection=$this->listProjection->SeachIdCinema();
+    if(is_array($cinemasOfCine))
     {
-            foreach($cinema as $cinem)
+         foreach($cinemasOfCine as $cinema)
+         {
+            $projections=$this->listProjection->SearchIdCinema($cinema->getIdCinema());
+            if(is_array($projections))
             {
-                    foreach($projection as $p)
+                foreach($projection as $pro)
+                {
+                    if(is_array($purchases))
                     {
-                             foreach($purchases as $p)
-                             {    
-                                   foreach($pays as $pays)
-                                   {
-
-                                       $amount=this->purchaseC->knowAmount();
-                                        $cine=this->listCine->Search($idCine);
-                              
-                                   }
-                                   
-                             }
+                        foreach($purchases as $p)
+                        {    
+                             if($p->getIdPurchase()==$pro->getIdPurchase())
+                        
+                              {
+                                   $amount=$amount+$p->getAmount();
+                              } 
+                                            
+                        }
+                    }
+                    else
+                    {
+                        if($purchases->getIdPurchase()==$pro->getIdPurchase())
+                        
+                              {
+                                   $amount=$amount+$purchases->getAmount();
+                              } 
+                    }
+                }
+            
+            }
+            else
+            {
+                if(is_array($purchases))
+                    {
+                        foreach($purchases as $p)
+                        {    
+                             if($p->getIdPurchase()==$projections->getIdPurchase())
+                        
+                              {
+                                   $amount=$amount+$p->getAmount();
+                              } 
+                                            
+                        }
+                    }
+                    else
+                    {
+                        if($purchases->getIdPurchase()==$projections->getIdPurchase())
+                        
+                              {
+                                   $amount=$amount+$purchases->getAmount();
+                              } 
                     }
             }
+                
+        }
     }
+   else
+   {
+        $projections=$this->listProjection->SearchIdCinema($cinemasOfCine->getIdCinema());
+        if(is_array($projections))
+        {
+            foreach($projection as $pro)
+            {
+                if(is_array($purchases))
+                {
+                    foreach($purchases as $p)
+                    {    
+                        if($p->getIdPurchase()==$pro->getIdPurchase())
+                    
+                        {
+                            $amount=$amount+$p->getAmount();
+                        } 
+                                        
+                    }
+                }
+                else
+                {
+                    if($purchases->getIdPurchase()==$pro->getIdPurchase())
+                    
+                        {
+                            $amount=$amount+$purchases->getAmount();
+                        } 
+                }
+            }
+        
+        }
+        else
+        {
+            if(is_array($purchases))
+                {
+                    foreach($purchases as $p)
+                    {    
+                        if($p->getIdPurchase()==$projections->getIdPurchase())
+                    
+                        {
+                            $amount=$amount+$p->getAmount();
+                        } 
+                                        
+                    }
+                }
+                else
+                {
+                    if($purchases->getIdPurchase()==$projections->getIdPurchase())
+                    
+                        {
+                            $amount=$amount+$purchases->getAmount();
+                        } 
+                }
+        }
+            
+    }
+
 
     } catch (\Throwable $th) {
        
     }
+ include(VIEWS_PATCH."recaudacion.php");
   
 }
 
