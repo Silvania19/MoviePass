@@ -8,6 +8,7 @@
     use daodb\CinemaDao as cinemaD;
     use controllers\MovieControllers as movieC;
     use controllers\UserControllers as userC;
+    use daodb\TicketsDao as ticketD;
     class ProjectionUserControllers
     {
         private $listMovie;
@@ -16,7 +17,8 @@
         private $listCine;
         private $listCinema;
         private $movieContro;
-        private $userContr;
+        private $userContro;
+        private $listTickets;
         public function __construct()
         {
             $this->listMovie=new movieD();
@@ -26,6 +28,7 @@
             $this->listCinema=new cinemaD();
             $this->movieContro= new movieC();
             $this->userContro= new userC();
+            $this->listTickets= new ticketD();
         }
 
         public function filterGenre($idGenre=null)
@@ -54,7 +57,7 @@
         public function filterDateProjection($date=null)
         {
             $user=$this->userContro->checkSession();
-            $projections=$this->listProjection->getAllActuales();
+            $projections=$this->listProjection->habilitadas();
            
             $filter=array();
             if(!empty($projections))
@@ -89,7 +92,7 @@
         {
             
             $user=$this->userContro->checkSession();
-            $projections=$this->listProjection->GetAllActuales();
+            $projections=$this->listProjection->habilitadas();
             $listMoviesAct=$this->moviesProjections();
             $movies=array();
             $cinesAll=$this->listCine->GetAll();
@@ -175,7 +178,7 @@
         {
             $user=$this->userContro->checkSession();
             try {
-                 $projections=$this->listProjection->GetAllActuales();
+                 $projections=$this->listProjection->habilitadas();
             } catch (\Throwable $th) {
                 $controlScritpt=1;
                 $message='error en la base';
@@ -244,6 +247,22 @@
             }
            
    
+        }
+        public function habilitadas()
+        {
+            $listProjectionA=$this->listProjection->GetAllActuales();
+            $listProjectionActAvi=array();
+            foreach($listProjectionA as $projection)
+            {
+                $cantTicketXProjection=$this->listTickets->cantXIdProjection($projection->getIdProjection());
+                if($this->listProjection->availability($cantTicketXProjection))
+               {
+                   array_push($listProjectionActAvi, $projection);
+               }
+
+            }
+            return $listProjectionActAvi;
+            
         }
     }
 
