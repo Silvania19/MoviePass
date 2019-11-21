@@ -104,7 +104,7 @@
         }
         public function cantXIdProjection($idProjection)
         {
-          $sql="SELECT COUNT(idProjection) FROM tickets GROUP BY idProjection where idProjection=:idProjection";   
+          $sql="SELECT COUNT(idProjection) FROM tickets  where idProjection=:idProjection GROUP BY idProjection";   
           $parameters['idProjection']=$idProjection;
           try {
               $this->connection = Connection:: getInstance();
@@ -114,7 +114,11 @@
           }
           if(!empty ($resul))
           {
-              return $resul;;
+              $resul2=$resul['0'];
+            
+              $cant=$resul2['0'];
+              
+              return $cant;
           }
           else
           {

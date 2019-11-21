@@ -10,6 +10,7 @@ use daosjson\MovieDao as movieD;
 use daodb\PurchaseDao as purchaseD;
 use daosjson\GenresDao as genreD;
 use controllers\MovieControllers as movieC;
+use daodb\TicketDao as tickedD;
 use controllers\UserControllers as C_User;
 class viewscontrollers
 {
@@ -22,6 +23,7 @@ class viewscontrollers
     private $listGenres;
     private $movieContro;
     private $listPurchase;
+    private $ticketDA;
     public function __construct()
     {
         $this->listCine=new cineD();
@@ -33,15 +35,17 @@ class viewscontrollers
         $this->listGenres= new genreD();
         $this->movieContro=new movieC();
         $this->listPurchase=new purchaseD();
+        $this->ticketDA=new tickedD();
     }
     public function index()
     {  
       $user = $this->usercontroller->checkSession();
        if($user)
         {
-         
-         
-          $projections=$this->listProjection->GetAllActuales();
+          /*    
+          $cant=$this->ticketDA->cantXIdProjection(1);
+          echo $cant;*/
+         $projections=$this->listProjection->GetAllActuales();
           $movies=$this->movieContro->SeeMovies();
           $listGenres2=$this->listGenres->GetAll();
           include(VIEWS_PATH."home2.php");
