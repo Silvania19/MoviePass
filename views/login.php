@@ -14,9 +14,10 @@
         </div>
         <div class="actions form-group mark">
             <a href="" class="btn btn-primary" data-toggle="modal" data-target="#sign-up"> Registrarse</a>
-            
-            <button type="submit" class="btn btn-primary">Iniciar sesion </button> 
               <a href="" class="btn btn-primary" data-toggle="modal" data-target="#facebook">Inicie con Facebook</a>
+
+               <button type="submit" class="btn btn-primary">Iniciar sesion </button> 
+
          </div>
           
     
@@ -50,25 +51,27 @@
                 </div>
             </form>
         </div>
- 
+    </div>
 
-        <div class="modal fade" id="facebook" tabindex="-1" role="dialog" aria-labelledby="sign-up" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <form class="modal-content " action="<?php echo FRONT_ROOT; ?>/user/facebook" method="POST">
-                <div class="modal-header">
-                    <h2 class="modal-title">Facebook</h2>
+        <div class="modal fade" id="facebook" tabindex="-1" role="dialog" aria-labelledby="facebook" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form class="modal-content " action="<?php echo FRONT_ROOT; ?>/user/facebook" method="POST">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Facebook</h2>
 
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <label>Correo electronico</label>
-                    <input type="email" name="email" class="form-control" required="">
-                    <label>Contraseña</label>
-                    <input type="password" name="password"  class="form-control" required="">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Correo electronico</label>
+                        <input type="email" name="email" class="form-control" required="">
+                        <label>Contraseña</label>
+                        <input type="password" name="password"  class="form-control" required="">
 
-                    <button type="submit" class="btn btn-dark" data dismiss="modal"> Iniciar con Fcaebook</button>
-                </div>
-            </form>
+                        <button type="submit" class="btn btn-dark" data dismiss="modal"> Iniciar con Facebook</button>
+                    </div>
+                 </div>
+                </form>
+           
         </div>
 </main>
 
