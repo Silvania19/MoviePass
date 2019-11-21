@@ -5,18 +5,25 @@
  use daodb\CineDao as cineD;
  use daodb\ProjectionDao as projectionD;
  use controllers\UserControllers as userC;
+ use daosjson\GenresDao as genreD;
+ use controllers\MovieControllers as movieC;
+
  class CinemaControllers
  {
      private $cinemaList;
      private $cineList;
      private $projectionList;
      private $userControlllers;
+     private $listGenre;
+     private $movieContro;
      public function __construct()
      {
          $this->cinemaList= new cinemaD();
          $this->cineList= new cineD();
          $this->userControllers= new userC();
          $this->projectionList= new projectionD();
+         $this->listGenre= new genreD();
+         $this->movieContro= new movieC();
      }
   
   
@@ -51,11 +58,14 @@
       
           try {
              $listCines=$this->cineList->GetAll(); 
-        include(VIEWS_PATH."cineviews.php");
+            include(VIEWS_PATH."cineviews.php");
           } catch (\Throwable $th) {
             $controlScritpt=1;
             $message='error en la base';
-           // include(VIEWS_PATH."userviews.php");
+            $projections=$this->projectionList->GetAllActuales();
+            $movies=$this->movieContro->SeeMovies();
+            $listGenres2=$this->listGenre->GetAll();
+            include(VIEWS_PATH."home2.php");
           }
        
          

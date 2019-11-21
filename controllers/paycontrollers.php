@@ -8,7 +8,8 @@
     use controllers\MovieControllers as movieC;
     use controllers\UserControllers as userC;
     use daodb\ProjectionDao as projectionD;
-  
+    use daosjson\GenresDao as genresD;
+
     class PayControllers
     {
         private $listPays;
@@ -17,6 +18,7 @@
         private $userContro;
         private $listMovie;
         private $listProjection;
+        private $listGenre;
         public function __construct()
         {
             $this->listPays=new payD();
@@ -26,8 +28,9 @@
             $this->moviesContro= new movieC();
             $this->ticketContro=new ticketC();
             $this->userContro=new userC();
+            $this->listGenre= new genresD();
         }
-        public function add($waytopay=null)
+        public function add($waytopay=null, $numberAcount=null)
         {
             $user=$this->userContro->checkSession();
             $waytopay2=strtolower($waytopay);
@@ -45,7 +48,7 @@
                             $cantTicket=$purchase->getQuantityTickets();
                             while($cantTicket>0)
                             {
-                                $pay= new pay($waytopay3, $purchase->getIdPurchase(), $date);
+                                $pay= new pay($waytopay3, $purchase->getIdPurchase(), $numberAcount, $date);
                                 
                                 try {
                                 
@@ -61,6 +64,11 @@
                                     $controlScript=1;
                                     
                                     $message="error en la base";
+                                    $projections=$this->listProjection->GetAllActuales();
+                                    $movies=$this->moviesContro->SeeMovies();
+                                    $listGenres2=$this->listGenre->GetAll();
+
+                                    include(VIEWS_PATH."home2.php");
                                 }
                                 $cantTicket--;
                             }
@@ -69,16 +77,16 @@
                         
                     
                     }
-                   $this->ticketContro->SeeTicket(); 
+                  
                 }
                 if(is_object($listPurchasesToPay))
                 {
                     if($listPurchasesToPay->getState()==true)
                     {
-                        $cantTicket=$listPurchasesToPay->getQuantityTicket();
+                        $cantTicket=$listPurchasesToPay->getQuantityTickets();
                         while($cantTicket>0)
                         {
-                            $pay= new pay($waytopay3, $listPurchasesToPay->getIdPurchase(), $date);
+                            $pay= new pay($waytopay3, $listPurchasesToPay->getIdPurchase(), $numberAcount, $date);
                             
                             try {
                             
@@ -94,12 +102,19 @@
                                 $controlScript=1;
                                 
                                 $message="error en la base";
+                                $projections=$this->listProjection->GetAllActuales();
+                                $movies=$this->moviesContro->SeeMovies();
+                                $listGenres2=$this->listGenre->GetAll();
+
+                                include(VIEWS_PATH."home2.php");
                             }
                             $cantTicket--;
                         }
                         
-                    }
+                    } 
+                    
                 }
+                $this->ticketContro->SeeTicket(); 
             }
             else
             {

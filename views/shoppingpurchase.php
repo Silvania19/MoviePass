@@ -200,10 +200,19 @@ if (isset($controlScript)) {
                 <?php
                         }
                     }
+              ?>
+            </table>
+            <?php
+            }
+            else
+            {
+                ?>
+                <p><strong>No tienes compras. Tienes que comprar entradas compraaaaaaaaaaaaaa</strong></p>
+                <?php
             }
         
             ?>
-        </table>
+        
     </div>
 
     <div class="modal fade" id="pagar">  
@@ -223,7 +232,8 @@ if (isset($controlScript)) {
                         <option value="master">Master</option>
                         <option value="visa">Visa</option>
                     </select>
-                  
+                    <label for="numberAcount" >Numero de compra</label>
+                    <input type="text" name="numberAcount" id="" required="">
                     <button type="submit" class="btn btn-dark" data dismiss="modal" > Listo </button>
             </div>
 
