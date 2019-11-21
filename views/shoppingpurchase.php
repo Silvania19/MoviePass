@@ -223,7 +223,7 @@ if (isset($controlScript)) {
             <div class="modal-header"> 
                 <h2 class="modal-title">Pagar</h2>
                             
-                 <button type="button"class="close" data-dismiss="modal">&times;</button>
+                 <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
                     <label for="name" >corresp. Cia de crédito (Visa ó Master)</label>

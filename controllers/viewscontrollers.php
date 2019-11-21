@@ -12,6 +12,7 @@ use daodb\PurchaseDao as purchaseD;
 use daosjson\GenresDao as genreD;
 use controllers\MovieControllers as movieC;
 use daodb\TicketDao as tickedD;
+use daodb\TicketControllers as ticketC;
 use controllers\UserControllers as C_User;
 use controllers\ProjectionUserControllers as projectionUC;
 
@@ -32,6 +33,7 @@ class viewscontrollers
   private $listPurchase;
   private $ticketDA;
   private $projectionUserContro;
+  private $ticketC;
   public function __construct()
   {
     $this->listCine = new cineD();
@@ -45,6 +47,7 @@ class viewscontrollers
     $this->listPurchase = new purchaseD();
     $this->ticketDA = new tickedD();
     $this->projectionUserContro = new projectionUC();
+    $this->ticketC= new ticketC();
   }
   public function index()
   {
@@ -89,6 +92,19 @@ class viewscontrollers
       $listGenres2 = $this->listGenre->GetAll();
       include(VIEWS_PATH . "home2.php");
     }
+  }
+  public function seeTickets()
+  {
+     try {
+       $this->ticketC->SeeTicket();
+     } catch (\Throwable $th) {
+      $controlScritpt = 1;
+      $message = 'error en la base';
+      $projections = $this->listProjection->GetAllActuales();
+      $movies = $this->movieContro->SeeMovies();
+      $listGenres2 = $this->listGenre->GetAll();
+      include(VIEWS_PATH . "home2.php");
+     }
   }
   public function seeShopping()
   {

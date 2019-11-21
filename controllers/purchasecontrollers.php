@@ -88,10 +88,15 @@
                     $discount=0;
                     $amount2=$amount;
                 }
+               
             } 
-           
+            else
+            {
+                 $amount2=$amount;
+            }
             
-            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getIdUser(), true);
+            
+            $purchase=new purchase($discount, $amount2, $quantityTicket, $idProjection, $time, $user->getIdUser(), true);
             try
             {
             
