@@ -132,7 +132,7 @@
         public function knowAmount($idPurchase=null)
         {
             
-            $purchasesWithPay=array();
+           $purchasesWithPay=array();
            $pays= $this->listPurchase->SearchXIdPurchase($idPurchase);
            foreach ($purchasesWithPay as $p ) {
              $amount+= $p->getAmount();
