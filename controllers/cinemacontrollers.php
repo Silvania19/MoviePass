@@ -78,7 +78,10 @@
           } catch (\Throwable $th) {
             $controlScritpt=1;
             $message='error en la base';
-            //include(VIEWS_PATH."userviews.php");
+            $projections=$this->projectionList->GetAllActuales();
+            $movies=$this->movieContro->SeeMovies();
+            $listGenres2=$this->listGenre->GetAll();
+            include(VIEWS_PATH."home2.php");
           }
          
 
@@ -91,7 +94,10 @@
                 } catch (\Throwable $th) {
                   $controlScritpt=1;
                   $message='error en la base';
-                 // include(VIEWS_PATH."userviews.php");
+                  $projections=$this->projectionList->GetAllActuales();
+                  $movies=$this->movieContro->SeeMovies();
+                  $listGenres2=$this->listGenre->GetAll();
+                  include(VIEWS_PATH."home2.php");
                 }
                   
               }
