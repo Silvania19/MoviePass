@@ -1,5 +1,5 @@
 <?php include(VIEWS_PATH."header.php");
-      include(VIEWS_PATH."nav.php");?>
+      ?>
 
 <?php
   if(isset($controlScript))
@@ -13,7 +13,7 @@
   }   
 if(!isset($control)&& !isset($control2)&& !isset($control3))
 {
-
+  include(VIEWS_PATH."nav.php");
 
 ?>
 
@@ -281,7 +281,86 @@ if(!isset($control)&& isset($control2) && !isset($control3))
         <label for="datos">confirmar</label>
         <input type="checkbox" name="datos" value="<?php echo $datos; ?>" id=""  required=""><br>
         <label for="hour">Hora</label>
-        <input type="time" name="hour" id=""  required="">
+        <select name="hour" id="" required="">
+            <?php 
+                if(is_array($projection))
+                {
+                  foreach ($projection as $pro) {
+                    if($pro->getHour()!='13:00:00')
+                    {
+                    ?>
+                      <option value="hour">13:00:00</option>
+                   <?php
+                    }
+                    if($pro->getHour()!='15:30:00')
+                    {
+                    ?>
+                      <option value="hour">15:30:00</option>
+                   
+                   <?php
+                    }
+                    if($pro->getHour()!='17:00:00')
+                    {
+                    ?>
+                      <option value="hour">17:00:00</option>
+                  <?php
+                    }
+                    if($pro->getHour()!='19:30:00')
+                    {
+                    ?>
+                      <option value="hour">19:30:00</option>
+                   
+                   <?php
+                    }
+                    if($pro->getHour()!='21:00:00')
+                    {
+                    ?>
+                      <option value="hour">21:00:00</option>
+                   <?php
+                    }
+
+                  }
+                }
+                if(is_object($projection))
+                {
+                  if($projection->getHour()!='13:00:00')
+                  {
+                  ?>
+                    <option value="hour">13:00:00</option>
+                 <?php
+                  }
+                  if($projection->getHour()!='15:30:00')
+                  {
+                  ?>
+                    <option value="hour">15:30:00</option>
+                 
+                 <?php
+                  }
+                  if($projection->getHour()!='17:00:00')
+                  {
+                  ?>
+                    <option value="hour">17:00:00</option>
+                <?php
+                  }
+                  if($projection->getHour()!='19:30:00')
+                  {
+                  ?>
+                    <option value="hour">19:30:00</option>
+                 
+                 <?php
+                  }
+                  if($projection->getHour()!='21:00:00')
+                  {
+                  ?>
+                    <option value="hour">21:00:00</option>
+                 <?php
+                  }
+                }
+            ?>
+            
+          
+        </select>
+        
         <label for="hour">Sala</label>
         <select name="idCinema" id=""  required="">
       

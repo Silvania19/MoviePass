@@ -18,6 +18,15 @@
         "idRol": 1
     },
     {
+        "name": "sil",
+        "lastName": "orte",
+        "dni": "9138421",
+        "email": "sil@la",
+        "password": "silvis",
+        "idUser": 5,
+        "idRol": 1
+    },
+    {
         "name": "florencia",
         "lastName": "juarez",
         "dni": "9138421",

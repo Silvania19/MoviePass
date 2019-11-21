@@ -44,6 +44,7 @@
             $user=$this->userContro->checkSession();
            
             try {
+                 $listProjectionsAc=$this->listProjection->GetAllActuales();
                  $listTickets2=$this->listTickets->SearchXUser($user->getIdUser());
                  
                  include(VIEWS_PATH."ticketviews.php");

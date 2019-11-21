@@ -66,10 +66,10 @@ class ProjectionControllers
     }
     public function addparte2($datos=null)
     {
-      $array=explode("+", $datos);
-      $control2=1;
-      try {
-      $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
+       $array=explode("+", $datos);
+       $control2=1;
+        try {
+        $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
         include(VIEWS_PATH."carteleraviews.php");
       } catch (\Throwable $th) {
         $controlScritpt=1;
@@ -94,11 +94,10 @@ class ProjectionControllers
         include(VIEWS_PATH."home2.php");
       }
       
-
     if(is_object($projection))
     {
       try {
-          $listCinemas2=$this->listCinema->Search($projection->getIdCinema()); 
+        $listCinemas2=$this->listCinema->Search($projection->getIdCinema()); 
         $datos=$datos."+".$date;
         include(VIEWS_PATH."carteleraviews.php");
       } catch (\Throwable $th) {
@@ -116,6 +115,7 @@ class ProjectionControllers
     {
       try {
         $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
+       
         $datos=$datos."+".$date;
         include(VIEWS_PATH."carteleraviews.php");
       } catch (\Throwable $th) {
@@ -161,23 +161,30 @@ class ProjectionControllers
     {
       foreach($cartelera as $projection)
       {
-        if($projection->getDate()==$date && $projection->getIdMovie()==$idMovie){
-          if($projection->getIdCine() != $idCine)
+        if($projection->getDate()==$date && $projection->getIdMovie()==$idMovie && $veri==0){
+          if($projection->getIdCine() != $idCine  )
           {
+           
+               $veri=1;
             
-          $veri=1;
+            
           }
+        
 
         }
       }
     }
     if(is_object($cartelera))
     {
-      if($cartelera->getDate()==$date && $cartelera->getIdMovie()==$idMovie)
+      if($cartelera->getDate()==$date && $cartelera->getIdMovie()==$idMovie  && $veri==0)
       {
-        if($cartelera->getIdCine() != $idCine){
-          $veri=1;
+        if($cartelera->getIdCine() != $idCine  ){
+        
+             $veri=1;
+          
+         
         }
+       
         
       }
     }
@@ -185,7 +192,7 @@ class ProjectionControllers
     if($veri==1)
     {
       $controlScript=1;
-    $message='no se puede agregar en este fecha. Verifique que la fecha ingresada no sea igual a la de otro de cine';
+      $message='no se puede agregar en este fecha y/o horario. Verifique que la fecha y/o horario ingresado no sea igual a la de otro cine, o otro horario';
       include(VIEWS_PATH."carteleraviews.php");
     }
     else
@@ -203,17 +210,20 @@ class ProjectionControllers
         { 
           $projection= new projection($date, $hour, $idCine, $idMovie, $idCinema, $duration);
           $this->listProjection->Add($projection);
-          include(VIEWS_PATH."carteleraviews.php");
-        } 
-        catch (\PDOException $th)
-          {
+
           $controlScript=1;
           $message='added projection';
           include(VIEWS_PATH."carteleraviews.php");
+          } catch (\PDOException $th)
+          {
+            echo 'hoo';
           }
+          
+        } 
+       
     }
 
-  }
+  
   
 
 
@@ -221,14 +231,19 @@ class ProjectionControllers
   public function delete($idProjection=null)
   {
       try {
-        $this->listProjection->Delete($idProjection);
+      $this->listProjection->Delete($idProjection);
       $cines=$this->listCine->GetAll();
       $cartelera=$this->listProjection->GetAll();
       $movies=$this->listMovie->GetAll();
+      $controlScript=1;
+      $message='deleted projection';
       include(VIEWS_PATH."carteleraviews.php");
       } catch (\Throwable $th) {
-        $controlScript=1;
-      $message='deleted projection';
+      $controlScript=1;
+      $message='no se puede elimina esta proyeccion porque tiene entrandas vendidas';
+      $cines=$this->listCine->GetAll();
+      $cartelera=$this->listProjection->GetAll();
+      $movies=$this->listMovie->GetAll();
       include(VIEWS_PATH."carteleraviews.php");
       }
     
