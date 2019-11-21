@@ -126,7 +126,7 @@ class PurchaseDao implements Idaos
             return  false;
         }
     }
-    public function SearchXIdPurchase()
+    public function SearchPurchasePay()
     {
         $sql="SELECT pu.* from pays as py join purchases as pu on py.idPurchase=pu.idPurchase";
        

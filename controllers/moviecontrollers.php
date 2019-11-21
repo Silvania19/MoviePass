@@ -5,7 +5,7 @@ use daosjson\MovieDao as movieD;
 use daosjson\GenresDao as genresD;
 use daodb\ProjectionDao as projectionD;
 use controllers\MovieControllers as movieC;
-use daodb\ProjectionDao as ProjectionD;
+
 class MovieControllers
 { 
     private $listMovie;
