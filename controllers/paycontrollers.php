@@ -40,15 +40,15 @@
                 {
                     foreach($listPurchasesToPay as $purchase)
                     {
-                        if($purchase->getState==1)
+                        if($purchase->getState==true)
                         {
                             $pay= new pay($waytopay3, $purchase->getIdPurchase(), $date);
                             
                             try {
                             
-                                //$this->listPays->add($pay);
+                                $this->listPays->add($pay);
                             
-                                //$this->ticketContro->generateTicket($purchase->getIdProjection());
+                                $this->ticketContro->generateTicket($purchase->getIdProjection());
                             
                                 $this->listPurchase->inactivate($purchase->getIdPurchase());
                                 
