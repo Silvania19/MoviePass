@@ -46,7 +46,11 @@
                         } catch (\Throwable $th) {
                             $controlScritpt=1;
                             $message='error en la base';
-                            //no se include(VIEWS_PATH."userviews.php");
+                            $projections=$this->listProjection->GetAllActuales();
+                            $movies=$this->movieContro->SeeMovies();
+                            $listGenres2=$this->listGenre->GetAll();
+                    
+                           include(VIEWS_PATH."home2.php");
                         }
                         
                    
@@ -68,7 +72,11 @@
             } catch (\PDOException $th) {
                 $controlScritpt=1;
                 $message='error en la base';
-                include(VIEWS_PATH."home.php");
+                $projections=$this->listProjection->GetAllActuales();
+                $movies=$this->movieContro->SeeMovies();
+                $listGenres2=$this->listGenre->GetAll();
+        
+               include(VIEWS_PATH."home2.php");
             }
            
         }
@@ -84,9 +92,9 @@
             } 
             if (isset($user))
             {
-                $controlScript=1;
+                
+                try {$controlScript=1;
                 $idUser=$user->getIduser();
-                try {
                      $this->daoUser->Delete($idUser);
                 $massage='user deleted' ;
                 include(VIEWS_PATH."home.php");
@@ -94,7 +102,11 @@
                 } catch (\PDOException $th) {
                     $controlScritpt=1;
                     $message='error en la base';
-                    include(VIEWS_PATH."home.php");
+                    $projections=$this->listProjection->GetAllActuales();
+                    $movies=$this->movieContro->SeeMovies();
+                    $listGenres2=$this->listGenre->GetAll();
+            
+                   include(VIEWS_PATH."home2.php");
                 }
                
             }
@@ -108,41 +120,40 @@
         }
         public function update( $name=null, $lastName=null, $dni=null,  $email=null,  $password=null)
         {
-            $User1=$_SESSION['user'];//ver esto
+           
+            try { $User1=$_SESSION['user'];//ver esto
             $user=new User($name,$lastName, $dni, $email, $password);
-            try {
                  $this->daoUser->Update($user, $User1->getIduser());
             $_SESSION['user']=$user;
             include(VIEWS_PATH."userviews.php");
             } catch (\PDOException $th) {
                 $controlScritpt=1;
-         $message='error en la base';
-         include(VIEWS_PATH."userviews.php");
+                $message='error en la base';
+                $projections=$this->listProjection->GetAllActuales();
+                $movies=$this->movieContro->SeeMovies();
+                $listGenres2=$this->listGenre->GetAll();
+        
+               include(VIEWS_PATH."home2.php");
             }
            
         }
-        public function checkSession ()
-        {
-            if (session_status() == PHP_SESSION_NONE)
-                session_start();
+      
+	public function checkSession ()
+	{
+		if (session_status() == PHP_SESSION_NONE)
+            session_start();
 
-            if(isset($_SESSION['user'])) {
-                try {
-                    $user = $this->daoUser->Search($_SESSION['user']->getEmail()) ;
-                } catch (\Throwable $th) {
-                    $controlScritpt=1;
-                    $message='error en la base';
-                    include(VIEWS_PATH."home.php");
-                }
-                if($user->getPassword() == $_SESSION['user']->getPassword())
-                    return $user;
+        if(isset($_SESSION['user'])) {
 
-              
+            $user = $this->dao->read($_SESSION['user']->getEmail());
 
-            } else {
-                return false;
-            }
-        }
+            if($user->getPass() == $_SESSION['user']->getPass())
+                return $user;
+
+          } else {
+            return false;
+          }
+    }
 
 
 
