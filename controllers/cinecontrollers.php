@@ -3,9 +3,7 @@ namespace controllers;
 use models\Cine as cine;
 use daodb\CineDao as cineD;
 use daodb\CinemaDao as cinemaD;
-
 use controllers\UserControllers as userC;
-
 use daosjson\GenresDao as genreD;
 use controllers\MovieControllers as movieC;
 use daodb\ProjectionDao as ProjectionD;
@@ -22,9 +20,9 @@ class CineControllers
         $this->cineRepo= new cineD();// sera reemplazado por una instancia de la clases donde tenga  la base correspondiente
         $this->cinemaList= new cinemaD();
         $this->userControllers= new userC();
-         $this->listGenres= new genreD();
-    $this->movieContro=new movieC();
-$this->listProjection= new ProjectionD();
+        $this->listGenres= new genreD();
+        $this->movieContro=new movieC();
+        $this->listProjection= new ProjectionD();
      }
     
     public function add($name=null, $address=null)
@@ -38,10 +36,13 @@ $this->listProjection= new ProjectionD();
       } catch (\Throwable $th) {
         $controlScritpt=1;
         $message='error en la base';
-       // include(VIEWS_PATH."userviews.php");
+        $projections=$this->listProjection->GetAllActuales();
+        $movies=$this->movieContro->SeeMovies();
+        $listGenres2=$this->listGenres->GetAll();
+        include(VIEWS_PATH."home2.php");
       }
      
-      $messaje='added cine';
+      $message='added cine';
       include(VIEWS_PATH."cineviews.php");
       
     }
@@ -57,7 +58,10 @@ $this->listProjection= new ProjectionD();
       } catch (\Throwable $th) {
         $controlScritpt=1;
         $message='error en la base';
-       // include(VIEWS_PATH."userviews.php");
+        $projections=$this->listProjection->GetAllActuales();
+        $movies=$this->movieContro->SeeMovies();
+        $listGenres2=$this->listGenres->GetAll();
+        include(VIEWS_PATH."home2.php");
       }
     
       $message='updated cine';
@@ -96,7 +100,10 @@ $this->listProjection= new ProjectionD();
         } catch (\Throwable $th) {
           $controlScritpt=1;
           $message='error en la base';
-          //include(VIEWS_PATH."userviews.php");
+          $projections=$this->listProjection->GetAllActuales();
+          $movies=$this->movieContro->SeeMovies();
+          $listGenres2=$this->listGenres->GetAll();
+           include(VIEWS_PATH."home2.php");
         }
         if(!empty($listCinema))
         {
@@ -119,7 +126,10 @@ $this->listProjection= new ProjectionD();
                   } catch (\Throwable $th) {
                     $controlScritpt=1;
                     $message='error en la base';
-                    //include(VIEWS_PATH."userviews.php");
+                    $projections=$this->listProjection->GetAllActuales();
+                    $movies=$this->movieContro->SeeMovies();
+                    $listGenres2=$this->listGenres->GetAll();
+                    include(VIEWS_PATH."home2.php");
                   }
                   
                 }
@@ -133,7 +143,10 @@ $this->listProjection= new ProjectionD();
         } catch (\Throwable $th) {
           $controlScritpt=1;
           $message='error en la base';
-          //include(VIEWS_PATH."userviews.php");
+          $projections=$this->listProjection->GetAllActuales();
+          $movies=$this->movieContro->SeeMovies();
+          $listGenres2=$this->listGenres->GetAll();
+          include(VIEWS_PATH."home2.php");
         }
       
         
