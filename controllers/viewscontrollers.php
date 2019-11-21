@@ -12,6 +12,7 @@ use daosjson\GenresDao as genreD;
 use controllers\MovieControllers as movieC;
 use daodb\TicketDao as tickedD;
 use controllers\UserControllers as C_User;
+use controllers\ProjectionUserControllers as projectionUC;
 class viewscontrollers
 {
     private $listCine;
@@ -24,6 +25,7 @@ class viewscontrollers
     private $movieContro;
     private $listPurchase;
     private $ticketDA;
+    private $projectionUserContro;
     public function __construct()
     {
         $this->listCine=new cineD();
@@ -36,6 +38,7 @@ class viewscontrollers
         $this->movieContro=new movieC();
         $this->listPurchase=new purchaseD();
         $this->ticketDA=new tickedD();
+        $this->projectionUserContro= new projectionUC();
     }
     public function index()
     {  
@@ -154,7 +157,7 @@ class viewscontrollers
       $user=$this->usercontroller->checkSession();
       try {
          $cines=$this->listCine->GetAll();
-      $cartelera=$this->listProjection->GetAllActuales();
+      $cartelera=$this->projectionUserContro->habilitadas();
       $movies=$this->movieContro->SeeMovies();
       include(VIEWS_PATH."cartelerauser.php");
       } catch (\Throwable $th) {

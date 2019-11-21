@@ -4,16 +4,20 @@ use models\Movie as Movie;
 use daosjson\MovieDao as movieD;
 use daosjson\GenresDao as genresD;
 use daodb\ProjectionDao as projectionD;
+use controllers\MovieControllers as movieC;
+use daodb\ProjectionDao as ProjectionD;
 class MovieControllers
 { 
     private $listMovie;
     private $listGenres;
     private $listProjection;
+    private $movieContro;
     public function __construct()
     {
         $this->listMovie=new movieD();
         $this->listGenres=new genresD();
         $this->listProjection= new projectionD();
+        $this->movieContro=new movieC();
     }
 
     public function seeListMovie()
@@ -24,8 +28,12 @@ class MovieControllers
            include(VIEWS_PATH."movieviews.php");
         } catch (\Throwable $th) {
             $controlScritpt=1;
-         $message='error en la base';
-         //include(VIEWS_PATH."userviews.php");
+             $message='error en la base';
+              $projections=$this->listProjection->GetAllActuales();
+                $movies=$this->movieContro->SeeMovies();
+                $listGenres2=$this->listGenres->GetAll();
+      
+               include(VIEWS_PATH."home2.php");
         }
           
     } 
@@ -68,7 +76,11 @@ class MovieControllers
         } catch (\Throwable $th) {
         $controlScritpt=1;
          $message='error en la base';
-        // include(VIEWS_PATH."userviews.php");
+         $projections=$this->listProjection->GetAllActuales();
+         $movies=$this->movieContro->SeeMovies();
+         $listGenres2=$this->listGenres->GetAll();
+
+        include(VIEWS_PATH."home2.php");
         }
 
         $resulMovie=array();
@@ -79,12 +91,17 @@ class MovieControllers
                 try {
                     if($this->listProjection->SearchXMovie($movie->getIdMovie()))
                     {
-                       ECHO 'HOLA'; 
+                      
                         array_push($resulMovie, $movie);
                     }
                } catch (\Throwable $th) {
                 $controlScritpt=1;
                 $message='error en la base';
+                $projections=$this->listProjection->GetAllActuales();
+                $movies=$this->movieContro->SeeMovies();
+                $listGenres2=$this->listGenres->GetAll();
+      
+               include(VIEWS_PATH."home2.php");
                 }
             }
         }

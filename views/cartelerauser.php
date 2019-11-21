@@ -86,6 +86,12 @@
                      }
                 
                     }
+                    else
+                    {
+                      ?>
+                      <p><strong> Ya no hay entradas disponibles para esta peliculas en nuestros cines</strong></p>
+                    <?php
+                    }
                 ?>
                   
        </table>

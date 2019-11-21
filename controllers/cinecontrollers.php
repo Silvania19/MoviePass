@@ -79,7 +79,7 @@ $this->listProjection= new ProjectionD();
           $controlScritpt=1;
          $message='error en la base';
        
-         $projections=$this->listProjection->GetAllActuales();
+               $projections=$this->listProjection->GetAllActuales();
                  $movies=$this->movieContro->SeeMovies();
                  $listGenres2=$this->listGenres->GetAll();
                  include(VIEWS_PATH."home2.php");
