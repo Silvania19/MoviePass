@@ -158,13 +158,15 @@ class ProjectionDao implements Idaos
             return  false;
         }
     }
-    public function availability($cant)
+    public function availability($cant, $idProjection)
     {
-        $sql = "SELECT * FROM projections as p  JOIN cinemas as c on c.idCinema = p.idCinema where c.capacity > :cant";
-        $parameters['cant']=$cant;
+        $sql = "SELECT * FROM projections as p  JOIN cinemas as c on c.idCinema = p.idCinema where  p.idProjection=:idProjection and c.capacity>=:'$cant'";
+        
+        $parameters['idProjection']=$idProjection;
         try {
             $this->connection = Connection::getInstance();
             $resul = $this->connection->execute($sql, $parameters);
+            var_dump($resul);
         } catch (\PDOException $th) {
             throw $th;
         }
