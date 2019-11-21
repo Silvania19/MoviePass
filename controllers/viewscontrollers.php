@@ -43,13 +43,11 @@ class viewscontrollers
        if($user)
         {
             
-          $cant=$this->ticketDA->cantXIdProjection(1);
-          var_dump($this->listProjection->availability($cant));
-          echo $cant;
-        /*  $projections=$this->listProjection->GetAllActuales();
+         
+       $projections=$this->listProjection->GetAllActuales();
           $movies=$this->movieContro->SeeMovies();
           $listGenres2=$this->listGenres->GetAll();
-          include(VIEWS_PATH."home2.php");*/
+          include(VIEWS_PATH."home2.php");
         }
         else
        {
