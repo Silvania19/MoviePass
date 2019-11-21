@@ -91,7 +91,7 @@
             } 
            
             
-            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getIdUser(), true);
+            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getIdUser(), 1);
             try
             {
             
