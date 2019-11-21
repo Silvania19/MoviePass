@@ -2,15 +2,22 @@
 namespace controllers;
 use models\User as User;
 use daodb\UserDao as userD;
-use daodb\PuchaseDao as purchaseD;
+use daodb\PurchaseDao as purchaseD;
 use daodb\ProjectionDao as projectionD;
 use daodb\CinemaDao as cinemaD;
 use daodb\CineDao as cineD;
 use daodb\PayDao as payD;
+use controllers\UserControllers as userC;
 use daodb\PurchaseControllers as purchaseC;
 class AdministratorControllers
 {
 private $daoUser;//en esta variable tiene una instancia de la clase Dao user, 
+private $userContro;
+private $listPurchase;
+private $listProjection;
+private $listCinema;
+private $listCine;
+private $purchaseC;
 public function __construct()
 {
     $this->daoUser = new userD();
@@ -18,7 +25,7 @@ public function __construct()
     $this->listProjection= new projectionD();
     $this->listCinema=new cinemaD();
     $this->listCine=new cineD();
-    $this->listPay= new payD();
+    $this->userContro= new userC();
     $this->purchaseC=new purchaseD();
 }
 
@@ -168,7 +175,7 @@ public function Collection($idCine=null)
     } catch (\Throwable $th) {
        
     }
- include(VIEWS_PATCH."recaudacion.php");
+ include(VIEWS_PATH."recaudacion.php");
   
 }
 
