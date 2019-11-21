@@ -102,6 +102,25 @@
             }
           
         }
+        public function cantXIdProjection($idProjection)
+        {
+          $sql="SELECT COUNT(idProjection) FROM tickets GROUP BY idProjection where idProjection=:idProjection";   
+          $parameters['idProjection']=$idProjection;
+          try {
+              $this->connection = Connection:: getInstance();
+              $resul=$this->connection->execute($sql, $parameters);
+          } catch (\PDOException $th) {
+           throw $th;
+          }
+          if(!empty ($resul))
+          {
+              return $resul;;
+          }
+          else
+          {
+              return  false;
+          }
+        }
         public function Search($objeto)
         {
           $sql="SELECT * FROM tickets where idTicket=:idTicket";   
