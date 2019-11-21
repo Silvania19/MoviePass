@@ -135,7 +135,7 @@ if (isset($controlScript)) {
                             <tr>
                                 <td>
                                     <form action="<?php echo FRONT_ROOT;?>/purchase/delete" method="post">
-                                        <input type="checkbox" name="idPurchase" id="" required="">
+                                        <input type="checkbox" name="idPurchase" id="" required="" value="<?php echo $purchases->getIdPurchase();?>">
                                         <input type="submit" value="Eliminar">
                                     </form>
                                 </td>

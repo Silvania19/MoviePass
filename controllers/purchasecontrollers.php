@@ -91,7 +91,7 @@
             } 
            
             
-            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getIdUser(), 1);
+            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getIdUser(), true);
             try
             {
             
@@ -113,7 +113,7 @@
         {
             $user=$this->userContro->checkSession();
             try {
-                $this->listPurchase->inactivate($idPurchase);
+                $this->listPurchase->delete($idPurchase);
                 $listPurchase=$this->listPurchase->SearchXUser($user->getIdUser());
                 $movies=$this->moviesContro->SeeMovies();
                 $projections= $this->listProjection->getAllActuales();
