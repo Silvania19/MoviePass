@@ -117,6 +117,7 @@
                 $listPurchase=$this->listPurchase->SearchXUser($user->getIdUser());
                 $movies=$this->moviesContro->SeeMovies();
                 $projections= $this->listProjection->getAllActuales();
+              
                 include(VIEWS_PATH."shoppingpurchase.php");
             } catch (\Throwable $th) {
                
