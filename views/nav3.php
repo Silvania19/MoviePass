@@ -4,8 +4,9 @@
 
         <ul class="navbar-nav ml-auto">
               
+                
         <li class ="nav-item">
-            <a href="<?php echo FRONT_ROOT;?>/views/formpurchase" class="nav-link " >CARRITO DE COMPRAS</a>
+            <a href="<?php echo FRONT_ROOT;?>/views/seeShopping" class="nav-link " >CARRITO DE COMPRAS</a>
           </li>
           <li class ="nav-item">
             <a href="<?php echo FRONT_ROOT;?>/movie/seeListMovie" class="nav-link " >PELICULAS</a>

@@ -7,6 +7,7 @@ use daodb\CineDao as cineD;
 use daodb\CinemaDao as cinemaD;
 use daodb\ProjectionDao as ProjectionD;
 use daosjson\MovieDao as movieD;
+use daodb\PurchaseDao as purchaseD;
 use daosjson\GenresDao as genreD;
 use controllers\MovieControllers as movieC;
 use controllers\UserControllers as C_User;
@@ -20,6 +21,7 @@ class viewscontrollers
     private $usercontroller;
     private $listGenres;
     private $movieContro;
+    private $listPurchase;
     public function __construct()
     {
         $this->listCine=new cineD();
@@ -30,6 +32,7 @@ class viewscontrollers
         $this->usercontroller= new C_User();
         $this->listGenres= new genreD();
         $this->movieContro=new movieC();
+        $this->listPurchase=new purchaseD();
     }
     public function index()
     {  
@@ -71,6 +74,19 @@ class viewscontrollers
         $controlScritpt=1;
         $message='error en la base';
         include(VIEWS_PATH."cineviews.php");
+      }
+       
+    }
+    public function seeShopping()
+    {
+      $user=$this->usercontroller->checkSession();
+      try {
+        $listPurc=$this->listPurchase->GetAll();  
+      include(VIEWS_PATH."formpurchase.php"); 
+      } catch (\Throwable $th) {
+        $controlScritpt=1;
+        $message='error en la base';
+        include(VIEWS_PATH."home2.php");
       }
        
     }

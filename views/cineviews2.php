@@ -1,5 +1,6 @@
 <?php 
     include(VIEWS_PATH."header.php");
+    include(VIEWS_PATH."nav2.php");
     if(isset($controlScript))
   {
     if($controlScript==1)
