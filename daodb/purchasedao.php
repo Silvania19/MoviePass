@@ -126,6 +126,22 @@ class PurchaseDao implements Idaos
             return  false;
         }
     }
+    public function SearchXIdPurchase($idPurchase)
+    {
+        $sql="SELECT pu.* from pays as py join purchases as pu on py.idPurchase=pu.idPurchase";
+        $parameters=['idPurchase']=$idPurchase;
+        try {
+            $this->connection = Connection::getInstance();
+            $resul = $this->connection->execute($sql, $parameters);
+        } catch (\PDOException $th) {
+            throw $th;
+        }
+        if (!empty($resul)) {
+            return $this->mapear($resul);
+        } else {
+            return  false;
+        }
+    }
     public function SearchXUser($idUser)
     {
         $sql = "SELECT * FROM purchases where idUser=:idUser";
