@@ -42,15 +42,51 @@
                     {
                         if($purchase->getState()==true)
                         {
-                            $pay= new pay($waytopay3, $purchase->getIdPurchase(), $date);
+                            $cantTicket=$purchase->getQuantityTicket();
+                            while($cantTicket>0)
+                            {
+                                $pay= new pay($waytopay3, $purchase->getIdPurchase(), $date);
+                                
+                                try {
+                                
+                                    $this->listPays->add($pay);
+                                
+                                    $this->ticketContro->generateTicket($purchase->getIdProjection());
+                                
+                                    $this->listPurchase->inactivate($purchase->getIdPurchase());
+                                    
+                                
+                                } catch (\PDOException $th) {
+                                
+                                    $controlScript=1;
+                                    
+                                    $message="error en la base";
+                                }
+                                $cantTicket--;
+                            }
+                            
+                        }
+                        
+                    
+                    }
+                   $this->ticketContro->SeeTicket(); 
+                }
+                if(is_object($listPurchasesToPay))
+                {
+                    if($listPurchasesToPay->getState()==true)
+                    {
+                        $cantTicket=$listPurchasesToPay->getQuantityTicket();
+                        while($cantTicket>0)
+                        {
+                            $pay= new pay($waytopay3, $listPurchasesToPay->getIdPurchase(), $date);
                             
                             try {
                             
                                 $this->listPays->add($pay);
                             
-                                $this->ticketContro->generateTicket($purchase->getIdProjection());
+                                $this->ticketContro->generateTicket($listPurchasesToPay->getIdProjection());
                             
-                                $this->listPurchase->inactivate($purchase->getIdPurchase());
+                                $this->listPurchase->inactivate($listPurchasesToPay->getIdPurchase());
                                 
                             
                             } catch (\PDOException $th) {
@@ -59,11 +95,10 @@
                                 
                                 $message="error en la base";
                             }
+                            $cantTicket--;
                         }
                         
-                    
                     }
-                   $this->ticketContro->SeeTicket(); 
                 }
             }
             else
