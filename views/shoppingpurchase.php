@@ -219,8 +219,11 @@ if (isset($controlScript)) {
             <div class="modal-body">
                     <label for="name" >corresp. Cia de crédito (Visa ó Master)</label>
                    
-                    <select name="waytopay" id="" required=""class="form-control">Master</select>
-                    <select name="waytopay" id=""required=""class="form-control">Visa</select>
+                    <select name="waytopay" id="" required=""class="form-control">
+                        <option value="master">Master</option>
+                        <option value="visa">Visa</option>
+                    </select>
+                  
                     <button type="submit" class="btn btn-dark" data dismiss="modal" > Listo </button>
             </div>
 

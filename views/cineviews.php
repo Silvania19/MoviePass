@@ -114,7 +114,7 @@
  } 
  if($user->getIdRol()==1)
  {
-   include (VIEWS_PATH."nav.php");
+   include (VIEWS_PATH."nav2.php");
 ?>
 <div class="col" style="border:1px solid gray;">
        

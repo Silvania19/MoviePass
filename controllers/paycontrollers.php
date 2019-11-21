@@ -40,7 +40,7 @@
                 {
                     foreach($listPurchasesToPay as $purchase)
                     {
-                        if($purchase->getState==true)
+                        if($purchase->getState()==true)
                         {
                             $pay= new pay($waytopay3, $purchase->getIdPurchase(), $date);
                             
