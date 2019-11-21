@@ -1,4 +1,6 @@
-<?php include(VIEWS_PATH."header.php");?>
+<?php include(VIEWS_PATH."header.php");
+      include(VIEWS_PATH."nav.php");?>
+
 <?php
   if(isset($controlScript))
   {
@@ -151,7 +153,7 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
           } 
         ?>
       </select>
-      <button type="submit" class="btn btn-dark"  > buscar </button>
+      <button type="submit" class="btn btn-dark"  > Buscar </button>
      </form>
      <form action="<?php echo FRONT_ROOT;?>/projection/filterDate" method="POST">
          Filtar por fecha
