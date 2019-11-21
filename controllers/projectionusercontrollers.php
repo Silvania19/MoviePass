@@ -8,7 +8,7 @@
     use daodb\CinemaDao as cinemaD;
     use controllers\MovieControllers as movieC;
     use controllers\UserControllers as userC;
-    use daodb\TicketsDao as ticketD;
+    use daodb\TicketDao as ticketD;
     class ProjectionUserControllers
     {
         private $listMovie;
@@ -57,7 +57,7 @@
         public function filterDateProjection($date=null)
         {
             $user=$this->userContro->checkSession();
-            $projections=$this->listProjection->habilitadas();
+            $projections=$this->habilitadas();
            
             $filter=array();
             if(!empty($projections))
@@ -92,7 +92,7 @@
         {
             
             $user=$this->userContro->checkSession();
-            $projections=$this->listProjection->habilitadas();
+            $projections=$this->habilitadas();
             $listMoviesAct=$this->moviesProjections();
             $movies=array();
             $cinesAll=$this->listCine->GetAll();
@@ -178,7 +178,7 @@
         {
             $user=$this->userContro->checkSession();
             try {
-                 $projections=$this->listProjection->habilitadas();
+                 $projections=$this->habilitadas();
             } catch (\Throwable $th) {
                 $controlScritpt=1;
                 $message='error en la base';
@@ -249,18 +249,24 @@
    
         }
         public function habilitadas()
-        {
-            $listProjectionA=$this->listProjection->GetAllActuales();
+        { 
             $listProjectionActAvi=array();
-            foreach($listProjectionA as $projection)
-            {
-                $cantTicketXProjection=$this->listTickets->cantXIdProjection($projection->getIdProjection());
-                if($this->listProjection->availability($cantTicketXProjection))
-               {
-                   array_push($listProjectionActAvi, $projection);
-               }
+            try {
+                $listProjectionA=$this->listProjection->GetAllActuales();
+                
+                foreach($listProjectionA as $projection)
+                {
+                    $cantTicketXProjection=$this->listTickets->cantXIdProjection($projection->getIdProjection());
+                    if($this->listProjection->availability($cantTicketXProjection))
+                {
+                    array_push($listProjectionActAvi, $projection);
+                }
 
+                }
+            } catch (\Throwable $th) {
+                throw $th;
             }
+           
             return $listProjectionActAvi;
             
         }

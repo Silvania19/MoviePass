@@ -79,7 +79,7 @@ class PurchaseDao implements Idaos
     }
     public function inactivate($objeto)
     {
-        $sql = "UPDATE purchases SET state=false WHERE idPurchase = :idPurchase";
+        $sql = "UPDATE purchases SET state=0 WHERE idPurchase = :idPurchase";
        
         $parameters['idPurchase'] = $objeto;
 
@@ -126,13 +126,13 @@ class PurchaseDao implements Idaos
             return  false;
         }
     }
-    public function SearchXIdPurchase($idPurchase)
+    public function SearchXIdPurchase()
     {
         $sql="SELECT pu.* from pays as py join purchases as pu on py.idPurchase=pu.idPurchase";
-        $parameters=['idPurchase']=$idPurchase;
+       
         try {
             $this->connection = Connection::getInstance();
-            $resul = $this->connection->execute($sql, $parameters);
+            $resul = $this->connection->execute($sql);
         } catch (\PDOException $th) {
             throw $th;
         }
@@ -157,5 +157,24 @@ class PurchaseDao implements Idaos
         } else {
             return  false;
         }
+    }
+    public function SearchIdPurchase($objeto)
+    {
+      $sql="SELECT * FROM purchases where idProjection=:idProjection";   
+      $parameters['idProjection']=$objeto;
+      try {
+          $this->connection = Connection:: getInstance();
+          $resul=$this->connection->execute($sql, $parameters);
+      } catch (\PDOException $th) {
+          throw $th;
+      }
+      if(!empty ($resul))
+      {
+          return $this->mapear($resul);
+      }
+      else
+      {
+          return  false;
+      }
     }
 }

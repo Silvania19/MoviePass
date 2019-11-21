@@ -36,7 +36,7 @@ if (isset($controlScript)) {
                     foreach($listPurchase as $purchases)
                     {
                         
-                     if($purchases->getState()==true)
+                     if($purchases->getState()==1)
                      {
                     
                 ?>           

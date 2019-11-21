@@ -42,7 +42,7 @@
                     {
                         if($purchase->getState()==true)
                         {
-                            $cantTicket=$purchase->getQuantityTicket();
+                            $cantTicket=$purchase->getQuantityTickets();
                             while($cantTicket>0)
                             {
                                 $pay= new pay($waytopay3, $purchase->getIdPurchase(), $date);
@@ -111,7 +111,12 @@
                 include(VIEWS_PATH."shoppingpurchase.php");
             }
            
+            
+        }
 
+        public function KnowAmount()
+        {
+            $this->listPurchase->GetAll();
         }
     }
 ?>
