@@ -92,7 +92,7 @@
             } 
             else
             {
-                 $amount2=$amount;
+                $amount2=$amount;
             }
             
             
