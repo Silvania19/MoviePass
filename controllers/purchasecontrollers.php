@@ -113,7 +113,7 @@
         {
             $user=$this->userContro->checkSession();
             try {
-                $this->listPurchase->delete($idPurchase);
+                $this->listPurchase->inactivate($idPurchase);
                 $listPurchase=$this->listPurchase->SearchXUser($user->getIdUser());
                 $movies=$this->moviesContro->SeeMovies();
                 $projections= $this->listProjection->getAllActuales();

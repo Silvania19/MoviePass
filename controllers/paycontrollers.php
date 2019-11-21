@@ -46,9 +46,9 @@
                             
                             try {
                             
-                                //$this->listPays->add($pay);
+                                $this->listPays->add($pay);
                             
-                                //$this->ticketContro->generateTicket($purchase->getIdProjection());
+                                $this->ticketContro->generateTicket($purchase->getIdProjection());
                             
                                 $this->listPurchase->inactivate($purchase->getIdPurchase());
                                 
