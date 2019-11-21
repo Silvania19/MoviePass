@@ -1,4 +1,5 @@
-<?php include(VIEWS_PATH."header.php");?>
+<?php include(VIEWS_PATH."header.php");
+       include (VIEWS_PATH."nav.php");?>
 <?php
 if(isset($controlScript))
   {
