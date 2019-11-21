@@ -94,6 +94,13 @@ if (isset($controlScript)) {
             <input type="submit" value="Ver cine">
           </form>
         </td>
+        <td>
+          <form action="<?php echo FRONT_ROOT; ?>/administrator/Collection" method="post">
+            <input type="checkbox" name="" id="idCine" value="<?php echo $cine->getIdCine(); ?>" required="">
+            <input type="submit" value="Recaudacion">
+
+          </form>
+        </td>
       </tr>
     <?php
       }
@@ -146,13 +153,7 @@ if ($user->getIdRol() == 1) {
 
           </form>
         </td>
-        <td>
-          <form action="<?php echo FRONT_ROOT; ?>/administrator/Collection" method="post">
-            <input type="checkbox" name="" id="idCine" value="<?php echo $cine->getIdCine(); ?>" required="">
-            <input type="submit" value="Recaudacion">
-
-          </form>
-        </td>
+      
       </tr>
     <?php
       }

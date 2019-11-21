@@ -139,10 +139,16 @@
 
             <form class="modal-content " action="<?php echo FRONT_ROOT;?>/cine/update" method="POST"> 
     
-            
+            <div class="modal-header">
+                    <h2 class="modal-title">Registrarse</h2>
+
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+
                  <div class="modal-header"> 
                      <h2 class="modal-title">Update cine</h2>
-                     <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>                  </div>
+                     <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>      
+                </div>
                 <div class="modal-body">
                    <label for="name" >Name</label>
                    <input type="text" name="name" class="form-control" required="">  
@@ -162,7 +168,7 @@
             <form class="modal-content " action="<?php echo FRONT_ROOT;?>/cinema/add" method="POST"> 
                 <div class="modal-header"> 
                     <h2 class="modal-title">Agregar salas</h2>
-                    <button type="button"class="close" data-dismiss="modal">&times;</button>
+                    <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>
                 </div>
                 <div class="modal-body">
                     
