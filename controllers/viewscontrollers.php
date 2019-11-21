@@ -12,7 +12,7 @@ use daodb\PurchaseDao as purchaseD;
 use daosjson\GenresDao as genreD;
 use controllers\MovieControllers as movieC;
 use daodb\TicketDao as tickedD;
-use daodb\TicketControllers as ticketC;
+use controllers\TicketControllers as ticketC;
 use controllers\UserControllers as C_User;
 use controllers\ProjectionUserControllers as projectionUC;
 
@@ -96,6 +96,7 @@ class viewscontrollers
   public function seeTickets()
   {
      try {
+       
        $this->ticketC->SeeTicket();
      } catch (\Throwable $th) {
       $controlScritpt = 1;
@@ -131,7 +132,7 @@ class viewscontrollers
       $user = $this->usercontroller->checkSession();
       $cine = $this->listCine->Search($idCine);
       $cinemasCine = $this->listCinema->SearchIdCine($idCine);
-      include(VIEWS_PATH . "cineviews.php");
+      include(VIEWS_PATH . "cineviews2.php");
     } catch (\Throwable $th) {
       $controlScritpt = 1;
       $message = 'error en la base';
@@ -208,7 +209,7 @@ class viewscontrollers
     if ($user) {
         $projections = $this->listProjection->GetAllActuales();
         $movies = $this->movieContro->SeeMovies();
-        $listGenres2 = $this->listGenres->GetAll();
+        $listGenres2 = $this->listGenre->GetAll();
         include(VIEWS_PATH . "home2.php");
         }
       } catch (\Throwable $th) {

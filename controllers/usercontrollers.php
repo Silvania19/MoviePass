@@ -24,37 +24,54 @@ class UserControllers
         $this->listGenre = new genreD();
         $this->movieContro = new movieC();
     }
-    public function login($email = null, $password = null)
-    {
-        try {
-            $user = $this->daoUser->Search($email);
-        } catch (\Throwable $th) {
-            $controlScritpt = 1;
-            $message = 'error en la base';
-            include(VIEWS_PATH . "home.php");
-        }
-
-
-
-        if (isset($user)) {
-            if ($user->getPassword() == $password) {
-                $_SESSION['user'] = $user;
-                try {
-                    $movies = $this->movieContro->SeeMovies();
-                    $listGenres2 = $this->listGenre->GetAll();
-                    include(VIEWS_PATH . "home2.php");
-                } catch (\Throwable $th) {
-                    $controlScritpt = 1;
-                    $message = 'error en la base';
-                    $projections = $this->listProjection->GetAllActuales();
-                    $movies = $this->movieContro->SeeMovies();
-                    $listGenres2 = $this->listGenre->GetAll();
-
-                    include(VIEWS_PATH . "home2.php");
-                }
+   
+        public function login($email = null, $password = null)
+        {  
+            try {
+                $user=$this->daoUser->Search($email);
+            } catch (\Throwable $th) {
+                $controlScritpt=1;
+                $message='error en la base';
+                include(VIEWS_PATH."home.php");
+            }
+           
+            
+            
+            if(isset($user))
+            {
+                if($user->getPassword()==$password)
+                {
+                    $_SESSION['user']=$user;
+                    try { 
+                          $movies=$this->movieContro->SeeMovies();
+                          $listGenres2=$this->listGenre->GetAll();
+                           include(VIEWS_PATH."home2.php");
+                        } catch (\Throwable $th) {
+                            $controlScript=1;
+                            $message='error en la base';
+                            $projections=$this->listProjection->GetAllActuales();
+                            $movies=$this->movieContro->SeeMovies();
+                            $listGenres2=$this->listGenre->GetAll();
+                    
+                           include(VIEWS_PATH."home2.php");
+                        }
+                        
+                   
+               }
+               else{
+                $controlScript=1;
+                $message='contraseña incorrecta';
+                include(VIEWS_PATH."home.php");
+               }
+            }
+            else
+            {
+                $controlScript=1;
+                $message='usuario incorrecto';
+                include(VIEWS_PATH."home.php");
             }
         }
-    }
+    
     public function signUp($name = null, $lastName = null,  $dni = null,  $email = null, $password = null)
     {
 
