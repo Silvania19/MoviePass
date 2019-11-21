@@ -127,9 +127,7 @@
             }
             
         }
-         
-
-        public function knowAmount($idPurchase=null)
+         public function knowAmount($idPurchase=null)
         {
             
            $purchasesWithPay=array();
