@@ -44,7 +44,7 @@
                           $listGenres2=$this->listGenre->GetAll();
                            include(VIEWS_PATH."home2.php");
                         } catch (\Throwable $th) {
-                            $controlScritpt=1;
+                            $controlScript=1;
                             $message='error en la base';
                             $projections=$this->listProjection->GetAllActuales();
                             $movies=$this->movieContro->SeeMovies();
@@ -55,6 +55,17 @@
                         
                    
                }
+               else{
+                $controlScript=1;
+                $message='contraseña incorrecta';
+                include(VIEWS_PATH."home.php");
+               }
+            }
+            else
+            {
+                $controlScript=1;
+                $message='usuario incorrecto';
+                include(VIEWS_PATH."home.php");
             }
             
         }

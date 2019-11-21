@@ -115,7 +115,7 @@ class viewscontrollers
       $user = $this->usercontroller->checkSession();
       $cine = $this->listCine->Search($idCine);
       $cinemasCine = $this->listCinema->SearchIdCine($idCine);
-      include(VIEWS_PATH . "cineviews.php");
+      include(VIEWS_PATH . "cineviews2.php");
     } catch (\Throwable $th) {
       $controlScritpt = 1;
       $message = 'error en la base';
@@ -192,7 +192,7 @@ class viewscontrollers
     if ($user) {
         $projections = $this->listProjection->GetAllActuales();
         $movies = $this->movieContro->SeeMovies();
-        $listGenres2 = $this->listGenres->GetAll();
+        $listGenres2 = $this->listGenre->GetAll();
         include(VIEWS_PATH . "home2.php");
         }
       } catch (\Throwable $th) {

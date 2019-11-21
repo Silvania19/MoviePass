@@ -96,7 +96,7 @@ if (isset($controlScript)) {
         </td>
         <td>
           <form action="<?php echo FRONT_ROOT; ?>/administrator/Collection" method="post">
-            <input type="checkbox" name="" id="idCine" value="<?php echo $cine->getIdCine(); ?>" required="">
+            <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>" required="">
             <input type="submit" value="Recaudacion">
 
           </form>

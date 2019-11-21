@@ -198,15 +198,19 @@ class ProjectionDao implements Idaos
         }
     }
     public function SearchXIdCinema($idCinema)
-    {
+    { 
         $sql = "SELECT p.* from projections as p join cinemas as c on p.idCinema=c.idCinema where p.idCinema=:idCinema;";
         $parameters['idCinema'] = $idCinema;
 
         try {
+           
             $this->connection = Connection::getInstance();
             $resul = $this->connection->execute($sql, $parameters);
+          
         } catch (\PDOException $th) {
+            
             throw $th;
+
         }
         if (!empty($resul)) {
             

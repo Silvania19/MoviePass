@@ -7,6 +7,8 @@ use daodb\ProjectionDao as projectionD;
 use daodb\CinemaDao as cinemaD;
 use daodb\CineDao as cineD;
 use daodb\PayDao as payD;
+use daosjson\GenresDao as genreD;
+use controllers\MovieControllers as movieC;
 use controllers\UserControllers as userC;
 use daodb\PurchaseControllers as purchaseC;
 class AdministratorControllers
@@ -18,6 +20,8 @@ private $listProjection;
 private $listCinema;
 private $listCine;
 private $purchaseC;
+private $movieContro;
+private $listGenres;
 public function __construct()
 {
     $this->daoUser = new userD();
@@ -27,6 +31,8 @@ public function __construct()
     $this->listCine=new cineD();
     $this->userContro= new userC();
     $this->purchaseC=new purchaseD();
+    $this->movieContro= new movieC();
+    $this->listGenres= new genreD();
 }
 
 public function addAdministrator( $name=null, $lastName=null, $dni=null, $email=null, $password=null)
@@ -41,49 +47,64 @@ public function addAdministrator( $name=null, $lastName=null, $dni=null, $email=
     } catch (\Throwable $th) {
         $controlScritpt=1;
          $message='error en la base';
-        // include(VIEWS_PATH."userviews.php");
+         $projections=$this->listProjection->GetAllActuales();
+         $movies=$this->movieContro->SeeMovies();
+         $listGenres2=$this->listGenres->GetAll();
+         include(VIEWS_PATH."home2.php");
     }
    
 }
 public function Collection($idCine=null)
 {
+    
     $user=$this->userContro->checkSession();
     $amount=0;
     try {
     
     $purchases= $this->listPurchase->SearchPurchasePay();
+    
     $cinemasOfCine=$this->listCinema->SearchIdCine($idCine);
+    
     $cine=$this->listCine->Search($idCine);
+    
+   
     //$pays= $this->listPays->GetAll();
    
   //  $projection=$this->listProjection->SeachIdCinema();
+ 
     if(is_array($cinemasOfCine))
     {
          foreach($cinemasOfCine as $cinema)
          {
-            $projections=$this->listProjection->SearchIdCinema($cinema->getIdCinema());
+            
+            $projections=$this->listProjection->SearchXIdCinema($cinema->getIdCinema());
+            
             if(is_array($projections))
             {
-                foreach($projection as $pro)
+                foreach($projections as $pro)
                 {
                     if(is_array($purchases))
                     {
                         foreach($purchases as $p)
                         {    
-                             if($p->getIdPurchase()==$pro->getIdPurchase())
+                            
+                             if($p->getIdProjection()==$pro->getIdProjection())
                         
-                              {
-                                   $amount=$amount+$p->getAmount();
+                              {  
+                                   
+                                   $amount+=$p->getAmount();
+                                   
                               } 
                                             
                         }
                     }
                     else
                     {
-                        if($purchases->getIdPurchase()==$pro->getIdPurchase())
+                        if($purchases->getIdProjection()==$pro->getIdProjection())
                         
                               {
-                                   $amount=$amount+$purchases->getAmount();
+                                   
+                                   $amount+=$purchases->getAmount();
                               } 
                     }
                 }
@@ -95,20 +116,20 @@ public function Collection($idCine=null)
                     {
                         foreach($purchases as $p)
                         {    
-                             if($p->getIdPurchase()==$projections->getIdPurchase())
+                             if($p->getIdProjection()==$projections->getIdProjection())
                         
                               {
-                                   $amount=$amount+$p->getAmount();
+                                   $amount+=$p->getAmount();
                               } 
                                             
                         }
                     }
                     else
                     {
-                        if($purchases->getIdPurchase()==$projections->getIdPurchase())
+                        if($purchases->getIdProjection()==$projections->getIdProjection())
                         
                               {
-                                   $amount=$amount+$purchases->getAmount();
+                                   $amount+=$purchases->getAmount();
                               } 
                     }
             }
@@ -116,8 +137,10 @@ public function Collection($idCine=null)
         }
     }
    else
-   {
-        $projections=$this->listProjection->SearchIdCinema($cinemasOfCine->getIdCinema());
+   {    
+        
+        $projections=$this->listProjection->SearchXIdCinema($cinemasOfCine->getIdCinema());
+       
         if(is_array($projections))
         {
             foreach($projection as $pro)
@@ -126,20 +149,20 @@ public function Collection($idCine=null)
                 {
                     foreach($purchases as $p)
                     {    
-                        if($p->getIdPurchase()==$pro->getIdPurchase())
+                        if($p->getIdProjection()==$pro->getIdProjection())
                     
                         {
-                            $amount=$amount+$p->getAmount();
+                            $amount+=$p->getAmount();
                         } 
                                         
                     }
                 }
                 else
                 {
-                    if($purchases->getIdPurchase()==$pro->getIdPurchase())
+                    if($purchases->getIdProjection()==$pro->getIdProjection())
                     
                         {
-                            $amount=$amount+$purchases->getAmount();
+                            $amount+=$purchases->getAmount();
                         } 
                 }
             }
@@ -151,7 +174,7 @@ public function Collection($idCine=null)
                 {
                     foreach($purchases as $p)
                     {    
-                        if($p->getIdPurchase()==$projections->getIdPurchase())
+                        if($p->getIdProjection()==$projections->getIdProjection())
                     
                         {
                             $amount=$amount+$p->getAmount();
@@ -161,7 +184,7 @@ public function Collection($idCine=null)
                 }
                 else
                 {
-                    if($purchases->getIdPurchase()==$projections->getIdPurchase())
+                    if($purchases->getIdProjection()==$projections->getIdProjection())
                     
                         {
                             $amount=$amount+$purchases->getAmount();
@@ -173,6 +196,12 @@ public function Collection($idCine=null)
 
 
     } catch (\Throwable $th) {
+         $controlScritpt=1;
+         $message='error en la base';
+         $projections=$this->listProjection->GetAllActuales();
+         $movies=$this->movieContro->SeeMovies();
+         $listGenres2=$this->listGenres->GetAll();
+         include(VIEWS_PATH."home2.php");
        
     }
  include(VIEWS_PATH."recaudacion.php");
