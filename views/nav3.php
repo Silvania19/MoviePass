@@ -4,7 +4,7 @@
 
         <ul class="navbar-nav ml-auto">
               
-                
+              
         <li class ="nav-item">
             <a href="<?php echo FRONT_ROOT;?>/views/seeShopping" class="nav-link " >CARRITO DE COMPRAS</a>
           </li>
@@ -15,7 +15,7 @@
             <a href="<?php echo FRONT_ROOT;?>/views/cine" class="nav-link " >CINES</a>
           </li>
           <li>
-            <a href="<?php echo FRONT_ROOT;?>/views/cartelera" class="nav-link">CARTELERA</a>
+            <a href="<?php echo FRONT_ROOT;?>/views/cartelerauser" class="nav-link">CARTELERA</a>
           </li>
           <li class ="nav-item  ">
             <div class="dropdown">

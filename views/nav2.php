@@ -7,8 +7,12 @@
           <li class ="nav-item">
             <a href="<?php echo FRONT_ROOT;?>/views/formpurchase" class="nav-link " >CARRITO DE COMPRAS</a>
           </li>
-        
-          <li class ="nav-item  ">
+          <li class ="nav-item">
+          <a href="<?php echo FRONT_ROOT?>/views/home2" class="dropdown-item">Home</a>
+
+          </li>
+   
+       <li class ="nav-item  ">
             <div class="dropdown">
                 <button type="button" class="btn btn-primary dropdown-toggle"  data-toggle="dropdown">USUARIO</button>
                 <div class="dropdown-menu">
@@ -21,3 +25,6 @@
                   
         </ul>
        </nav>
+
+
+  

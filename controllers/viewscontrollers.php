@@ -81,8 +81,10 @@ class viewscontrollers
     {
       $user=$this->usercontroller->checkSession();
       try {
-        $listPurc=$this->listPurchase->GetAll();  
-      include(VIEWS_PATH."formpurchase.php"); 
+        $listPurc=$this->listPurchase->GetAll(); 
+        $listProj=$this->listProjection->GetAll(); 
+        $listMov=$this->listMovie->GetAll();
+      include(VIEWS_PATH."shoppingpurchase.php"); 
       } catch (\Throwable $th) {
         $controlScritpt=1;
         $message='error en la base';

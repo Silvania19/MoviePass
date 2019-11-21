@@ -136,7 +136,7 @@
                 if(is_object($projections))
                 {
                     
-                   if($projections->getIdMovie()==$idMovie && $projection->getIdCine()==$cines->getIdCine()&& $projection->getIdMovie()==$idMovie)
+                   if($projections->getIdMovie()==$idMovie && $projections->getIdCine()==$cines->getIdCine()&& $projections->getIdMovie()==$idMovie)
                    {
                     $movie=$this->listMovie->Search($movies->getIdMovie());
                     $cine=$this->listCine->Search($cines->getIdCine());
@@ -225,7 +225,7 @@
                 if(is_object($projections))
                 {
                     
-                   if($projections->getIdMovie()==$idMovie && $projection->getIdCine()==$cines->getIdCine()&& $projection->getIdMovie()==$idMovie)
+                   if($projections->getIdMovie()==$idMovie && $projections->getIdCine()==$cines->getIdCine()&& $projections->getIdMovie()==$idMovie)
                    {
                        try {
                            $movie=$this->listMovie->Search($movies->getIdMovie());

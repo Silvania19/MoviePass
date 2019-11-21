@@ -1,6 +1,6 @@
 <?php 
     include(VIEWS_PATH."header.php");
-    include(VIEWS_PATH."nav2.php");
+  
     if(isset($controlScript))
   {
     if($controlScript==1)
@@ -17,7 +17,10 @@
        <nav class="navbar navbar-expand-sm bg-danger"> 
             <a class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
             <ul class="navbar-nav ml-auto">
+            <li class ="nav-item">
+          <a href="<?php echo FRONT_ROOT?>/views/home2" class="dropdown-item">Home</a>
 
+          </li>
                 <li class="nav-item"><a href="" class="nav-link"></a>
                 <li class="nav-item"><a href="" class="nav-link"></a>
                     <button type="button" class="btn btn-link" data-toggle="modal" data-target="#update-cine">
