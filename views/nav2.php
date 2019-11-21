@@ -5,7 +5,7 @@
               
               
           <li class ="nav-item">
-            <a href="<?php echo FRONT_ROOT;?>/views/formpurchase" class="nav-link " >CARRITO DE COMPRAS</a>
+            <a href="<?php echo FRONT_ROOT;?>/views/seeShopping" class="nav-link " >CARRITO DE COMPRAS</a>
           </li>
           <li class ="nav-item">
           <a href="<?php echo FRONT_ROOT?>/views/home2" class="dropdown-item">Home</a>
