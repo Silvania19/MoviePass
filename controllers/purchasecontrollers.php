@@ -134,7 +134,7 @@
             
            $purchasesWithPay=array();
            $pays= $this->listPurchase->SearchXIdPurchase($idPurchase);
-           foreach ($purchasesWithPay as $p ) {
+            foreach ($purchasesWithPay as $p ) {
              $amount+= $p->getAmount();
            }
            return $amount;
