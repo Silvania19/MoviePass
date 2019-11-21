@@ -15,14 +15,12 @@
         <div class="actions form-group mark">
             <a href="" class="btn btn-primary" data-toggle="modal" data-target="#sign-up"> Registrarse</a>
             
-            <button type="submit" class="btn btn-primary">Iniciar sesion </button>  
+            <button type="submit" class="btn btn-primary">Iniciar sesion </button> 
+              <a href="" class="btn btn-primary" data-toggle="modal" data-target="#facebook">Inicie con Facebook</a>
          </div>
-             <link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/views/facebook/fonts">
-             <link rel="stylesheet" href="<?php echo FRONT_ROOT;?>/views/facebook/font.css">
-        <div class="social-bar">
-            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#facebook">Inicie con Facebook</a>
-           <a href="https://www.facebook.com/DevCode.la" class="icon icon-facebook"></a>
-         </div>
+          
+    
+         
         </div>
 
     </form>
