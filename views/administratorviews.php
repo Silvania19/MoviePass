@@ -32,7 +32,7 @@ if(isset($controlScript))
                 <label >Password</label>
                 <input type="password" name="password"class= "form-control " required="" >
                 
-                <button type="submit" class="btn btn-dark" data dismiss="modal" > update </button>
+                <button type="submit" class="btn btn-dark" data dismiss="modal" > Update </button>
             </div>
         </form>
 </div>

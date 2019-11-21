@@ -91,7 +91,7 @@
             } 
            
             
-            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getIdUser(), 1);
+            $purchase=new purchase($discount, $amount, $quantityTicket, $idProjection, $time, $user->getIdUser(), true);
             try
             {
             
@@ -127,15 +127,25 @@
             }
             
         }
-         public function knowAmount($idPurchase=null)
-        {
-            
-           $purchasesWithPay=array();
-           $pays= $this->listPurchase->SearchXIdPurchase($idPurchase);
-            foreach ($purchasesWithPay as $p ) {
-             $amount+= $p->getAmount();
+       public function knowAmount()
+       {
+           $purchaseWithPay=array();
+           $pays=$this->listPurchase->SearchXIdPurchase();
+           foreach($purchaseWithPay as $p)
+           {
+               $amount+=$p->getAmount();
            }
            return $amount;
-
-        }
+       }
     }
+
+
+
+
+
+
+
+
+
+
+
