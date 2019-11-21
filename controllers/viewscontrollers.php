@@ -12,7 +12,7 @@ use daodb\PurchaseDao as purchaseD;
 use daosjson\GenresDao as genreD;
 use controllers\MovieControllers as movieC;
 use daodb\TicketDao as tickedD;
-use daodb\TicketControllers as ticketC;
+use controllers\TicketControllers as ticketC;
 use controllers\UserControllers as C_User;
 use controllers\ProjectionUserControllers as projectionUC;
 
@@ -96,6 +96,7 @@ class viewscontrollers
   public function seeTickets()
   {
      try {
+       
        $this->ticketC->SeeTicket();
      } catch (\Throwable $th) {
       $controlScritpt = 1;

@@ -45,8 +45,10 @@
            
             try {
                  $listTickets2=$this->listTickets->SearchXUser($user->getIdUser());
+                 
                  include(VIEWS_PATH."ticketviews.php");
             } catch (\Throwable $th) {
+                
                  $controlScript=1;
                  $message="error en la base";
             }

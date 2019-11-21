@@ -1,7 +1,7 @@
 <?php include(VIEWS_PATH.'header.php');?>
 <table>
     <?php
-    
+    var_dump($listTickets2);
         if(!empty( $listTickets2))
         {
             if( is_array($listTickets2))
