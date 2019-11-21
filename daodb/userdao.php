@@ -105,22 +105,22 @@
         }
         public function Search($objeto)
         {
-        $sql="SELECT * FROM users where email=:email";   
-        $parameters['email']=$objeto;
-        try {
-            $this->connection = Connection:: getInstance();
-            $resul=$this->connection->execute($sql, $parameters);
-        } catch (\PDOException $th) {
-            throw  $th;
-        }
-        if(!empty ($resul))
-        {
-            return $this->mapear($resul);
-        }
-        else
-        {
-            return  false;
-        }
+            $sql="SELECT * FROM users where email=:email";   
+            $parameters['email']=$objeto;
+            try {
+                $this->connection = Connection:: getInstance();
+                $resul=$this->connection->execute($sql, $parameters);
+            } catch (\PDOException $th) {
+                throw  $th;
+            }
+            if(!empty ($resul))
+            {
+                return $this->mapear($resul);
+            }
+            else
+            {
+                return  false;
+            }
         }
     }
 ?>

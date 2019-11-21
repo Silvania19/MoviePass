@@ -27,7 +27,7 @@ class Cinema{
    {
       $this->nameCinema=$nameCinema;
    }
-   public function setPrice()
+   public function setPrice($price)
    {
        $this->price=$price;
    }

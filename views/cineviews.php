@@ -110,57 +110,51 @@ if (isset($controlScript)) {
   </div>
 
 
-  <?php
-
-
-    ?>
-
-
-
 <?php
 }
-if ($user->getIdRol() == 1) {
-  include(VIEWS_PATH . "nav2.php");
-  ?>
-  <div class="col" style="border:1px solid gray;">
+  if ($user->getIdRol() == 1) {
+    include(VIEWS_PATH . "nav2.php");
+    ?>
+    <div class="col" style="border:1px solid gray;">
 
-    <table class="  table-borderer table-hover ">
-      <tr>
-        <h2>Cines disponibles</h2>
-      </tr>
-      <tr class="table-primary">
-        <td>Nombre</td>
-        <td>Administrator</td>
-        <td>Address</td>
+      <table class="  table-borderer table-hover ">
+          <tr>
+            <h2>Cines disponibles</h2>
+          </tr>
+          <tr class="table-primary">
+              <td>Nombre</td>
+              <td>Administrator</td>
+              <td>Address</td>
 
-      </tr>
+          </tr>
 
-      <tr class="table-dark ">
+          <tr class="table-dark ">
 
+              <?php
+
+                  foreach ($listCines as $cine) {
+                ?>
+          <tr>
+              <td><?php echo $cine->getName(); ?></td>
+              <td><?php echo $cine->getIdUserAdministrator(); ?></td>
+              <td><?php echo $cine->getAddress(); ?></td>
+
+              <td>
+                <form action="<?php echo FRONT_ROOT; ?>/projectionuser/carteleraXCine" method="post">
+                  <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
+                  <input type="submit" value="verCartera">
+
+                </form>
+              </td>
+          
+          </tr>
         <?php
+          }
+          ?>
 
-          foreach ($listCines as $cine) {
-            ?>
-      <tr>
-        <td><?php echo $cine->getName(); ?></td>
-        <td><?php echo $cine->getIdUserAdministrator(); ?></td>
-        <td><?php echo $cine->getAddress(); ?></td>
-
-        <td>
-          <form action="<?php echo FRONT_ROOT; ?>/projectionuser/carteleraXCine" method="post">
-            <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
-            <input type="submit" value="verCartera">
-
-          </form>
-        </td>
-      
-      </tr>
-    <?php
-      }
-      ?>
-
-    </table>
-  </div>
-<?php
-} ?>
+      </table>
+    </div>
+  <?php
+  } 
+?>
 <?php include(VIEWS_PATH . "footer.php"); ?>

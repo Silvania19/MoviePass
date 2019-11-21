@@ -93,7 +93,7 @@ class UserControllers
             include(VIEWS_PATH . "home2.php");
         }
     }
-    public function facebook()
+    public function facebook($email=null, $password=null)
     {
         $idRol = 1;
         $name="userFacebook";

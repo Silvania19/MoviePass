@@ -52,41 +52,23 @@
     /**
         * convertivos lo que traemos de la base de datos que es un arreglo donde 
         *cada posicion lo que tiene es un arreglo con los datos, a un arreglo de objeto del tipo al que pertece.
-    **/
-    private function mapear($arreglo)
-    {
-        $arreglo=is_array($arreglo)?$arreglo:[];
-        $arregloObjetos=array_map(function($pos)
+        **/
+        private function mapear($arreglo)
         {
-            $newPay =new pay($pos['wayToPay'], $pos['idPurchase'], $pos['numberAcount'], $pos['fecha']);
-            $newPay->setIdPurchase($pos['idPay']);
-            return $newPay;
-        }, $arreglo);
-        return count($arregloObjetos)>1? $arregloObjetos: $arregloObjetos['0'];
-    }
-    public function Delete($objeto)
-    {
-        $sql = "DELETE FROM pays WHERE idPay = :idPay";
-        $parameters['idPay'] = $objeto;
+            $arreglo=is_array($arreglo)?$arreglo:[];
+            $arregloObjetos=array_map(function($pos)
+            {
+                $newPay =new pay($pos['wayToPay'], $pos['idPurchase'], $pos['numberAcount'], $pos['fecha']);
+                $newPay->setIdPurchase($pos['idPay']);
+                return $newPay;
+            }, $arreglo);
+            return count($arregloObjetos)>1? $arregloObjetos: $arregloObjetos['0'];
+        }
+        public function Delete($objeto)
+        {
+            $sql = "DELETE FROM pays WHERE idPay = :idPay";
+            $parameters['idPay'] = $objeto;
 
-        try
-        {
-            $this->connection = Connection::getInstance();
-            return $this->connection->ExecuteNonQuery($sql, $parameters);
-        }
-        catch(PDOException $e)
-        {
-            throw $e;
-        }
-    }
-        
-        public function Update($objeto, $buscador)
-        {
-            $sql="UPDATE pays SET wayToPay=:wayToPay, idPurchase=:idPurchase , fecha=:fecha WHERE idPay='$buscador';";
-            $parameters['wayToPay']=$objeto->getWayToPay();
-            $parameters["idPurchase"]=$objeto->getIdPurchase();
-            $parameters['fecha']=$objeto->geyFecha();
-          
             try
             {
                 $this->connection = Connection::getInstance();
@@ -94,9 +76,27 @@
             }
             catch(PDOException $e)
             {
-               throw $e;
+                throw $e;
             }
-        
+        }
+            
+        public function Update($objeto, $buscador)
+        {
+            $sql="UPDATE pays SET wayToPay=:wayToPay, idPurchase=:idPurchase , fecha=:fecha WHERE idPay='$buscador';";
+            $parameters['wayToPay']=$objeto->getWayToPay();
+            $parameters["idPurchase"]=$objeto->getIdPurchase();
+            $parameters['fecha']=$objeto->geyFecha();
+            
+            try
+            {
+                $this->connection = Connection::getInstance();
+                return $this->connection->ExecuteNonQuery($sql, $parameters);
+            }
+            catch(PDOException $e)
+            {
+                throw $e;
+            }
+            
         }
         public function Search($objeto)
         {

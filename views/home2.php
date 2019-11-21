@@ -42,7 +42,7 @@ if(isset($controlScript))
      
      if($user->getIdRol()==1)
      {
-       include(VIEWS_PAT."nav3");
+       include(VIEWS_PATH."nav3.php");
     ?>
   
 

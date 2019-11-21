@@ -13,7 +13,7 @@
   }   
 if(!isset($control)&& !isset($control2)&& !isset($control3))
 {
-  include (VIEWS_PATH."nav.php");
+
 
 ?>
 

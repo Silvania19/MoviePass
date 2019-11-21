@@ -4,7 +4,7 @@
  
  class MovieDao
  {
-   private $movieList;
+       private $movieList;
         public function __constructor()
          {
             

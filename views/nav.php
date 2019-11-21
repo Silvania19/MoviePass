@@ -6,7 +6,7 @@
             <li class ="nav-item  ">
                 
                     
-                    <a href="<?php echo FRONT_ROOT?>/views/home2" class="dropdown-item">Home</a>
+                <a href="<?php echo FRONT_ROOT?>/views/home2" class="dropdown-item">Home</a>
             </li>
             <li class="nav-item">
                  <div class="dropdown">
