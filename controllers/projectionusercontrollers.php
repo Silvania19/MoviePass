@@ -182,14 +182,14 @@
                  $projections=$this->habilitadas();
             } catch (\Throwable $th) {
                 $controlScritpt=1;
-                echo 'hola';
+                
                 $message='error en la base';
               //  include(VIEWS_PATH."userviews.php");
             }
            
             $listMoviesAct=$this->moviesProjections();
             $movies=array();
-            var_dump($projections);
+            
             $cines=array();
             $cartelera=array();
             if(!empty($projections))
@@ -260,7 +260,7 @@
                 foreach($listProjectionA as $projection)
                 {
                     $cantTicketXProjection=$this->listTickets->cantXIdProjection($projection->getIdProjection());
-                    var_dump($this->listProjection->availability($cantTicketXProjection,  $projection->getIdProjection()));
+                    
                     if($this->listProjection->availability($cantTicketXProjection, $projection->getIdProjection()))
                 {
                     array_push($listProjectionActAvi, $projection);
@@ -268,7 +268,7 @@
 
                 }
             
-            var_dump($listProjectionActAvi);
+            
             return $listProjectionActAvi;
             
         }

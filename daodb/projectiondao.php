@@ -160,13 +160,13 @@ class ProjectionDao implements Idaos
     }
     public function availability($cant, $idProjection)
     {
-        $sql = "SELECT * FROM projections as p  JOIN cinemas as c on c.idCinema = p.idCinema where  p.idProjection=:idProjection and c.capacity>=:'$cant'";
+        $sql = "SELECT * FROM projections as p  JOIN cinemas as c on c.idCinema = p.idCinema where  p.idProjection=:idProjection and c.capacity>='$cant'";
         
         $parameters['idProjection']=$idProjection;
         try {
             $this->connection = Connection::getInstance();
             $resul = $this->connection->execute($sql, $parameters);
-            var_dump($resul);
+           
         } catch (\PDOException $th) {
             throw $th;
         }
@@ -179,7 +179,7 @@ class ProjectionDao implements Idaos
 
     public function SearchXProjectionAmount($idProjection)
     {
-        $sql = "SELECT c.price from cinemas as c join projections as p on p.idCinema=c.idCinema where p.idProjection=:idProjection ;";
+        $sql = "SELECT c.price from cinemas as c join projections as p on p.idCinema=c.idCinema where p.idProjection=:idProjection;";
         $parameters['idProjection'] = $idProjection;
 
         try {
