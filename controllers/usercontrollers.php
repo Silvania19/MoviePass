@@ -145,9 +145,9 @@
 
         if(isset($_SESSION['user'])) {
 
-            $user = $this->dao->read($_SESSION['user']->getEmail());
+            $user = $this->daoUser->Search($_SESSION['user']->getEmail());
 
-            if($user->getPass() == $_SESSION['user']->getPass())
+            if($user->getPassword() == $_SESSION['user']->getPassword())
                 return $user;
 
           } else {
