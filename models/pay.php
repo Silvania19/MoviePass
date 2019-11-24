@@ -20,11 +20,11 @@
      }
      public function setIdPay($idPay)
      {
-      $this->numberAcount=$numberAcount;
+      $this->idPay=$idPay;
      }
      public function setNumberAcount($numberAcount)
      {
-      $this->idPay=$idPay;
+       $this->numberAcount=$numberAcount;
      }
      public function setWayToPay($wayToPay)
      {

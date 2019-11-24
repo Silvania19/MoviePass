@@ -132,16 +132,7 @@
             }
             
         }
-       public function knowAmount()
-       {
-           $purchaseWithPay=array();
-           $pays=$this->listPurchase->SearchXIdPurchase();
-           foreach($purchaseWithPay as $p)
-           {
-               $amount+=$p->getAmount();
-           }
-           return $amount;
-       }
+     
     }
 
 

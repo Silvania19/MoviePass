@@ -66,6 +66,7 @@ class CinemaDao implements Idaos
             $valuesArray["idCinema"] = $cinema->getIdCinema();
             $valuesArray["idCine"] = $cinema->getIdCine();
             $valuesArray["capacity"] = $cinema->getCapacity();
+            $valuesArray['price']= $cinema->getPrice();
 
             array_push($arrayToEncode, $valuesArray);
         }
@@ -87,7 +88,7 @@ class CinemaDao implements Idaos
             foreach($arrayToDecode as $valuesArray)
             {
 
-                $cinema = new Cinema($valuesArray["idCine"], $valuesArray["nameCinema"], $valuesArray["capacity"]);
+                $cinema = new Cinema($valuesArray["idCine"], $valuesArray["nameCinema"], $valuesArray["capacity"], $valuesArray["price"]);
                 
                 
                 array_push($this->cinemaList, $cinema);

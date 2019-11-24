@@ -7,7 +7,7 @@ include(VIEWS_PATH . "nav.php");
 <div class="modal fade" id="remove-user" tabindex="-1" role="dialog" aria-labelledby="eliminar" aria-hidden="true">
 
   <form class="group-form" action="<?php echo FRONT_ROOT; ?>/user/deleteUser" method="POST">
-    <h5>¿Esta seguro de eliminar usuario?</h5>
+    <h5>¿Esta seguro de eliminar tu cuenta?</h5>
 
     <label> SI</label> <input type="radio" name="verificacion" class="form-control" value="si">
 
@@ -24,18 +24,18 @@ include(VIEWS_PATH . "nav.php");
 
   <form class="modal-content " action="<?php echo FRONT_ROOT; ?>/user/update" method="POST">
     <div class="modal-header">
-      <h2 class="modal-title">update</h2>
+      <h2 class="modal-title">Actualizar datos</h2>
 
       <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
     </div>
     <div class="modal-body">
-      <label>Name</label><input type="text" name="name" class="form-control">
-      <label>Lastname</label><input type="text" name="lastName" class="form-control ">
+      <label>Nombre</label><input type="text" name="name" class="form-control">
+      <label>Apellido</label><input type="text" name="lastName" class="form-control ">
       <label>Dni</label><input type="text" name="dni" class="form-control ">
       <label>Email</label><input type="email" name="email" class="form-control ">
-      <label>Password</label><input type="password" name="password" class="form-control ">
+      <label>Contraseña</label><input type="password" name="password" class="form-control ">
 
-      <button type="submit" class="btn btn-dark" data dismiss="modal"> update </button>
+      <button type="submit" class="btn btn-dark" data dismiss="modal"> Actualizar datos</button>
     </div>
   </form>
 </div>
@@ -52,8 +52,8 @@ include(VIEWS_PATH . "nav.php");
         <p class="card-text">Email:<?php echo $user->getEmail(); ?></p>
 
         <div class="class-footer">
-          <a href="" class="btn btn-primary" type="button" class="btn btn-link" data-toggle="modal" data-target="#update">Modificar perfil</a>
-          <a href="" class="btn btn-primary" type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-user">Eliminar usuario</a>
+          <a href="" class="btn btn-primary" type="button" class="btn btn-link" data-toggle="modal" data-target="#update">Actualizar perfil</a>
+          <a href="" class="btn btn-primary" type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-user">Eliminar Cuenta</a>
 
         </div>
 

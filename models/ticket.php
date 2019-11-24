@@ -1,7 +1,7 @@
 <?php
     namespace models;
    
-    use daodb\TicketDao as ticketD;
+    
    
     class Ticket
     {

@@ -14,8 +14,6 @@ if (isset($controlScript)) {
 
 ?>
 
-
-  
         <table class=" table-borderer table-hover ">
             <tr>
                 <td><h3><?php echo "Carrito de compras";?></h3></td>
@@ -25,7 +23,7 @@ if (isset($controlScript)) {
             if(!empty($listPurchase))
             {
             ?>
-                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#pagar">
+                 <bu tton type="button" class="btn btn-link" data-toggle="modal" data-target="#pagar">
                       Pagar 
                   </button> 
             <?php
@@ -36,7 +34,7 @@ if (isset($controlScript)) {
                     foreach($listPurchase as $purchases)
                     {
                         
-                     if($purchases->getState()==1)
+                     if($purchases->getState()==true)
                      {
                     
                 ?>           
@@ -58,7 +56,7 @@ if (isset($controlScript)) {
                                                                 ?>
                                                            <div class="col" style="border:1px solid gray;">
                                                                 <td><h4>Pelicula:</h4></td>
-                                                                    <td><h3><?php echo $movie->getTitle();?></h3></td>
+                                                                <td><h3><?php echo $movie->getTitle();?></h3></td>
                                                         
                                                     <?php   
                                                             }
@@ -122,7 +120,7 @@ if (isset($controlScript)) {
                 {
                     if(is_object($listPurchase))
                     {
-                    
+                        if($listPurchase->getState()==1){
                     ?>
                         
                         <tr>
@@ -144,7 +142,7 @@ if (isset($controlScript)) {
                                                             {
                                                                 ?>
                                                                 <td>Pelicula:</td>
-                                                                    <td><?php echo $movie->getTitle();?></td>
+                                                                <td><?php echo $movie->getTitle();?></td>
                                                         
                                                     <?php   
                                                             }
@@ -200,6 +198,7 @@ if (isset($controlScript)) {
                 <?php
                         }
                     }
+                 }
               ?>
             </table>
             <?php
@@ -232,7 +231,7 @@ if (isset($controlScript)) {
                         <option value="master">Master</option>
                         <option value="visa">Visa</option>
                     </select>
-                    <label for="numberAcount" >Numero de compra</label>
+                    <label for="numberAcount" >Numero de tarjeta</label>
                     <input type="text" name="numberAcount" id="" required="">
                     <button type="submit" class="btn btn-dark" data dismiss="modal" > Listo </button>
             </div>

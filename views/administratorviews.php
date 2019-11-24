@@ -17,23 +17,23 @@ if(isset($controlScript))
 
 <form class="modal-content " action="<?php echo FRONT_ROOT;?>/user/update" method="POST">
             <div class="modal-header">
-                <h2 class="modal-title">update</h2>
+                <h2 class="modal-title">Actualizar datos</h2>
            
                  <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
             </div>
              <div class="modal-body">
-                <label >nombre</label>
+                <label >Nombre</label>
                 <input type="text" name="name" class="form-control" required="">
-                <label >apellido</label>
+                <label >Apellido</label>
                 <input type="text" name="lastName"class= "form-control " required="">
                 <label >Dni</label>
                 <input type="text" name="dni"class= "form-control " required="">
                 <label >Email</label>
                 <input type="email" name="email"class= "form-control " required="">
-                <label >contraseña</label>
+                <label >Contraseña</label>
                 <input type="password" name="password"class= "form-control " required="" >
                 
-                <button type="submit" class="btn btn-dark" data dismiss="modal" > modificar </button>
+                <button type="submit" class="btn btn-dark" data dismiss="modal" > Actualizar </button>
             </div>
         </form>
 </div>
@@ -43,7 +43,7 @@ if(isset($controlScript))
 
 <form class="modal-content " action="<?php echo FRONT_ROOT;?>/adminstrator/addAdministrator" method="POST">
             <div class="modal-header">
-                <h2 class="modal-title">Information of new administrator</h2>
+                <h2 class="modal-title">Informacion del nuevo administrador</h2>
            
                  <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button> 
             </div>

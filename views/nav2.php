@@ -4,24 +4,24 @@
         <ul class="navbar-nav ml-auto">
               
               
-          <li class ="nav-item">
-            <a href="<?php echo FRONT_ROOT;?>/views/seeShopping" class="nav-link " >CARRITO DE COMPRAS</a>
-          </li>
-          <li class ="nav-item">
-          <a href="<?php echo FRONT_ROOT?>/views/home2" class="dropdown-item">Home</a>
+            <li class ="nav-item">
+              <a href="<?php echo FRONT_ROOT;?>/views/seeShopping" class="nav-link " >CARRITO DE COMPRAS</a>
+            </li>
+            <li class ="nav-item">
+            <a href="<?php echo FRONT_ROOT?>/views/home2" class="dropdown-item">Home</a>
 
-          </li>
-   
-       <li class ="nav-item  ">
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle"  data-toggle="dropdown">USUARIO</button>
-                <div class="dropdown-menu">
-                        <a href="" class="dropdown-item"><?php echo $_SESSION['user']->getName();?></a>
-                        <a href="<?php echo FRONT_ROOT;?>/views/user" class="dropdown-item">Ver Perfil</a>
-                        <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="dropdown-item">Salir</a>
-                </div>
-            </div>
-          </li>
+            </li>
+    
+          <li class ="nav-item  ">
+              <div class="dropdown">
+                  <button type="button" class="btn btn-primary dropdown-toggle"  data-toggle="dropdown">USUARIO</button>
+                  <div class="dropdown-menu">
+                          <a href="" class="dropdown-item"><?php echo $_SESSION['user']->getName();?></a>
+                          <a href="<?php echo FRONT_ROOT;?>/views/user" class="dropdown-item">Ver Perfil</a>
+                          <a href="<?php echo FRONT_ROOT;?>/views/deleteSession" class="dropdown-item">Salir</a>
+                  </div>
+              </div>
+            </li>
                   
         </ul>
        </nav>

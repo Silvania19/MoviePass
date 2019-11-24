@@ -34,19 +34,20 @@
            
             // Guardo como string la consulta sql utilizando como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?)
             // por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-            $sql="INSERT INTO tickets (numberTicket, price,idUser,  qr, idProjection) VALUES (:numberTicket, :price, :idUser, :qr, :idProjection)";
+            $sql="INSERT INTO tickets (numberTicket, price, idUser,  qr, idProjection) VALUES (:numberTicket, :price, :idUser, :qr, :idProjection)";
            
             
             $valuesArray["numberTicket"] = $objeto->getNumberTicket();
-             $valuesArray["price"] = $objeto->getPrice();
+            $valuesArray["price"] = $objeto->getPrice();
             $valuesArray["idUser"] = $objeto->getIdUser();
             $valuesArray["qr"] = $objeto->getQr();
-           
-             $valuesArray['idProjection']= $objeto->getIdProjection();
-           
+            $valuesArray['idProjection']= $objeto->getIdProjection();
+            
             try {
                 $this->connection= Connection::getInstance();
-                return $this->connection->executeNonQuery($sql, $valuesArray);
+                 
+                return $this->connection->executeNonQuery($sql, $valuesArray); 
+               
             } catch (\PDOException $ex) {
                 throw $ex;
             }

@@ -102,26 +102,29 @@
     alter table cinemas add column price float;
     alter table cinemas change numberCinema nameCinema varchar(20);
 
-    create table compras(
-    idCompra int,
-    descuento int, 
-    total int,
-    cantEntradas int, 
-    formaPago varchar(5),
-    remanentes int, 
-    idFuncion int,
-    primary key(idCompra),
-    foreign key(idFuncion) references Funciones(idFuncion)
+    create table pays(
+    idPay int auto_increment,
+    wayToPay varchar(20),
+    idPurchase int,
+    fecha datetime,
+    numberAcount int,
+    primary key(idPay),
+    foreign key(idPurchase) references purchases(idPurchase)
     );
 
-    
-    insert into users(name, lastName, password , dni,email, idRol) value("Pepe", "Perez" , "elpepe", 112234566, "elpepe@hotmail.com",1);
-    insert into users(name, lastName, password , dni,email, idRol) value("Silvania", "Ortega" , "magia", 95183967, "ortegasilvania@gmail.com", 2);
-    insert into cines( name, idUserAdministrator,email, address) value("EL Silvi", 1, "elsilvi@gmail.com", "Carlos Paz");
-    insert into cinemas(idCine,  nameCinema, capacity) value(1, 1, 20);
-    insert into cinemas(idCine,  nameCinema, capacity) value(2, 'sala numero 2', 20);
-    insert into cinemas(idCine, nameCinema,capacity,price) value(2,'sala numero 1',30,200);
-    insert into cinemas(idCine, nameCinema,capacity,price) value(2,'sala numero 3',20,100);
+    insert into users(name, lastName, password , dni,email, idRol) value("silvania", "ortega" , "magia", 95123457, "sil@ortega",2);
+    insert into users(name, lastName, password , dni,email, idRol) value("rodrigo", "rodriguez" , "rodri", 95183967, "rodri@rodri", 1);
 
-    update users set idRol=1 where idRol=null;
+    insert into cines( name, idUserAdministrator, address) value("Ablassador", 1,  "Mar del plata rivadavia 2345");
+    insert into cines( name, idUserAdministrator, address) value("Gallegos", 1, " Mar del plata gascon 3445");
+    insert into cines( name, idUserAdministrator, address) value("Aldrey", 1, "mar del plata la rawson 2344");
+
+    insert into cinemas(idCine,  nameCinema, capacity, price) value(1, 'sala 1',40, 100);
+    insert into cinemas(idCine,  nameCinema, capacity, price) value(1, 'sala 2',20, 150);
+    insert into cinemas(idCine, nameCinema,capacity,price) value(2,'sala 1', 50, 75);
+    insert into cinemas(idCine, nameCinema,capacity,price) value(2,'sala 2', 20, 120);
+    insert into cinemas(idCine, nameCinema,capacity,price) value(3,'sala 1', 20, 150);
+    insert into cinemas(idCine, nameCinema,capacity,price) value(3,'sala 2', 25, 150);
+    
+   
 

@@ -14,7 +14,7 @@
 
  define("PORCENTAJE_DESCUENTO", 25);
  
- //$con->close();
+ 
  
 
  define('DIR_QR', 'temp/');

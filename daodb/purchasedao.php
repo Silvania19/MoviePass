@@ -144,11 +144,13 @@ class PurchaseDao implements Idaos
     }
     public function SearchXUser($idUser)
     {
+        
         $sql = "SELECT * FROM purchases where idUser=:idUser";
         $parameters['idUser'] = $idUser;
         try {
             $this->connection = Connection::getInstance();
             $resul = $this->connection->execute($sql, $parameters);
+            
         } catch (\PDOException $th) {
             throw $th;
         }
