@@ -24,7 +24,7 @@
                 <li class="nav-item"><a href="" class="nav-link"></a>
                 <li class="nav-item"><a href="" class="nav-link"></a>
                     <button type="button" class="btn btn-link" data-toggle="modal" data-target="#update-cine">
-                        Modificar cine
+                        Acrualizar informacion de  cine
                     </button> 
             
                 </li>
@@ -89,7 +89,7 @@
                                     <td><?php echo $cinema->getnameCinema();?></td>
                                     <td><?php echo $cinema->getCapacity();?></td>
                                     <td><?php echo $cinema->getPrice();?></td>
-                                    <td><?php echo 'hola';?></td>
+                                    
                                     <td>
                                         <form action="<?php echo FRONT_ROOT;?>/cinema/remove" method="post">
                                             <input type="checkbox" name="idCinema" id="" value="<?php echo $cinema->getIdCinema(); ?>" required="">
@@ -105,7 +105,7 @@
                      ?> <tr>
                             <td><?php echo $cinemasCine->getnameCinema();?></td>
                             <td><?php echo $cinemasCine->getCapacity();?></td>
-                            <td><?php echo 'hola';?></td>
+                            <td><?php echo $cinemasCine->getPrice();?></td>
                             <td>
                              <div class="modal fade" id="remove-cinema">  
 
@@ -138,26 +138,20 @@
         <div class="modal fade" id="update-cine">  
 
             <form class="modal-content " action="<?php echo FRONT_ROOT;?>/cine/update" method="POST"> 
-    
-            <div class="modal-header">
-                    <h2 class="modal-title">Registrarse</h2>
-
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                </div>
 
                  <div class="modal-header"> 
-                     <h2 class="modal-title">Update cine</h2>
+                     <h2 class="modal-title">Actualizar cine</h2>
                      <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>      
                 </div>
                 <div class="modal-body">
-                   <label for="name" >Name</label>
+                   <label for="name" >Nombre</label>
                    <input type="text" name="name" class="form-control" required="">  
-                   <label for="address">Address</label>
+                   <label for="address">Direccion</label>
                    <input type="text" name="address" id="" required="">
                    
-                   <label for="address">$estas seguro de modificar?</label>
+                   <label for="address">¿estas seguro de actualizar?</label>
                    <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>" required="">
-                   <button type="submit" class="btn btn-dark" data dismiss="modal" > Update </button>
+                   <button type="submit" class="btn btn-dark" data dismiss="modal" > Actualizar </button>
                 </div>
 
  
@@ -177,7 +171,7 @@
                     <input type="text" name="nameCinema"class= "form-control " required=""> <br>
                     <label for="capacity"> Total de butacas</label><br>
                      <input type="text" name="capacity" id="" required=""><br>
-                     <label for="price">Price</label><br>
+                     <label for="price">Precio</label><br>
                      <input type="text" name="price" id="" required=""><br>
                      <label for="idCine">¿Estas seguro de agregar?</label>
                      <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>" required=""><br>

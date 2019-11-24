@@ -127,11 +127,9 @@ if(isset($controlScript))
         ?>
                  <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" alt= "<?php $movie->getTitle();?> " class="rounded"><br>
             
-            <form action="<?php echo FRONT_ROOT; ?>/projectionuser/moviesxCines" method="post"><!--esta direccion esta mal ahi que mandarlo a un metodo de la cartelera que le muestre, solo
-            las funciones de la pelicula que se esta leyendo-->
+            <form action="<?php echo FRONT_ROOT; ?>/projectionuser/moviesxCines" method="post">
                  <h3>Title: <input type="submit" value=" <?php echo $movie->getTitle(); ?> ">
-                 <input type="checkbox" name="datos" id="" value="<?php echo $movie->getIdMovie()?>" required=""><!-- creo que esta bien porque con el idDe la pelicula podriamos mostrar todas las funciones
-                 de esa pelicula en el futuro-->
+                    <input type="checkbox" name="datos" id="" value="<?php echo $movie->getIdMovie()?>" required="">
                  </h3>
             </form>
             <p>Original Title: <?php echo $movie->getOriginal_title(); ?> </p>
@@ -149,7 +147,7 @@ if(isset($controlScript))
                         {
                          if($valor->getIdGenres() == $genre)
                          {
-                             echo $valor->getNameGenres();
+                             echo ", ".$valor->getNameGenres();
                          }
                          
                         }

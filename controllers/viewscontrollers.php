@@ -3,7 +3,7 @@
 namespace controllers;
 
 use models\User as User;
-use daosjson\UserDao as userD;
+use daodb\UserDao as userD;
 use daodb\CineDao as cineD;
 use daodb\CinemaDao as cinemaD;
 use daodb\ProjectionDao as ProjectionD;

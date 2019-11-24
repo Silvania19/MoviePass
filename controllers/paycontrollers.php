@@ -39,12 +39,14 @@
                 $waytopay3=$waytopay2; 
                 $date= strftime("%Y-%m-%d %I:%M:%S %p", time());
                 $listPurchasesToPay=$this->listPurchase->SearchXUser($user->getIdUser());
+               
                 if(is_array($listPurchasesToPay))
                 {
                     foreach($listPurchasesToPay as $purchase)
                     {
                         if($purchase->getState()==true)
-                        {
+                        { 
+                            
                             $cantTicket=$purchase->getQuantityTickets();
                             while($cantTicket>0)
                             {
@@ -67,7 +69,6 @@
                                     $projections=$this->listProjection->GetAllActuales();
                                     $movies=$this->moviesContro->SeeMovies();
                                     $listGenres2=$this->listGenre->GetAll();
-
                                     include(VIEWS_PATH."home2.php");
                                 }
                                 $cantTicket--;
@@ -82,7 +83,8 @@
                 if(is_object($listPurchasesToPay))
                 {
                     if($listPurchasesToPay->getState()==true)
-                    {
+                    { 
+                   
                         $cantTicket=$listPurchasesToPay->getQuantityTickets();
                         while($cantTicket>0)
                         {
@@ -91,16 +93,16 @@
                             try {
                             
                                 $this->listPays->add($pay);
-                            
+                           
                                 $this->ticketContro->generateTicket($listPurchasesToPay->getIdProjection());
-                            
+                                
                                 $this->listPurchase->inactivate($listPurchasesToPay->getIdPurchase());
                                 
                             
                             } catch (\PDOException $th) {
                             
                                 $controlScript=1;
-                                
+                            
                                 $message="error en la base";
                                 $projections=$this->listProjection->GetAllActuales();
                                 $movies=$this->moviesContro->SeeMovies();

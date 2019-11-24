@@ -24,6 +24,7 @@
         {
           
             $user=$this->userContro->checkSession();
+           
             $idUser=$user->getIdUser();
             $projection=$this->listProjection->Search($idProjection);  
            
@@ -35,9 +36,9 @@
             $qr=$this->generateRandomQr($number);
             
             $newTicket= new ticket($number, $price, $idUser, $qr, $idProjection);
-           
+            
             $this->listTickets->Add($newTicket);
-           
+          
         }
         public function SeeTicket()
         {

@@ -222,7 +222,7 @@ class ProjectionDao implements Idaos
 
     public function SearchXMovieXCineXDate($idMovie, $idCine, $date)
     {
-        $sql = "SELECT * FROM projections where (idCine=$idCine and idMovie=$idMovie and date='$date') limit 1;";
+        $sql = "SELECT * FROM projections where (idCine=$idCine and idMovie=$idMovie and date='$date');";
         $parameters['idCine'] = $idCine;
         $parameters['idMovie'] = $idMovie;
         $parameters['date'] = $date;

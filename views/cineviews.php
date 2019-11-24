@@ -19,7 +19,7 @@ if (isset($controlScript)) {
 
       <li class="nav-item"><a href="" class="nav-link"></a>
         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#add-cine">
-          Add cine
+          Agregar cine
         </button>
       </li>
 
@@ -74,7 +74,7 @@ if (isset($controlScript)) {
       <tr class="table-primary">
         <td>Nombre</td>
         <td>Administrator</td>
-        <td>Address</td>
+        <td>Direccion</td>
 
       </tr>
 
@@ -90,7 +90,7 @@ if (isset($controlScript)) {
         <td><?php echo $cine->getAddress(); ?></td>
         <td>
           <form action="<?php echo FRONT_ROOT; ?>/views/cine2" method="post">
-            <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
+            <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>" required="">
             <input type="submit" value="Ver cine">
           </form>
         </td>
@@ -124,7 +124,7 @@ if (isset($controlScript)) {
           <tr class="table-primary">
               <td>Nombre</td>
               <td>Administrator</td>
-              <td>Address</td>
+              <td>Drireccion</td>
 
           </tr>
 
@@ -141,7 +141,7 @@ if (isset($controlScript)) {
 
               <td>
                 <form action="<?php echo FRONT_ROOT; ?>/projectionuser/carteleraXCine" method="post">
-                  <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>">
+                  <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>" required="">
                   <input type="submit" value="verCartera">
 
                 </form>

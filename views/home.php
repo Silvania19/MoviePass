@@ -1,4 +1,6 @@
 <?php include(VIEWS_PATH."header.php");?>
+
+ 
 <?php
   if(isset($controlScript))
   {

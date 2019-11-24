@@ -12,8 +12,8 @@
                 
 
                 <tr class="table-dark ">
-               
-                 <tr class="table-primary">
+                
+                <tr class="table-primary">
                <?php
                
                 if(!empty($cartelera))
