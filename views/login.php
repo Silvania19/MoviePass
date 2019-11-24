@@ -1,18 +1,19 @@
 <?php include(VIEWS_PATH . "header.php"); ?>
 <main class="login">
+  <center>
     <form class="loginForm" action="<?php echo FRONT_ROOT; ?>/user/login" method="POST">
         <header class="text-center">
-            <h3 class="bg-light display-5 ">Iniciar sesion</h3>
+            <h3>Iniciar sesion</h3>
         </header>
-        <div class="form-group mark">
+        <div class="form-group light">
             <label for="name"> Email </label>
             <input type="email" name="email" class="form-control " required="">
         </div>
-        <div class="form-group mark">
+        <div class="form-group light">
             <label for="password"> Contraseña</label>
             <input type="password" name="password" class="form-control form-control-lg" required="">
         </div>
-        <div class="actions form-group mark">
+        <div class="actions form-group light">
             <a href="" class="btn btn-primary" data-toggle="modal" data-target="#sign-up"> Registrarse</a>
               <a href="" class="btn btn-primary" data-toggle="modal" data-target="#facebook">Inicie con Facebook</a>
 
@@ -25,7 +26,7 @@
         </div>
 
     </form>
-
+</center>
 
     <div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="sign-up" aria-hidden="true">
         <div class="modal-dialog" role="document">
