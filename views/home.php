@@ -19,7 +19,7 @@
               <header class="text-center">
                 <h1 class="bg-primary display-1 ">MOVIE PASS</h1>
               </header>   
-              <img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" class=" float-right rounded-circle"> 
+      
             </div>
           </div>
         </div>
