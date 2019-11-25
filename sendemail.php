@@ -1,7 +1,4 @@
-<!--Author: Obed Alvarado
-Author URL: http://obedalvarado.pw
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/ !-->
+
 <?php
 function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_setFromName,$mail_addAddress,$txt_message,$mail_subject, $template){
 	require 'PHPMailer/PHPMailerAutoload.php';

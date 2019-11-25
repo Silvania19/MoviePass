@@ -13,10 +13,11 @@
  define ("DB_PASS", "");
 
  define("PORCENTAJE_DESCUENTO", 25);
- 
- 
- 
+define('DIR_QR', 'temp/');
 
- define('DIR_QR', 'temp/');
+//constantes para mandar email
+define('EMAIL_LOCAL', "florencia.juarez.159@gmail.com");
+define('PASSWORD_EMAIL_LOCAL', "ojosdevidrio");
+
  ?>
  

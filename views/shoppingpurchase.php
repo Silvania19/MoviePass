@@ -1,13 +1,13 @@
 <?php
-include(VIEWS_PATH . "header.php");
-include(VIEWS_PATH."nav.php");
+    include(VIEWS_PATH ."header.php");
+    include(VIEWS_PATH."nav.php");
 
-if (isset($controlScript)) {
-    if ($controlScript == 1) {
-        ?>
-        <script>
-            alert('<?php echo $message ?>')
-        </script>
+    if (isset($controlScript)) {
+        if ($controlScript == 1) {
+            ?>
+            <script>
+                alert('<?php echo $message ?>')
+            </script>
 <?php
     }
 }

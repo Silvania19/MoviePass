@@ -2,6 +2,7 @@
 
  
 <?php
+
   if(isset($controlScript))
   {
     if($controlScript==1)

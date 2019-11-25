@@ -1,5 +1,4 @@
-<?php include(VIEWS_PATH . "header.php");
-?>
+<?php include(VIEWS_PATH ."header.php");?>
 <?php
 if (isset($controlScript)) {
   if ($controlScript == 1) {
@@ -86,7 +85,7 @@ if (isset($controlScript)) {
             ?>
       <tr>
         <td><?php echo $cine->getName(); ?></td>
-        <td><?php echo $cine->getIdUserAdministrator(); ?></td>
+        <td><?php echo $user->getName(); ?></td>
         <td><?php echo $cine->getAddress(); ?></td>
         <td>
           <form action="<?php echo FRONT_ROOT; ?>/views/cine2" method="post">
@@ -157,4 +156,4 @@ if (isset($controlScript)) {
   <?php
   } 
 ?>
-<?php include(VIEWS_PATH . "footer.php"); ?>
+<?php include(VIEWS_PATH ."footer.php"); ?>
