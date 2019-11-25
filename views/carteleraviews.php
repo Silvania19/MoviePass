@@ -163,6 +163,14 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
 
         <button type="submit" class="btn btn-dark"> Buscar </button>
       </form> <br>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
 <?php
  if(!empty($listMovies2))
 {
@@ -171,8 +179,9 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
     
      
  ?>
+   <div class="item active">
       <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" alt= "<?php $movie->getTitle();?> " class="rounded">
-      <br>
+      </div> <br>
       <form action="<?php echo FRONT_ROOT; ?>/projection/addparte2" method="post">
         <h3>Title: <input type="submit" value=" <?php echo $movie->getTitle(); ?> ">
         <input type="checkbox" name="datos" id="" value="<?php echo $movie->getIdMovie()."+".$idCine;?>"  required="">
@@ -202,9 +211,17 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
   <p>Popularity: <?php echo $movie->getPopularity(); ?> </p>
   <p>Vote Count: <?php echo $movie->getVote_count(); ?> </p>
   
-  <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded">
-    
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
 
+    
+</div>
 
 
      <?php }
