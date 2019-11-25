@@ -37,7 +37,7 @@ class UserControllers
            
             
             
-            if(isset($user))
+            if($user)
             {
                 if($user->getPassword()==$password)
                 {
