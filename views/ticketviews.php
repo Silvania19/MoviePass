@@ -1,5 +1,5 @@
 <?php include(VIEWS_PATH.'header.php');
-    include(VIEWS_PATH.'nav.php');
+      include(VIEWS_PATH.'nav.php');
 ?>
 <table>
     <?php

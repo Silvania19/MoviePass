@@ -1,5 +1,5 @@
 <?php 
-  include(VIEWS_PATH."header.php");
+  include(VIEWS_PATH."header.php"); 
   include(VIEWS_PATH."nav2.php");
 
 ?>
@@ -20,7 +20,7 @@
                 {  
                   
                 foreach($cines as $cine)
-                     { 
+                { 
                 ?>   
                         <td> Cine:    </td>
                         <td><?php echo $cine->getName();?></td>
@@ -45,14 +45,14 @@
                                 {
                                   
                                     if($projection->getIdMovie()==$movie->getIdMovie())
-                                        {  
+                                    {  
                                           
 
                               ?>
                                             <td><?php echo $movie->getTitle(); ?></td>
                                             <td> <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getPoster_path();?>" class="rounded"></td>
                               <?php
-                                        } 
+                                    } 
                                         
                                     
                                   

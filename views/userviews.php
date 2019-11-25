@@ -1,6 +1,6 @@
 <?php
-include(VIEWS_PATH . "header.php");
-include(VIEWS_PATH . "nav.php");
+include(VIEWS_PATH ."header.php");
+include(VIEWS_PATH ."nav.php");
 
 ?>
 
@@ -64,4 +64,4 @@ include(VIEWS_PATH . "nav.php");
 
 
 
-<?php include(VIEWS_PATH . "footer.php"); ?>
+<?php include(VIEWS_PATH ."footer.php"); ?>

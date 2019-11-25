@@ -214,7 +214,7 @@ class viewscontrollers
         }
       } catch (\Throwable $th) {
         $controlScript = 1;
-        $message = "Hubo problemas con la verificacion de los datos del usuario. Por favor inicia sesion otra vez. Con datos actuales.";
+        $message = "Hubo problemas con la verificacion de los datos del usuario. Por favor inicia sesion otra vez con datos actuales.";
         include(VIEWS_PATH . "home.php");
       }
     }

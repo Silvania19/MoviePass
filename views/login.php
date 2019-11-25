@@ -1,4 +1,4 @@
-<?php include(VIEWS_PATH . "header.php"); ?>
+<?php include(VIEWS_PATH ."header.php"); ?>
 <main class="login">
   <center>
     <form class="loginForm" action="<?php echo FRONT_ROOT; ?>/user/login" method="POST">
@@ -76,4 +76,4 @@
         </div>
 </main>
 
-<?php include(VIEWS_PATH . "footer.php") ?>
+<?php include(VIEWS_PATH ."footer.php") ?>

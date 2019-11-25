@@ -7,18 +7,22 @@
     use daodb\ProjectionDao as projectionD;
     use daodb\CinemaDao as cinemaD;
     use controllers\UserControllers as userC;
+    use phpmailer\sendemail as sendemail;
+    use daosjson\MovieDao as movieD;
     class TicketControllers
     {
         private $listTickets;
         private $listProjection;
         private $listCinema;
         private $userContro;
+        private $listMovie;
         public function __construct()
         {
             $this->listTickets=new ticketD();
             $this->listProjection=new projectionD();
             $this->listCinema= new cinemaD();
             $this->userContro=new userC();
+            $this->listMovie=new movieD();
         }
         public function generateTicket($idProjection=null)
         {
@@ -34,10 +38,18 @@
             $number=$this->generateRandomNumberTicket();
            
             $qr=$this->generateRandomQr($number);
-            
             $newTicket= new ticket($number, $price, $idUser, $qr, $idProjection);
-            
             $this->listTickets->Add($newTicket);
+            $movie=$this->listMovie->Search($projection->getIdMovie());
+            $mail_addAddress=$user->getEmail();//correo electronico que recibira el mensaje
+            $template="phpmailer/email_template.html";//Ruta de la plantilla HTML para enviar nuestro mensaje
+            $mail_setFromEmail='MoviePass';
+            $mail_setFromName='Flor y Sil';
+            $txt_message='Copia de la entrada <br> Pelicula: '.$movie->getTitle().'<br>'.'Datos de la funcion: Hora:'.$projection->getHour().' Fecha: '.$projection->getDate().'<br> Datos de la entrada'.'  numero: '.$newTicket->getNumberTicket().'  qr: <img src= echo FRONT_ROOT;./.$newTicket->getQr(); width=150 height=100>';
+            $mail_subject='Confirmacion de la compra';
+
+            sendemail::sendemail(EMAIL_LOCAL, PASSWORD_EMAIL_LOCAL ,$mail_setFromEmail,$mail_setFromName,$mail_addAddress,$txt_message,$mail_subject,$template);//Enviar el mensaje
+
           
         }
         public function SeeTicket()

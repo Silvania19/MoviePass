@@ -1,11 +1,12 @@
-<?php include(VIEWS_PATH."header.php"); 
+<?php 
+  include(VIEWS_PATH."header.php"); 
 
-if(isset($controlScript))
-{
-  if($controlScript==1)
+  if(isset($controlScript))
   {
+    if($controlScript==1)
+    {
 ?>
-    <script>alert('<?php echo $message?>')</script>
+      <script>alert('<?php echo $message?>')</script>
 <?php  
    }
 }
