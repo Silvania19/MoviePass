@@ -110,50 +110,46 @@
           include(VIEWS_PATH."cineviews.php");
           } catch (\Throwable $th) {
             $controlScritpt=1;
-         $message='error en la base';
-         include(VIEWS_PATH."cineviews.php");
+                  $message='error en la base';
+                  $projections=$this->projectionList->GetAllActuales();
+                  $movies=$this->movieContro->SeeMovies();
+                  $listGenres2=$this->listGenre->GetAll();
+                  include(VIEWS_PATH."home2.php");
           }
           
         }
        
  
      }
+     public function updateParte1($idCinema=null)
+     {
+      $user=$this->userControllers->checkSession();
+       $controlUpdateCinema=1;
+       $cinema= $this->cinemaList->Search($idCinema);
+       include(VIEWS_PATH.'cineviews2.php');
 
-
-   /*  public function remove($verificacion=null)
+     }
+     public function update($name=null, $capacity=null, $price=null, $idCineAndCinema=null)
      {
        $user=$this->userControllers->checkSession();
-       
-       if($verificacion=='no')
-       {
-         $listCines=$this->cineRepo->GetAll();
-         include(VIEWS_PATH."cineviews.php");
+       $array=explode("+", $idCineAndCinema);
+       $idCine=$array['1'];
+       $idCinema=$array['0'];
+        $cinemaupdate= new cinema($idCine, $name, $capacity, $price );
+       try {
+        $this->cinemaList->Update($cinemaupdate, $idCinema);
+        include(VIEWS_PATH.'cineviews2.php');
+       } catch (\Throwable $th) {
+                $controlScritpt=1;
+                  $message='error en la base';
+                  $projections=$this->projectionList->GetAllActuales();
+                  $movies=$this->movieContro->SeeMovies();
+                  $listGenres2=$this->listGenre->GetAll();
+                  include(VIEWS_PATH."home2.php");
        }
-       else 
-       {
-         $idCine=$verificacion;
-         $listCinema=$this->cinemaList->GetAll();
-         $projectionL=$this->projectionList->GetAll();
-         foreach($listCinema as $cinema)
-         {
-             if($cinema->getIdCine()==$idCine)
-             {
-                 $this->cinemaList->Delete($cinema->getIdCinema());
-             }
-         }
-         foreach($projectionL as $projection)
-         {
-             if($projection->getIdCine()==$idCine)
-             {
-                 $this->projectionList->Delete($projection->getIdProjection());
-             }
-         }
-         $this->cineRepo->Delete($idCine);
-         $listCines=$this->cineRepo->GetAll();
-         echo" <script>alert('deleted cine');</script>" ;
-         include(VIEWS_PATH."cineviews.php");
-       }
-         
-    }*/
+        
+     }
+
+
 }
 ?>

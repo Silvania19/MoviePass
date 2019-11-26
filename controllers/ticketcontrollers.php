@@ -45,10 +45,11 @@
             $template="phpmailer/email_template.html";//Ruta de la plantilla HTML para enviar nuestro mensaje
             $mail_setFromEmail='MoviePass';
             $mail_setFromName='Flor y Sil';
-            $txt_message='Copia de la entrada <br> Pelicula: '.$movie->getTitle().'<br>'.'Datos de la funcion: Hora:'.$projection->getHour().' Fecha: '.$projection->getDate().'<br> Datos de la entrada'.'  numero: '.$newTicket->getNumberTicket().'  qr: <img src= echo FRONT_ROOT;./.$newTicket->getQr(); width=150 height=100>';
+            $txt_message='Copia de la entrada <br> Pelicula: '.$movie->getTitle().'<br>'.'Datos de la funcion: Hora:'.$projection->getHour().' Fecha: '.$projection->getDate().'<br> Datos de la entrada'.'  numero: '.$newTicket->getNumberTicket().'  qr: ';
+           
             $mail_subject='Confirmacion de la compra';
 
-            sendemail::sendemail(EMAIL_LOCAL, PASSWORD_EMAIL_LOCAL ,$mail_setFromEmail,$mail_setFromName,$mail_addAddress,$txt_message,$mail_subject,$template);//Enviar el mensaje
+            sendemail::sendemail(EMAIL_LOCAL, PASSWORD_EMAIL_LOCAL ,$mail_setFromEmail,$mail_setFromName,$mail_addAddress,$txt_message,$mail_subject,$template, $qr2);//Enviar el mensaje
 
           
         }

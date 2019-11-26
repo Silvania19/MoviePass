@@ -374,7 +374,7 @@ if(!isset($control)&& isset($control2) && !isset($control3))
         </select>
         
         <label for="hour">Sala</label>
-        <?php var_dump($listCinemas2);?>
+      
         <select name="idCinema" id=""  required="">
       
 

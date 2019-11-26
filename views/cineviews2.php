@@ -13,6 +13,7 @@
 <?php  if($user->getIdRol()==2)
          {
        
+       
 ?>      
        <nav class="navbar navbar-expand-sm bg-danger"> 
             <a class="navbar-brand"><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
@@ -53,8 +54,9 @@
              </li>
             </ul>
         </nav>
-       
-            
+       <?php
+            if(empty($controlUpdateCinema)){
+         ?>   
         <div class="col" style="border:1px solid gray;">
        
             <table class="  table-borderer table-hover ">
@@ -96,6 +98,12 @@
                                             <input type="submit" value="eliminar">
                                         </form>
                                     </td>
+                                    <td>
+                                        <form action="<?php echo FRONT_ROOT;?>/cinema/updateParte1" method="post">
+                                            <input type="checkbox" name="idCinema" id="" value="<?php echo $cinema->getIdCinema(); ?>" required="">
+                                            <input type="submit" value="Actualizar">
+                                        </form>
+                                    </td>
                                 </tr>
                     <?php 
                             }
@@ -115,6 +123,12 @@
                                 </form>
                              </div>
                             </td>
+                            <td>
+                                <form action="<?php echo FRONT_ROOT;?>/cinema/updateParte1" method="post">
+                                     <input type="checkbox" name="idCinema" id="" value="<?php echo $cinemasCine->getIdCinema(); ?>" required="">
+                                      <input type="submit" value="Actualizar">
+                                </form>
+                            </td>
 
                         </tr>
                     <?php
@@ -127,6 +141,7 @@
                             </tr>
                     <?php
                         }
+                    }
                     ?>
                  
             </table>
@@ -196,6 +211,34 @@
             </form>
 
          </div>
+
+         <?php
+         if(!empty($controlUpdateCinema))
+         {
+             echo 'hola';
+            if($controlUpdateCinema==1)
+            {
+          ?>
+           
+           
+                <form  action="<?php echo FRONT_ROOT;?>/cinema/update" method="POST"> 
+                       <label for="nameCinema">nombre</label>
+                        <input type="text" name="nameCinema" value="<?php echo $cinema->getnameCinema(); ?>" class= "form-control " required=""> <br>
+                        <label for="capacity"> Total de butacas</label><br>
+                        <input type="text" name="capacity"   value="<?php echo $cinema->getCapacity(); ?>" class= "form-control "required=""><br>
+                        <label for="price">Precio</label><br>
+                        <input type="text" name="price" id="" value="<?php echo $cinema->getPrice(); ?>" class= "form-control " required=""><br>
+                        <label for="idCine">¿Estas seguro de actualizar?</label>
+                        <input type="checkbox" name="idCineAndCinema" id="" value="<?php echo $cinema->getIdCinema(); ?>.+.<?php echo $cinema->getIdCine(); ?>" required=""><br>
+                        <button type="submit" class="btn btn-dark" data dismiss="modal" > Agregar nueva sala</button>
+                   
+                </form>
+ 
+            
+          <?php 
+            }
+        }
+         ?>
         
 <?php
     }
