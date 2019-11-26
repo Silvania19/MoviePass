@@ -34,9 +34,7 @@ class UserControllers
                 $message='error en la base';
                 include(VIEWS_PATH."home.php");
             }
-           
-            
-            
+         
             if($user)
             {
                 if($user->getPassword()==$password)
@@ -154,8 +152,8 @@ class UserControllers
     {
 
         try {
-            $User1 = $_SESSION['user']; //ver esto
-            $user = new User($name, $lastName, $dni, $email, $password);
+            $User1 = $_SESSION['user']; 
+            $user = new User($name, $lastName, $dni, $email, $password, $User1->getIdRol());
             $this->daoUser->Update($user, $User1->getIduser());
             $_SESSION['user'] = $user;
             include(VIEWS_PATH . "userviews.php");

@@ -197,6 +197,9 @@ class ProjectionDao implements Idaos
             return  false;
         }
     }
+    /*buscamos las projecciones de uan sala, me devuelve TODAS las projecciones de una sala
+
+    */
     public function SearchXIdCinema($idCinema)
     { 
         $sql = "SELECT p.* from projections as p join cinemas as c on p.idCinema=c.idCinema where p.idCinema=:idCinema;";
@@ -219,18 +222,35 @@ class ProjectionDao implements Idaos
             return  false;
         }
     }
-
+    /*
+    buscamos todas las projeccciones de un cine en un determinado dia Todas
+    */
     public function SearchXMovieXCineXDate($idMovie, $idCine, $date)
     {
         $sql = "SELECT * FROM projections where (idCine=$idCine and idMovie=$idMovie and date='$date');";
         $parameters['idCine'] = $idCine;
         $parameters['idMovie'] = $idMovie;
         $parameters['date'] = $date;
-
-
-        try {
+       try {
             $this->connection = Connection::getInstance();
             $resul = $this->connection->execute($sql);
+        } catch (\PDOException $th) {
+            throw $th;
+        }
+        if (!empty($resul)) {
+            return true;
+        } else {
+            return  false;
+        }
+    }
+    public function SearchXCineXDate($idCine, $date)
+    {
+        $sql = "SELECT * FROM projections where idCine=:idCine and where date='$date';";
+        $parameters['idCine'] = $idCine;
+        
+        try {
+            $this->connection = Connection::getInstance();
+            $resul = $this->connection->execute($sql, $parameters);
         } catch (\PDOException $th) {
             throw $th;
         }
