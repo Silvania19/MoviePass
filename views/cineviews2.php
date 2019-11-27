@@ -156,7 +156,7 @@
 
                  <div class="modal-header"> 
                      <h2 class="modal-title">Actualizar cine</h2>
-                     <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>      
+                     <button type="button"class="close" data-dismiss="modal" aria-hidden="true"> <span>&times;</span> </button>      
                 </div>
                 <div class="modal-body">
                    <label for="name" >Nombre</label>
@@ -177,7 +177,7 @@
             <form class="modal-content " action="<?php echo FRONT_ROOT;?>/cinema/add" method="POST"> 
                 <div class="modal-header"> 
                     <h2 class="modal-title">Agregar salas</h2>
-                    <button type="button"class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     
