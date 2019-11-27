@@ -2478,7 +2478,9 @@ class PHPMailer
     public function addAttachment($path, $name = '', $encoding = 'base64', $type = '', $disposition = 'attachment')
     {
         try {
+
             if (!@is_file($path)) {
+               
                 throw new phpmailerException($this->lang('file_access') . $path, self::STOP_CONTINUE);
             }
 

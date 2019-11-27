@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-danger"> 
+<nav class="navbar navbar-expand-sm bg-dark"> 
         <a href=""class="navbar-brand "><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
 
         <ul class="navbar-nav ml-auto">

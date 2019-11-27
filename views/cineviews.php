@@ -116,7 +116,7 @@ if (isset($controlScript)) {
     ?>
     <div class="col" style="border:1px solid gray;">
 
-      <table class="  table-borderer table-hover ">
+      <table class="  table-borderer table-hover tables ">
           <tr>
             <h2>Cines disponibles</h2>
           </tr>

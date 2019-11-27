@@ -1,8 +1,10 @@
 <?php
 
-use models\Projection;
 
-include(VIEWS_PATH."header.php");?>
+
+include(VIEWS_PATH."header.php");
+
+?>
 
 <?php
   if(isset($controlScript))
@@ -13,17 +15,17 @@ include(VIEWS_PATH."header.php");?>
       <script>alert('<?php echo $message?>')</script>
 <?php  
     }
-  }   
+  }
+   include(VIEWS_PATH."nav.php"); 
 if(!isset($control)&& !isset($control2)&& !isset($control3))
 {
-  include(VIEWS_PATH."nav.php");
-
+ 
 ?>
 
 
    <div class="col" style="border:1px solid gray;">
        
-      <table class="table-striped">
+      <table class="table-striped tables">
          <tr class="table-dark ">
             <tr class="table-primary">
               <?php
@@ -81,7 +83,19 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
                                     <input type="checkbox" name="idProjection" id="" value="<?php echo $projection->getIdProjection(); ?>" required="">
                                       <input type="submit" value="eliminar">
                                   </form>
-                                </td>    
+                                </td>   
+                                <td>  
+                                  <form action="<?php echo FRONT_ROOT;?>/ticket/quantityTicketSales" method="post">
+                                    <input type="checkbox" name="idProjection" id="" value="<?php echo $projection->getIdProjection(); ?>" required="">
+                                      <input type="submit" value="Ver cantidad de entradas vendidas">
+                                  </form>
+                                </td>
+                                <td>  
+                                  <form action="<?php echo FRONT_ROOT;?>/ticket/remanentes" method="post">
+                                    <input type="checkbox" name="idProjection" id="" value="<?php echo $projection->getIdProjection(); ?>" required="">
+                                      <input type="submit" value="Remanentes">
+                                  </form>
+                                </td>  
                               </tr>
              <?php
                           }
@@ -100,7 +114,7 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
                                  <td><?php echo $movie->getTitle(); ?></td>
                                 <td> <img src="https://image.tmdb.org/t/p/w500/<?php echo $movie->getBackdrop_path();?>" class="rounded"></td>
                                  <td>
-                                    <form action="<?php echo FRONT_ROOT;?>/projection/addparte2" method="post">
+                                    <form action="<?php echo FRONT_ROOT;?>/ticket/quantityTicketSales" method="post">
                                       <input type="checkbox" name="datos" id="" value="<?php echo   $movie->getIdMovie()."+".$cine->getIdCine();?>" required="">
                                       <input type="submit" value="Agregar funcion">
                                     </form>
@@ -124,7 +138,19 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
                                     <input type="checkbox" name="idProjection" id="" value="<?php echo $cartelera->getIdProjection(); ?>" required="">
                                       <input type="submit" value="eliminar">
                                   </form>
-                                </td>    
+                                </td>   
+                                <td>  
+                                  <form action="<?php echo FRONT_ROOT;?>/ticket/quantityTicketSales" method="post">
+                                    <input type="checkbox" name="idProjection" id="" value="<?php echo $cartelera->getIdProjection(); ?>" required="">
+                                      <input type="submit" value="Ver cantidad de entradas vendidas">
+                                  </form>
+                                </td>
+                                <td>  
+                                  <form action="<?php echo FRONT_ROOT;?>/ticket/remanentes" method="post">
+                                    <input type="checkbox" name="idProjection" id="" value="<?php echo $cartelera->getIdProjection(); ?>" required="">
+                                      <input type="submit" value="Remanetes">
+                                  </form>
+                                </td>        
                               </tr> 
                  <?php    
                               }
@@ -141,7 +167,7 @@ if(!isset($control)&& !isset($control2)&& !isset($control3))
 }
   if(isset($control)&& !isset($control2) && !isset($control3))
   {
-    include (VIEWS_PATH."nav.php");
+    
 
 ?>
     <form action="<?php echo FRONT_ROOT;?>/projection/filterGenre" method="POST">
@@ -295,215 +321,55 @@ if(!isset($control)&& isset($control2) && !isset($control3))
 <?php 
   if(!isset($control1)&& !isset($control2) && isset($control3))
   {
+  
 
 ?>
     <form class="form-control"action="<?php echo FRONT_ROOT;?>/projection/addProjection" method="post">
         <h3> COMPLETAR</h3>
         <label for="datos">confirmar</label>
         <input type="checkbox" name="datos" value="<?php echo $datos; ?>" id=""  required=""><br>
-        <label for="hour">Hora</label>
-        <select name="hour" id="" required="">
+        <label for="cinemahour">Sala y hora</label>
+        <select name="cinemahour" id="" required="">
           
-            <?php
-                    if(iseet($cinema))
-                    {
-                      if(is_array($projectionOfDate))
-                      {
-                         foreach($projectionOfDate as $projection)
-                         {
-                           if($projection->getIdCinema()==$cinema->getIdCinema())
-                           {
-                             if($projection->getHour()!='13:00:00')
-                             {
-                               ?>
-                                <option value="<?php echo $cienema->getIdCinema();?>.+.13:00:00"><?php echo $cinema->getnameCinema()?>  13:00:00</option>
-                               <?php
-                             
-                             }
-                             
-                             if($projection->getHour()!='15:30:00')
-                             {
-                               ?>
-                                <option value="<?php echo $cienema->getIdCinema();?>.+.15:30:00"><?php echo $cinema->getnameCinema()?>  15:30:00</option>
-                               <?php
-                             
-                             }
-                             
-                             if($projection->getHour()!='17:00:00')
-                             {
-                               ?>
-                                <option value="<?php echo $cienema->getIdCinema();?>.+.17:00:00"><?php echo $cinema->getnameCinema()?>  17:00:00</option>
-                               <?php
-                             
-                             }
-                             
-                             if($projection->getHour()!='19:30:00')
-                             {
-                               ?>
-                                <option value="<?php echo $cienema->getIdCinema();?>.+.19:30:00"><?php echo $cinema->getnameCinema()?>  19:30:00</option>
-                               <?php
-                             
-                             }
-                             if($projection->getHour()!='22:00:00')
-                             {
-                               ?>
-                                <option value="<?php echo $cienema->getIdCinema();?>.+.22:00:00"><?php echo $cinema->getnameCinema()?>  20:00:00</option>
-                               <?php
-                             
-                             }
-                           }
-                         }
-                      }
-                      if(is_object($projectionOfDate))
-                      {
-                        if($projectionOfDate->getIdCinema()==$cinema->getIdCinema())
-                           {
-                             if($projectionOfDate->getHour()!='13:00:00')
-                             {
-                               ?>
-                                <option value="<?php echo $cienema->getIdCinema();?>.+.13:00:00"><?php echo $cinema->getnameCinema()?>  13:00:00</option>
-                               <?php
-                             
-                             }
-                             
-                             if($projectionOfDate->getHour()!='15:30:00')
-                             {
-                               ?>
-                                <option value="<?php echo $cienema->getIdCinema();?>.+.15:30:00"><?php echo $cinema->getnameCinema()?>  15:30:00</option>
-                               <?php
-                             
-                             }
-                             
-                             if($projectionOfDate->getHour()!='17:00:00')
-                             {
-                               ?>
-                                <option value="<?php echo $cienema->getIdCinema();?>.+.17:00:00"><?php echo $cinema->getnameCinema()?>  17:00:00</option>
-                               <?php
-                             
-                             }
-                             
-                             if($projectionOfDate->getHour()!='19:30:00')
-                             {
-                               ?>
-                                <option value="<?php echo $cienema->getIdCinema();?>.+.19:30:00"><?php echo $cinema->getnameCinema()?>  19:30:00</option>
-                               <?php
-                             
-                             }
-                             if($projectionOfDate->getHour()!='22:00:00')
-                             {
-                               ?>
-                                <option value="<?php echo $cienema->getIdCinema();?>.+.22:00:00"><?php echo $cinema->getnameCinema()?>  20:00:00</option>
-                               <?php
-                             
-                             }
-                           }
-                      }
-                     
-                    } 
-                    if(iseet($listCinema2))
-                    {
-                      if(is_array($listCinema2))
-                      {
-                        foreach($listCinema2 as $cinema)
+            <?php 
+                       if(!empty($cinema))
+                       {
+                        
+                        ?>
+                            <option value="<?php echo $cinema->getIdCinema();?>+13:00:00"><?php echo $cinema->getnameCinema()?> hora  13:00:00</option>
+                            <option value="<?php echo $cinema->getIdCinema();?>+15:30:00"><?php echo $cinema->getnameCinema()?> hora  15:30:00</option>
+                            <option value="<?php echo $cinema->getIdCinema();?>+17:00:00"><?php echo $cinema->getnameCinema()?> hora  17:00:00</option>
+                            <option value="<?php echo $cinema->getIdCinema();?>+19:30:00"><?php echo $cinema->getnameCinema()?> hora  19:30:00</option>
+                            <option value="<?php echo $cinema->getIdCinema();?>+22:00:00"><?php echo $cinema->getnameCinema()?> hora  20:00:00</option>    
+                        <?php
+                         
+                       } 
+                       if(empty($cinema))
                         {
-                          if(!empty($projectionOfDate))
-                          {
-                            if(is_array($projectionOfDate))
-                            {
-                              foreach($projectionOfDate as $projection)
-                              {
-                                    if($projection->getIdCinema()==$cinema->getIdCinema())
-                                    {
-                                      if($projection->getHour()!='13:00:00')
-                                      {
-                                        ?>
-                                          <option value="<?php echo $cienema->getIdCinema();?>.+.13:00:00"><?php echo $cinema->getnameCinema()?>  13:00:00</option>
-                                        <?php
-                                      
-                                      }
-                                      
-                                      if($projection->getHour()!='15:30:00')
-                                      {
-                                        ?>
-                                          <option value="<?php echo $cienema->getIdCinema();?>.+.15:30:00"><?php echo $cinema->getnameCinema()?>  15:30:00</option>
-                                        <?php
-                                      
-                                      }
-                                      
-                                      if($projection->getHour()!='17:00:00')
-                                      {
-                                        ?>
-                                          <option value="<?php echo $cienema->getIdCinema();?>.+.17:00:00"><?php echo $cinema->getnameCinema()?>  17:00:00</option>
-                                        <?php
-                                      
-                                      }
-                                      
-                                      if($projection->getHour()!='19:30:00')
-                                      {
-                                        ?>
-                                          <option value="<?php echo $cienema->getIdCinema();?>.+.19:30:00"><?php echo $cinema->getnameCinema()?>  19:30:00</option>
-                                        <?php
-                                      
-                                      }
-                                      if($projection->getHour()!='22:00:00')
-                                      {
-                                        ?>
-                                          <option value="<?php echo $cienema->getIdCinema();?>.+.22:00:00"><?php echo $cinema->getnameCinema()?>  20:00:00</option>
-                                        <?php
-                                      
-                                      }
-                                    }
-                              }
-
-                            }
-                            if(is_object($projectionOfDate))
-                            {
-                              if($projectionOfDate->getIdCinema()==$cinema->getIdCinema())
-                                 {
-                                   if($projectionOfDate->getHour()!='13:00:00')
-                                   {
-                                     ?>
-                                      <option value="<?php echo $cienema->getIdCinema();?>.+.13:00:00"><?php echo $cinema->getnameCinema()?>  13:00:00</option>
-                                     <?php
-                                   
-                                   }
-                                   
-                                   if($projectionOfDate->getHour()!='15:30:00')
-                                   {
-                                     ?>
-                                      <option value="<?php echo $cienema->getIdCinema();?>.+.15:30:00"><?php echo $cinema->getnameCinema()?>  15:30:00</option>
-                                     <?php
-                                   
-                                   }
-                                   
-                                   if($projectionOfDate->getHour()!='17:00:00')
-                                   {
-                                     ?>
-                                      <option value="<?php echo $cienema->getIdCinema();?>.+.17:00:00"><?php echo $cinema->getnameCinema()?>  17:00:00</option>
-                                     <?php
-                                   
-                                   }
-                                   
-                                   if($projectionOfDate->getHour()!='19:30:00')
-                                   {
-                                     ?>
-                                      <option value="<?php echo $cienema->getIdCinema();?>.+.19:30:00"><?php echo $cinema->getnameCinema()?>  19:30:00</option>
-                                     <?php
-                                   
-                                   }
-                                   if($projectionOfDate->getHour()!='22:00:00')
-                                   {
-                                     ?>
-                                      <option value="<?php echo $cienema->getIdCinema();?>.+.22:00:00"><?php echo $cinema->getnameCinema()?>  20:00:00</option>
-                                     <?php
-                                   
-                                   }
-                                 }
+                           if(is_array($listCinemas2))
+                           {
+                             foreach ($listCinemas2 as $cinema)
+                             {
+                              ?>
+                              <option value="<?php echo $cinema->getIdCinema();?>+13:00:00"><?php echo $cinema->getnameCinema()?> hora  13:00:00</option>
+                              <option value="<?php echo $cinema->getIdCinema();?>+15:30:00"><?php echo $cinema->getnameCinema()?> hora  15:30:00</option>
+                              <option value="<?php echo $cinema->getIdCinema();?>+17:00:00"><?php echo $cinema->getnameCinema()?> hora  17:00:00</option>
+                              <option value="<?php echo $cinema->getIdCinema();?>+19:30:00"><?php echo $cinema->getnameCinema()?> hora  19:30:00</option>
+                              <option value="<?php echo $cinema->getIdCinema();?>+22:00:00"><?php echo $cinema->getnameCinema()?> hora  20:00:00</option>    
+                             <?php
+                             }
+                           }
+                           if(is_object($listCinemas2))
+                           {
+                            ?>
+                            <option value="<?php echo $listCinemas2->getIdCinema();?>+13:00:00"><?php echo $listCinemas2->getnameCinema()?> hora  13:00:00</option>
+                            <option value="<?php echo $listCinemas2->getIdCinema();?>+15:30:00"><?php echo $listCinemas2->getnameCinema()?> hora  15:30:00</option>
+                            <option value="<?php echo $listCinemas2->getIdCinema();?>+17:00:00"><?php echo $listCinemas2->getnameCinema()?> hora  17:00:00</option>
+                            <option value="<?php echo $listCinemas2->getIdCinema();?>+19:30:00"><?php echo $listCinemas2->getnameCinema()?> hora  19:30:00</option>
+                            <option value="<?php echo $listCinemas2->getIdCinema();?>+22:00:00"><?php echo $listCinemas2->getnameCinema()?> hora  20:00:00</option>    
+                           <?php
+                           }
                           }
-                        }
-                      }
-                    }
-                  }
                   ?>
         </select><br>
     <input type="submit" value="enviar">

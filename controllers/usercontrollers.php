@@ -29,45 +29,38 @@ class UserControllers
         {  
             try {
                 $user=$this->daoUser->Search($email);
+                
+                if($user)
+                {
+                    if($user->getPassword()==$password)
+                    {  
+                            $_SESSION['user']=$user;
+                      
+                            $movies=$this->movieContro->SeeMovies();
+                            $listGenres2=$this->listGenre->GetAll();
+                            include(VIEWS_PATH."home2.php");
+                           
+                    }
+                    else{
+                        $controlScript=1;
+                        $message='contraseña incorrecta';
+                        include(VIEWS_PATH."home.php");
+                    }
+                }
+                else
+                {
+                    
+                    $controlScript=1;
+                    $message='usuario incorrecto';
+                    include(VIEWS_PATH."home.php");
+                }   
             } catch (\Throwable $th) {
-                $controlScritpt=1;
+                $controlScript=1;
                 $message='error en la base';
                 include(VIEWS_PATH."home.php");
             }
-         
-            if($user)
-            {
-                if($user->getPassword()==$password)
-                {
-                    $_SESSION['user']=$user;
-                    try { 
-                          $movies=$this->movieContro->SeeMovies();
-                          $listGenres2=$this->listGenre->GetAll();
-                           include(VIEWS_PATH."home2.php");
-                        } catch (\Throwable $th) {
-                            $controlScript=1;
-                            $message='error en la base';
-                            $projections=$this->listProjection->GetAllActuales();
-                            $movies=$this->movieContro->SeeMovies();
-                            $listGenres2=$this->listGenre->GetAll();
-                    
-                           include(VIEWS_PATH."home2.php");
-                        }
-                        
-                   
-               }
-               else{
-                $controlScript=1;
-                $message='contraseña incorrecta';
-                include(VIEWS_PATH."home.php");
-               }
-            }
-            else
-            {
-                $controlScript=1;
-                $message='usuario incorrecto';
-                include(VIEWS_PATH."home.php");
-            }
+        
+            
         }
     
     public function signUp($name = null, $lastName = null,  $dni = null,  $email = null, $password = null)
@@ -84,11 +77,8 @@ class UserControllers
         } catch (\PDOException $th) {
             $controlScritpt = 1;
             $message = 'error en la base';
-            $projections = $this->listProjection->GetAllActuales();
-            $movies = $this->movieContro->SeeMovies();
-            $listGenres2 = $this->listGenre->GetAll();
-
-            include(VIEWS_PATH . "home2.php");
+            
+            include(VIEWS_PATH . "home.php");
         }
     }
     public function facebook($email=null, $password=null)
@@ -107,11 +97,8 @@ class UserControllers
         } catch (\PDOException $th) {
             $controlScritpt = 1;
             $message = 'error en la base';
-            $projections = $this->listProjection->GetAllActuales();
-            $movies = $this->movieContro->SeeMovies();
-            $listGenres2 = $this->listGenre->GetAll();
-
-            include(VIEWS_PATH . "home2.php");
+            
+            include(VIEWS_PATH . "home.php");
         }
         
     }
@@ -145,7 +132,11 @@ class UserControllers
         if ($verificacion == 'no') {
 
             $user = $_SESSION['user'];
-            include(VIEWS_PATH . "administratorviews.php");
+            $projections = $this->listProjection->GetAllActuales();
+            $movies = $this->movieContro->SeeMovies();
+            $listGenres2 = $this->listGenre->GetAll();
+
+            include(VIEWS_PATH . "home2.php");
         }
     }
     public function update($name = null, $lastName = null, $dni = null,  $email = null,  $password = null)

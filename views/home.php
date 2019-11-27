@@ -18,7 +18,8 @@
           <div class="row">
             <div class="col">
               <header class="text-center">
-                <h1 class="bg-primary display-1 ">MOVIE PASS</h1>
+                <h1 class="bg-primary display-1 ">MOVIE PASS</h1> 
+                
               </header>   
       
             </div>
@@ -26,5 +27,7 @@
         </div>
         <?php  include(VIEWS_PATH."login.php");?>
       </main>
+     
+     
 
 <?php include(VIEWS_PATH."footer.php");?>

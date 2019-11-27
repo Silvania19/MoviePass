@@ -7,6 +7,7 @@ use daosjson\GenresDao as genreD;
 use daodb\CineDao as cineD;
 use daodb\CinemaDao as cinemaD;
 use controllers\MovieControllers as movieC;
+use controllers\UserControllers as userC;
 class ProjectionControllers
 {
    private $listMovie;
@@ -15,6 +16,7 @@ class ProjectionControllers
    private $listCine;
    private $listCinema;
    private $movieContro;
+   private $userContro;
   public function __construct()
   {
      $this->listMovie=new movieD();
@@ -23,10 +25,11 @@ class ProjectionControllers
      $this->listCine=new cineD();
      $this->listCinema=new cinemaD();
      $this->movieContro= new movieC();
+     $this->userContro= new userC();
   }
   public function addparte1($idCine=null)
   {
-
+       $user=$this->userContro->checkSession();
        $control=1;
        try {
         $listProjection2=$this->listProjection->GetAll();
@@ -70,15 +73,46 @@ class ProjectionControllers
     
     }
   public function addparte3($datos=null, $date=null)
-  {
-    
+  { 
+     $user=$this->userContro->checkSession();
       $array=explode("+", $datos);
+    
       $control3=1;
       try {
-        $projection=$this->listProjection->SearchXMovieXCineXDate($array['0'], $array['1'], $date);
-        $projectionOfDate=$this->listProjection->SearchXCineXDate($array['1'], $date);
+          $projection=$this->listProjection->SearchXMovieXCineXDate($array['0'], $array['1'], $date);
+         
+          $projectionOfDate=$this->listProjection->SearchXCineXDate($array['1'], $date);
+          if(!empty($projection))
+          { 
+              if(is_object($projection))
+              {
+              
+                  $cinema=$this->listCinema->Search($projection->getIdCinema()); 
+                 
+                  $datos=$datos."+".$date;
+                  
+                  include(VIEWS_PATH."carteleraviews.php");
+              }
+          }
+          if(!empty($projectionOfDate))
+          {
+            
+              $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
+              $datos=$datos."+".$date;
+              include(VIEWS_PATH."carteleraviews.php");
+          
+          }
+          if(empty($projection)&& empty($projectionOfDate))
+          {
+            
+            $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
+            
+            $datos=$datos."+".$date;
+            include(VIEWS_PATH."carteleraviews.php");
+          }
         
       } catch (\Throwable $th) {
+       
         $controlScritpt=1;
         $message='error en la base';
         $projections=$this->listProjection->GetAllActuales();
@@ -87,70 +121,21 @@ class ProjectionControllers
         $listGenres2=$this->listGenre->GetAll();
 
         include(VIEWS_PATH."home2.php");
-      }
-     if(!empty($projection)){ 
-        if(is_object($projection))
-        {
-          try {
-            $cinema=$this->listCinema->Search($projection->getIdCinema()); 
-            $datos=$datos."+".$date;
-            include(VIEWS_PATH."carteleraviews.php");
-          } catch (\Throwable $th) {
-            $controlScritpt=1;
-            $message='error en la base';
-            $projections=$this->listProjection->GetAllActuales();
-            $movies=$this->movieContro->SeeMovies();
-            $listGenres2=$this->listGenre->GetAll();
 
-          include(VIEWS_PATH."home2.php");
-          }
-        
-        }
-        if(is_array($projection))
-        {
-          try {
-            $cinema=$this->listCinema->Search($projection['0']->getIdCinema()); 
-            $datos=$datos."+".$date;
-            include(VIEWS_PATH."carteleraviews.php");
-          } catch (\Throwable $th) {
-            $controlScritpt=1;
-            $message='error en la base';
-            $projections=$this->listProjection->GetAllActuales();
-            $movies=$this->movieContro->SeeMovies();
-            $listGenres2=$this->listGenre->GetAll();
-            
-          include(VIEWS_PATH."home2.php");
-          }
-        }
-    }
-    else
-    {
-      try {
-        $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
-        $datos=$datos."+".$date;
-        include(VIEWS_PATH."carteleraviews.php");
-      } catch (\Throwable $th) {
-        $controlScritpt=1;
-        $message='error en la base';
-        $projections=$this->listProjection->GetAllActuales();
-        $movies=$this->movieContro->SeeMovies();
-        $listGenres2=$this->listGenre->GetAll();
-
-       include(VIEWS_PATH."home2.php");
       }
-    
-    }
   
   }
  
-  public function addProjection($datos=null, $hour=null, $idCinema)
+  public function addProjection($datos=null, $cinemahour=null)
   {
-    
-    $array=explode("+", $datos);
-  
-    $idMovie=$array['0'];
-    $idCine=$array['1'];
-    $date=$array['2'];
+    var_dump($cinemahour);
+    $arrayDatos=explode("+", $datos);
+    $arrayCinemaHour=explode("+", $cinemahour);
+    $idMovie=$arrayDatos['0'];
+    $idCine=$arrayDatos['1'];
+    $date=$arrayDatos['2'];
+    $idCinema=$arrayCinemaHour['0'];
+    $hour=$arrayCinemaHour['1'];
     $veri=0;
     $duration=0;
     try {

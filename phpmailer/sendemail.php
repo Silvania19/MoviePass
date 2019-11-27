@@ -3,10 +3,11 @@ namespace phpmailer;
 use phpmailer\PHPMailer as PHPMailer;
 class SendEmail
 {
-   public static function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_setFromName,$mail_addAddress,$txt_message,$mail_subject, $template){
+   public static function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_setFromName,$mail_addAddress,$txt_message,$mail_subject, $template, $qr){
         
         $mail = new PHPMailer;
-        $mail->isSMTP();                            // Establecer el correo electrónico para utilizar SMTP
+        try {
+         $mail->isSMTP();                            // Establecer el correo electrónico para utilizar SMTP
         $mail->Host = 'smtp.gmail.com';             // Especificar el servidor de correo a utilizar 
         $mail->SMTPAuth = true;                     // Habilitar la autenticacion con SMTP
         $mail->Username = $mail_username;          // Correo electronico saliente ejemplo: tucorreo@gmail.com
@@ -21,7 +22,7 @@ class SendEmail
         $message = str_replace('{{message}}', $txt_message, $message);
         $message = str_replace('{{customer_email}}', $mail_setFromEmail, $message);
         $mail->isHTML(true);  // Establecer el formato de correo electrónico en HTML
-        
+       $mail->addAttachment($qr);
         $mail->Subject = $mail_subject;
         $mail->msgHTML($message);
         if(!$mail->send()) {
@@ -30,6 +31,10 @@ class SendEmail
         } else {
             echo '<p style="color:green">Tu mensaje ha sido enviado!</p>';
         }
+        } catch (\Throwable $th) {
+           echo 'Error: {$mail->ErrorInfo}';
+        }
+       
     }
 }
 

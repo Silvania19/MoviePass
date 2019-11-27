@@ -22,7 +22,7 @@ include(VIEWS_PATH ."nav.php");
 
 <div class="modal fade" id="update">
 
-  <form class="modal-content " action="<?php echo FRONT_ROOT; ?>/user/update" method="POST">
+  <form class="modal-content " action="<?php echo FRONT_ROOT;?>/user/update" method="POST">
     <div class="modal-header">
       <h2 class="modal-title">Actualizar datos</h2>
 

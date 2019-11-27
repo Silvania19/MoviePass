@@ -1,6 +1,6 @@
 body,html{
     font-family: 'Montserrat', sans-serif;
-    background-color:rosybrown;
+    background-color:rgb(113, 113, 238);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
 
@@ -13,6 +13,9 @@ body,html{
 {
   height: 50;
   width: 70;
+}
+.tables{
+  align-content: center;
 }
 
 

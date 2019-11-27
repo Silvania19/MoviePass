@@ -59,7 +59,7 @@
          ?>   
         <div class="col" style="border:1px solid gray;">
        
-            <table class="  table-borderer table-hover ">
+            <table class="  table-borderer table-hover tables">
                 <tr class="table-primary">
                 
                      <td><?php echo $cine->getName();?> </td>

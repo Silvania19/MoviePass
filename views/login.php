@@ -1,5 +1,5 @@
 <?php include(VIEWS_PATH ."header.php"); ?>
-<main class="login">
+<main class="login" style="align: center">
   <center>
     <form class="loginForm" action="<?php echo FRONT_ROOT; ?>/user/login" method="POST">
         <header class="text-center">

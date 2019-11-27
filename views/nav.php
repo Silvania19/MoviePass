@@ -1,12 +1,14 @@
 
-    <nav class="navbar navbar-expand-sm bg-danger">
+    <nav class="navbar navbar-expand-sm bg-dark">
     <a href=""class="navbar-brand "><img src="<?php echo FRONT_ROOT;?>/front/img/dog.jpeg" style="width: 70px;"></a>
         <ul class="navbar-nav ml-auto">
            
             <li class ="nav-item  ">
                 
-                    
-                <a href="<?php echo FRONT_ROOT?>/views/home2" class="dropdown-item">Home</a>
+                <button type="button" class="btn btn-primary">
+                    <a href="<?php echo FRONT_ROOT?>/views/home2" style="color:white">Home</a>
+                </button>    
+                
             </li>
             <li class="nav-item">
                  <div class="dropdown">

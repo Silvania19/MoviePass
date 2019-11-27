@@ -14,7 +14,7 @@
 
 ?>
 
-        <table class=" table-borderer table-hover ">
+        <table class=" table-borderer table-hover tables">
             <tr>
                 <td><h3><?php echo "Carrito de compras";?></h3></td>
             </tr>

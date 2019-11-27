@@ -227,10 +227,8 @@ class ProjectionDao implements Idaos
     */
     public function SearchXMovieXCineXDate($idMovie, $idCine, $date)
     {
-        $sql = "SELECT * FROM projections where (idCine=$idCine and idMovie=$idMovie and date='$date');";
-        $parameters['idCine'] = $idCine;
-        $parameters['idMovie'] = $idMovie;
-        $parameters['date'] = $date;
+        $sql = "SELECT * FROM projections where idCine=$idCine and idMovie=$idMovie and date='$date' limit 1;";
+       
        try {
             $this->connection = Connection::getInstance();
             $resul = $this->connection->execute($sql);
@@ -238,14 +236,14 @@ class ProjectionDao implements Idaos
             throw $th;
         }
         if (!empty($resul)) {
-            return true;
+            return $this->mapear($resul);
         } else {
             return  false;
         }
     }
     public function SearchXCineXDate($idCine, $date)
     {
-        $sql = "SELECT * FROM projections where idCine=:idCine and where date='$date';";
+        $sql = "SELECT * FROM projections where idCine=:idCine and date='$date';";
         $parameters['idCine'] = $idCine;
         
         try {

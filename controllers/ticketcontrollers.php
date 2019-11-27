@@ -45,7 +45,8 @@
             $template="phpmailer/email_template.html";//Ruta de la plantilla HTML para enviar nuestro mensaje
             $mail_setFromEmail='MoviePass';
             $mail_setFromName='Flor y Sil';
-            $txt_message='Copia de la entrada <br> Pelicula: '.$movie->getTitle().'<br>'.'Datos de la funcion: Hora:'.$projection->getHour().' Fecha: '.$projection->getDate().'<br> Datos de la entrada'.'  numero: '.$newTicket->getNumberTicket().'  qr: ';
+            $qr2=$newTicket->getQr();
+            $txt_message='Copia de la entrada <br> Pelicula: '.$movie->getTitle().'<br>'.'Datos de la funcion: Hora:'.$projection->getHour().' Fecha: '.$projection->getDate().'<br> Datos de la entrada'.'  numero: '.$newTicket->getNumberTicket().'<br>  qr: ';
            
             $mail_subject='Confirmacion de la compra';
 
@@ -69,6 +70,32 @@
             }
             
         }
+        public function quantityTicketSales($idProjection=null)
+        {
+            try {
+                
+                $cantTicket=$this->listTickets->cantXIdProjection($idProjection);
+                include(VIEWS_PATH.'ticketviews.php');
+
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+        }
+        public function remanentes($idProjection=null)
+        {
+            try {
+                
+                $cantTicket=$this->listTickets->cantXIdProjection($idProjection);
+                $projection=$this->listProjection->Search($idProjection);
+                $cinema=$this->listCinema->Search($projection->getIdCinema());
+                $cantTicketNotSale=$cinema->getCapacity()-$cantTicket;
+                include(VIEWS_PATH.'ticketviews.php');
+
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+        }
+        
 
         public function generateRandomNumberTicket()
         {
