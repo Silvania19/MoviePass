@@ -55,7 +55,7 @@ if (isset($controlScript)) {
         <input type="text" name="address" id="" required="">
         <br>
 
-        <button type="submit" class="btn btn-dark" data dismiss="modal"> add cine </button>
+        <button type="submit" class="btn btn-dark" data dismiss="modal">Agregar cine </button>
       </div>
 
 
@@ -116,7 +116,7 @@ if (isset($controlScript)) {
     ?>
     <div class="col" style="border:1px solid gray;">
 
-      <table class="  table-borderer table-hover tables ">
+      <table class="  table-borderer table-hover ">
           <tr>
             <h2>Cines disponibles</h2>
           </tr>

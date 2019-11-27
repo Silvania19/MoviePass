@@ -13,7 +13,7 @@
 
                 <tr class="table-dark ">
                 
-                <tr class="table-primary">
+               
                <?php
                
                 if(!empty($cartelera))
@@ -21,7 +21,7 @@
                   
                 foreach($cines as $cine)
                 { 
-                ?>   
+                ?> <tr class="table-primary">
                         <td> Cine:    </td>
                         <td><?php echo $cine->getName();?></td>
                         <td>  

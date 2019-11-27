@@ -160,12 +160,12 @@
                 </div>
                 <div class="modal-body">
                    <label for="name" >Nombre</label>
-                   <input type="text" name="name" class="form-control" required="">  
-                   <label for="address">Direccion</label>
-                   <input type="text" name="address" id="" required="">
+                   <input type="text" name="name" class="form-control" value="<?php echo $cine->getName(); ?>" required="">  
+                   <label for="address" >Direccion</label>
+                   <input type="text" name="address" id="" required=""  class="form-control" value="<?php echo $cine->getAddress(); ?>">
                    
                    <label for="address">¿estas seguro de actualizar?</label>
-                   <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>" required="">
+                   <input type="checkbox" name="idCine" id=""  value="<?php echo $cine->getIdCine(); ?>" required=""><br>
                    <button type="submit" class="btn btn-dark" data dismiss="modal" > Actualizar </button>
                 </div>
 
@@ -185,9 +185,9 @@
                     <label for="nameCinema">nombre</label>
                     <input type="text" name="nameCinema"class= "form-control " required=""> <br>
                     <label for="capacity"> Total de butacas</label><br>
-                     <input type="text" name="capacity" id="" required=""><br>
+                     <input type="text" name="capacity" id="" class= "form-control " required=""><br>
                      <label for="price">Precio</label><br>
-                     <input type="text" name="price" id="" required=""><br>
+                     <input type="text" name="price" id="" class= "form-control " required=""><br>
                      <label for="idCine">¿Estas seguro de agregar?</label>
                      <input type="checkbox" name="idCine" id="" value="<?php echo $cine->getIdCine(); ?>" required=""><br>
                     <button type="submit" class="btn btn-dark" data dismiss="modal" > Agregar nueva sala</button>
@@ -229,7 +229,7 @@
                         <label for="price">Precio</label><br>
                         <input type="text" name="price" id="" value="<?php echo $cinema->getPrice(); ?>" class= "form-control " required=""><br>
                         <label for="idCine">¿Estas seguro de actualizar?</label>
-                        <input type="checkbox" name="idCineAndCinema" id="" value="<?php echo $cinema->getIdCinema(); ?>.+.<?php echo $cinema->getIdCine(); ?>" required=""><br>
+                        <input type="checkbox" name="idCineAndCinema" id="" value="<?php echo $cinema->getIdCinema(); ?>+<?php echo $cinema->getIdCine(); ?>" required=""><br>
                         <button type="submit" class="btn btn-dark" data dismiss="modal" > Agregar nueva sala</button>
                    
                 </form>

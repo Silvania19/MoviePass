@@ -80,7 +80,6 @@ class ProjectionControllers
       $control3=1;
       try {
           $projection=$this->listProjection->SearchXMovieXCineXDate($array['0'], $array['1'], $date);
-         
           $projectionOfDate=$this->listProjection->SearchXCineXDate($array['1'], $date);
           if(!empty($projection))
           { 
@@ -94,7 +93,7 @@ class ProjectionControllers
                   include(VIEWS_PATH."carteleraviews.php");
               }
           }
-          if(!empty($projectionOfDate))
+          if(!empty($projectionOfDate) && empty($cinema))
           {
             
               $listCinemas2=$this->listCinema->SearchIdCine($array['1']);
@@ -102,7 +101,7 @@ class ProjectionControllers
               include(VIEWS_PATH."carteleraviews.php");
           
           }
-          if(empty($projection)&& empty($projectionOfDate))
+          if(empty($projection)&& empty($projectionOfDate) && empty($cinema))
           {
             
             $listCinemas2=$this->listCinema->SearchIdCine($array['1']);

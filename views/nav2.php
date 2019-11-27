@@ -7,9 +7,12 @@
             <li class ="nav-item">
               <a href="<?php echo FRONT_ROOT;?>/views/seeShopping" class="nav-link " >CARRITO DE COMPRAS</a>
             </li>
-            <li class ="nav-item">
-            <a href="<?php echo FRONT_ROOT?>/views/home2" class="dropdown-item">Home</a>
-
+            <li class ="nav-item  ">
+                
+                <button type="button" class="btn btn-primary">
+                    <a href="<?php echo FRONT_ROOT?>/views/home2" style="color:white">Home</a>
+                </button>    
+                
             </li>
     
           <li class ="nav-item  ">

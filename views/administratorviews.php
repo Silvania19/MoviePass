@@ -16,7 +16,7 @@
  
 <div class="modal fade" id="update">  
 
-<form class="modal-content " action="<?php echo FRONT_ROOT;?>/user/update" method="POST">
+<form class="modal-content " style="witdh: 10" action="<?php echo FRONT_ROOT;?>/user/update" method="POST">
             <div class="modal-header">
                 <h2 class="modal-title">Actualizar datos</h2>
            
@@ -24,13 +24,13 @@
             </div>
              <div class="modal-body">
                 <label >Nombre</label>
-                <input type="text" name="name" class="form-control" required="">
+                <input type="text" name="name" class="form-control" required="" value="<?php echo $user->getName(); ?>">
                 <label >Apellido</label>
-                <input type="text" name="lastName"class= "form-control " required="">
+                <input type="text" name="lastName"class= "form-control " required=""value="<?php echo $user->getLastName(); ?>">
                 <label >Dni</label>
-                <input type="text" name="dni"class= "form-control " required="">
+                <input type="text" name="dni"class= "form-control " required="" value="<?php echo $user->getDni(); ?>">
                 <label >Email</label>
-                <input type="email" name="email"class= "form-control " required="">
+                <input type="email" name="email"class= "form-control " required="" value="<?php echo $user->getEmail(); ?>">
                 <label >Contraseña</label>
                 <input type="password" name="password"class= "form-control " required="" >
                 

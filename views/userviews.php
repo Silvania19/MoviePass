@@ -9,9 +9,9 @@ include(VIEWS_PATH ."nav.php");
   <form class="group-form" action="<?php echo FRONT_ROOT; ?>/user/deleteUser" method="POST">
     <h5>¿Esta seguro de eliminar tu cuenta?</h5>
 
-    <label> SI</label> <input type="radio" name="verificacion" class="form-control" value="si">
+    <label> SI</label> <input type="radio" name="verificacion" class="form-control" value="si" required="">
 
-    <label>NO</label> <input type="radio" name="verificacion" class="form-control" value="no">
+    <label>NO</label> <input type="radio" name="verificacion" class="form-control" value="no" required="">
     <button type="submit" class="btn btn-dark" data dismiss="modal"> Enviar </button>
 
   </form>
@@ -29,11 +29,11 @@ include(VIEWS_PATH ."nav.php");
       <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
     </div>
     <div class="modal-body">
-      <label>Nombre</label><input type="text" name="name" class="form-control">
-      <label>Apellido</label><input type="text" name="lastName" class="form-control ">
-      <label>Dni</label><input type="text" name="dni" class="form-control ">
-      <label>Email</label><input type="email" name="email" class="form-control ">
-      <label>Contraseña</label><input type="password" name="password" class="form-control ">
+      <label>Nombre</label><input type="text" name="name" class="form-control" value="<?php echo $user->getName(); ?>" required="">
+      <label>Apellido</label><input type="text" name="lastName" class="form-control " value="<?php echo $user->getLastName(); ?>" required="">
+      <label>Dni</label><input type="text" name="dni" class="form-control " value="<?php echo $user->getDni(); ?>" required="">
+      <label>Email</label><input type="email" name="email" class="form-control " value="<?php echo $user->getEmail(); ?>" required="">
+      <label>Contraseña</label><input type="password" name="password" class="form-control " value="<?php echo $user->getName(); ?>" required="">
 
       <button type="submit" class="btn btn-dark" data dismiss="modal"> Actualizar datos</button>
     </div>
